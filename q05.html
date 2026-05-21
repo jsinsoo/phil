@@ -1,0 +1,1388 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>죽음 이후는 무엇인가 - 파이썬 문자열 슬라이싱 학습</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:'Malgun Gothic',Arial,sans-serif;background:#f4f5f8;color:#222;line-height:1.7}
+header{position:sticky;top:0;z-index:10;background:linear-gradient(90deg,#3f4558,#9a642d);color:white;padding:10px;box-shadow:0 2px 10px rgba(0,0,0,.18)}
+.top{max-width:1200px;margin:auto;display:flex;gap:8px;align-items:center}
+h1{font-size:20px;margin:0;white-space:nowrap}
+select,input{height:38px;border:none;border-radius:10px;padding:0 10px;font-weight:700}
+select{flex:1;min-width:150px}
+button{border:none;border-radius:10px;padding:9px 14px;background:#d09b54;color:white;font-weight:800;cursor:pointer}
+button:hover{filter:brightness(1.07)}
+button.ghost{background:#68738a}
+button.small{padding:7px 10px;border-radius:8px;margin:4px 4px 4px 0}
+.wrap{max-width:1200px;margin:18px auto;padding:0 14px}
+.intro,.scorebox,.lesson{background:white;border-radius:22px;padding:22px;margin:16px 0;box-shadow:0 8px 24px rgba(0,0,0,.09)}
+.intro h2{margin-top:0;color:#3f4558}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.field{display:flex;flex-direction:column;gap:4px;font-weight:700;color:#334}
+.field input{border:1px solid #ccd4e4;background:#fff}
+.badge{display:inline-block;background:#f5f6fa;color:#3f4558;border-radius:999px;padding:5px 12px;font-weight:800}
+h2{color:#3f4558;margin:10px 0}
+h3{color:#6f4a00;margin-bottom:8px}
+.sentence{background:#fcfcfd;border-left:6px solid #6c7285;border-radius:14px;padding:14px 16px;margin:12px 0}
+.en{font-weight:800;color:#3f4558}
+.ko{font-weight:700;color:#333}
+.concept{background:#fff7ec;border-radius:14px;padding:12px 14px;border-left:6px solid #9a642d}
+pre{background:#1f2430;color:#f6f7ff;border-radius:16px;padding:16px;overflow:auto;font-size:14px;line-height:1.6}
+code{font-family:Consolas,'Courier New',monospace}
+.explain{background:#fbfbfb;border:1px solid #e5e8ef;border-radius:14px;padding:14px}
+.quiz{background:#f7f9ff;border:1px solid #dde6ff;border-radius:16px;padding:14px}
+.choice{display:block;background:white;margin:7px 0;padding:10px;border-radius:12px;border:1px solid #e0e5f2;cursor:pointer}
+.choice:hover{background:#eef4ff}
+.choice.selected{background:#dbe8ff;border-color:#7aa4e8}
+.solution{display:none;margin-top:10px;padding:12px;border-radius:12px;background:#fffdf0;border:1px solid #eadcaa}
+.result{font-size:18px;font-weight:800;color:#3f4558}
+.footertext{white-space:pre-wrap;background:#fffdf7;border:1px solid #eadcaa;border-radius:16px;padding:18px}
+@media(max-width:720px){
+  .top{flex-wrap:wrap}
+  h1{width:100%;font-size:17px}
+  select{width:100%;flex:auto}
+  button{padding:8px 10px;font-size:13px}
+  .wrap{padding:0 8px}
+  .intro,.scorebox,.lesson{padding:16px;border-radius:18px}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="top">
+    <h1>05 파이썬 문자열 슬라이싱</h1>
+    <select id="nav" onchange="goLesson(this.value)">
+      <option value="lesson1">01. 함수로 문자열 앞뒤 문자 추출</option>
+<option value="lesson2">02. 람다로 문자열 뒤집기</option>
+<option value="lesson3">03. join으로 단어 조각 연결</option>
+<option value="lesson4">04. zip으로 영어·한글 문자열 묶기</option>
+<option value="lesson5">05. map으로 문자열 길이 계산</option>
+<option value="lesson6">06. pop으로 단어 꺼내기</option>
+<option value="lesson7">07. for 반복 문자열 슬라이싱</option>
+<option value="lesson8">08. if 조건 문자열 슬라이싱</option>
+<option value="lesson9">09. while로 문자열 나누기</option>
+<option value="lesson10">10. *args 여러 문자열 처리</option>
+<option value="lesson11">11. **kwargs 슬라이싱 범위 지정</option>
+<option value="lesson12">12. filter로 긴 단어 찾기</option>
+<option value="lesson13">13. 인덱스로 단어 위치 찾기</option>
+<option value="lesson14">14. 정렬 후 문자열 조각 보기</option>
+<option value="lesson15">15. 대소문자 변환</option>
+<option value="lesson16">16. 리스트 컴프리헨션과 문자열</option>
+<option value="lesson17">17. enumerate와 번호 붙이기</option>
+<option value="lesson18">18. 중첩 문자열 슬라이싱</option>
+<option value="lesson19">19. 음수 인덱스 문자열</option>
+<option value="lesson20">20. 간격 문자열 슬라이싱</option>
+<option value="lesson21">21. 불리언 조건 문자열</option>
+<option value="lesson22">22. 딕셔너리에 문자열 조각 저장</option>
+<option value="lesson23">23. 길이 기준 문장 정렬</option>
+<option value="lesson24">24. 한글 문자열 슬라이싱</option>
+<option value="lesson25">25. 영어·한글 동시 슬라이싱</option>
+<option value="lesson26">26. 검색과 조건 출력</option>
+<option value="lesson27">27. 함수·*args·**kwargs 종합</option>
+<option value="lesson28">28. 최종 종합 미션</option>
+    </select>
+    <button onclick="scoreAll()">채점</button>
+    <button onclick="saveTxt()">TXT 저장</button>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="intro">
+    <h2>죽음 이후는 무엇인가? 문장 기반 파이썬 문자열 슬라이싱 학습</h2>
+    <p>각 문장을 소재로 함수, 람다, join, zip, map, pop, for, if, while, *args, **kwargs, filter, 인덱스, 정렬 등을 활용한 문자열 슬라이싱을 다양하게 연습합니다.</p>
+    <div class="grid">
+      <label class="field">학번 <input id="studentId" value="1100" placeholder="예: 1100"></label>
+      <label class="field">이름 <input id="studentName" value="인수샘" placeholder="예: 인수샘"></label>
+    </div>
+  </div>
+
+  <div class="scorebox">
+    <div class="result" id="result">점수: 아직 채점하지 않음</div>
+    <p>채점 후 <b>TXT 저장</b>을 누르면 <b>학번_이름_05_점수_응시시각.txt</b> 형식으로 저장됩니다.</p>
+  </div>
+
+  
+<section class="lesson" id="lesson1">
+  <div class="badge">문장 1</div>
+  <h2>함수로 문자열 앞뒤 문자 추출</h2>
+  <div class="sentence">
+    <p class="en">The question “What comes after death?” has been asked by religions, philosophies, and ordinary people for thousands of years.</p>
+    <p class="ko">“죽음 이후는 무엇인가?”라는 질문은 수천 년 동안 종교와 철학, 그리고 평범한 사람들이 물어 온 질문이다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> function, index, string slicing<br><b>학습 목표:</b> 함수로 첫 글자, 마지막 글자, 앞부분을 추출합니다.</div>
+  <h3>파이썬 코드</h3>
+  <pre><code>sentence = &#x27;The question “What comes after death?” has been asked by religions, philosophies, and ordinary people for thousands of years.&#x27;
+
+def string_edges(text):
+    first = text[0]
+    last = text[-1]
+    front = text[:20]
+    return first, last, front
+
+a, b, c = string_edges(sentence)
+print(&quot;첫 글자:&quot;, a)
+print(&quot;마지막 글자:&quot;, b)
+print(&quot;앞 20글자:&quot;, c)</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 위 문장을 문자열 자료로 저장한 뒤 문자열 슬라이싱을 연습합니다.
+    문자열은 0번부터 인덱스가 시작하며, <code>text[start:end:step]</code> 형식으로 앞부분, 뒷부분,
+    일정 간격, 역순을 추출할 수 있습니다. 함수, 람다, join, zip, map, pop, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용해 문자열 처리 능력을 키웁니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q1.</b> 1번 예제에서 text[:5]의 의미는?</p>
+    <label class="choice"><input type="radio" name="q1" value="0"> 문자열의 앞 5글자</label>
+<label class="choice"><input type="radio" name="q1" value="1"> 문자열의 뒤 5글자</label>
+<label class="choice"><input type="radio" name="q1" value="2"> 문자열 삭제</label>
+<label class="choice"><input type="radio" name="q1" value="3"> 문자열 정렬</label>
+<label class="choice"><input type="radio" name="q1" value="4"> 숫자 변환</label>
+    <button class="small" onclick="checkOne(1)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(1)">상세 풀이 보기</button>
+    <div class="solution" id="sol1">
+      <b>정답:</b> 1번<br>
+      text[:5]는 0번 인덱스부터 5번 직전까지, 즉 앞 5글자를 가져옵니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson2">
+  <div class="badge">문장 2</div>
+  <h2>람다로 문자열 뒤집기</h2>
+  <div class="sentence">
+    <p class="en">In humanistic philosophy, this question is not only about another world, but also about how we should live in this world.</p>
+    <p class="ko">인문 철학에서 이 질문은 다른 세계에 대한 것만이 아니라 이 세계에서 어떻게 살아야 하는가에 대한 것이기도 하다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> lambda, reverse slicing<br><b>학습 목표:</b> lambda와 [::-1]로 문장을 거꾸로 뒤집습니다.</div>
+  <h3>파이썬 코드</h3>
+  <pre><code>sentence = &#x27;In humanistic philosophy, this question is not only about another world, but also about how we should live in this world.&#x27;
+
+reverse_text = lambda text: text[::-1]
+result = reverse_text(sentence)
+
+print(&quot;거꾸로:&quot;, result)
+print(&quot;거꾸로 만든 뒤 앞 20글자:&quot;, result[:20])</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 위 문장을 문자열 자료로 저장한 뒤 문자열 슬라이싱을 연습합니다.
+    문자열은 0번부터 인덱스가 시작하며, <code>text[start:end:step]</code> 형식으로 앞부분, 뒷부분,
+    일정 간격, 역순을 추출할 수 있습니다. 함수, 람다, join, zip, map, pop, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용해 문자열 처리 능력을 키웁니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q2.</b> 2번 예제에서 text[::-1]의 의미는?</p>
+    <label class="choice"><input type="radio" name="q2" value="0"> 문자열을 거꾸로 뒤집기</label>
+<label class="choice"><input type="radio" name="q2" value="1"> 첫 글자만 출력</label>
+<label class="choice"><input type="radio" name="q2" value="2"> 마지막 글자 삭제</label>
+<label class="choice"><input type="radio" name="q2" value="3"> 대문자 변환</label>
+<label class="choice"><input type="radio" name="q2" value="4"> 파일 저장</label>
+    <button class="small" onclick="checkOne(2)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(2)">상세 풀이 보기</button>
+    <div class="solution" id="sol2">
+      <b>정답:</b> 1번<br>
+      [::-1]은 step이 -1이므로 문자열을 뒤에서 앞으로 읽습니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson3">
+  <div class="badge">문장 3</div>
+  <h2>join으로 단어 조각 연결</h2>
+  <div class="sentence">
+    <p class="en">Socrates faced death with calmness because he believed that the soul might continue beyond the body.</p>
+    <p class="ko">소크라테스는 영혼이 몸을 넘어 계속될 수 있다고 믿었기 때문에 죽음을 차분히 마주했다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> join, split, slicing<br><b>학습 목표:</b> 문장을 단어로 나눈 뒤 일부 단어를 join으로 연결합니다.</div>
+  <h3>파이썬 코드</h3>
+  <pre><code>sentence = &#x27;Socrates faced death with calmness because he believed that the soul might continue beyond the body.&#x27;
+words = sentence.split()
+
+piece = words[:8]
+joined = &quot; &quot;.join(piece)
+
+print(&quot;단어 조각:&quot;, piece)
+print(&quot;join 결과:&quot;, joined)</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 위 문장을 문자열 자료로 저장한 뒤 문자열 슬라이싱을 연습합니다.
+    문자열은 0번부터 인덱스가 시작하며, <code>text[start:end:step]</code> 형식으로 앞부분, 뒷부분,
+    일정 간격, 역순을 추출할 수 있습니다. 함수, 람다, join, zip, map, pop, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용해 문자열 처리 능력을 키웁니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q3.</b> 3번 예제에서 join의 역할은?</p>
+    <label class="choice"><input type="radio" name="q3" value="0"> 문자열 요소들을 연결</label>
+<label class="choice"><input type="radio" name="q3" value="1"> 문자열을 모두 삭제</label>
+<label class="choice"><input type="radio" name="q3" value="2"> 반복문 종료</label>
+<label class="choice"><input type="radio" name="q3" value="3"> 조건 검사</label>
+<label class="choice"><input type="radio" name="q3" value="4"> 정답 채점</label>
+    <button class="small" onclick="checkOne(3)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(3)">상세 풀이 보기</button>
+    <div class="solution" id="sol3">
+      <b>정답:</b> 1번<br>
+      join은 문자열 리스트의 요소들을 하나의 문자열로 연결합니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson4">
+  <div class="badge">문장 4</div>
+  <h2>zip으로 영어·한글 문자열 묶기</h2>
+  <div class="sentence">
+    <p class="en">His final story teaches us that thinking about death can become a lesson in courage and truth.</p>
+    <p class="ko">그의 마지막 이야기는 죽음을 생각하는 일이 용기와 진실의 배움이 될 수 있음을 가르쳐 준다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> zip, bilingual slicing<br><b>학습 목표:</b> 영어 문장과 한글 문장을 zip으로 묶어 앞부분을 비교합니다.</div>
+  <h3>파이썬 코드</h3>
+  <pre><code>english = &#x27;His final story teaches us that thinking about death can become a lesson in courage and truth.&#x27;
+korean = &#x27;그의 마지막 이야기는 죽음을 생각하는 일이 용기와 진실의 배움이 될 수 있음을 가르쳐 준다.&#x27;
+
+for label, text in zip([&quot;EN&quot;, &quot;KO&quot;], [english, korean]):
+    print(label, text[:18])</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 위 문장을 문자열 자료로 저장한 뒤 문자열 슬라이싱을 연습합니다.
+    문자열은 0번부터 인덱스가 시작하며, <code>text[start:end:step]</code> 형식으로 앞부분, 뒷부분,
+    일정 간격, 역순을 추출할 수 있습니다. 함수, 람다, join, zip, map, pop, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용해 문자열 처리 능력을 키웁니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q4.</b> 4번 예제에서 zip의 역할은?</p>
+    <label class="choice"><input type="radio" name="q4" value="0"> 같은 위치의 자료를 묶음</label>
+<label class="choice"><input type="radio" name="q4" value="1"> 문자열을 압축 파일로 만듦</label>
+<label class="choice"><input type="radio" name="q4" value="2"> 글자를 삭제</label>
+<label class="choice"><input type="radio" name="q4" value="3"> 길이 계산</label>
+<label class="choice"><input type="radio" name="q4" value="4"> 오답 제거</label>
+    <button class="small" onclick="checkOne(4)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(4)">상세 풀이 보기</button>
+    <div class="solution" id="sol4">
+      <b>정답:</b> 1번<br>
+      zip은 여러 반복 자료의 같은 위치 요소를 짝지어 줍니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson5">
+  <div class="badge">문장 5</div>
+  <h2>map으로 문자열 길이 계산</h2>
+  <div class="sentence">
+    <p class="en">Plato imagined the soul as something that seeks eternal truth and goodness.</p>
+    <p class="ko">플라톤은 영혼을 영원한 진리와 선을 추구하는 존재로 상상했다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> map, len<br><b>학습 목표:</b> 여러 문장에 len을 적용하여 길이 목록을 만듭니다.</div>
+  <h3>파이썬 코드</h3>
+  <pre><code>sentences = [
+    &#x27;Socrates faced death with calmness because he believed that the soul might continue beyond the body.&#x27;,
+    &#x27;His final story teaches us that thinking about death can become a lesson in courage and truth.&#x27;,
+    &#x27;Plato imagined the soul as something that seeks eternal truth and goodness.&#x27;
+]
+
+lengths = list(map(len, sentences))
+print(&quot;길이 목록:&quot;, lengths)
+print(&quot;가장 긴 문장 길이:&quot;, max(lengths))</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 위 문장을 문자열 자료로 저장한 뒤 문자열 슬라이싱을 연습합니다.
+    문자열은 0번부터 인덱스가 시작하며, <code>text[start:end:step]</code> 형식으로 앞부분, 뒷부분,
+    일정 간격, 역순을 추출할 수 있습니다. 함수, 람다, join, zip, map, pop, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용해 문자열 처리 능력을 키웁니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q5.</b> 5번 예제에서 map(len, sentences)의 의미는?</p>
+    <label class="choice"><input type="radio" name="q5" value="0"> 각 문장에 len 적용</label>
+<label class="choice"><input type="radio" name="q5" value="1"> 문장 모두 삭제</label>
+<label class="choice"><input type="radio" name="q5" value="2"> 문장 역순</label>
+<label class="choice"><input type="radio" name="q5" value="3"> 단어 pop</label>
+<label class="choice"><input type="radio" name="q5" value="4"> HTML 생성</label>
+    <button class="small" onclick="checkOne(5)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(5)">상세 풀이 보기</button>
+    <div class="solution" id="sol5">
+      <b>정답:</b> 1번<br>
+      map(len, sentences)는 각 문장에 len 함수를 적용해 길이를 구합니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson6">
+  <div class="badge">문장 6</div>
+  <h2>pop으로 단어 꺼내기</h2>
+  <div class="sentence">
+    <p class="en">For Plato, death was not simply disappearance, but a possible movement toward a deeper reality.</p>
+    <p class="ko">플라톤에게 죽음은 단순한 사라짐이 아니라 더 깊은 실재를 향한 가능성 있는 이동이었다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> pop, list, string<br><b>학습 목표:</b> 문자열을 단어 리스트로 바꾼 뒤 pop으로 단어를 꺼냅니다.</div>
+  <h3>파이썬 코드</h3>
+  <pre><code>sentence = &#x27;For Plato, death was not simply disappearance, but a possible movement toward a deeper reality.&#x27;
+words = sentence.replace(&quot;.&quot;, &quot;&quot;).split()
+
+last_word = words.pop()
+print(&quot;pop으로 꺼낸 단어:&quot;, last_word)
+print(&quot;남은 단어 앞 5개:&quot;, words[:5])
+print(&quot;남은 문장:&quot;, &quot; &quot;.join(words))</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 위 문장을 문자열 자료로 저장한 뒤 문자열 슬라이싱을 연습합니다.
+    문자열은 0번부터 인덱스가 시작하며, <code>text[start:end:step]</code> 형식으로 앞부분, 뒷부분,
+    일정 간격, 역순을 추출할 수 있습니다. 함수, 람다, join, zip, map, pop, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용해 문자열 처리 능력을 키웁니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q6.</b> 6번 예제에서 pop()은 무엇을 하나요?</p>
+    <label class="choice"><input type="radio" name="q6" value="0"> 리스트 요소를 꺼내고 제거</label>
+<label class="choice"><input type="radio" name="q6" value="1"> 문자열 전체 복사</label>
+<label class="choice"><input type="radio" name="q6" value="2"> 파일 생성</label>
+<label class="choice"><input type="radio" name="q6" value="3"> 조건 판단</label>
+<label class="choice"><input type="radio" name="q6" value="4"> 정렬 실행</label>
+    <button class="small" onclick="checkOne(6)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(6)">상세 풀이 보기</button>
+    <div class="solution" id="sol6">
+      <b>정답:</b> 1번<br>
+      pop()은 리스트에서 요소를 꺼내 반환하고 원래 리스트에서는 제거합니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson7">
+  <div class="badge">문장 7</div>
+  <h2>for 반복 문자열 슬라이싱</h2>
+  <div class="sentence">
+    <p class="en">Epicurus argued that death should not terrify us, because when we exist death is not here, and when death comes we are not here.</p>
+    <p class="ko">에피쿠로스는 우리가 존재할 때 죽음은 없고 죽음이 올 때 우리는 없으므로 죽음을 두려워할 필요가 없다고 주장했다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> for, string slicing<br><b>학습 목표:</b> for문으로 여러 문장의 앞부분을 반복 출력합니다.</div>
+  <h3>파이썬 코드</h3>
+  <pre><code>sentences = [
+    &#x27;Plato imagined the soul as something that seeks eternal truth and goodness.&#x27;,
+    &#x27;For Plato, death was not simply disappearance, but a possible movement toward a deeper reality.&#x27;,
+    &#x27;Epicurus argued that death should not terrify us, because when we exist death is not here, and when death comes we are not here.&#x27;
+]
+
+for sentence in sentences:
+    print(sentence[:25])</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 위 문장을 문자열 자료로 저장한 뒤 문자열 슬라이싱을 연습합니다.
+    문자열은 0번부터 인덱스가 시작하며, <code>text[start:end:step]</code> 형식으로 앞부분, 뒷부분,
+    일정 간격, 역순을 추출할 수 있습니다. 함수, 람다, join, zip, map, pop, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용해 문자열 처리 능력을 키웁니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q7.</b> 7번 예제에서 sorted(words)의 결과는?</p>
+    <label class="choice"><input type="radio" name="q7" value="0"> 정렬된 새 리스트</label>
+<label class="choice"><input type="radio" name="q7" value="1"> 원본 문장 삭제</label>
+<label class="choice"><input type="radio" name="q7" value="2"> 문자열 거꾸로</label>
+<label class="choice"><input type="radio" name="q7" value="3"> 점수 계산</label>
+<label class="choice"><input type="radio" name="q7" value="4"> 반복 중지</label>
+    <button class="small" onclick="checkOne(7)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(7)">상세 풀이 보기</button>
+    <div class="solution" id="sol7">
+      <b>정답:</b> 1번<br>
+      sorted는 정렬된 새 리스트를 반환합니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson8">
+  <div class="badge">문장 8</div>
+  <h2>if 조건 문자열 슬라이싱</h2>
+  <div class="sentence">
+    <p class="en">His view invites us to reduce unnecessary fear and value the present moment.</p>
+    <p class="ko">그의 관점은 불필요한 두려움을 줄이고 현재의 순간을 소중히 여기도록 초대한다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> if, condition<br><b>학습 목표:</b> 특정 단어 포함 여부에 따라 다른 문자열 조각을 출력합니다.</div>
+  <h3>파이썬 코드</h3>
+  <pre><code>sentence = &#x27;His view invites us to reduce unnecessary fear and value the present moment.&#x27;
+
+if &quot;death&quot; in sentence.lower():
+    print(&quot;death 포함:&quot;, sentence[:35])
+else:
+    print(&quot;death 없음:&quot;, sentence[-35:])</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 위 문장을 문자열 자료로 저장한 뒤 문자열 슬라이싱을 연습합니다.
+    문자열은 0번부터 인덱스가 시작하며, <code>text[start:end:step]</code> 형식으로 앞부분, 뒷부분,
+    일정 간격, 역순을 추출할 수 있습니다. 함수, 람다, join, zip, map, pop, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용해 문자열 처리 능력을 키웁니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q8.</b> 8번 예제에서 text[:5]의 의미는?</p>
+    <label class="choice"><input type="radio" name="q8" value="0"> 문자열의 앞 5글자</label>
+<label class="choice"><input type="radio" name="q8" value="1"> 문자열의 뒤 5글자</label>
+<label class="choice"><input type="radio" name="q8" value="2"> 문자열 삭제</label>
+<label class="choice"><input type="radio" name="q8" value="3"> 문자열 정렬</label>
+<label class="choice"><input type="radio" name="q8" value="4"> 숫자 변환</label>
+    <button class="small" onclick="checkOne(8)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(8)">상세 풀이 보기</button>
+    <div class="solution" id="sol8">
+      <b>정답:</b> 1번<br>
+      text[:5]는 0번 인덱스부터 5번 직전까지, 즉 앞 5글자를 가져옵니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson9">
+  <div class="badge">문장 9</div>
+  <h2>while로 문자열 나누기</h2>
+  <div class="sentence">
+    <p class="en">Martin Heidegger saw death as the limit that makes each life personal and urgent.</p>
+    <p class="ko">마르틴 하이데거는 죽음을 각자의 삶을 개인적이고 절실하게 만드는 한계로 보았다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> while, chunk slicing<br><b>학습 목표:</b> while문으로 문장을 일정 글자 수씩 나누어 출력합니다.</div>
+  <h3>파이썬 코드</h3>
+  <pre><code>sentence = &#x27;Martin Heidegger saw death as the limit that makes each life personal and urgent.&#x27;
+start = 0
+
+while start &lt; len(sentence):
+    print(sentence[start:start+12])
+    start += 12</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 위 문장을 문자열 자료로 저장한 뒤 문자열 슬라이싱을 연습합니다.
+    문자열은 0번부터 인덱스가 시작하며, <code>text[start:end:step]</code> 형식으로 앞부분, 뒷부분,
+    일정 간격, 역순을 추출할 수 있습니다. 함수, 람다, join, zip, map, pop, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용해 문자열 처리 능력을 키웁니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q9.</b> 9번 예제에서 text[::-1]의 의미는?</p>
+    <label class="choice"><input type="radio" name="q9" value="0"> 문자열을 거꾸로 뒤집기</label>
+<label class="choice"><input type="radio" name="q9" value="1"> 첫 글자만 출력</label>
+<label class="choice"><input type="radio" name="q9" value="2"> 마지막 글자 삭제</label>
+<label class="choice"><input type="radio" name="q9" value="3"> 대문자 변환</label>
+<label class="choice"><input type="radio" name="q9" value="4"> 파일 저장</label>
+    <button class="small" onclick="checkOne(9)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(9)">상세 풀이 보기</button>
+    <div class="solution" id="sol9">
+      <b>정답:</b> 1번<br>
+      [::-1]은 step이 -1이므로 문자열을 뒤에서 앞으로 읽습니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson10">
+  <div class="badge">문장 10</div>
+  <h2>*args 여러 문자열 처리</h2>
+  <div class="sentence">
+    <p class="en">For Heidegger, remembering death can awaken us from empty routine into authentic living.</p>
+    <p class="ko">하이데거에게 죽음을 기억하는 일은 우리를 공허한 반복에서 깨어나 진정한 삶으로 이끌 수 있다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> *args, variable arguments<br><b>학습 목표:</b> 여러 문장을 받아 앞뒤 일부를 출력합니다.</div>
+  <h3>파이썬 코드</h3>
+  <pre><code>def show_text_parts(*texts):
+    for text in texts:
+        print(&quot;앞:&quot;, text[:15], &quot;/ 뒤:&quot;, text[-12:])
+
+show_text_parts(
+    &#x27;His view invites us to reduce unnecessary fear and value the present moment.&#x27;,
+    &#x27;Martin Heidegger saw death as the limit that makes each life personal and urgent.&#x27;,
+    &#x27;For Heidegger, remembering death can awaken us from empty routine into authentic living.&#x27;
+)</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 위 문장을 문자열 자료로 저장한 뒤 문자열 슬라이싱을 연습합니다.
+    문자열은 0번부터 인덱스가 시작하며, <code>text[start:end:step]</code> 형식으로 앞부분, 뒷부분,
+    일정 간격, 역순을 추출할 수 있습니다. 함수, 람다, join, zip, map, pop, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용해 문자열 처리 능력을 키웁니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q10.</b> 10번 예제에서 join의 역할은?</p>
+    <label class="choice"><input type="radio" name="q10" value="0"> 문자열 요소들을 연결</label>
+<label class="choice"><input type="radio" name="q10" value="1"> 문자열을 모두 삭제</label>
+<label class="choice"><input type="radio" name="q10" value="2"> 반복문 종료</label>
+<label class="choice"><input type="radio" name="q10" value="3"> 조건 검사</label>
+<label class="choice"><input type="radio" name="q10" value="4"> 정답 채점</label>
+    <button class="small" onclick="checkOne(10)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(10)">상세 풀이 보기</button>
+    <div class="solution" id="sol10">
+      <b>정답:</b> 1번<br>
+      join은 문자열 리스트의 요소들을 하나의 문자열로 연결합니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson11">
+  <div class="badge">문장 11</div>
+  <h2>**kwargs 슬라이싱 범위 지정</h2>
+  <div class="sentence">
+    <p class="en">Some traditions believe in heaven, rebirth, or the immortality of the soul.</p>
+    <p class="ko">어떤 전통들은 천국, 환생, 혹은 영혼의 불멸을 믿는다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> **kwargs, start, end<br><b>학습 목표:</b> 키워드 인자로 시작과 끝 범위를 받아 문자열을 자릅니다.</div>
+  <h3>파이썬 코드</h3>
+  <pre><code>def cut_text(**kwargs):
+    text = kwargs[&quot;text&quot;]
+    start = kwargs.get(&quot;start&quot;, 0)
+    end = kwargs.get(&quot;end&quot;, 25)
+    return text[start:end]
+
+print(cut_text(text=&#x27;Some traditions believe in heaven, rebirth, or the immortality of the soul.&#x27;, start=5, end=32))</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 위 문장을 문자열 자료로 저장한 뒤 문자열 슬라이싱을 연습합니다.
+    문자열은 0번부터 인덱스가 시작하며, <code>text[start:end:step]</code> 형식으로 앞부분, 뒷부분,
+    일정 간격, 역순을 추출할 수 있습니다. 함수, 람다, join, zip, map, pop, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용해 문자열 처리 능력을 키웁니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q11.</b> 11번 예제에서 zip의 역할은?</p>
+    <label class="choice"><input type="radio" name="q11" value="0"> 같은 위치의 자료를 묶음</label>
+<label class="choice"><input type="radio" name="q11" value="1"> 문자열을 압축 파일로 만듦</label>
+<label class="choice"><input type="radio" name="q11" value="2"> 글자를 삭제</label>
+<label class="choice"><input type="radio" name="q11" value="3"> 길이 계산</label>
+<label class="choice"><input type="radio" name="q11" value="4"> 오답 제거</label>
+    <button class="small" onclick="checkOne(11)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(11)">상세 풀이 보기</button>
+    <div class="solution" id="sol11">
+      <b>정답:</b> 1번<br>
+      zip은 여러 반복 자료의 같은 위치 요소를 짝지어 줍니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson12">
+  <div class="badge">문장 12</div>
+  <h2>filter로 긴 단어 찾기</h2>
+  <div class="sentence">
+    <p class="en">Other philosophies say that what remains after death is memory, influence, and the goodness we leave behind.</p>
+    <p class="ko">다른 철학들은 죽음 이후에 남는 것이 기억, 영향, 그리고 우리가 남긴 선함이라고 말한다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> filter, lambda<br><b>학습 목표:</b> filter와 lambda로 긴 단어를 골라 문자열 분석에 활용합니다.</div>
+  <h3>파이썬 코드</h3>
+  <pre><code>sentence = &#x27;Other philosophies say that what remains after death is memory, influence, and the goodness we leave behind.&#x27;
+words = sentence.replace(&quot;.&quot;, &quot;&quot;).replace(&quot;,&quot;, &quot;&quot;).split()
+
+long_words = list(filter(lambda word: len(word) &gt;= 8, words))
+print(&quot;긴 단어:&quot;, long_words)
+print(&quot;첫 긴 단어 앞 6글자:&quot;, long_words[0][:6])</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 위 문장을 문자열 자료로 저장한 뒤 문자열 슬라이싱을 연습합니다.
+    문자열은 0번부터 인덱스가 시작하며, <code>text[start:end:step]</code> 형식으로 앞부분, 뒷부분,
+    일정 간격, 역순을 추출할 수 있습니다. 함수, 람다, join, zip, map, pop, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용해 문자열 처리 능력을 키웁니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q12.</b> 12번 예제에서 map(len, sentences)의 의미는?</p>
+    <label class="choice"><input type="radio" name="q12" value="0"> 각 문장에 len 적용</label>
+<label class="choice"><input type="radio" name="q12" value="1"> 문장 모두 삭제</label>
+<label class="choice"><input type="radio" name="q12" value="2"> 문장 역순</label>
+<label class="choice"><input type="radio" name="q12" value="3"> 단어 pop</label>
+<label class="choice"><input type="radio" name="q12" value="4"> HTML 생성</label>
+    <button class="small" onclick="checkOne(12)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(12)">상세 풀이 보기</button>
+    <div class="solution" id="sol12">
+      <b>정답:</b> 1번<br>
+      map(len, sentences)는 각 문장에 len 함수를 적용해 길이를 구합니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson13">
+  <div class="badge">문장 13</div>
+  <h2>인덱스로 단어 위치 찾기</h2>
+  <div class="sentence">
+    <p class="en">For example, a teacher may live on through the students whose lives were changed by kindness.</p>
+    <p class="ko">예를 들어 교사는 친절로 삶이 변화된 학생들 속에서 계속 살아갈 수 있다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> find, index<br><b>학습 목표:</b> 문장 안에서 특정 단어의 시작 위치를 찾고 주변 문자열을 자릅니다.</div>
+  <h3>파이썬 코드</h3>
+  <pre><code>sentence = &#x27;For example, a teacher may live on through the students whose lives were changed by kindness.&#x27;
+target = &quot;teacher&quot;
+
+pos = sentence.lower().find(target)
+print(&quot;위치:&quot;, pos)
+
+if pos != -1:
+    print(&quot;주변 문자열:&quot;, sentence[max(0, pos-10):pos+len(target)+10])
+else:
+    print(&quot;찾는 단어가 없습니다.&quot;)</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 위 문장을 문자열 자료로 저장한 뒤 문자열 슬라이싱을 연습합니다.
+    문자열은 0번부터 인덱스가 시작하며, <code>text[start:end:step]</code> 형식으로 앞부분, 뒷부분,
+    일정 간격, 역순을 추출할 수 있습니다. 함수, 람다, join, zip, map, pop, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용해 문자열 처리 능력을 키웁니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q13.</b> 13번 예제에서 pop()은 무엇을 하나요?</p>
+    <label class="choice"><input type="radio" name="q13" value="0"> 리스트 요소를 꺼내고 제거</label>
+<label class="choice"><input type="radio" name="q13" value="1"> 문자열 전체 복사</label>
+<label class="choice"><input type="radio" name="q13" value="2"> 파일 생성</label>
+<label class="choice"><input type="radio" name="q13" value="3"> 조건 판단</label>
+<label class="choice"><input type="radio" name="q13" value="4"> 정렬 실행</label>
+    <button class="small" onclick="checkOne(13)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(13)">상세 풀이 보기</button>
+    <div class="solution" id="sol13">
+      <b>정답:</b> 1번<br>
+      pop()은 리스트에서 요소를 꺼내 반환하고 원래 리스트에서는 제거합니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson14">
+  <div class="badge">문장 14</div>
+  <h2>정렬 후 문자열 조각 보기</h2>
+  <div class="sentence">
+    <p class="en">A parent may live on through love, stories, habits, and values passed to children.</p>
+    <p class="ko">부모는 자녀에게 전해진 사랑, 이야기, 습관, 가치 속에서 계속 살아갈 수 있다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> sorted, slicing<br><b>학습 목표:</b> 단어를 정렬한 뒤 앞·뒤 일부를 확인합니다.</div>
+  <h3>파이썬 코드</h3>
+  <pre><code>sentence = &#x27;A parent may live on through love, stories, habits, and values passed to children.&#x27;
+words = sentence.replace(&quot;,&quot;, &quot;&quot;).replace(&quot;.&quot;, &quot;&quot;).split()
+
+sorted_words = sorted(words)
+print(&quot;정렬 앞 5개:&quot;, sorted_words[:5])
+print(&quot;정렬 뒤 5개:&quot;, sorted_words[-5:])</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 위 문장을 문자열 자료로 저장한 뒤 문자열 슬라이싱을 연습합니다.
+    문자열은 0번부터 인덱스가 시작하며, <code>text[start:end:step]</code> 형식으로 앞부분, 뒷부분,
+    일정 간격, 역순을 추출할 수 있습니다. 함수, 람다, join, zip, map, pop, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용해 문자열 처리 능력을 키웁니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q14.</b> 14번 예제에서 sorted(words)의 결과는?</p>
+    <label class="choice"><input type="radio" name="q14" value="0"> 정렬된 새 리스트</label>
+<label class="choice"><input type="radio" name="q14" value="1"> 원본 문장 삭제</label>
+<label class="choice"><input type="radio" name="q14" value="2"> 문자열 거꾸로</label>
+<label class="choice"><input type="radio" name="q14" value="3"> 점수 계산</label>
+<label class="choice"><input type="radio" name="q14" value="4"> 반복 중지</label>
+    <button class="small" onclick="checkOne(14)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(14)">상세 풀이 보기</button>
+    <div class="solution" id="sol14">
+      <b>정답:</b> 1번<br>
+      sorted는 정렬된 새 리스트를 반환합니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson15">
+  <div class="badge">문장 15</div>
+  <h2>대소문자 변환</h2>
+  <div class="sentence">
+    <p class="en">No one can answer the mystery of death with complete certainty.</p>
+    <p class="ko">죽음의 신비에 대해 누구도 완전한 확실성으로 답할 수는 없다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> upper, lower, slicing<br><b>학습 목표:</b> 슬라이싱한 문자열을 대문자와 소문자로 변환합니다.</div>
+  <h3>파이썬 코드</h3>
+  <pre><code>sentence = &#x27;No one can answer the mystery of death with complete certainty.&#x27;
+part = sentence[:35]
+
+print(&quot;원본 조각:&quot;, part)
+print(&quot;대문자:&quot;, part.upper())
+print(&quot;소문자:&quot;, part.lower())</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 위 문장을 문자열 자료로 저장한 뒤 문자열 슬라이싱을 연습합니다.
+    문자열은 0번부터 인덱스가 시작하며, <code>text[start:end:step]</code> 형식으로 앞부분, 뒷부분,
+    일정 간격, 역순을 추출할 수 있습니다. 함수, 람다, join, zip, map, pop, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용해 문자열 처리 능력을 키웁니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q15.</b> 15번 예제에서 text[:5]의 의미는?</p>
+    <label class="choice"><input type="radio" name="q15" value="0"> 문자열의 앞 5글자</label>
+<label class="choice"><input type="radio" name="q15" value="1"> 문자열의 뒤 5글자</label>
+<label class="choice"><input type="radio" name="q15" value="2"> 문자열 삭제</label>
+<label class="choice"><input type="radio" name="q15" value="3"> 문자열 정렬</label>
+<label class="choice"><input type="radio" name="q15" value="4"> 숫자 변환</label>
+    <button class="small" onclick="checkOne(15)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(15)">상세 풀이 보기</button>
+    <div class="solution" id="sol15">
+      <b>정답:</b> 1번<br>
+      text[:5]는 0번 인덱스부터 5번 직전까지, 즉 앞 5글자를 가져옵니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson16">
+  <div class="badge">문장 16</div>
+  <h2>리스트 컴프리헨션과 문자열</h2>
+  <div class="sentence">
+    <p class="en">Yet this uncertainty can make us more humble, grateful, and compassionate.</p>
+    <p class="ko">그러나 이러한 불확실성은 우리를 더 겸손하고 감사하며 연민 있는 사람으로 만들 수 있다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> list comprehension<br><b>학습 목표:</b> 여러 문장의 앞부분을 리스트로 모읍니다.</div>
+  <h3>파이썬 코드</h3>
+  <pre><code>sentences = [
+    &#x27;A parent may live on through love, stories, habits, and values passed to children.&#x27;,
+    &#x27;No one can answer the mystery of death with complete certainty.&#x27;,
+    &#x27;Yet this uncertainty can make us more humble, grateful, and compassionate.&#x27;
+]
+
+pieces = [sentence[:18] for sentence in sentences]
+print(pieces)</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 위 문장을 문자열 자료로 저장한 뒤 문자열 슬라이싱을 연습합니다.
+    문자열은 0번부터 인덱스가 시작하며, <code>text[start:end:step]</code> 형식으로 앞부분, 뒷부분,
+    일정 간격, 역순을 추출할 수 있습니다. 함수, 람다, join, zip, map, pop, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용해 문자열 처리 능력을 키웁니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q16.</b> 16번 예제에서 text[::-1]의 의미는?</p>
+    <label class="choice"><input type="radio" name="q16" value="0"> 문자열을 거꾸로 뒤집기</label>
+<label class="choice"><input type="radio" name="q16" value="1"> 첫 글자만 출력</label>
+<label class="choice"><input type="radio" name="q16" value="2"> 마지막 글자 삭제</label>
+<label class="choice"><input type="radio" name="q16" value="3"> 대문자 변환</label>
+<label class="choice"><input type="radio" name="q16" value="4"> 파일 저장</label>
+    <button class="small" onclick="checkOne(16)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(16)">상세 풀이 보기</button>
+    <div class="solution" id="sol16">
+      <b>정답:</b> 1번<br>
+      [::-1]은 step이 -1이므로 문자열을 뒤에서 앞으로 읽습니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson17">
+  <div class="badge">문장 17</div>
+  <h2>enumerate와 번호 붙이기</h2>
+  <div class="sentence">
+    <p class="en">The question of what comes after death asks us what should remain because of our life.</p>
+    <p class="ko">죽음 이후 무엇이 오는가라는 질문은 우리의 삶 때문에 무엇이 남아야 하는지를 묻는다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> enumerate, slicing<br><b>학습 목표:</b> 문장마다 번호를 붙이고 앞부분을 출력합니다.</div>
+  <h3>파이썬 코드</h3>
+  <pre><code>sentences = [
+    &#x27;No one can answer the mystery of death with complete certainty.&#x27;,
+    &#x27;Yet this uncertainty can make us more humble, grateful, and compassionate.&#x27;,
+    &#x27;The question of what comes after death asks us what should remain because of our life.&#x27;
+]
+
+for index, sentence in enumerate(sentences, start=1):
+    print(index, sentence[:22])</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 위 문장을 문자열 자료로 저장한 뒤 문자열 슬라이싱을 연습합니다.
+    문자열은 0번부터 인덱스가 시작하며, <code>text[start:end:step]</code> 형식으로 앞부분, 뒷부분,
+    일정 간격, 역순을 추출할 수 있습니다. 함수, 람다, join, zip, map, pop, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용해 문자열 처리 능력을 키웁니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q17.</b> 17번 예제에서 join의 역할은?</p>
+    <label class="choice"><input type="radio" name="q17" value="0"> 문자열 요소들을 연결</label>
+<label class="choice"><input type="radio" name="q17" value="1"> 문자열을 모두 삭제</label>
+<label class="choice"><input type="radio" name="q17" value="2"> 반복문 종료</label>
+<label class="choice"><input type="radio" name="q17" value="3"> 조건 검사</label>
+<label class="choice"><input type="radio" name="q17" value="4"> 정답 채점</label>
+    <button class="small" onclick="checkOne(17)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(17)">상세 풀이 보기</button>
+    <div class="solution" id="sol17">
+      <b>정답:</b> 1번<br>
+      join은 문자열 리스트의 요소들을 하나의 문자열로 연결합니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson18">
+  <div class="badge">문장 18</div>
+  <h2>중첩 문자열 슬라이싱</h2>
+  <div class="sentence">
+    <p class="en">Ultimately, death after life invites us to live today with love that may outlast our time.</p>
+    <p class="ko">궁극적으로 죽음 이후에 대한 질문은 우리의 시간을 넘어 남을 수 있는 사랑으로 오늘을 살라고 초대한다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> nested slicing<br><b>학습 목표:</b> 먼저 크게 자른 뒤 다시 일부를 추출합니다.</div>
+  <h3>파이썬 코드</h3>
+  <pre><code>sentence = &#x27;Ultimately, death after life invites us to live today with love that may outlast our time.&#x27;
+
+first_cut = sentence[:60]
+second_cut = first_cut[12:35]
+
+print(&quot;1차 슬라이싱:&quot;, first_cut)
+print(&quot;2차 슬라이싱:&quot;, second_cut)</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 위 문장을 문자열 자료로 저장한 뒤 문자열 슬라이싱을 연습합니다.
+    문자열은 0번부터 인덱스가 시작하며, <code>text[start:end:step]</code> 형식으로 앞부분, 뒷부분,
+    일정 간격, 역순을 추출할 수 있습니다. 함수, 람다, join, zip, map, pop, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용해 문자열 처리 능력을 키웁니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q18.</b> 18번 예제에서 zip의 역할은?</p>
+    <label class="choice"><input type="radio" name="q18" value="0"> 같은 위치의 자료를 묶음</label>
+<label class="choice"><input type="radio" name="q18" value="1"> 문자열을 압축 파일로 만듦</label>
+<label class="choice"><input type="radio" name="q18" value="2"> 글자를 삭제</label>
+<label class="choice"><input type="radio" name="q18" value="3"> 길이 계산</label>
+<label class="choice"><input type="radio" name="q18" value="4"> 오답 제거</label>
+    <button class="small" onclick="checkOne(18)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(18)">상세 풀이 보기</button>
+    <div class="solution" id="sol18">
+      <b>정답:</b> 1번<br>
+      zip은 여러 반복 자료의 같은 위치 요소를 짝지어 줍니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson19">
+  <div class="badge">문장 19</div>
+  <h2>음수 인덱스 문자열</h2>
+  <div class="sentence">
+    <p class="en">Today, I will begin my day by remembering that life is limited and precious.</p>
+    <p class="ko">오늘 나는 삶이 유한하고 소중하다는 것을 기억하며 하루를 시작하겠다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> negative index<br><b>학습 목표:</b> 문자열 뒤쪽을 음수 인덱스로 다룹니다.</div>
+  <h3>파이썬 코드</h3>
+  <pre><code>sentence = &#x27;Today, I will begin my day by remembering that life is limited and precious.&#x27;
+
+print(&quot;뒤 15글자:&quot;, sentence[-15:])
+print(&quot;뒤에서 4번째 글자:&quot;, sentence[-4])
+print(&quot;마지막 글자 제외:&quot;, sentence[:-1])</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 위 문장을 문자열 자료로 저장한 뒤 문자열 슬라이싱을 연습합니다.
+    문자열은 0번부터 인덱스가 시작하며, <code>text[start:end:step]</code> 형식으로 앞부분, 뒷부분,
+    일정 간격, 역순을 추출할 수 있습니다. 함수, 람다, join, zip, map, pop, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용해 문자열 처리 능력을 키웁니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q19.</b> 19번 예제에서 map(len, sentences)의 의미는?</p>
+    <label class="choice"><input type="radio" name="q19" value="0"> 각 문장에 len 적용</label>
+<label class="choice"><input type="radio" name="q19" value="1"> 문장 모두 삭제</label>
+<label class="choice"><input type="radio" name="q19" value="2"> 문장 역순</label>
+<label class="choice"><input type="radio" name="q19" value="3"> 단어 pop</label>
+<label class="choice"><input type="radio" name="q19" value="4"> HTML 생성</label>
+    <button class="small" onclick="checkOne(19)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(19)">상세 풀이 보기</button>
+    <div class="solution" id="sol19">
+      <b>정답:</b> 1번<br>
+      map(len, sentences)는 각 문장에 len 함수를 적용해 길이를 구합니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson20">
+  <div class="badge">문장 20</div>
+  <h2>간격 문자열 슬라이싱</h2>
+  <div class="sentence">
+    <p class="en">I will not waste this day in meaningless anger or selfishness.</p>
+    <p class="ko">나는 오늘을 의미 없는 분노나 이기심으로 낭비하지 않겠다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> step slicing<br><b>학습 목표:</b> 두 칸씩 건너뛰는 문자열 슬라이싱을 연습합니다.</div>
+  <h3>파이썬 코드</h3>
+  <pre><code>sentence = &#x27;I will not waste this day in meaningless anger or selfishness.&#x27;
+
+print(&quot;0번부터 두 칸씩:&quot;, sentence[::2])
+print(&quot;1번부터 두 칸씩:&quot;, sentence[1::2])</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 위 문장을 문자열 자료로 저장한 뒤 문자열 슬라이싱을 연습합니다.
+    문자열은 0번부터 인덱스가 시작하며, <code>text[start:end:step]</code> 형식으로 앞부분, 뒷부분,
+    일정 간격, 역순을 추출할 수 있습니다. 함수, 람다, join, zip, map, pop, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용해 문자열 처리 능력을 키웁니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q20.</b> 20번 예제에서 pop()은 무엇을 하나요?</p>
+    <label class="choice"><input type="radio" name="q20" value="0"> 리스트 요소를 꺼내고 제거</label>
+<label class="choice"><input type="radio" name="q20" value="1"> 문자열 전체 복사</label>
+<label class="choice"><input type="radio" name="q20" value="2"> 파일 생성</label>
+<label class="choice"><input type="radio" name="q20" value="3"> 조건 판단</label>
+<label class="choice"><input type="radio" name="q20" value="4"> 정렬 실행</label>
+    <button class="small" onclick="checkOne(20)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(20)">상세 풀이 보기</button>
+    <div class="solution" id="sol20">
+      <b>정답:</b> 1번<br>
+      pop()은 리스트에서 요소를 꺼내 반환하고 원래 리스트에서는 제거합니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson21">
+  <div class="badge">문장 21</div>
+  <h2>불리언 조건 문자열</h2>
+  <div class="sentence">
+    <p class="en">Thinking about death can help me love life more deeply.</p>
+    <p class="ko">죽음을 생각하는 일은 내가 삶을 더 깊이 사랑하도록 도울 수 있다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> boolean, if<br><b>학습 목표:</b> 문장 길이에 따라 앞부분 또는 뒷부분을 출력합니다.</div>
+  <h3>파이썬 코드</h3>
+  <pre><code>sentence = &#x27;Thinking about death can help me love life more deeply.&#x27;
+
+is_long = len(sentence) &gt;= 65
+if is_long:
+    print(&quot;긴 문장 앞 30글자:&quot;, sentence[:30])
+else:
+    print(&quot;짧은 문장 뒤 30글자:&quot;, sentence[-30:])</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 위 문장을 문자열 자료로 저장한 뒤 문자열 슬라이싱을 연습합니다.
+    문자열은 0번부터 인덱스가 시작하며, <code>text[start:end:step]</code> 형식으로 앞부분, 뒷부분,
+    일정 간격, 역순을 추출할 수 있습니다. 함수, 람다, join, zip, map, pop, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용해 문자열 처리 능력을 키웁니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q21.</b> 21번 예제에서 sorted(words)의 결과는?</p>
+    <label class="choice"><input type="radio" name="q21" value="0"> 정렬된 새 리스트</label>
+<label class="choice"><input type="radio" name="q21" value="1"> 원본 문장 삭제</label>
+<label class="choice"><input type="radio" name="q21" value="2"> 문자열 거꾸로</label>
+<label class="choice"><input type="radio" name="q21" value="3"> 점수 계산</label>
+<label class="choice"><input type="radio" name="q21" value="4"> 반복 중지</label>
+    <button class="small" onclick="checkOne(21)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(21)">상세 풀이 보기</button>
+    <div class="solution" id="sol21">
+      <b>정답:</b> 1번<br>
+      sorted는 정렬된 새 리스트를 반환합니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson22">
+  <div class="badge">문장 22</div>
+  <h2>딕셔너리에 문자열 조각 저장</h2>
+  <div class="sentence">
+    <p class="en">I will speak kind words before the chance passes away.</p>
+    <p class="ko">기회가 지나가기 전에 나는 친절한 말을 하겠다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> dict, slicing<br><b>학습 목표:</b> front, middle, back 문자열 조각을 딕셔너리에 저장합니다.</div>
+  <h3>파이썬 코드</h3>
+  <pre><code>sentence = &#x27;I will speak kind words before the chance passes away.&#x27;
+
+result = {
+    &quot;front&quot;: sentence[:18],
+    &quot;middle&quot;: sentence[18:45],
+    &quot;back&quot;: sentence[-18:]
+}
+
+print(result)</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 위 문장을 문자열 자료로 저장한 뒤 문자열 슬라이싱을 연습합니다.
+    문자열은 0번부터 인덱스가 시작하며, <code>text[start:end:step]</code> 형식으로 앞부분, 뒷부분,
+    일정 간격, 역순을 추출할 수 있습니다. 함수, 람다, join, zip, map, pop, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용해 문자열 처리 능력을 키웁니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q22.</b> 22번 예제에서 text[:5]의 의미는?</p>
+    <label class="choice"><input type="radio" name="q22" value="0"> 문자열의 앞 5글자</label>
+<label class="choice"><input type="radio" name="q22" value="1"> 문자열의 뒤 5글자</label>
+<label class="choice"><input type="radio" name="q22" value="2"> 문자열 삭제</label>
+<label class="choice"><input type="radio" name="q22" value="3"> 문자열 정렬</label>
+<label class="choice"><input type="radio" name="q22" value="4"> 숫자 변환</label>
+    <button class="small" onclick="checkOne(22)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(22)">상세 풀이 보기</button>
+    <div class="solution" id="sol22">
+      <b>정답:</b> 1번<br>
+      text[:5]는 0번 인덱스부터 5번 직전까지, 즉 앞 5글자를 가져옵니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson23">
+  <div class="badge">문장 23</div>
+  <h2>길이 기준 문장 정렬</h2>
+  <div class="sentence">
+    <p class="en">I will express gratitude to someone who has helped me.</p>
+    <p class="ko">나는 나를 도와준 누군가에게 감사의 마음을 표현하겠다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> sort, key=len<br><b>학습 목표:</b> 문장들을 길이 기준으로 정렬하고 일부를 출력합니다.</div>
+  <h3>파이썬 코드</h3>
+  <pre><code>sentences = [
+    &#x27;Thinking about death can help me love life more deeply.&#x27;,
+    &#x27;I will speak kind words before the chance passes away.&#x27;,
+    &#x27;I will express gratitude to someone who has helped me.&#x27;
+]
+
+sentences = sorted(sentences, key=len)
+for sentence in sentences:
+    print(len(sentence), sentence[:25])</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 위 문장을 문자열 자료로 저장한 뒤 문자열 슬라이싱을 연습합니다.
+    문자열은 0번부터 인덱스가 시작하며, <code>text[start:end:step]</code> 형식으로 앞부분, 뒷부분,
+    일정 간격, 역순을 추출할 수 있습니다. 함수, 람다, join, zip, map, pop, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용해 문자열 처리 능력을 키웁니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q23.</b> 23번 예제에서 text[::-1]의 의미는?</p>
+    <label class="choice"><input type="radio" name="q23" value="0"> 문자열을 거꾸로 뒤집기</label>
+<label class="choice"><input type="radio" name="q23" value="1"> 첫 글자만 출력</label>
+<label class="choice"><input type="radio" name="q23" value="2"> 마지막 글자 삭제</label>
+<label class="choice"><input type="radio" name="q23" value="3"> 대문자 변환</label>
+<label class="choice"><input type="radio" name="q23" value="4"> 파일 저장</label>
+    <button class="small" onclick="checkOne(23)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(23)">상세 풀이 보기</button>
+    <div class="solution" id="sol23">
+      <b>정답:</b> 1번<br>
+      [::-1]은 step이 -1이므로 문자열을 뒤에서 앞으로 읽습니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson24">
+  <div class="badge">문장 24</div>
+  <h2>한글 문자열 슬라이싱</h2>
+  <div class="sentence">
+    <p class="en">I will encourage my students to live with purpose and responsibility.</p>
+    <p class="ko">나는 학생들이 목적과 책임을 가지고 살아가도록 격려하겠다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> Korean slicing<br><b>학습 목표:</b> 한글 문장에서도 같은 문자열 슬라이싱을 적용합니다.</div>
+  <h3>파이썬 코드</h3>
+  <pre><code>korean = &#x27;나는 학생들이 목적과 책임을 가지고 살아가도록 격려하겠다.&#x27;
+
+print(&quot;앞 12글자:&quot;, korean[:12])
+print(&quot;뒤 12글자:&quot;, korean[-12:])
+print(&quot;거꾸로:&quot;, korean[::-1])</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 위 문장을 문자열 자료로 저장한 뒤 문자열 슬라이싱을 연습합니다.
+    문자열은 0번부터 인덱스가 시작하며, <code>text[start:end:step]</code> 형식으로 앞부분, 뒷부분,
+    일정 간격, 역순을 추출할 수 있습니다. 함수, 람다, join, zip, map, pop, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용해 문자열 처리 능력을 키웁니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q24.</b> 24번 예제에서 join의 역할은?</p>
+    <label class="choice"><input type="radio" name="q24" value="0"> 문자열 요소들을 연결</label>
+<label class="choice"><input type="radio" name="q24" value="1"> 문자열을 모두 삭제</label>
+<label class="choice"><input type="radio" name="q24" value="2"> 반복문 종료</label>
+<label class="choice"><input type="radio" name="q24" value="3"> 조건 검사</label>
+<label class="choice"><input type="radio" name="q24" value="4"> 정답 채점</label>
+    <button class="small" onclick="checkOne(24)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(24)">상세 풀이 보기</button>
+    <div class="solution" id="sol24">
+      <b>정답:</b> 1번<br>
+      join은 문자열 리스트의 요소들을 하나의 문자열로 연결합니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson25">
+  <div class="badge">문장 25</div>
+  <h2>영어·한글 동시 슬라이싱</h2>
+  <div class="sentence">
+    <p class="en">When I feel worried, I will return to what truly matters.</p>
+    <p class="ko">걱정이 될 때 나는 진정으로 중요한 것으로 돌아가겠다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> zip, bilingual<br><b>학습 목표:</b> 영어와 한글 문자열의 앞부분을 동시에 자릅니다.</div>
+  <h3>파이썬 코드</h3>
+  <pre><code>english = &#x27;When I feel worried, I will return to what truly matters.&#x27;
+korean = &#x27;걱정이 될 때 나는 진정으로 중요한 것으로 돌아가겠다.&#x27;
+
+for e, k in zip([english], [korean]):
+    print(&quot;영어 앞부분:&quot;, e[:20])
+    print(&quot;한글 앞부분:&quot;, k[:20])</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 위 문장을 문자열 자료로 저장한 뒤 문자열 슬라이싱을 연습합니다.
+    문자열은 0번부터 인덱스가 시작하며, <code>text[start:end:step]</code> 형식으로 앞부분, 뒷부분,
+    일정 간격, 역순을 추출할 수 있습니다. 함수, 람다, join, zip, map, pop, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용해 문자열 처리 능력을 키웁니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q25.</b> 25번 예제에서 zip의 역할은?</p>
+    <label class="choice"><input type="radio" name="q25" value="0"> 같은 위치의 자료를 묶음</label>
+<label class="choice"><input type="radio" name="q25" value="1"> 문자열을 압축 파일로 만듦</label>
+<label class="choice"><input type="radio" name="q25" value="2"> 글자를 삭제</label>
+<label class="choice"><input type="radio" name="q25" value="3"> 길이 계산</label>
+<label class="choice"><input type="radio" name="q25" value="4"> 오답 제거</label>
+    <button class="small" onclick="checkOne(25)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(25)">상세 풀이 보기</button>
+    <div class="solution" id="sol25">
+      <b>정답:</b> 1번<br>
+      zip은 여러 반복 자료의 같은 위치 요소를 짝지어 줍니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson26">
+  <div class="badge">문장 26</div>
+  <h2>검색과 조건 출력</h2>
+  <div class="sentence">
+    <p class="en">I will leave behind goodness through small acts of care.</p>
+    <p class="ko">나는 작은 돌봄의 행동을 통해 선함을 남기겠다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> search, if, slicing<br><b>학습 목표:</b> 특정 단어가 들어간 문장만 찾아 앞부분을 출력합니다.</div>
+  <h3>파이썬 코드</h3>
+  <pre><code>sentences = [
+    &#x27;I will express gratitude to someone who has helped me.&#x27;,
+    &#x27;I will encourage my students to live with purpose and responsibility.&#x27;,
+    &#x27;When I feel worried, I will return to what truly matters.&#x27;,
+    &#x27;I will leave behind goodness through small acts of care.&#x27;
+]
+
+for sentence in sentences:
+    if &quot;life&quot; in sentence.lower() or &quot;love&quot; in sentence.lower():
+        print(sentence[:40])</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 위 문장을 문자열 자료로 저장한 뒤 문자열 슬라이싱을 연습합니다.
+    문자열은 0번부터 인덱스가 시작하며, <code>text[start:end:step]</code> 형식으로 앞부분, 뒷부분,
+    일정 간격, 역순을 추출할 수 있습니다. 함수, 람다, join, zip, map, pop, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용해 문자열 처리 능력을 키웁니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q26.</b> 26번 예제에서 map(len, sentences)의 의미는?</p>
+    <label class="choice"><input type="radio" name="q26" value="0"> 각 문장에 len 적용</label>
+<label class="choice"><input type="radio" name="q26" value="1"> 문장 모두 삭제</label>
+<label class="choice"><input type="radio" name="q26" value="2"> 문장 역순</label>
+<label class="choice"><input type="radio" name="q26" value="3"> 단어 pop</label>
+<label class="choice"><input type="radio" name="q26" value="4"> HTML 생성</label>
+    <button class="small" onclick="checkOne(26)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(26)">상세 풀이 보기</button>
+    <div class="solution" id="sol26">
+      <b>정답:</b> 1번<br>
+      map(len, sentences)는 각 문장에 len 함수를 적용해 길이를 구합니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson27">
+  <div class="badge">문장 27</div>
+  <h2>함수·*args·**kwargs 종합</h2>
+  <div class="sentence">
+    <p class="en">With love and reflection, I can make today meaningful.</p>
+    <p class="ko">사랑과 성찰로 나는 오늘을 의미 있게 만들 수 있다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> function, *args, **kwargs<br><b>학습 목표:</b> 여러 문자열을 옵션에 따라 잘라 변환합니다.</div>
+  <h3>파이썬 코드</h3>
+  <pre><code>def transform_texts(*texts, **kwargs):
+    start = kwargs.get(&quot;start&quot;, 0)
+    end = kwargs.get(&quot;end&quot;, 20)
+    upper = kwargs.get(&quot;upper&quot;, False)
+    result = []
+    for text in texts:
+        piece = text[start:end]
+        if upper:
+            piece = piece.upper()
+        result.append(piece)
+    return result
+
+print(transform_texts(&#x27;I will leave behind goodness through small acts of care.&#x27;, &#x27;With love and reflection, I can make today meaningful.&#x27;, start=0, end=25, upper=True))</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 위 문장을 문자열 자료로 저장한 뒤 문자열 슬라이싱을 연습합니다.
+    문자열은 0번부터 인덱스가 시작하며, <code>text[start:end:step]</code> 형식으로 앞부분, 뒷부분,
+    일정 간격, 역순을 추출할 수 있습니다. 함수, 람다, join, zip, map, pop, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용해 문자열 처리 능력을 키웁니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q27.</b> 27번 예제에서 pop()은 무엇을 하나요?</p>
+    <label class="choice"><input type="radio" name="q27" value="0"> 리스트 요소를 꺼내고 제거</label>
+<label class="choice"><input type="radio" name="q27" value="1"> 문자열 전체 복사</label>
+<label class="choice"><input type="radio" name="q27" value="2"> 파일 생성</label>
+<label class="choice"><input type="radio" name="q27" value="3"> 조건 판단</label>
+<label class="choice"><input type="radio" name="q27" value="4"> 정렬 실행</label>
+    <button class="small" onclick="checkOne(27)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(27)">상세 풀이 보기</button>
+    <div class="solution" id="sol27">
+      <b>정답:</b> 1번<br>
+      pop()은 리스트에서 요소를 꺼내 반환하고 원래 리스트에서는 제거합니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson28">
+  <div class="badge">문장 28</div>
+  <h2>최종 종합 미션</h2>
+  <div class="sentence">
+    <p class="en">Today, I will live as a person whose kindness can remain after time passes.</p>
+    <p class="ko">오늘 나는 시간이 지나도 친절이 남는 사람으로 살아가겠다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> filter, sorted, enumerate, slicing<br><b>학습 목표:</b> 필터, 정렬, 번호, 앞뒤 문자열 슬라이싱을 종합합니다.</div>
+  <h3>파이썬 코드</h3>
+  <pre><code>sentences = [
+    &#x27;I will leave behind goodness through small acts of care.&#x27;,
+    &#x27;With love and reflection, I can make today meaningful.&#x27;,
+    &#x27;Today, I will live as a person whose kindness can remain after time passes.&#x27;
+]
+
+def final_mission(*texts, **kwargs):
+    keyword = kwargs.get(&quot;keyword&quot;, &quot;love&quot;)
+    selected = list(filter(lambda text: keyword.lower() in text.lower(), texts))
+    selected = sorted(selected, key=len)
+    for index, text in enumerate(selected, start=1):
+        print(index, text[:28], &quot;...&quot;, text[-15:])
+
+final_mission(*sentences, keyword=&quot;love&quot;)</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 위 문장을 문자열 자료로 저장한 뒤 문자열 슬라이싱을 연습합니다.
+    문자열은 0번부터 인덱스가 시작하며, <code>text[start:end:step]</code> 형식으로 앞부분, 뒷부분,
+    일정 간격, 역순을 추출할 수 있습니다. 함수, 람다, join, zip, map, pop, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용해 문자열 처리 능력을 키웁니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q28.</b> 28번 예제에서 sorted(words)의 결과는?</p>
+    <label class="choice"><input type="radio" name="q28" value="0"> 정렬된 새 리스트</label>
+<label class="choice"><input type="radio" name="q28" value="1"> 원본 문장 삭제</label>
+<label class="choice"><input type="radio" name="q28" value="2"> 문자열 거꾸로</label>
+<label class="choice"><input type="radio" name="q28" value="3"> 점수 계산</label>
+<label class="choice"><input type="radio" name="q28" value="4"> 반복 중지</label>
+    <button class="small" onclick="checkOne(28)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(28)">상세 풀이 보기</button>
+    <div class="solution" id="sol28">
+      <b>정답:</b> 1번<br>
+      sorted는 정렬된 새 리스트를 반환합니다.
+    </div>
+  </div>
+</section>
+
+
+  <section class="lesson">
+    <h2>전체 문장 Text</h2>
+    <div class="footertext">1. The question “What comes after death?” has been asked by religions, philosophies, and ordinary people for thousands of years.
+“죽음 이후는 무엇인가?”라는 질문은 수천 년 동안 종교와 철학, 그리고 평범한 사람들이 물어 온 질문이다.
+2. In humanistic philosophy, this question is not only about another world, but also about how we should live in this world.
+인문 철학에서 이 질문은 다른 세계에 대한 것만이 아니라 이 세계에서 어떻게 살아야 하는가에 대한 것이기도 하다.
+3. Socrates faced death with calmness because he believed that the soul might continue beyond the body.
+소크라테스는 영혼이 몸을 넘어 계속될 수 있다고 믿었기 때문에 죽음을 차분히 마주했다.
+4. His final story teaches us that thinking about death can become a lesson in courage and truth.
+그의 마지막 이야기는 죽음을 생각하는 일이 용기와 진실의 배움이 될 수 있음을 가르쳐 준다.
+5. Plato imagined the soul as something that seeks eternal truth and goodness.
+플라톤은 영혼을 영원한 진리와 선을 추구하는 존재로 상상했다.
+6. For Plato, death was not simply disappearance, but a possible movement toward a deeper reality.
+플라톤에게 죽음은 단순한 사라짐이 아니라 더 깊은 실재를 향한 가능성 있는 이동이었다.
+7. Epicurus argued that death should not terrify us, because when we exist death is not here, and when death comes we are not here.
+에피쿠로스는 우리가 존재할 때 죽음은 없고 죽음이 올 때 우리는 없으므로 죽음을 두려워할 필요가 없다고 주장했다.
+8. His view invites us to reduce unnecessary fear and value the present moment.
+그의 관점은 불필요한 두려움을 줄이고 현재의 순간을 소중히 여기도록 초대한다.
+9. Martin Heidegger saw death as the limit that makes each life personal and urgent.
+마르틴 하이데거는 죽음을 각자의 삶을 개인적이고 절실하게 만드는 한계로 보았다.
+10. For Heidegger, remembering death can awaken us from empty routine into authentic living.
+하이데거에게 죽음을 기억하는 일은 우리를 공허한 반복에서 깨어나 진정한 삶으로 이끌 수 있다.
+11. Some traditions believe in heaven, rebirth, or the immortality of the soul.
+어떤 전통들은 천국, 환생, 혹은 영혼의 불멸을 믿는다.
+12. Other philosophies say that what remains after death is memory, influence, and the goodness we leave behind.
+다른 철학들은 죽음 이후에 남는 것이 기억, 영향, 그리고 우리가 남긴 선함이라고 말한다.
+13. For example, a teacher may live on through the students whose lives were changed by kindness.
+예를 들어 교사는 친절로 삶이 변화된 학생들 속에서 계속 살아갈 수 있다.
+14. A parent may live on through love, stories, habits, and values passed to children.
+부모는 자녀에게 전해진 사랑, 이야기, 습관, 가치 속에서 계속 살아갈 수 있다.
+15. No one can answer the mystery of death with complete certainty.
+죽음의 신비에 대해 누구도 완전한 확실성으로 답할 수는 없다.
+16. Yet this uncertainty can make us more humble, grateful, and compassionate.
+그러나 이러한 불확실성은 우리를 더 겸손하고 감사하며 연민 있는 사람으로 만들 수 있다.
+17. The question of what comes after death asks us what should remain because of our life.
+죽음 이후 무엇이 오는가라는 질문은 우리의 삶 때문에 무엇이 남아야 하는지를 묻는다.
+18. Ultimately, death after life invites us to live today with love that may outlast our time.
+궁극적으로 죽음 이후에 대한 질문은 우리의 시간을 넘어 남을 수 있는 사랑으로 오늘을 살라고 초대한다.
+19. Today, I will begin my day by remembering that life is limited and precious.
+오늘 나는 삶이 유한하고 소중하다는 것을 기억하며 하루를 시작하겠다.
+20. I will not waste this day in meaningless anger or selfishness.
+나는 오늘을 의미 없는 분노나 이기심으로 낭비하지 않겠다.
+21. Thinking about death can help me love life more deeply.
+죽음을 생각하는 일은 내가 삶을 더 깊이 사랑하도록 도울 수 있다.
+22. I will speak kind words before the chance passes away.
+기회가 지나가기 전에 나는 친절한 말을 하겠다.
+23. I will express gratitude to someone who has helped me.
+나는 나를 도와준 누군가에게 감사의 마음을 표현하겠다.
+24. I will encourage my students to live with purpose and responsibility.
+나는 학생들이 목적과 책임을 가지고 살아가도록 격려하겠다.
+25. When I feel worried, I will return to what truly matters.
+걱정이 될 때 나는 진정으로 중요한 것으로 돌아가겠다.
+26. I will leave behind goodness through small acts of care.
+나는 작은 돌봄의 행동을 통해 선함을 남기겠다.
+27. With love and reflection, I can make today meaningful.
+사랑과 성찰로 나는 오늘을 의미 있게 만들 수 있다.
+28. Today, I will live as a person whose kindness can remain after time passes.
+오늘 나는 시간이 지나도 친절이 남는 사람으로 살아가겠다.</div>
+  </section>
+</div>
+
+<script>
+const answers = {"1": 0, "2": 0, "3": 0, "4": 0, "5": 0, "6": 0, "7": 0, "8": 0, "9": 0, "10": 0, "11": 0, "12": 0, "13": 0, "14": 0, "15": 0, "16": 0, "17": 0, "18": 0, "19": 0, "20": 0, "21": 0, "22": 0, "23": 0, "24": 0, "25": 0, "26": 0, "27": 0, "28": 0};
+const explanations = {"1": "text[:5]는 0번 인덱스부터 5번 직전까지, 즉 앞 5글자를 가져옵니다.", "2": "[::-1]은 step이 -1이므로 문자열을 뒤에서 앞으로 읽습니다.", "3": "join은 문자열 리스트의 요소들을 하나의 문자열로 연결합니다.", "4": "zip은 여러 반복 자료의 같은 위치 요소를 짝지어 줍니다.", "5": "map(len, sentences)는 각 문장에 len 함수를 적용해 길이를 구합니다.", "6": "pop()은 리스트에서 요소를 꺼내 반환하고 원래 리스트에서는 제거합니다.", "7": "sorted는 정렬된 새 리스트를 반환합니다.", "8": "text[:5]는 0번 인덱스부터 5번 직전까지, 즉 앞 5글자를 가져옵니다.", "9": "[::-1]은 step이 -1이므로 문자열을 뒤에서 앞으로 읽습니다.", "10": "join은 문자열 리스트의 요소들을 하나의 문자열로 연결합니다.", "11": "zip은 여러 반복 자료의 같은 위치 요소를 짝지어 줍니다.", "12": "map(len, sentences)는 각 문장에 len 함수를 적용해 길이를 구합니다.", "13": "pop()은 리스트에서 요소를 꺼내 반환하고 원래 리스트에서는 제거합니다.", "14": "sorted는 정렬된 새 리스트를 반환합니다.", "15": "text[:5]는 0번 인덱스부터 5번 직전까지, 즉 앞 5글자를 가져옵니다.", "16": "[::-1]은 step이 -1이므로 문자열을 뒤에서 앞으로 읽습니다.", "17": "join은 문자열 리스트의 요소들을 하나의 문자열로 연결합니다.", "18": "zip은 여러 반복 자료의 같은 위치 요소를 짝지어 줍니다.", "19": "map(len, sentences)는 각 문장에 len 함수를 적용해 길이를 구합니다.", "20": "pop()은 리스트에서 요소를 꺼내 반환하고 원래 리스트에서는 제거합니다.", "21": "sorted는 정렬된 새 리스트를 반환합니다.", "22": "text[:5]는 0번 인덱스부터 5번 직전까지, 즉 앞 5글자를 가져옵니다.", "23": "[::-1]은 step이 -1이므로 문자열을 뒤에서 앞으로 읽습니다.", "24": "join은 문자열 리스트의 요소들을 하나의 문자열로 연결합니다.", "25": "zip은 여러 반복 자료의 같은 위치 요소를 짝지어 줍니다.", "26": "map(len, sentences)는 각 문장에 len 함수를 적용해 길이를 구합니다.", "27": "pop()은 리스트에서 요소를 꺼내 반환하고 원래 리스트에서는 제거합니다.", "28": "sorted는 정렬된 새 리스트를 반환합니다."};
+const total = Object.keys(answers).length;
+
+document.querySelectorAll('.choice input').forEach(input => {
+  input.addEventListener('change', e => {
+    const name = e.target.name;
+    document.querySelectorAll('input[name="'+name+'"]').forEach(x => x.closest('.choice').classList.remove('selected'));
+    e.target.closest('.choice').classList.add('selected');
+  });
+});
+
+function goLesson(id){
+  document.getElementById(id).scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+function toggleSolution(n){
+  const el = document.getElementById('sol'+n);
+  el.style.display = el.style.display === 'block' ? 'none' : 'block';
+}
+
+function checkOne(n){
+  const checked = document.querySelector('input[name="q'+n+'"]:checked');
+  const sol = document.getElementById('sol'+n);
+  sol.style.display = 'block';
+  if(!checked){
+    sol.innerHTML = '<b>선택 없음</b><br>답을 먼저 선택하세요.<br><br>' + explanations[n];
+    return;
+  }
+  const ok = Number(checked.value) === answers[n];
+  sol.innerHTML = (ok ? '<b>정답입니다.</b>' : '<b>오답입니다.</b>') +
+    '<br><b>정답:</b> ' + (answers[n]+1) + '번<br>' + explanations[n];
+}
+
+function scoreAll(){
+  let correct = 0;
+  for(let n=1;n<=total;n++){
+    const checked = document.querySelector('input[name="q'+n+'"]:checked');
+    if(checked && Number(checked.value) === answers[n]) correct++;
+  }
+  const percent = Math.round(correct / total * 100);
+  document.getElementById('result').textContent = `점수: ${correct}/${total}문항, ${percent}점`;
+  return percent;
+}
+
+function nowString(){
+  const d = new Date();
+  const pad = n => String(n).padStart(2,'0');
+  return d.getFullYear()+pad(d.getMonth()+1)+pad(d.getDate())+'_'+pad(d.getHours())+pad(d.getMinutes())+pad(d.getSeconds());
+}
+
+function saveTxt(){
+  const sid = document.getElementById('studentId').value.trim() || '1100';
+  const name = document.getElementById('studentName').value.trim() || '인수샘';
+  const score = scoreAll();
+  let lines = [];
+  lines.push('05 파이썬 문자열 슬라이싱 평가 결과');
+  lines.push('학번: ' + sid);
+  lines.push('이름: ' + name);
+  lines.push('점수: ' + score);
+  lines.push('응시시각: ' + nowString());
+  lines.push('');
+  for(let n=1;n<=total;n++){
+    const checked = document.querySelector('input[name="q'+n+'"]:checked');
+    const user = checked ? Number(checked.value)+1 : '미응답';
+    const correct = answers[n]+1;
+    lines.push(`Q${n} 내 답: ${user} / 정답: ${correct}`);
+  }
+  const blob = new Blob([lines.join('\n')], {type:'text/plain;charset=utf-8'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `${sid}_${name}_05_${score}_${nowString()}.txt`;
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+</script>
+</body>
+</html>

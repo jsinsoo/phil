@@ -1,0 +1,1385 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>무엇이 진실인가 - 파이썬 리스트 슬라이싱 학습</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:'Malgun Gothic',Arial,sans-serif;background:#f3f8fb;color:#222;line-height:1.7}
+header{position:sticky;top:0;z-index:10;background:linear-gradient(90deg,#24536d,#2d6f91);color:white;padding:10px;box-shadow:0 2px 10px rgba(0,0,0,.18)}
+.top{max-width:1200px;margin:auto;display:flex;gap:8px;align-items:center}
+h1{font-size:20px;margin:0;white-space:nowrap}
+select,input{height:38px;border:none;border-radius:10px;padding:0 10px;font-weight:700}
+select{flex:1;min-width:150px}
+button{border:none;border-radius:10px;padding:9px 14px;background:#f0a33a;color:white;font-weight:800;cursor:pointer}
+button:hover{filter:brightness(1.07)}
+button.ghost{background:#68738a}
+button.small{padding:7px 10px;border-radius:8px;margin:4px 4px 4px 0}
+.wrap{max-width:1200px;margin:18px auto;padding:0 14px}
+.intro,.scorebox,.lesson{background:white;border-radius:22px;padding:22px;margin:16px 0;box-shadow:0 8px 24px rgba(0,0,0,.09)}
+.intro h2{margin-top:0;color:#24536d}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.field{display:flex;flex-direction:column;gap:4px;font-weight:700;color:#334}
+.field input{border:1px solid #ccd4e4;background:#fff}
+.badge{display:inline-block;background:#eefaff;color:#24536d;border-radius:999px;padding:5px 12px;font-weight:800}
+h2{color:#24536d;margin:10px 0}
+h3{color:#6f4a00;margin-bottom:8px}
+.sentence{background:#fbfeff;border-left:6px solid #4f9abd;border-radius:14px;padding:14px 16px;margin:12px 0}
+.en{font-weight:800;color:#24536d}
+.ko{font-weight:700;color:#333}
+.concept{background:#f4fff0;border-radius:14px;padding:12px 14px;border-left:6px solid #2d6f91}
+pre{background:#1f2430;color:#f6f7ff;border-radius:16px;padding:16px;overflow:auto;font-size:14px;line-height:1.6}
+code{font-family:Consolas,'Courier New',monospace}
+.explain{background:#fbfbfb;border:1px solid #e5e8ef;border-radius:14px;padding:14px}
+.quiz{background:#f7f9ff;border:1px solid #dde6ff;border-radius:16px;padding:14px}
+.choice{display:block;background:white;margin:7px 0;padding:10px;border-radius:12px;border:1px solid #e0e5f2;cursor:pointer}
+.choice:hover{background:#eef4ff}
+.choice.selected{background:#dbe8ff;border-color:#7aa4e8}
+.solution{display:none;margin-top:10px;padding:12px;border-radius:12px;background:#fffdf0;border:1px solid #eadcaa}
+.result{font-size:18px;font-weight:800;color:#24536d}
+.footertext{white-space:pre-wrap;background:#fffdf7;border:1px solid #eadcaa;border-radius:16px;padding:18px}
+@media(max-width:720px){
+  .top{flex-wrap:wrap}
+  h1{width:100%;font-size:17px}
+  select{width:100%;flex:auto}
+  button{padding:8px 10px;font-size:13px}
+  .wrap{padding:0 8px}
+  .intro,.scorebox,.lesson{padding:16px;border-radius:18px}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="top">
+    <h1>03 파이썬 리스트 슬라이싱</h1>
+    <select id="nav" onchange="goLesson(this.value)">
+      <option value="lesson1">01. 함수로 리스트 앞뒤 요소 추출</option>
+<option value="lesson2">02. 람다로 리스트 뒤집기</option>
+<option value="lesson3">03. join으로 리스트 조각 연결</option>
+<option value="lesson4">04. zip으로 두 리스트 묶기</option>
+<option value="lesson5">05. map으로 단어 길이 리스트 만들기</option>
+<option value="lesson6">06. pop으로 리스트 요소 꺼내기</option>
+<option value="lesson7">07. for 반복 리스트 슬라이싱</option>
+<option value="lesson8">08. if 조건과 리스트 슬라이싱</option>
+<option value="lesson9">09. while로 리스트 나누기</option>
+<option value="lesson10">10. *args로 여러 리스트 처리</option>
+<option value="lesson11">11. **kwargs로 슬라이싱 범위 지정</option>
+<option value="lesson12">12. filter로 긴 단어 리스트 만들기</option>
+<option value="lesson13">13. 인덱스로 단어 위치 찾기</option>
+<option value="lesson14">14. 정렬된 리스트 슬라이싱</option>
+<option value="lesson15">15. 리스트 일부 대문자 변환</option>
+<option value="lesson16">16. 리스트 컴프리헨션</option>
+<option value="lesson17">17. enumerate와 리스트 번호</option>
+<option value="lesson18">18. 중첩 리스트 슬라이싱</option>
+<option value="lesson19">19. 음수 인덱스 리스트</option>
+<option value="lesson20">20. 간격 리스트 슬라이싱</option>
+<option value="lesson21">21. 불리언 조건 리스트</option>
+<option value="lesson22">22. 딕셔너리에 리스트 조각 저장</option>
+<option value="lesson23">23. 길이 기준 문장 리스트 정렬</option>
+<option value="lesson24">24. 한글 어절 리스트 슬라이싱</option>
+<option value="lesson25">25. 영어·한글 리스트 동시 처리</option>
+<option value="lesson26">26. 검색과 조건 리스트</option>
+<option value="lesson27">27. 함수·*args·**kwargs 종합</option>
+<option value="lesson28">28. 최종 종합 미션</option>
+    </select>
+    <button onclick="scoreAll()">채점</button>
+    <button onclick="saveTxt()">TXT 저장</button>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="intro">
+    <h2>무엇이 진실인가? 문장 기반 파이썬 리스트 슬라이싱 학습</h2>
+    <p>각 문장을 단어 리스트로 바꾸어 함수, 람다, join, zip, map, pop, for, if, while, *args, **kwargs, filter, 인덱스, 정렬 등을 활용한 리스트 슬라이싱을 다양하게 연습합니다.</p>
+    <div class="grid">
+      <label class="field">학번 <input id="studentId" value="1100" placeholder="예: 1100"></label>
+      <label class="field">이름 <input id="studentName" value="인수샘" placeholder="예: 인수샘"></label>
+    </div>
+  </div>
+
+  <div class="scorebox">
+    <div class="result" id="result">점수: 아직 채점하지 않음</div>
+    <p>채점 후 <b>TXT 저장</b>을 누르면 <b>학번_이름_03_점수_응시시각.txt</b> 형식으로 저장됩니다.</p>
+  </div>
+
+  
+<section class="lesson" id="lesson1">
+  <div class="badge">문장 1</div>
+  <h2>함수로 리스트 앞뒤 요소 추출</h2>
+  <div class="sentence">
+    <p class="en">The question “What is truth?” is one of the starting points of philosophy.</p>
+    <p class="ko">“무엇이 진실인가?”라는 질문은 철학의 출발점 중 하나이다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> function, list index, list slicing<br><b>학습 목표:</b> 문장을 단어 리스트로 바꾸고 첫 단어, 마지막 단어, 앞 단어들을 추출합니다.</div>
+  <h3>파이썬 코드</h3>
+  <pre><code>sentence = &#x27;The question “What is truth?” is one of the starting points of philosophy.&#x27;
+words = sentence.split()
+
+def list_edges(items):
+    first = items[0]
+    last = items[-1]
+    front = items[:5]
+    return first, last, front
+
+a, b, c = list_edges(words)
+print(&quot;첫 단어:&quot;, a)
+print(&quot;마지막 단어:&quot;, b)
+print(&quot;앞 5개 단어:&quot;, c)</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 문장을 <code>split()</code>으로 단어 리스트로 만든 뒤 리스트 슬라이싱을 연습합니다.
+    리스트는 0번부터 인덱스가 시작하며, <code>words[start:end:step]</code> 형식으로 앞부분, 뒷부분,
+    일정 간격, 역순을 추출할 수 있습니다. 함수, 람다, join, zip, map, pop, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용해 리스트 처리 능력을 키웁니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q1.</b> 1번 예제에서 words[:3]의 의미는?</p>
+    <label class="choice"><input type="radio" name="q1" value="0"> 리스트의 앞 3개 요소</label>
+<label class="choice"><input type="radio" name="q1" value="1"> 리스트의 뒤 3개 요소</label>
+<label class="choice"><input type="radio" name="q1" value="2"> 리스트 전체 삭제</label>
+<label class="choice"><input type="radio" name="q1" value="3"> 리스트를 문자열로 변환</label>
+<label class="choice"><input type="radio" name="q1" value="4"> 리스트를 숫자로 변환</label>
+    <button class="small" onclick="checkOne(1)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(1)">상세 풀이 보기</button>
+    <div class="solution" id="sol1">
+      <b>정답:</b> 1번<br>
+      words[:3]은 0번 인덱스부터 3번 직전까지, 즉 앞 3개 요소를 가져옵니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson2">
+  <div class="badge">문장 2</div>
+  <h2>람다로 리스트 뒤집기</h2>
+  <div class="sentence">
+    <p class="en">In humanistic philosophy, truth is not only a correct fact, but also a sincere relation to reality.</p>
+    <p class="ko">인문 철학에서 진실은 올바른 사실만이 아니라 현실에 대한 진실한 관계이기도 하다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> lambda, list reverse slicing<br><b>학습 목표:</b> lambda와 [::-1]로 단어 리스트의 순서를 거꾸로 바꿉니다.</div>
+  <h3>파이썬 코드</h3>
+  <pre><code>sentence = &#x27;In humanistic philosophy, truth is not only a correct fact, but also a sincere relation to reality.&#x27;
+words = sentence.split()
+
+reverse_list = lambda items: items[::-1]
+reversed_words = reverse_list(words)
+
+print(reversed_words)
+print(&quot;뒤집은 리스트 앞 5개:&quot;, reversed_words[:5])</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 문장을 <code>split()</code>으로 단어 리스트로 만든 뒤 리스트 슬라이싱을 연습합니다.
+    리스트는 0번부터 인덱스가 시작하며, <code>words[start:end:step]</code> 형식으로 앞부분, 뒷부분,
+    일정 간격, 역순을 추출할 수 있습니다. 함수, 람다, join, zip, map, pop, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용해 리스트 처리 능력을 키웁니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q2.</b> 2번 예제에서 words[::-1]의 의미는?</p>
+    <label class="choice"><input type="radio" name="q2" value="0"> 리스트 순서를 거꾸로</label>
+<label class="choice"><input type="radio" name="q2" value="1"> 첫 요소만 출력</label>
+<label class="choice"><input type="radio" name="q2" value="2"> 마지막 요소 삭제</label>
+<label class="choice"><input type="radio" name="q2" value="3"> 오름차순 정렬</label>
+<label class="choice"><input type="radio" name="q2" value="4"> 길이 계산</label>
+    <button class="small" onclick="checkOne(2)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(2)">상세 풀이 보기</button>
+    <div class="solution" id="sol2">
+      <b>정답:</b> 1번<br>
+      [::-1]은 step이 -1이므로 리스트를 뒤에서 앞으로 읽습니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson3">
+  <div class="badge">문장 3</div>
+  <h2>join으로 리스트 조각 연결</h2>
+  <div class="sentence">
+    <p class="en">Socrates searched for truth by asking questions that revealed ignorance and confusion.</p>
+    <p class="ko">소크라테스는 무지와 혼란을 드러내는 질문을 던지며 진실을 찾았다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> join, list slicing<br><b>학습 목표:</b> 리스트의 일부 단어를 잘라 join으로 문장 조각을 만듭니다.</div>
+  <h3>파이썬 코드</h3>
+  <pre><code>sentence = &#x27;Socrates searched for truth by asking questions that revealed ignorance and confusion.&#x27;
+words = sentence.split()
+
+piece = words[:7]
+joined = &quot; &quot;.join(piece)
+
+print(&quot;리스트 조각:&quot;, piece)
+print(&quot;다시 연결:&quot;, joined)</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 문장을 <code>split()</code>으로 단어 리스트로 만든 뒤 리스트 슬라이싱을 연습합니다.
+    리스트는 0번부터 인덱스가 시작하며, <code>words[start:end:step]</code> 형식으로 앞부분, 뒷부분,
+    일정 간격, 역순을 추출할 수 있습니다. 함수, 람다, join, zip, map, pop, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용해 리스트 처리 능력을 키웁니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q3.</b> 3번 예제에서 join의 역할은?</p>
+    <label class="choice"><input type="radio" name="q3" value="0"> 문자열 리스트를 하나로 연결</label>
+<label class="choice"><input type="radio" name="q3" value="1"> 리스트를 모두 삭제</label>
+<label class="choice"><input type="radio" name="q3" value="2"> 리스트를 무조건 정렬</label>
+<label class="choice"><input type="radio" name="q3" value="3"> 조건을 검사</label>
+<label class="choice"><input type="radio" name="q3" value="4"> 반복문 종료</label>
+    <button class="small" onclick="checkOne(3)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(3)">상세 풀이 보기</button>
+    <div class="solution" id="sol3">
+      <b>정답:</b> 1번<br>
+      join은 문자열 요소로 이루어진 리스트를 하나의 문자열로 연결합니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson4">
+  <div class="badge">문장 4</div>
+  <h2>zip으로 두 리스트 묶기</h2>
+  <div class="sentence">
+    <p class="en">His life shows that truth often begins with humility rather than certainty.</p>
+    <p class="ko">그의 삶은 진실이 확신보다 겸손에서 시작되는 경우가 많음을 보여 준다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> zip, bilingual list<br><b>학습 목표:</b> 영어 단어 리스트와 한글 어절 리스트를 zip으로 묶어 비교합니다.</div>
+  <h3>파이썬 코드</h3>
+  <pre><code>english_words = &#x27;His life shows that truth often begins with humility rather than certainty.&#x27;.split()
+korean_words = &#x27;그의 삶은 진실이 확신보다 겸손에서 시작되는 경우가 많음을 보여 준다.&#x27;.split()
+
+for e, k in zip(english_words[:5], korean_words[:5]):
+    print(e, &quot;=&gt;&quot;, k)</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 문장을 <code>split()</code>으로 단어 리스트로 만든 뒤 리스트 슬라이싱을 연습합니다.
+    리스트는 0번부터 인덱스가 시작하며, <code>words[start:end:step]</code> 형식으로 앞부분, 뒷부분,
+    일정 간격, 역순을 추출할 수 있습니다. 함수, 람다, join, zip, map, pop, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용해 리스트 처리 능력을 키웁니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q4.</b> 4번 예제에서 zip의 역할은?</p>
+    <label class="choice"><input type="radio" name="q4" value="0"> 두 리스트의 같은 위치 요소를 묶음</label>
+<label class="choice"><input type="radio" name="q4" value="1"> 파일 압축만 수행</label>
+<label class="choice"><input type="radio" name="q4" value="2"> 리스트 요소 삭제</label>
+<label class="choice"><input type="radio" name="q4" value="3"> 단어 길이 계산</label>
+<label class="choice"><input type="radio" name="q4" value="4"> HTML 저장</label>
+    <button class="small" onclick="checkOne(4)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(4)">상세 풀이 보기</button>
+    <div class="solution" id="sol4">
+      <b>정답:</b> 1번<br>
+      zip은 여러 리스트의 같은 위치 요소를 짝지어 반복 처리하게 합니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson5">
+  <div class="badge">문장 5</div>
+  <h2>map으로 단어 길이 리스트 만들기</h2>
+  <div class="sentence">
+    <p class="en">Plato used the allegory of the cave to explain how people may mistake shadows for reality.</p>
+    <p class="ko">플라톤은 동굴의 비유를 통해 사람들이 그림자를 현실로 착각할 수 있음을 설명했다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> map, len, list<br><b>학습 목표:</b> 단어 리스트 각각에 len을 적용해 길이 리스트를 만듭니다.</div>
+  <h3>파이썬 코드</h3>
+  <pre><code>words = &#x27;Plato used the allegory of the cave to explain how people may mistake shadows for reality.&#x27;.replace(&quot;.&quot;, &quot;&quot;).split()
+
+lengths = list(map(len, words))
+print(&quot;단어 리스트:&quot;, words[:8])
+print(&quot;길이 리스트:&quot;, lengths[:8])</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 문장을 <code>split()</code>으로 단어 리스트로 만든 뒤 리스트 슬라이싱을 연습합니다.
+    리스트는 0번부터 인덱스가 시작하며, <code>words[start:end:step]</code> 형식으로 앞부분, 뒷부분,
+    일정 간격, 역순을 추출할 수 있습니다. 함수, 람다, join, zip, map, pop, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용해 리스트 처리 능력을 키웁니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q5.</b> 5번 예제에서 map(len, words)의 의미는?</p>
+    <label class="choice"><input type="radio" name="q5" value="0"> 각 단어에 len 적용</label>
+<label class="choice"><input type="radio" name="q5" value="1"> 단어 모두 삭제</label>
+<label class="choice"><input type="radio" name="q5" value="2"> 마지막 단어만 출력</label>
+<label class="choice"><input type="radio" name="q5" value="3"> 리스트 역순</label>
+<label class="choice"><input type="radio" name="q5" value="4"> 파일 다운로드</label>
+    <button class="small" onclick="checkOne(5)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(5)">상세 풀이 보기</button>
+    <div class="solution" id="sol5">
+      <b>정답:</b> 1번<br>
+      map(len, words)는 words의 각 단어에 len 함수를 적용합니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson6">
+  <div class="badge">문장 6</div>
+  <h2>pop으로 리스트 요소 꺼내기</h2>
+  <div class="sentence">
+    <p class="en">This story teaches us that truth may require turning away from comfortable illusions.</p>
+    <p class="ko">이 이야기는 진실이 편안한 환상에서 돌아서는 일을 요구할 수 있음을 가르쳐 준다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> pop, list<br><b>학습 목표:</b> 단어 리스트에서 마지막 요소를 꺼내고 남은 리스트를 확인합니다.</div>
+  <h3>파이썬 코드</h3>
+  <pre><code>words = &#x27;This story teaches us that truth may require turning away from comfortable illusions.&#x27;.replace(&quot;.&quot;, &quot;&quot;).split()
+
+last_word = words.pop()
+print(&quot;꺼낸 단어:&quot;, last_word)
+print(&quot;남은 단어 리스트:&quot;, words)
+print(&quot;남은 리스트 앞 4개:&quot;, words[:4])</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 문장을 <code>split()</code>으로 단어 리스트로 만든 뒤 리스트 슬라이싱을 연습합니다.
+    리스트는 0번부터 인덱스가 시작하며, <code>words[start:end:step]</code> 형식으로 앞부분, 뒷부분,
+    일정 간격, 역순을 추출할 수 있습니다. 함수, 람다, join, zip, map, pop, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용해 리스트 처리 능력을 키웁니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q6.</b> 6번 예제에서 pop()은 무엇을 하나요?</p>
+    <label class="choice"><input type="radio" name="q6" value="0"> 요소를 꺼내고 리스트에서 제거</label>
+<label class="choice"><input type="radio" name="q6" value="1"> 리스트를 복사만 함</label>
+<label class="choice"><input type="radio" name="q6" value="2"> 리스트를 HTML로 변환</label>
+<label class="choice"><input type="radio" name="q6" value="3"> 조건문을 실행</label>
+<label class="choice"><input type="radio" name="q6" value="4"> 정답을 채점</label>
+    <button class="small" onclick="checkOne(6)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(6)">상세 풀이 보기</button>
+    <div class="solution" id="sol6">
+      <b>정답:</b> 1번<br>
+      pop()은 리스트의 요소를 꺼내 반환하고 원래 리스트에서는 제거합니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson7">
+  <div class="badge">문장 7</div>
+  <h2>for 반복 리스트 슬라이싱</h2>
+  <div class="sentence">
+    <p class="en">Aristotle connected truth with careful observation, reason, and clear judgment.</p>
+    <p class="ko">아리스토텔레스는 진실을 신중한 관찰, 이성, 분명한 판단과 연결했다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> for, list slicing<br><b>학습 목표:</b> 여러 문장을 단어 리스트로 바꾸고 앞 4개 단어를 출력합니다.</div>
+  <h3>파이썬 코드</h3>
+  <pre><code>sentences = [
+    &#x27;Plato used the allegory of the cave to explain how people may mistake shadows for reality.&#x27;,
+    &#x27;This story teaches us that truth may require turning away from comfortable illusions.&#x27;,
+    &#x27;Aristotle connected truth with careful observation, reason, and clear judgment.&#x27;
+]
+
+for sentence in sentences:
+    words = sentence.split()
+    print(words[:4])</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 문장을 <code>split()</code>으로 단어 리스트로 만든 뒤 리스트 슬라이싱을 연습합니다.
+    리스트는 0번부터 인덱스가 시작하며, <code>words[start:end:step]</code> 형식으로 앞부분, 뒷부분,
+    일정 간격, 역순을 추출할 수 있습니다. 함수, 람다, join, zip, map, pop, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용해 리스트 처리 능력을 키웁니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q7.</b> 7번 예제에서 sorted(words)의 결과는?</p>
+    <label class="choice"><input type="radio" name="q7" value="0"> 정렬된 새 리스트</label>
+<label class="choice"><input type="radio" name="q7" value="1"> 원본 삭제</label>
+<label class="choice"><input type="radio" name="q7" value="2"> 문자열 뒤집기</label>
+<label class="choice"><input type="radio" name="q7" value="3"> 숫자 합계</label>
+<label class="choice"><input type="radio" name="q7" value="4"> 반복 중지</label>
+    <button class="small" onclick="checkOne(7)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(7)">상세 풀이 보기</button>
+    <div class="solution" id="sol7">
+      <b>정답:</b> 1번<br>
+      sorted(words)는 원본을 직접 바꾸지 않고 정렬된 새 리스트를 반환합니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson8">
+  <div class="badge">문장 8</div>
+  <h2>if 조건과 리스트 슬라이싱</h2>
+  <div class="sentence">
+    <p class="en">For example, a scientist seeks truth by testing evidence instead of trusting rumor.</p>
+    <p class="ko">예를 들어 과학자는 소문을 믿는 대신 증거를 검증하며 진실을 찾는다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> if, condition, list<br><b>학습 목표:</b> 특정 단어가 있으면 앞쪽 단어, 없으면 뒤쪽 단어를 출력합니다.</div>
+  <h3>파이썬 코드</h3>
+  <pre><code>words = &#x27;For example, a scientist seeks truth by testing evidence instead of trusting rumor.&#x27;.replace(&quot;.&quot;, &quot;&quot;).split()
+
+if &quot;truth&quot; in [w.lower() for w in words]:
+    print(&quot;truth 포함:&quot;, words[:6])
+else:
+    print(&quot;truth 없음:&quot;, words[-6:])</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 문장을 <code>split()</code>으로 단어 리스트로 만든 뒤 리스트 슬라이싱을 연습합니다.
+    리스트는 0번부터 인덱스가 시작하며, <code>words[start:end:step]</code> 형식으로 앞부분, 뒷부분,
+    일정 간격, 역순을 추출할 수 있습니다. 함수, 람다, join, zip, map, pop, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용해 리스트 처리 능력을 키웁니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q8.</b> 8번 예제에서 words[:3]의 의미는?</p>
+    <label class="choice"><input type="radio" name="q8" value="0"> 리스트의 앞 3개 요소</label>
+<label class="choice"><input type="radio" name="q8" value="1"> 리스트의 뒤 3개 요소</label>
+<label class="choice"><input type="radio" name="q8" value="2"> 리스트 전체 삭제</label>
+<label class="choice"><input type="radio" name="q8" value="3"> 리스트를 문자열로 변환</label>
+<label class="choice"><input type="radio" name="q8" value="4"> 리스트를 숫자로 변환</label>
+    <button class="small" onclick="checkOne(8)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(8)">상세 풀이 보기</button>
+    <div class="solution" id="sol8">
+      <b>정답:</b> 1번<br>
+      words[:3]은 0번 인덱스부터 3번 직전까지, 즉 앞 3개 요소를 가져옵니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson9">
+  <div class="badge">문장 9</div>
+  <h2>while로 리스트 나누기</h2>
+  <div class="sentence">
+    <p class="en">A judge seeks truth by listening to many sides before making a decision.</p>
+    <p class="ko">판사는 결정을 내리기 전에 여러 입장을 들으며 진실을 찾는다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> while, list chunk<br><b>학습 목표:</b> while문으로 단어 리스트를 일정 크기씩 나누어 출력합니다.</div>
+  <h3>파이썬 코드</h3>
+  <pre><code>words = &#x27;A judge seeks truth by listening to many sides before making a decision.&#x27;.replace(&quot;.&quot;, &quot;&quot;).split()
+start = 0
+
+while start &lt; len(words):
+    print(words[start:start+3])
+    start += 3</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 문장을 <code>split()</code>으로 단어 리스트로 만든 뒤 리스트 슬라이싱을 연습합니다.
+    리스트는 0번부터 인덱스가 시작하며, <code>words[start:end:step]</code> 형식으로 앞부분, 뒷부분,
+    일정 간격, 역순을 추출할 수 있습니다. 함수, 람다, join, zip, map, pop, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용해 리스트 처리 능력을 키웁니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q9.</b> 9번 예제에서 words[::-1]의 의미는?</p>
+    <label class="choice"><input type="radio" name="q9" value="0"> 리스트 순서를 거꾸로</label>
+<label class="choice"><input type="radio" name="q9" value="1"> 첫 요소만 출력</label>
+<label class="choice"><input type="radio" name="q9" value="2"> 마지막 요소 삭제</label>
+<label class="choice"><input type="radio" name="q9" value="3"> 오름차순 정렬</label>
+<label class="choice"><input type="radio" name="q9" value="4"> 길이 계산</label>
+    <button class="small" onclick="checkOne(9)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(9)">상세 풀이 보기</button>
+    <div class="solution" id="sol9">
+      <b>정답:</b> 1번<br>
+      [::-1]은 step이 -1이므로 리스트를 뒤에서 앞으로 읽습니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson10">
+  <div class="badge">문장 10</div>
+  <h2>*args로 여러 리스트 처리</h2>
+  <div class="sentence">
+    <p class="en">A teacher seeks truth by admitting when new evidence corrects an old belief.</p>
+    <p class="ko">교사는 새로운 증거가 오래된 믿음을 바로잡을 때 그것을 인정함으로써 진실을 찾는다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> *args, list slicing<br><b>학습 목표:</b> 여러 문장을 받아 단어 리스트의 앞뒤 일부를 출력합니다.</div>
+  <h3>파이썬 코드</h3>
+  <pre><code>def show_word_parts(*sentences):
+    for sentence in sentences:
+        words = sentence.split()
+        print(&quot;앞:&quot;, words[:3], &quot;/ 뒤:&quot;, words[-3:])
+
+show_word_parts(
+    &#x27;For example, a scientist seeks truth by testing evidence instead of trusting rumor.&#x27;,
+    &#x27;A judge seeks truth by listening to many sides before making a decision.&#x27;,
+    &#x27;A teacher seeks truth by admitting when new evidence corrects an old belief.&#x27;
+)</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 문장을 <code>split()</code>으로 단어 리스트로 만든 뒤 리스트 슬라이싱을 연습합니다.
+    리스트는 0번부터 인덱스가 시작하며, <code>words[start:end:step]</code> 형식으로 앞부분, 뒷부분,
+    일정 간격, 역순을 추출할 수 있습니다. 함수, 람다, join, zip, map, pop, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용해 리스트 처리 능력을 키웁니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q10.</b> 10번 예제에서 join의 역할은?</p>
+    <label class="choice"><input type="radio" name="q10" value="0"> 문자열 리스트를 하나로 연결</label>
+<label class="choice"><input type="radio" name="q10" value="1"> 리스트를 모두 삭제</label>
+<label class="choice"><input type="radio" name="q10" value="2"> 리스트를 무조건 정렬</label>
+<label class="choice"><input type="radio" name="q10" value="3"> 조건을 검사</label>
+<label class="choice"><input type="radio" name="q10" value="4"> 반복문 종료</label>
+    <button class="small" onclick="checkOne(10)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(10)">상세 풀이 보기</button>
+    <div class="solution" id="sol10">
+      <b>정답:</b> 1번<br>
+      join은 문자열 요소로 이루어진 리스트를 하나의 문자열로 연결합니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson11">
+  <div class="badge">문장 11</div>
+  <h2>**kwargs로 슬라이싱 범위 지정</h2>
+  <div class="sentence">
+    <p class="en">Immanuel Kant reminded us that human understanding has limits and structures.</p>
+    <p class="ko">임마누엘 칸트는 인간의 이해에는 한계와 구조가 있음을 일깨워 주었다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> **kwargs, start, end<br><b>학습 목표:</b> 키워드 인자로 시작과 끝을 받아 단어 리스트를 자릅니다.</div>
+  <h3>파이썬 코드</h3>
+  <pre><code>def slice_words(**kwargs):
+    words = kwargs[&quot;text&quot;].split()
+    start = kwargs.get(&quot;start&quot;, 0)
+    end = kwargs.get(&quot;end&quot;, 5)
+    return words[start:end]
+
+print(slice_words(text=&#x27;Immanuel Kant reminded us that human understanding has limits and structures.&#x27;, start=2, end=8))</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 문장을 <code>split()</code>으로 단어 리스트로 만든 뒤 리스트 슬라이싱을 연습합니다.
+    리스트는 0번부터 인덱스가 시작하며, <code>words[start:end:step]</code> 형식으로 앞부분, 뒷부분,
+    일정 간격, 역순을 추출할 수 있습니다. 함수, 람다, join, zip, map, pop, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용해 리스트 처리 능력을 키웁니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q11.</b> 11번 예제에서 zip의 역할은?</p>
+    <label class="choice"><input type="radio" name="q11" value="0"> 두 리스트의 같은 위치 요소를 묶음</label>
+<label class="choice"><input type="radio" name="q11" value="1"> 파일 압축만 수행</label>
+<label class="choice"><input type="radio" name="q11" value="2"> 리스트 요소 삭제</label>
+<label class="choice"><input type="radio" name="q11" value="3"> 단어 길이 계산</label>
+<label class="choice"><input type="radio" name="q11" value="4"> HTML 저장</label>
+    <button class="small" onclick="checkOne(11)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(11)">상세 풀이 보기</button>
+    <div class="solution" id="sol11">
+      <b>정답:</b> 1번<br>
+      zip은 여러 리스트의 같은 위치 요소를 짝지어 반복 처리하게 합니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson12">
+  <div class="badge">문장 12</div>
+  <h2>filter로 긴 단어 리스트 만들기</h2>
+  <div class="sentence">
+    <p class="en">This means that seeking truth also requires awareness of our own perspective.</p>
+    <p class="ko">이는 진실을 찾는 일이 자신의 관점을 의식하는 것도 필요로 한다는 뜻이다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> filter, lambda, list<br><b>학습 목표:</b> filter와 lambda로 긴 단어만 남긴 리스트를 만듭니다.</div>
+  <h3>파이썬 코드</h3>
+  <pre><code>words = &#x27;This means that seeking truth also requires awareness of our own perspective.&#x27;.replace(&quot;.&quot;, &quot;&quot;).replace(&quot;,&quot;, &quot;&quot;).split()
+
+long_words = list(filter(lambda word: len(word) &gt;= 8, words))
+print(&quot;긴 단어 리스트:&quot;, long_words)
+print(&quot;긴 단어 앞 3개:&quot;, long_words[:3])</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 문장을 <code>split()</code>으로 단어 리스트로 만든 뒤 리스트 슬라이싱을 연습합니다.
+    리스트는 0번부터 인덱스가 시작하며, <code>words[start:end:step]</code> 형식으로 앞부분, 뒷부분,
+    일정 간격, 역순을 추출할 수 있습니다. 함수, 람다, join, zip, map, pop, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용해 리스트 처리 능력을 키웁니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q12.</b> 12번 예제에서 map(len, words)의 의미는?</p>
+    <label class="choice"><input type="radio" name="q12" value="0"> 각 단어에 len 적용</label>
+<label class="choice"><input type="radio" name="q12" value="1"> 단어 모두 삭제</label>
+<label class="choice"><input type="radio" name="q12" value="2"> 마지막 단어만 출력</label>
+<label class="choice"><input type="radio" name="q12" value="3"> 리스트 역순</label>
+<label class="choice"><input type="radio" name="q12" value="4"> 파일 다운로드</label>
+    <button class="small" onclick="checkOne(12)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(12)">상세 풀이 보기</button>
+    <div class="solution" id="sol12">
+      <b>정답:</b> 1번<br>
+      map(len, words)는 words의 각 단어에 len 함수를 적용합니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson13">
+  <div class="badge">문장 13</div>
+  <h2>인덱스로 단어 위치 찾기</h2>
+  <div class="sentence">
+    <p class="en">In the modern information society, truth is threatened by speed, bias, and misinformation.</p>
+    <p class="ko">현대 정보사회에서 진실은 속도, 편향, 거짓 정보에 의해 위협받는다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> index, list<br><b>학습 목표:</b> 단어 리스트에서 특정 단어의 위치를 찾습니다.</div>
+  <h3>파이썬 코드</h3>
+  <pre><code>words = &#x27;In the modern information society, truth is threatened by speed, bias, and misinformation.&#x27;.replace(&quot;,&quot;, &quot;&quot;).replace(&quot;.&quot;, &quot;&quot;).split()
+lower_words = [w.lower() for w in words]
+target = &quot;truth&quot;
+
+if target in lower_words:
+    position = lower_words.index(target)
+    print(&quot;truth 위치:&quot;, position)
+    print(&quot;truth 주변:&quot;, words[max(0, position-2):position+3])
+else:
+    print(&quot;target 없음&quot;)</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 문장을 <code>split()</code>으로 단어 리스트로 만든 뒤 리스트 슬라이싱을 연습합니다.
+    리스트는 0번부터 인덱스가 시작하며, <code>words[start:end:step]</code> 형식으로 앞부분, 뒷부분,
+    일정 간격, 역순을 추출할 수 있습니다. 함수, 람다, join, zip, map, pop, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용해 리스트 처리 능력을 키웁니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q13.</b> 13번 예제에서 pop()은 무엇을 하나요?</p>
+    <label class="choice"><input type="radio" name="q13" value="0"> 요소를 꺼내고 리스트에서 제거</label>
+<label class="choice"><input type="radio" name="q13" value="1"> 리스트를 복사만 함</label>
+<label class="choice"><input type="radio" name="q13" value="2"> 리스트를 HTML로 변환</label>
+<label class="choice"><input type="radio" name="q13" value="3"> 조건문을 실행</label>
+<label class="choice"><input type="radio" name="q13" value="4"> 정답을 채점</label>
+    <button class="small" onclick="checkOne(13)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(13)">상세 풀이 보기</button>
+    <div class="solution" id="sol13">
+      <b>정답:</b> 1번<br>
+      pop()은 리스트의 요소를 꺼내 반환하고 원래 리스트에서는 제거합니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson14">
+  <div class="badge">문장 14</div>
+  <h2>정렬된 리스트 슬라이싱</h2>
+  <div class="sentence">
+    <p class="en">Therefore, a responsible person checks sources and thinks before sharing information.</p>
+    <p class="ko">그러므로 책임 있는 사람은 정보를 공유하기 전에 출처를 확인하고 생각한다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> sorted, list slicing<br><b>학습 목표:</b> 단어 리스트를 정렬하고 앞·뒤 일부를 확인합니다.</div>
+  <h3>파이썬 코드</h3>
+  <pre><code>words = &#x27;Therefore, a responsible person checks sources and thinks before sharing information.&#x27;.replace(&quot;,&quot;, &quot;&quot;).replace(&quot;.&quot;, &quot;&quot;).split()
+
+sorted_words = sorted(words)
+print(&quot;정렬 앞 5개:&quot;, sorted_words[:5])
+print(&quot;정렬 뒤 5개:&quot;, sorted_words[-5:])</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 문장을 <code>split()</code>으로 단어 리스트로 만든 뒤 리스트 슬라이싱을 연습합니다.
+    리스트는 0번부터 인덱스가 시작하며, <code>words[start:end:step]</code> 형식으로 앞부분, 뒷부분,
+    일정 간격, 역순을 추출할 수 있습니다. 함수, 람다, join, zip, map, pop, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용해 리스트 처리 능력을 키웁니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q14.</b> 14번 예제에서 sorted(words)의 결과는?</p>
+    <label class="choice"><input type="radio" name="q14" value="0"> 정렬된 새 리스트</label>
+<label class="choice"><input type="radio" name="q14" value="1"> 원본 삭제</label>
+<label class="choice"><input type="radio" name="q14" value="2"> 문자열 뒤집기</label>
+<label class="choice"><input type="radio" name="q14" value="3"> 숫자 합계</label>
+<label class="choice"><input type="radio" name="q14" value="4"> 반복 중지</label>
+    <button class="small" onclick="checkOne(14)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(14)">상세 풀이 보기</button>
+    <div class="solution" id="sol14">
+      <b>정답:</b> 1번<br>
+      sorted(words)는 원본을 직접 바꾸지 않고 정렬된 새 리스트를 반환합니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson15">
+  <div class="badge">문장 15</div>
+  <h2>리스트 일부 대문자 변환</h2>
+  <div class="sentence">
+    <p class="en">Truth is not always comfortable, but it can set the mind free from deception.</p>
+    <p class="ko">진실은 항상 편안하지는 않지만 마음을 속임수에서 자유롭게 할 수 있다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> map, upper, slicing<br><b>학습 목표:</b> 슬라이싱한 단어 리스트를 대문자로 변환합니다.</div>
+  <h3>파이썬 코드</h3>
+  <pre><code>words = &#x27;Truth is not always comfortable, but it can set the mind free from deception.&#x27;.replace(&quot;,&quot;, &quot;&quot;).replace(&quot;.&quot;, &quot;&quot;).split()
+part = words[:6]
+
+upper_part = list(map(lambda w: w.upper(), part))
+print(part)
+print(upper_part)</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 문장을 <code>split()</code>으로 단어 리스트로 만든 뒤 리스트 슬라이싱을 연습합니다.
+    리스트는 0번부터 인덱스가 시작하며, <code>words[start:end:step]</code> 형식으로 앞부분, 뒷부분,
+    일정 간격, 역순을 추출할 수 있습니다. 함수, 람다, join, zip, map, pop, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용해 리스트 처리 능력을 키웁니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q15.</b> 15번 예제에서 words[:3]의 의미는?</p>
+    <label class="choice"><input type="radio" name="q15" value="0"> 리스트의 앞 3개 요소</label>
+<label class="choice"><input type="radio" name="q15" value="1"> 리스트의 뒤 3개 요소</label>
+<label class="choice"><input type="radio" name="q15" value="2"> 리스트 전체 삭제</label>
+<label class="choice"><input type="radio" name="q15" value="3"> 리스트를 문자열로 변환</label>
+<label class="choice"><input type="radio" name="q15" value="4"> 리스트를 숫자로 변환</label>
+    <button class="small" onclick="checkOne(15)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(15)">상세 풀이 보기</button>
+    <div class="solution" id="sol15">
+      <b>정답:</b> 1번<br>
+      words[:3]은 0번 인덱스부터 3번 직전까지, 즉 앞 3개 요소를 가져옵니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson16">
+  <div class="badge">문장 16</div>
+  <h2>리스트 컴프리헨션</h2>
+  <div class="sentence">
+    <p class="en">In relationships, truth appears as honesty, trust, and the courage to speak sincerely.</p>
+    <p class="ko">관계 속에서 진실은 정직, 신뢰, 진심으로 말하는 용기로 나타난다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> list comprehension<br><b>학습 목표:</b> 여러 문장에서 앞 단어 조각을 리스트로 만듭니다.</div>
+  <h3>파이썬 코드</h3>
+  <pre><code>sentences = [
+    &#x27;Therefore, a responsible person checks sources and thinks before sharing information.&#x27;,
+    &#x27;Truth is not always comfortable, but it can set the mind free from deception.&#x27;,
+    &#x27;In relationships, truth appears as honesty, trust, and the courage to speak sincerely.&#x27;
+]
+
+pieces = [sentence.split()[:4] for sentence in sentences]
+print(pieces)</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 문장을 <code>split()</code>으로 단어 리스트로 만든 뒤 리스트 슬라이싱을 연습합니다.
+    리스트는 0번부터 인덱스가 시작하며, <code>words[start:end:step]</code> 형식으로 앞부분, 뒷부분,
+    일정 간격, 역순을 추출할 수 있습니다. 함수, 람다, join, zip, map, pop, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용해 리스트 처리 능력을 키웁니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q16.</b> 16번 예제에서 words[::-1]의 의미는?</p>
+    <label class="choice"><input type="radio" name="q16" value="0"> 리스트 순서를 거꾸로</label>
+<label class="choice"><input type="radio" name="q16" value="1"> 첫 요소만 출력</label>
+<label class="choice"><input type="radio" name="q16" value="2"> 마지막 요소 삭제</label>
+<label class="choice"><input type="radio" name="q16" value="3"> 오름차순 정렬</label>
+<label class="choice"><input type="radio" name="q16" value="4"> 길이 계산</label>
+    <button class="small" onclick="checkOne(16)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(16)">상세 풀이 보기</button>
+    <div class="solution" id="sol16">
+      <b>정답:</b> 1번<br>
+      [::-1]은 step이 -1이므로 리스트를 뒤에서 앞으로 읽습니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson17">
+  <div class="badge">문장 17</div>
+  <h2>enumerate와 리스트 번호</h2>
+  <div class="sentence">
+    <p class="en">A truthful life requires both facts and integrity.</p>
+    <p class="ko">진실한 삶에는 사실과 진실성이 모두 필요하다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> enumerate, list<br><b>학습 목표:</b> 단어 리스트에 번호를 붙여 출력합니다.</div>
+  <h3>파이썬 코드</h3>
+  <pre><code>words = &#x27;A truthful life requires both facts and integrity.&#x27;.replace(&quot;.&quot;, &quot;&quot;).split()
+
+for index, word in enumerate(words[:8], start=1):
+    print(index, word)</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 문장을 <code>split()</code>으로 단어 리스트로 만든 뒤 리스트 슬라이싱을 연습합니다.
+    리스트는 0번부터 인덱스가 시작하며, <code>words[start:end:step]</code> 형식으로 앞부분, 뒷부분,
+    일정 간격, 역순을 추출할 수 있습니다. 함수, 람다, join, zip, map, pop, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용해 리스트 처리 능력을 키웁니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q17.</b> 17번 예제에서 join의 역할은?</p>
+    <label class="choice"><input type="radio" name="q17" value="0"> 문자열 리스트를 하나로 연결</label>
+<label class="choice"><input type="radio" name="q17" value="1"> 리스트를 모두 삭제</label>
+<label class="choice"><input type="radio" name="q17" value="2"> 리스트를 무조건 정렬</label>
+<label class="choice"><input type="radio" name="q17" value="3"> 조건을 검사</label>
+<label class="choice"><input type="radio" name="q17" value="4"> 반복문 종료</label>
+    <button class="small" onclick="checkOne(17)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(17)">상세 풀이 보기</button>
+    <div class="solution" id="sol17">
+      <b>정답:</b> 1번<br>
+      join은 문자열 요소로 이루어진 리스트를 하나의 문자열로 연결합니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson18">
+  <div class="badge">문장 18</div>
+  <h2>중첩 리스트 슬라이싱</h2>
+  <div class="sentence">
+    <p class="en">Ultimately, truth asks us to live with open eyes, humble minds, and honest hearts.</p>
+    <p class="ko">궁극적으로 진실은 열린 눈과 겸손한 마음과 정직한 가슴으로 살라고 우리에게 요청한다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> nested list slicing<br><b>학습 목표:</b> 문장 리스트와 단어 리스트를 이중으로 슬라이싱합니다.</div>
+  <h3>파이썬 코드</h3>
+  <pre><code>sentences = [
+    &#x27;In relationships, truth appears as honesty, trust, and the courage to speak sincerely.&#x27;,
+    &#x27;A truthful life requires both facts and integrity.&#x27;,
+    &#x27;Ultimately, truth asks us to live with open eyes, humble minds, and honest hearts.&#x27;
+]
+
+selected_sentences = sentences[:2]
+word_slices = [s.split()[:5] for s in selected_sentences]
+
+print(word_slices)</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 문장을 <code>split()</code>으로 단어 리스트로 만든 뒤 리스트 슬라이싱을 연습합니다.
+    리스트는 0번부터 인덱스가 시작하며, <code>words[start:end:step]</code> 형식으로 앞부분, 뒷부분,
+    일정 간격, 역순을 추출할 수 있습니다. 함수, 람다, join, zip, map, pop, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용해 리스트 처리 능력을 키웁니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q18.</b> 18번 예제에서 zip의 역할은?</p>
+    <label class="choice"><input type="radio" name="q18" value="0"> 두 리스트의 같은 위치 요소를 묶음</label>
+<label class="choice"><input type="radio" name="q18" value="1"> 파일 압축만 수행</label>
+<label class="choice"><input type="radio" name="q18" value="2"> 리스트 요소 삭제</label>
+<label class="choice"><input type="radio" name="q18" value="3"> 단어 길이 계산</label>
+<label class="choice"><input type="radio" name="q18" value="4"> HTML 저장</label>
+    <button class="small" onclick="checkOne(18)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(18)">상세 풀이 보기</button>
+    <div class="solution" id="sol18">
+      <b>정답:</b> 1번<br>
+      zip은 여러 리스트의 같은 위치 요소를 짝지어 반복 처리하게 합니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson19">
+  <div class="badge">문장 19</div>
+  <h2>음수 인덱스 리스트</h2>
+  <div class="sentence">
+    <p class="en">Today, I will begin my day by asking what is true and meaningful.</p>
+    <p class="ko">오늘 나는 무엇이 진실하고 의미 있는지 물으며 하루를 시작하겠다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> negative index<br><b>학습 목표:</b> 단어 리스트의 뒤쪽 요소를 음수 인덱스로 다룹니다.</div>
+  <h3>파이썬 코드</h3>
+  <pre><code>words = &#x27;Today, I will begin my day by asking what is true and meaningful.&#x27;.replace(&quot;.&quot;, &quot;&quot;).split()
+
+print(&quot;뒤 5개 단어:&quot;, words[-5:])
+print(&quot;뒤에서 두 번째 단어:&quot;, words[-2])
+print(&quot;마지막 단어 제외:&quot;, words[:-1])</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 문장을 <code>split()</code>으로 단어 리스트로 만든 뒤 리스트 슬라이싱을 연습합니다.
+    리스트는 0번부터 인덱스가 시작하며, <code>words[start:end:step]</code> 형식으로 앞부분, 뒷부분,
+    일정 간격, 역순을 추출할 수 있습니다. 함수, 람다, join, zip, map, pop, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용해 리스트 처리 능력을 키웁니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q19.</b> 19번 예제에서 map(len, words)의 의미는?</p>
+    <label class="choice"><input type="radio" name="q19" value="0"> 각 단어에 len 적용</label>
+<label class="choice"><input type="radio" name="q19" value="1"> 단어 모두 삭제</label>
+<label class="choice"><input type="radio" name="q19" value="2"> 마지막 단어만 출력</label>
+<label class="choice"><input type="radio" name="q19" value="3"> 리스트 역순</label>
+<label class="choice"><input type="radio" name="q19" value="4"> 파일 다운로드</label>
+    <button class="small" onclick="checkOne(19)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(19)">상세 풀이 보기</button>
+    <div class="solution" id="sol19">
+      <b>정답:</b> 1번<br>
+      map(len, words)는 words의 각 단어에 len 함수를 적용합니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson20">
+  <div class="badge">문장 20</div>
+  <h2>간격 리스트 슬라이싱</h2>
+  <div class="sentence">
+    <p class="en">I will not believe every word too quickly, but think carefully.</p>
+    <p class="ko">나는 모든 말을 너무 빨리 믿지 않고 신중하게 생각하겠다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> step slicing<br><b>학습 목표:</b> 단어 리스트에서 한 칸씩 건너뛰어 추출합니다.</div>
+  <h3>파이썬 코드</h3>
+  <pre><code>words = &#x27;I will not believe every word too quickly, but think carefully.&#x27;.replace(&quot;.&quot;, &quot;&quot;).split()
+
+print(&quot;짝수 위치 단어:&quot;, words[::2])
+print(&quot;홀수 위치 단어:&quot;, words[1::2])</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 문장을 <code>split()</code>으로 단어 리스트로 만든 뒤 리스트 슬라이싱을 연습합니다.
+    리스트는 0번부터 인덱스가 시작하며, <code>words[start:end:step]</code> 형식으로 앞부분, 뒷부분,
+    일정 간격, 역순을 추출할 수 있습니다. 함수, 람다, join, zip, map, pop, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용해 리스트 처리 능력을 키웁니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q20.</b> 20번 예제에서 pop()은 무엇을 하나요?</p>
+    <label class="choice"><input type="radio" name="q20" value="0"> 요소를 꺼내고 리스트에서 제거</label>
+<label class="choice"><input type="radio" name="q20" value="1"> 리스트를 복사만 함</label>
+<label class="choice"><input type="radio" name="q20" value="2"> 리스트를 HTML로 변환</label>
+<label class="choice"><input type="radio" name="q20" value="3"> 조건문을 실행</label>
+<label class="choice"><input type="radio" name="q20" value="4"> 정답을 채점</label>
+    <button class="small" onclick="checkOne(20)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(20)">상세 풀이 보기</button>
+    <div class="solution" id="sol20">
+      <b>정답:</b> 1번<br>
+      pop()은 리스트의 요소를 꺼내 반환하고 원래 리스트에서는 제거합니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson21">
+  <div class="badge">문장 21</div>
+  <h2>불리언 조건 리스트</h2>
+  <div class="sentence">
+    <p class="en">Truth means facing reality with honesty and courage.</p>
+    <p class="ko">진실은 정직과 용기로 현실을 마주하는 것이다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> boolean, if, list<br><b>학습 목표:</b> 단어 개수에 따라 앞쪽 또는 뒤쪽 리스트를 출력합니다.</div>
+  <h3>파이썬 코드</h3>
+  <pre><code>words = &#x27;Truth means facing reality with honesty and courage.&#x27;.replace(&quot;.&quot;, &quot;&quot;).split()
+
+if len(words) &gt;= 10:
+    print(&quot;긴 단어 리스트 앞 6개:&quot;, words[:6])
+else:
+    print(&quot;짧은 단어 리스트 뒤 6개:&quot;, words[-6:])</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 문장을 <code>split()</code>으로 단어 리스트로 만든 뒤 리스트 슬라이싱을 연습합니다.
+    리스트는 0번부터 인덱스가 시작하며, <code>words[start:end:step]</code> 형식으로 앞부분, 뒷부분,
+    일정 간격, 역순을 추출할 수 있습니다. 함수, 람다, join, zip, map, pop, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용해 리스트 처리 능력을 키웁니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q21.</b> 21번 예제에서 sorted(words)의 결과는?</p>
+    <label class="choice"><input type="radio" name="q21" value="0"> 정렬된 새 리스트</label>
+<label class="choice"><input type="radio" name="q21" value="1"> 원본 삭제</label>
+<label class="choice"><input type="radio" name="q21" value="2"> 문자열 뒤집기</label>
+<label class="choice"><input type="radio" name="q21" value="3"> 숫자 합계</label>
+<label class="choice"><input type="radio" name="q21" value="4"> 반복 중지</label>
+    <button class="small" onclick="checkOne(21)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(21)">상세 풀이 보기</button>
+    <div class="solution" id="sol21">
+      <b>정답:</b> 1번<br>
+      sorted(words)는 원본을 직접 바꾸지 않고 정렬된 새 리스트를 반환합니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson22">
+  <div class="badge">문장 22</div>
+  <h2>딕셔너리에 리스트 조각 저장</h2>
+  <div class="sentence">
+    <p class="en">I will check information before I share it with others.</p>
+    <p class="ko">나는 정보를 다른 사람과 공유하기 전에 확인하겠다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> dict, list slicing<br><b>학습 목표:</b> front, middle, back 리스트 조각을 딕셔너리에 저장합니다.</div>
+  <h3>파이썬 코드</h3>
+  <pre><code>words = &#x27;I will check information before I share it with others.&#x27;.replace(&quot;.&quot;, &quot;&quot;).split()
+
+result = {
+    &quot;front&quot;: words[:3],
+    &quot;middle&quot;: words[3:7],
+    &quot;back&quot;: words[-3:]
+}
+
+print(result)</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 문장을 <code>split()</code>으로 단어 리스트로 만든 뒤 리스트 슬라이싱을 연습합니다.
+    리스트는 0번부터 인덱스가 시작하며, <code>words[start:end:step]</code> 형식으로 앞부분, 뒷부분,
+    일정 간격, 역순을 추출할 수 있습니다. 함수, 람다, join, zip, map, pop, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용해 리스트 처리 능력을 키웁니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q22.</b> 22번 예제에서 words[:3]의 의미는?</p>
+    <label class="choice"><input type="radio" name="q22" value="0"> 리스트의 앞 3개 요소</label>
+<label class="choice"><input type="radio" name="q22" value="1"> 리스트의 뒤 3개 요소</label>
+<label class="choice"><input type="radio" name="q22" value="2"> 리스트 전체 삭제</label>
+<label class="choice"><input type="radio" name="q22" value="3"> 리스트를 문자열로 변환</label>
+<label class="choice"><input type="radio" name="q22" value="4"> 리스트를 숫자로 변환</label>
+    <button class="small" onclick="checkOne(22)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(22)">상세 풀이 보기</button>
+    <div class="solution" id="sol22">
+      <b>정답:</b> 1번<br>
+      words[:3]은 0번 인덱스부터 3번 직전까지, 즉 앞 3개 요소를 가져옵니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson23">
+  <div class="badge">문장 23</div>
+  <h2>길이 기준 문장 리스트 정렬</h2>
+  <div class="sentence">
+    <p class="en">I will speak honestly, but also kindly and respectfully.</p>
+    <p class="ko">나는 정직하게 말하되 친절하고 존중하는 태도로 말하겠다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> sort, key=len<br><b>학습 목표:</b> 문장 리스트를 단어 수 기준으로 정렬합니다.</div>
+  <h3>파이썬 코드</h3>
+  <pre><code>sentences = [
+    &#x27;Truth means facing reality with honesty and courage.&#x27;,
+    &#x27;I will check information before I share it with others.&#x27;,
+    &#x27;I will speak honestly, but also kindly and respectfully.&#x27;
+]
+
+sentences = sorted(sentences, key=lambda s: len(s.split()))
+for sentence in sentences:
+    print(len(sentence.split()), sentence.split()[:4])</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 문장을 <code>split()</code>으로 단어 리스트로 만든 뒤 리스트 슬라이싱을 연습합니다.
+    리스트는 0번부터 인덱스가 시작하며, <code>words[start:end:step]</code> 형식으로 앞부분, 뒷부분,
+    일정 간격, 역순을 추출할 수 있습니다. 함수, 람다, join, zip, map, pop, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용해 리스트 처리 능력을 키웁니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q23.</b> 23번 예제에서 words[::-1]의 의미는?</p>
+    <label class="choice"><input type="radio" name="q23" value="0"> 리스트 순서를 거꾸로</label>
+<label class="choice"><input type="radio" name="q23" value="1"> 첫 요소만 출력</label>
+<label class="choice"><input type="radio" name="q23" value="2"> 마지막 요소 삭제</label>
+<label class="choice"><input type="radio" name="q23" value="3"> 오름차순 정렬</label>
+<label class="choice"><input type="radio" name="q23" value="4"> 길이 계산</label>
+    <button class="small" onclick="checkOne(23)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(23)">상세 풀이 보기</button>
+    <div class="solution" id="sol23">
+      <b>정답:</b> 1번<br>
+      [::-1]은 step이 -1이므로 리스트를 뒤에서 앞으로 읽습니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson24">
+  <div class="badge">문장 24</div>
+  <h2>한글 어절 리스트 슬라이싱</h2>
+  <div class="sentence">
+    <p class="en">I will encourage my students to ask questions and seek evidence.</p>
+    <p class="ko">나는 학생들이 질문하고 증거를 찾도록 격려하겠다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> Korean list slicing<br><b>학습 목표:</b> 한글 문장을 어절 리스트로 나누어 슬라이싱합니다.</div>
+  <h3>파이썬 코드</h3>
+  <pre><code>korean_words = &#x27;나는 학생들이 질문하고 증거를 찾도록 격려하겠다.&#x27;.split()
+
+print(&quot;앞 5어절:&quot;, korean_words[:5])
+print(&quot;뒤 5어절:&quot;, korean_words[-5:])
+print(&quot;거꾸로:&quot;, korean_words[::-1])</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 문장을 <code>split()</code>으로 단어 리스트로 만든 뒤 리스트 슬라이싱을 연습합니다.
+    리스트는 0번부터 인덱스가 시작하며, <code>words[start:end:step]</code> 형식으로 앞부분, 뒷부분,
+    일정 간격, 역순을 추출할 수 있습니다. 함수, 람다, join, zip, map, pop, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용해 리스트 처리 능력을 키웁니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q24.</b> 24번 예제에서 join의 역할은?</p>
+    <label class="choice"><input type="radio" name="q24" value="0"> 문자열 리스트를 하나로 연결</label>
+<label class="choice"><input type="radio" name="q24" value="1"> 리스트를 모두 삭제</label>
+<label class="choice"><input type="radio" name="q24" value="2"> 리스트를 무조건 정렬</label>
+<label class="choice"><input type="radio" name="q24" value="3"> 조건을 검사</label>
+<label class="choice"><input type="radio" name="q24" value="4"> 반복문 종료</label>
+    <button class="small" onclick="checkOne(24)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(24)">상세 풀이 보기</button>
+    <div class="solution" id="sol24">
+      <b>정답:</b> 1번<br>
+      join은 문자열 요소로 이루어진 리스트를 하나의 문자열로 연결합니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson25">
+  <div class="badge">문장 25</div>
+  <h2>영어·한글 리스트 동시 처리</h2>
+  <div class="sentence">
+    <p class="en">When I am wrong, I will admit it and learn from the truth.</p>
+    <p class="ko">내가 틀렸을 때 나는 그것을 인정하고 진실에서 배우겠다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> zip, bilingual list slicing<br><b>학습 목표:</b> 영어 단어 리스트와 한글 어절 리스트를 동시에 자릅니다.</div>
+  <h3>파이썬 코드</h3>
+  <pre><code>english_words = &#x27;When I am wrong, I will admit it and learn from the truth.&#x27;.split()
+korean_words = &#x27;내가 틀렸을 때 나는 그것을 인정하고 진실에서 배우겠다.&#x27;.split()
+
+for e_part, k_part in zip([english_words[:5]], [korean_words[:5]]):
+    print(&quot;영어 단어:&quot;, e_part)
+    print(&quot;한글 어절:&quot;, k_part)</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 문장을 <code>split()</code>으로 단어 리스트로 만든 뒤 리스트 슬라이싱을 연습합니다.
+    리스트는 0번부터 인덱스가 시작하며, <code>words[start:end:step]</code> 형식으로 앞부분, 뒷부분,
+    일정 간격, 역순을 추출할 수 있습니다. 함수, 람다, join, zip, map, pop, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용해 리스트 처리 능력을 키웁니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q25.</b> 25번 예제에서 zip의 역할은?</p>
+    <label class="choice"><input type="radio" name="q25" value="0"> 두 리스트의 같은 위치 요소를 묶음</label>
+<label class="choice"><input type="radio" name="q25" value="1"> 파일 압축만 수행</label>
+<label class="choice"><input type="radio" name="q25" value="2"> 리스트 요소 삭제</label>
+<label class="choice"><input type="radio" name="q25" value="3"> 단어 길이 계산</label>
+<label class="choice"><input type="radio" name="q25" value="4"> HTML 저장</label>
+    <button class="small" onclick="checkOne(25)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(25)">상세 풀이 보기</button>
+    <div class="solution" id="sol25">
+      <b>정답:</b> 1번<br>
+      zip은 여러 리스트의 같은 위치 요소를 짝지어 반복 처리하게 합니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson26">
+  <div class="badge">문장 26</div>
+  <h2>검색과 조건 리스트</h2>
+  <div class="sentence">
+    <p class="en">I will avoid gossip, exaggeration, and careless judgment.</p>
+    <p class="ko">나는 험담과 과장과 부주의한 판단을 피하겠다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> search, if, list<br><b>학습 목표:</b> 특정 단어가 들어간 문장만 골라 단어 리스트 일부를 출력합니다.</div>
+  <h3>파이썬 코드</h3>
+  <pre><code>sentences = [
+    &#x27;I will speak honestly, but also kindly and respectfully.&#x27;,
+    &#x27;I will encourage my students to ask questions and seek evidence.&#x27;,
+    &#x27;When I am wrong, I will admit it and learn from the truth.&#x27;,
+    &#x27;I will avoid gossip, exaggeration, and careless judgment.&#x27;
+]
+
+for sentence in sentences:
+    words = sentence.lower().split()
+    if &quot;truth&quot; in words or &quot;honesty&quot; in words:
+        print(sentence.split()[:6])</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 문장을 <code>split()</code>으로 단어 리스트로 만든 뒤 리스트 슬라이싱을 연습합니다.
+    리스트는 0번부터 인덱스가 시작하며, <code>words[start:end:step]</code> 형식으로 앞부분, 뒷부분,
+    일정 간격, 역순을 추출할 수 있습니다. 함수, 람다, join, zip, map, pop, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용해 리스트 처리 능력을 키웁니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q26.</b> 26번 예제에서 map(len, words)의 의미는?</p>
+    <label class="choice"><input type="radio" name="q26" value="0"> 각 단어에 len 적용</label>
+<label class="choice"><input type="radio" name="q26" value="1"> 단어 모두 삭제</label>
+<label class="choice"><input type="radio" name="q26" value="2"> 마지막 단어만 출력</label>
+<label class="choice"><input type="radio" name="q26" value="3"> 리스트 역순</label>
+<label class="choice"><input type="radio" name="q26" value="4"> 파일 다운로드</label>
+    <button class="small" onclick="checkOne(26)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(26)">상세 풀이 보기</button>
+    <div class="solution" id="sol26">
+      <b>정답:</b> 1번<br>
+      map(len, words)는 words의 각 단어에 len 함수를 적용합니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson27">
+  <div class="badge">문장 27</div>
+  <h2>함수·*args·**kwargs 종합</h2>
+  <div class="sentence">
+    <p class="en">With truth and humility, I can make today more meaningful.</p>
+    <p class="ko">진실과 겸손으로 나는 오늘을 더 의미 있게 만들 수 있다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> function, *args, **kwargs<br><b>학습 목표:</b> 여러 문장을 받아 옵션에 따라 리스트 조각을 반환합니다.</div>
+  <h3>파이썬 코드</h3>
+  <pre><code>def transform_words(*sentences, **kwargs):
+    start = kwargs.get(&quot;start&quot;, 0)
+    end = kwargs.get(&quot;end&quot;, 5)
+    reverse = kwargs.get(&quot;reverse&quot;, False)
+    result = []
+    for sentence in sentences:
+        words = sentence.split()[start:end]
+        if reverse:
+            words = words[::-1]
+        result.append(words)
+    return result
+
+print(transform_words(&#x27;I will avoid gossip, exaggeration, and careless judgment.&#x27;, &#x27;With truth and humility, I can make today more meaningful.&#x27;, start=0, end=6, reverse=True))</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 문장을 <code>split()</code>으로 단어 리스트로 만든 뒤 리스트 슬라이싱을 연습합니다.
+    리스트는 0번부터 인덱스가 시작하며, <code>words[start:end:step]</code> 형식으로 앞부분, 뒷부분,
+    일정 간격, 역순을 추출할 수 있습니다. 함수, 람다, join, zip, map, pop, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용해 리스트 처리 능력을 키웁니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q27.</b> 27번 예제에서 pop()은 무엇을 하나요?</p>
+    <label class="choice"><input type="radio" name="q27" value="0"> 요소를 꺼내고 리스트에서 제거</label>
+<label class="choice"><input type="radio" name="q27" value="1"> 리스트를 복사만 함</label>
+<label class="choice"><input type="radio" name="q27" value="2"> 리스트를 HTML로 변환</label>
+<label class="choice"><input type="radio" name="q27" value="3"> 조건문을 실행</label>
+<label class="choice"><input type="radio" name="q27" value="4"> 정답을 채점</label>
+    <button class="small" onclick="checkOne(27)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(27)">상세 풀이 보기</button>
+    <div class="solution" id="sol27">
+      <b>정답:</b> 1번<br>
+      pop()은 리스트의 요소를 꺼내 반환하고 원래 리스트에서는 제거합니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson28">
+  <div class="badge">문장 28</div>
+  <h2>최종 종합 미션</h2>
+  <div class="sentence">
+    <p class="en">Today, I will live as a person who loves truth and practices honesty.</p>
+    <p class="ko">오늘 나는 진실을 사랑하고 정직을 실천하는 사람으로 살아가겠다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> filter, sorted, enumerate, list slicing<br><b>학습 목표:</b> 필터, 정렬, 번호, 리스트 슬라이싱을 종합합니다.</div>
+  <h3>파이썬 코드</h3>
+  <pre><code>sentences = [
+    &#x27;I will avoid gossip, exaggeration, and careless judgment.&#x27;,
+    &#x27;With truth and humility, I can make today more meaningful.&#x27;,
+    &#x27;Today, I will live as a person who loves truth and practices honesty.&#x27;
+]
+
+def final_mission(*sentences, **kwargs):
+    keyword = kwargs.get(&quot;keyword&quot;, &quot;truth&quot;)
+    selected = list(filter(lambda s: keyword.lower() in s.lower(), sentences))
+    selected = sorted(selected, key=lambda s: len(s.split()))
+    for index, sentence in enumerate(selected, start=1):
+        words = sentence.split()
+        print(index, words[:4], &quot;...&quot;, words[-3:])
+
+final_mission(*sentences, keyword=&quot;truth&quot;)</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 문장을 <code>split()</code>으로 단어 리스트로 만든 뒤 리스트 슬라이싱을 연습합니다.
+    리스트는 0번부터 인덱스가 시작하며, <code>words[start:end:step]</code> 형식으로 앞부분, 뒷부분,
+    일정 간격, 역순을 추출할 수 있습니다. 함수, 람다, join, zip, map, pop, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용해 리스트 처리 능력을 키웁니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q28.</b> 28번 예제에서 sorted(words)의 결과는?</p>
+    <label class="choice"><input type="radio" name="q28" value="0"> 정렬된 새 리스트</label>
+<label class="choice"><input type="radio" name="q28" value="1"> 원본 삭제</label>
+<label class="choice"><input type="radio" name="q28" value="2"> 문자열 뒤집기</label>
+<label class="choice"><input type="radio" name="q28" value="3"> 숫자 합계</label>
+<label class="choice"><input type="radio" name="q28" value="4"> 반복 중지</label>
+    <button class="small" onclick="checkOne(28)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(28)">상세 풀이 보기</button>
+    <div class="solution" id="sol28">
+      <b>정답:</b> 1번<br>
+      sorted(words)는 원본을 직접 바꾸지 않고 정렬된 새 리스트를 반환합니다.
+    </div>
+  </div>
+</section>
+
+
+  <section class="lesson">
+    <h2>전체 문장 Text</h2>
+    <div class="footertext">1. The question “What is truth?” is one of the starting points of philosophy.
+“무엇이 진실인가?”라는 질문은 철학의 출발점 중 하나이다.
+2. In humanistic philosophy, truth is not only a correct fact, but also a sincere relation to reality.
+인문 철학에서 진실은 올바른 사실만이 아니라 현실에 대한 진실한 관계이기도 하다.
+3. Socrates searched for truth by asking questions that revealed ignorance and confusion.
+소크라테스는 무지와 혼란을 드러내는 질문을 던지며 진실을 찾았다.
+4. His life shows that truth often begins with humility rather than certainty.
+그의 삶은 진실이 확신보다 겸손에서 시작되는 경우가 많음을 보여 준다.
+5. Plato used the allegory of the cave to explain how people may mistake shadows for reality.
+플라톤은 동굴의 비유를 통해 사람들이 그림자를 현실로 착각할 수 있음을 설명했다.
+6. This story teaches us that truth may require turning away from comfortable illusions.
+이 이야기는 진실이 편안한 환상에서 돌아서는 일을 요구할 수 있음을 가르쳐 준다.
+7. Aristotle connected truth with careful observation, reason, and clear judgment.
+아리스토텔레스는 진실을 신중한 관찰, 이성, 분명한 판단과 연결했다.
+8. For example, a scientist seeks truth by testing evidence instead of trusting rumor.
+예를 들어 과학자는 소문을 믿는 대신 증거를 검증하며 진실을 찾는다.
+9. A judge seeks truth by listening to many sides before making a decision.
+판사는 결정을 내리기 전에 여러 입장을 들으며 진실을 찾는다.
+10. A teacher seeks truth by admitting when new evidence corrects an old belief.
+교사는 새로운 증거가 오래된 믿음을 바로잡을 때 그것을 인정함으로써 진실을 찾는다.
+11. Immanuel Kant reminded us that human understanding has limits and structures.
+임마누엘 칸트는 인간의 이해에는 한계와 구조가 있음을 일깨워 주었다.
+12. This means that seeking truth also requires awareness of our own perspective.
+이는 진실을 찾는 일이 자신의 관점을 의식하는 것도 필요로 한다는 뜻이다.
+13. In the modern information society, truth is threatened by speed, bias, and misinformation.
+현대 정보사회에서 진실은 속도, 편향, 거짓 정보에 의해 위협받는다.
+14. Therefore, a responsible person checks sources and thinks before sharing information.
+그러므로 책임 있는 사람은 정보를 공유하기 전에 출처를 확인하고 생각한다.
+15. Truth is not always comfortable, but it can set the mind free from deception.
+진실은 항상 편안하지는 않지만 마음을 속임수에서 자유롭게 할 수 있다.
+16. In relationships, truth appears as honesty, trust, and the courage to speak sincerely.
+관계 속에서 진실은 정직, 신뢰, 진심으로 말하는 용기로 나타난다.
+17. A truthful life requires both facts and integrity.
+진실한 삶에는 사실과 진실성이 모두 필요하다.
+18. Ultimately, truth asks us to live with open eyes, humble minds, and honest hearts.
+궁극적으로 진실은 열린 눈과 겸손한 마음과 정직한 가슴으로 살라고 우리에게 요청한다.
+19. Today, I will begin my day by asking what is true and meaningful.
+오늘 나는 무엇이 진실하고 의미 있는지 물으며 하루를 시작하겠다.
+20. I will not believe every word too quickly, but think carefully.
+나는 모든 말을 너무 빨리 믿지 않고 신중하게 생각하겠다.
+21. Truth means facing reality with honesty and courage.
+진실은 정직과 용기로 현실을 마주하는 것이다.
+22. I will check information before I share it with others.
+나는 정보를 다른 사람과 공유하기 전에 확인하겠다.
+23. I will speak honestly, but also kindly and respectfully.
+나는 정직하게 말하되 친절하고 존중하는 태도로 말하겠다.
+24. I will encourage my students to ask questions and seek evidence.
+나는 학생들이 질문하고 증거를 찾도록 격려하겠다.
+25. When I am wrong, I will admit it and learn from the truth.
+내가 틀렸을 때 나는 그것을 인정하고 진실에서 배우겠다.
+26. I will avoid gossip, exaggeration, and careless judgment.
+나는 험담과 과장과 부주의한 판단을 피하겠다.
+27. With truth and humility, I can make today more meaningful.
+진실과 겸손으로 나는 오늘을 더 의미 있게 만들 수 있다.
+28. Today, I will live as a person who loves truth and practices honesty.
+오늘 나는 진실을 사랑하고 정직을 실천하는 사람으로 살아가겠다.</div>
+  </section>
+</div>
+
+<script>
+const answers = {"1": 0, "2": 0, "3": 0, "4": 0, "5": 0, "6": 0, "7": 0, "8": 0, "9": 0, "10": 0, "11": 0, "12": 0, "13": 0, "14": 0, "15": 0, "16": 0, "17": 0, "18": 0, "19": 0, "20": 0, "21": 0, "22": 0, "23": 0, "24": 0, "25": 0, "26": 0, "27": 0, "28": 0};
+const explanations = {"1": "words[:3]은 0번 인덱스부터 3번 직전까지, 즉 앞 3개 요소를 가져옵니다.", "2": "[::-1]은 step이 -1이므로 리스트를 뒤에서 앞으로 읽습니다.", "3": "join은 문자열 요소로 이루어진 리스트를 하나의 문자열로 연결합니다.", "4": "zip은 여러 리스트의 같은 위치 요소를 짝지어 반복 처리하게 합니다.", "5": "map(len, words)는 words의 각 단어에 len 함수를 적용합니다.", "6": "pop()은 리스트의 요소를 꺼내 반환하고 원래 리스트에서는 제거합니다.", "7": "sorted(words)는 원본을 직접 바꾸지 않고 정렬된 새 리스트를 반환합니다.", "8": "words[:3]은 0번 인덱스부터 3번 직전까지, 즉 앞 3개 요소를 가져옵니다.", "9": "[::-1]은 step이 -1이므로 리스트를 뒤에서 앞으로 읽습니다.", "10": "join은 문자열 요소로 이루어진 리스트를 하나의 문자열로 연결합니다.", "11": "zip은 여러 리스트의 같은 위치 요소를 짝지어 반복 처리하게 합니다.", "12": "map(len, words)는 words의 각 단어에 len 함수를 적용합니다.", "13": "pop()은 리스트의 요소를 꺼내 반환하고 원래 리스트에서는 제거합니다.", "14": "sorted(words)는 원본을 직접 바꾸지 않고 정렬된 새 리스트를 반환합니다.", "15": "words[:3]은 0번 인덱스부터 3번 직전까지, 즉 앞 3개 요소를 가져옵니다.", "16": "[::-1]은 step이 -1이므로 리스트를 뒤에서 앞으로 읽습니다.", "17": "join은 문자열 요소로 이루어진 리스트를 하나의 문자열로 연결합니다.", "18": "zip은 여러 리스트의 같은 위치 요소를 짝지어 반복 처리하게 합니다.", "19": "map(len, words)는 words의 각 단어에 len 함수를 적용합니다.", "20": "pop()은 리스트의 요소를 꺼내 반환하고 원래 리스트에서는 제거합니다.", "21": "sorted(words)는 원본을 직접 바꾸지 않고 정렬된 새 리스트를 반환합니다.", "22": "words[:3]은 0번 인덱스부터 3번 직전까지, 즉 앞 3개 요소를 가져옵니다.", "23": "[::-1]은 step이 -1이므로 리스트를 뒤에서 앞으로 읽습니다.", "24": "join은 문자열 요소로 이루어진 리스트를 하나의 문자열로 연결합니다.", "25": "zip은 여러 리스트의 같은 위치 요소를 짝지어 반복 처리하게 합니다.", "26": "map(len, words)는 words의 각 단어에 len 함수를 적용합니다.", "27": "pop()은 리스트의 요소를 꺼내 반환하고 원래 리스트에서는 제거합니다.", "28": "sorted(words)는 원본을 직접 바꾸지 않고 정렬된 새 리스트를 반환합니다."};
+const total = Object.keys(answers).length;
+
+document.querySelectorAll('.choice input').forEach(input => {
+  input.addEventListener('change', e => {
+    const name = e.target.name;
+    document.querySelectorAll('input[name="'+name+'"]').forEach(x => x.closest('.choice').classList.remove('selected'));
+    e.target.closest('.choice').classList.add('selected');
+  });
+});
+
+function goLesson(id){
+  document.getElementById(id).scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+function toggleSolution(n){
+  const el = document.getElementById('sol'+n);
+  el.style.display = el.style.display === 'block' ? 'none' : 'block';
+}
+
+function checkOne(n){
+  const checked = document.querySelector('input[name="q'+n+'"]:checked');
+  const sol = document.getElementById('sol'+n);
+  sol.style.display = 'block';
+  if(!checked){
+    sol.innerHTML = '<b>선택 없음</b><br>답을 먼저 선택하세요.<br><br>' + explanations[n];
+    return;
+  }
+  const ok = Number(checked.value) === answers[n];
+  sol.innerHTML = (ok ? '<b>정답입니다.</b>' : '<b>오답입니다.</b>') +
+    '<br><b>정답:</b> ' + (answers[n]+1) + '번<br>' + explanations[n];
+}
+
+function scoreAll(){
+  let correct = 0;
+  for(let n=1;n<=total;n++){
+    const checked = document.querySelector('input[name="q'+n+'"]:checked');
+    if(checked && Number(checked.value) === answers[n]) correct++;
+  }
+  const percent = Math.round(correct / total * 100);
+  document.getElementById('result').textContent = `점수: ${correct}/${total}문항, ${percent}점`;
+  return percent;
+}
+
+function nowString(){
+  const d = new Date();
+  const pad = n => String(n).padStart(2,'0');
+  return d.getFullYear()+pad(d.getMonth()+1)+pad(d.getDate())+'_'+pad(d.getHours())+pad(d.getMinutes())+pad(d.getSeconds());
+}
+
+function saveTxt(){
+  const sid = document.getElementById('studentId').value.trim() || '1100';
+  const name = document.getElementById('studentName').value.trim() || '인수샘';
+  const score = scoreAll();
+  let lines = [];
+  lines.push('03 파이썬 리스트 슬라이싱 평가 결과');
+  lines.push('학번: ' + sid);
+  lines.push('이름: ' + name);
+  lines.push('점수: ' + score);
+  lines.push('응시시각: ' + nowString());
+  lines.push('');
+  for(let n=1;n<=total;n++){
+    const checked = document.querySelector('input[name="q'+n+'"]:checked');
+    const user = checked ? Number(checked.value)+1 : '미응답';
+    const correct = answers[n]+1;
+    lines.push(`Q${n} 내 답: ${user} / 정답: ${correct}`);
+  }
+  const blob = new Blob([lines.join('\n')], {type:'text/plain;charset=utf-8'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `${sid}_${name}_03_${score}_${nowString()}.txt`;
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+</script>
+</body>
+</html>

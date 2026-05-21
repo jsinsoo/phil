@@ -1,0 +1,1543 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>행복은 어디에서 오는가 - OOP 파이썬 딕셔너리 학습</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:'Malgun Gothic',Arial,sans-serif;background:#fffaf0;color:#222;line-height:1.7}
+header{position:sticky;top:0;z-index:10;background:linear-gradient(90deg,#8a5a00,#2f6f9f);color:white;padding:10px;box-shadow:0 2px 10px rgba(0,0,0,.18)}
+.top{max-width:1200px;margin:auto;display:flex;gap:8px;align-items:center}
+h1{font-size:20px;margin:0;white-space:nowrap}
+select,input{height:38px;border:none;border-radius:10px;padding:0 10px;font-weight:700}
+select{flex:1;min-width:150px}
+button{border:none;border-radius:10px;padding:9px 14px;background:#f0a33a;color:white;font-weight:800;cursor:pointer}
+button:hover{filter:brightness(1.07)}
+button.ghost{background:#68738a}
+button.small{padding:7px 10px;border-radius:8px;margin:4px 4px 4px 0}
+.wrap{max-width:1200px;margin:18px auto;padding:0 14px}
+.intro,.scorebox,.lesson{background:white;border-radius:22px;padding:22px;margin:16px 0;box-shadow:0 8px 24px rgba(0,0,0,.09)}
+.intro h2{margin-top:0;color:#8a5a00}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.field{display:flex;flex-direction:column;gap:4px;font-weight:700;color:#334}
+.field input{border:1px solid #ccd4e4;background:#fff}
+.badge{display:inline-block;background:#fff6dd;color:#8a5a00;border-radius:999px;padding:5px 12px;font-weight:800}
+h2{color:#8a5a00;margin:10px 0}
+h3{color:#2f6f9f;margin-bottom:8px}
+.sentence{background:#fffef9;border-left:6px solid #d9a529;border-radius:14px;padding:14px 16px;margin:12px 0}
+.en{font-weight:800;color:#7a5000}
+.ko{font-weight:700;color:#333}
+.concept{background:#eef8ff;border-radius:14px;padding:12px 14px;border-left:6px solid #2f6f9f}
+pre{background:#1f2430;color:#f6f7ff;border-radius:16px;padding:16px;overflow:auto;font-size:14px;line-height:1.6}
+code{font-family:Consolas,'Courier New',monospace}
+.explain{background:#fbfbfb;border:1px solid #e5e8ef;border-radius:14px;padding:14px}
+.quiz{background:#f7f9ff;border:1px solid #dde6ff;border-radius:16px;padding:14px}
+.choice{display:block;background:white;margin:7px 0;padding:10px;border-radius:12px;border:1px solid #e0e5f2;cursor:pointer}
+.choice:hover{background:#eef4ff}
+.choice.selected{background:#dbe8ff;border-color:#7aa4e8}
+.solution{display:none;margin-top:10px;padding:12px;border-radius:12px;background:#fffdf0;border:1px solid #eadcaa}
+.result{font-size:18px;font-weight:800;color:#8a5a00}
+.footertext{white-space:pre-wrap;background:#fffdf7;border:1px solid #eadcaa;border-radius:16px;padding:18px}
+@media(max-width:720px){
+  .top{flex-wrap:wrap}
+  h1{width:100%;font-size:17px}
+  select{width:100%;flex:auto}
+  button{padding:8px 10px;font-size:13px}
+  .wrap{padding:0 8px}
+  .intro,.scorebox,.lesson{padding:16px;border-radius:18px}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="top">
+    <h1>06 OOP 딕셔너리 학습</h1>
+    <select id="nav" onchange="goLesson(this.value)">
+      <option value="lesson1">01. OOP 딕셔너리 기본 구조</option>
+<option value="lesson2">02. 람다로 딕셔너리 값 변환</option>
+<option value="lesson3">03. join으로 딕셔너리 값 연결</option>
+<option value="lesson4">04. zip으로 딕셔너리 생성</option>
+<option value="lesson5">05. map으로 딕셔너리 값 길이 계산</option>
+<option value="lesson6">06. pop으로 딕셔너리 항목 꺼내기</option>
+<option value="lesson7">07. for문으로 딕셔너리 순회</option>
+<option value="lesson8">08. if문으로 키 존재 확인</option>
+<option value="lesson9">09. while문으로 키 목록 처리</option>
+<option value="lesson10">10. *args로 여러 딕셔너리 처리</option>
+<option value="lesson11">11. **kwargs로 딕셔너리 만들기</option>
+<option value="lesson12">12. filter로 딕셔너리 항목 필터링</option>
+<option value="lesson13">13. 인덱스와 키 순서</option>
+<option value="lesson14">14. 정렬된 딕셔너리 보기</option>
+<option value="lesson15">15. 중첩 딕셔너리</option>
+<option value="lesson16">16. 딕셔너리 컴프리헨션</option>
+<option value="lesson17">17. enumerate와 딕셔너리</option>
+<option value="lesson18">18. 문자열 슬라이싱 값 저장</option>
+<option value="lesson19">19. 음수 인덱스와 딕셔너리</option>
+<option value="lesson20">20. 간격 슬라이싱과 딕셔너리</option>
+<option value="lesson21">21. 불리언 값 저장</option>
+<option value="lesson22">22. 딕셔너리 병합</option>
+<option value="lesson23">23. 값 길이 기준 정렬</option>
+<option value="lesson24">24. 한글 문장 딕셔너리</option>
+<option value="lesson25">25. 영어·한글 쌍 딕셔너리</option>
+<option value="lesson26">26. 검색 결과 딕셔너리</option>
+<option value="lesson27">27. OOP 종합 분석기</option>
+<option value="lesson28">28. 최종 OOP 딕셔너리 미션</option>
+    </select>
+    <button onclick="scoreAll()">채점</button>
+    <button onclick="saveTxt()">TXT 저장</button>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="intro">
+    <h2>행복은 어디에서 오는가? 문장 기반 OOP 파이썬 딕셔너리 학습</h2>
+    <p>각 문장을 소재로 클래스, 딕셔너리, 함수, 람다, join, zip, map, pop, for, if, while, *args, **kwargs, filter, 인덱스, 정렬 등을 활용하여 OOP 방식의 딕셔너리 처리를 연습합니다.</p>
+    <div class="grid">
+      <label class="field">학번 <input id="studentId" value="1100" placeholder="예: 1100"></label>
+      <label class="field">이름 <input id="studentName" value="인수샘" placeholder="예: 인수샘"></label>
+    </div>
+  </div>
+
+  <div class="scorebox">
+    <div class="result" id="result">점수: 아직 채점하지 않음</div>
+    <p>채점 후 <b>TXT 저장</b>을 누르면 <b>학번_이름_06_점수_응시시각.txt</b> 형식으로 저장됩니다.</p>
+  </div>
+
+  
+<section class="lesson" id="lesson1">
+  <div class="badge">문장 1</div>
+  <h2>OOP 딕셔너리 기본 구조</h2>
+  <div class="sentence">
+    <p class="en">The question “Where does happiness come from?” asks whether happiness comes from outside conditions or inner ways of living.</p>
+    <p class="ko">“행복은 어디에서 오는가?”라는 질문은 행복이 외부 조건에서 오는지, 아니면 내면의 삶의 방식에서 오는지를 묻는다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> class, dict, key, value<br><b>학습 목표:</b> 문장 정보를 딕셔너리로 저장하고 클래스에서 관리합니다.</div>
+  <h3>OOP 파이썬 코드</h3>
+  <pre><code>class SentenceCard:
+    def __init__(self, english, korean):
+        self.data = {
+            &quot;english&quot;: english,
+            &quot;korean&quot;: korean,
+            &quot;topic&quot;: &quot;happiness&quot;
+        }
+
+    def show(self):
+        print(self.data[&quot;english&quot;][:30])
+        print(self.data[&quot;korean&quot;][:20])
+
+card = SentenceCard(&#x27;The question “Where does happiness come from?” asks whether happiness comes from outside conditions or inner ways of living.&#x27;, &#x27;“행복은 어디에서 오는가?”라는 질문은 행복이 외부 조건에서 오는지, 아니면 내면의 삶의 방식에서 오는지를 묻는다.&#x27;)
+card.show()</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 문장 정보를 <code>dict</code>로 저장하고, <code>class</code> 안에서 관리하는 OOP 방식입니다.
+    딕셔너리는 <code>{"key": value}</code> 구조로 데이터를 저장하며, <code>items()</code>, <code>keys()</code>,
+    <code>pop()</code>, <code>update()</code>, <code>dict(zip())</code>, 딕셔너리 컴프리헨션 등을 통해
+    데이터를 체계적으로 처리할 수 있습니다. 또한 함수, 람다, join, zip, map, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용하여 실전적인 데이터 처리 구조를 익힙니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q1.</b> 1번 예제에서 딕셔너리에서 data[&#x27;english&#x27;]의 의미는?</p>
+    <label class="choice"><input type="radio" name="q1" value="0"> english 키에 연결된 값</label>
+<label class="choice"><input type="radio" name="q1" value="1"> english 키 삭제</label>
+<label class="choice"><input type="radio" name="q1" value="2"> 딕셔너리 전체 정렬</label>
+<label class="choice"><input type="radio" name="q1" value="3"> 리스트 뒤집기</label>
+<label class="choice"><input type="radio" name="q1" value="4"> 반복문 종료</label>
+    <button class="small" onclick="checkOne(1)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(1)">상세 풀이 보기</button>
+    <div class="solution" id="sol1">
+      <b>정답:</b> 1번<br>
+      딕셔너리는 키와 값의 쌍으로 데이터를 저장합니다. data[&#x27;english&#x27;]는 english 키의 값을 가져옵니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson2">
+  <div class="badge">문장 2</div>
+  <h2>람다로 딕셔너리 값 변환</h2>
+  <div class="sentence">
+    <p class="en">In humanistic philosophy, happiness is not only pleasure, but a deep harmony of the soul, relationships, and purpose.</p>
+    <p class="ko">인문 철학에서 행복은 단순한 즐거움이 아니라 영혼과 관계와 목적의 깊은 조화이다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> lambda, dict values<br><b>학습 목표:</b> 람다식으로 딕셔너리의 문자열 값을 가공합니다.</div>
+  <h3>OOP 파이썬 코드</h3>
+  <pre><code>class DictTransformer:
+    def __init__(self, text):
+        self.data = {&quot;original&quot;: text}
+
+    def transform(self):
+        upper = lambda s: s[:25].upper()
+        self.data[&quot;upper_front&quot;] = upper(self.data[&quot;original&quot;])
+        return self.data
+
+obj = DictTransformer(&#x27;In humanistic philosophy, happiness is not only pleasure, but a deep harmony of the soul, relationships, and purpose.&#x27;)
+print(obj.transform())</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 문장 정보를 <code>dict</code>로 저장하고, <code>class</code> 안에서 관리하는 OOP 방식입니다.
+    딕셔너리는 <code>{"key": value}</code> 구조로 데이터를 저장하며, <code>items()</code>, <code>keys()</code>,
+    <code>pop()</code>, <code>update()</code>, <code>dict(zip())</code>, 딕셔너리 컴프리헨션 등을 통해
+    데이터를 체계적으로 처리할 수 있습니다. 또한 함수, 람다, join, zip, map, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용하여 실전적인 데이터 처리 구조를 익힙니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q2.</b> 2번 예제에서 lambda s: s[:5]의 의미는?</p>
+    <label class="choice"><input type="radio" name="q2" value="0"> 문자열 앞 5글자 반환 함수</label>
+<label class="choice"><input type="radio" name="q2" value="1"> 문자열 삭제 함수</label>
+<label class="choice"><input type="radio" name="q2" value="2"> 딕셔너리 병합</label>
+<label class="choice"><input type="radio" name="q2" value="3"> 리스트 정렬</label>
+<label class="choice"><input type="radio" name="q2" value="4"> 파일 저장</label>
+    <button class="small" onclick="checkOne(2)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(2)">상세 풀이 보기</button>
+    <div class="solution" id="sol2">
+      <b>정답:</b> 1번<br>
+      lambda는 짧은 익명 함수입니다. s[:5]는 문자열 앞 5글자를 반환합니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson3">
+  <div class="badge">문장 3</div>
+  <h2>join으로 딕셔너리 값 연결</h2>
+  <div class="sentence">
+    <p class="en">Aristotle called true happiness eudaimonia, meaning a flourishing life shaped by virtue.</p>
+    <p class="ko">아리스토텔레스는 참된 행복을 에우다이모니아라고 불렀는데, 이는 덕으로 형성된 번영하는 삶을 뜻한다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> join, dict<br><b>학습 목표:</b> 딕셔너리의 여러 값을 하나의 문자열로 연결합니다.</div>
+  <h3>OOP 파이썬 코드</h3>
+  <pre><code>class WordJoiner:
+    def __init__(self, sentence):
+        self.data = {&quot;words&quot;: sentence.split()}
+
+    def join_front(self):
+        self.data[&quot;front_sentence&quot;] = &quot; &quot;.join(self.data[&quot;words&quot;][:6])
+        return self.data
+
+obj = WordJoiner(&#x27;Aristotle called true happiness eudaimonia, meaning a flourishing life shaped by virtue.&#x27;)
+print(obj.join_front())</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 문장 정보를 <code>dict</code>로 저장하고, <code>class</code> 안에서 관리하는 OOP 방식입니다.
+    딕셔너리는 <code>{"key": value}</code> 구조로 데이터를 저장하며, <code>items()</code>, <code>keys()</code>,
+    <code>pop()</code>, <code>update()</code>, <code>dict(zip())</code>, 딕셔너리 컴프리헨션 등을 통해
+    데이터를 체계적으로 처리할 수 있습니다. 또한 함수, 람다, join, zip, map, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용하여 실전적인 데이터 처리 구조를 익힙니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q3.</b> 3번 예제에서 join의 역할은?</p>
+    <label class="choice"><input type="radio" name="q3" value="0"> 문자열들을 하나로 연결</label>
+<label class="choice"><input type="radio" name="q3" value="1"> 딕셔너리 삭제</label>
+<label class="choice"><input type="radio" name="q3" value="2"> 클래스 제거</label>
+<label class="choice"><input type="radio" name="q3" value="3"> 점수 계산</label>
+<label class="choice"><input type="radio" name="q3" value="4"> 조건 종료</label>
+    <button class="small" onclick="checkOne(3)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(3)">상세 풀이 보기</button>
+    <div class="solution" id="sol3">
+      <b>정답:</b> 1번<br>
+      join은 문자열 리스트를 지정한 구분자로 연결해 하나의 문자열을 만듭니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson4">
+  <div class="badge">문장 4</div>
+  <h2>zip으로 딕셔너리 생성</h2>
+  <div class="sentence">
+    <p class="en">For Aristotle, happiness comes from becoming a good person through repeated good actions.</p>
+    <p class="ko">아리스토텔레스에게 행복은 반복되는 선한 행동을 통해 좋은 사람이 되어 가는 데서 온다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> zip, dict creation<br><b>학습 목표:</b> 키 리스트와 값 리스트를 zip으로 묶어 딕셔너리를 만듭니다.</div>
+  <h3>OOP 파이썬 코드</h3>
+  <pre><code>class ZipDictMaker:
+    def __init__(self, english, korean):
+        keys = [&quot;english&quot;, &quot;korean&quot;, &quot;length&quot;]
+        values = [english, korean, len(english)]
+        self.data = dict(zip(keys, values))
+
+    def show(self):
+        print(self.data)
+
+obj = ZipDictMaker(&#x27;For Aristotle, happiness comes from becoming a good person through repeated good actions.&#x27;, &#x27;아리스토텔레스에게 행복은 반복되는 선한 행동을 통해 좋은 사람이 되어 가는 데서 온다.&#x27;)
+obj.show()</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 문장 정보를 <code>dict</code>로 저장하고, <code>class</code> 안에서 관리하는 OOP 방식입니다.
+    딕셔너리는 <code>{"key": value}</code> 구조로 데이터를 저장하며, <code>items()</code>, <code>keys()</code>,
+    <code>pop()</code>, <code>update()</code>, <code>dict(zip())</code>, 딕셔너리 컴프리헨션 등을 통해
+    데이터를 체계적으로 처리할 수 있습니다. 또한 함수, 람다, join, zip, map, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용하여 실전적인 데이터 처리 구조를 익힙니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q4.</b> 4번 예제에서 dict(zip(keys, values))의 의미는?</p>
+    <label class="choice"><input type="radio" name="q4" value="0"> 키와 값을 묶어 딕셔너리 생성</label>
+<label class="choice"><input type="radio" name="q4" value="1"> 파일 압축</label>
+<label class="choice"><input type="radio" name="q4" value="2"> 값 전체 삭제</label>
+<label class="choice"><input type="radio" name="q4" value="3"> 문자열 뒤집기</label>
+<label class="choice"><input type="radio" name="q4" value="4"> HTML 실행</label>
+    <button class="small" onclick="checkOne(4)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(4)">상세 풀이 보기</button>
+    <div class="solution" id="sol4">
+      <b>정답:</b> 1번<br>
+      zip(keys, values)는 같은 위치의 키와 값을 묶고 dict가 이를 딕셔너리로 변환합니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson5">
+  <div class="badge">문장 5</div>
+  <h2>map으로 딕셔너리 값 길이 계산</h2>
+  <div class="sentence">
+    <p class="en">Socrates believed that a healthy soul is more important for happiness than wealth or fame.</p>
+    <p class="ko">소크라테스는 행복을 위해 건강한 영혼이 부나 명예보다 더 중요하다고 믿었다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> map, len, dict<br><b>학습 목표:</b> 딕셔너리 값에 len을 적용해 길이를 계산합니다.</div>
+  <h3>OOP 파이썬 코드</h3>
+  <pre><code>class LengthAnalyzer:
+    def __init__(self, sentence):
+        self.data = {&quot;words&quot;: sentence.split()}
+
+    def lengths(self):
+        self.data[&quot;lengths&quot;] = list(map(len, self.data[&quot;words&quot;]))
+        return self.data
+
+obj = LengthAnalyzer(&#x27;Socrates believed that a healthy soul is more important for happiness than wealth or fame.&#x27;)
+print(obj.lengths())</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 문장 정보를 <code>dict</code>로 저장하고, <code>class</code> 안에서 관리하는 OOP 방식입니다.
+    딕셔너리는 <code>{"key": value}</code> 구조로 데이터를 저장하며, <code>items()</code>, <code>keys()</code>,
+    <code>pop()</code>, <code>update()</code>, <code>dict(zip())</code>, 딕셔너리 컴프리헨션 등을 통해
+    데이터를 체계적으로 처리할 수 있습니다. 또한 함수, 람다, join, zip, map, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용하여 실전적인 데이터 처리 구조를 익힙니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q5.</b> 5번 예제에서 pop(&#x27;key&#x27;)의 역할은?</p>
+    <label class="choice"><input type="radio" name="q5" value="0"> 해당 키의 값을 꺼내고 삭제</label>
+<label class="choice"><input type="radio" name="q5" value="1"> 값을 복사만 함</label>
+<label class="choice"><input type="radio" name="q5" value="2"> 모든 키 정렬</label>
+<label class="choice"><input type="radio" name="q5" value="3"> 반복 시작</label>
+<label class="choice"><input type="radio" name="q5" value="4"> 클래스 생성</label>
+    <button class="small" onclick="checkOne(5)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(5)">상세 풀이 보기</button>
+    <div class="solution" id="sol5">
+      <b>정답:</b> 1번<br>
+      딕셔너리 pop은 지정한 키의 값을 반환하면서 그 항목을 딕셔너리에서 제거합니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson6">
+  <div class="badge">문장 6</div>
+  <h2>pop으로 딕셔너리 항목 꺼내기</h2>
+  <div class="sentence">
+    <p class="en">His life teaches us that happiness grows from self-examination and moral honesty.</p>
+    <p class="ko">그의 삶은 행복이 자기 성찰과 도덕적 정직에서 자란다는 것을 가르쳐 준다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> pop, dict<br><b>학습 목표:</b> 딕셔너리에서 특정 키의 값을 꺼내고 제거합니다.</div>
+  <h3>OOP 파이썬 코드</h3>
+  <pre><code>class PopExample:
+    def __init__(self, english, korean):
+        self.data = {&quot;english&quot;: english, &quot;korean&quot;: korean, &quot;topic&quot;: &quot;happiness&quot;}
+
+    def remove_topic(self):
+        removed = self.data.pop(&quot;topic&quot;)
+        print(&quot;꺼낸 값:&quot;, removed)
+        print(&quot;남은 딕셔너리:&quot;, self.data)
+
+obj = PopExample(&#x27;His life teaches us that happiness grows from self-examination and moral honesty.&#x27;, &#x27;그의 삶은 행복이 자기 성찰과 도덕적 정직에서 자란다는 것을 가르쳐 준다.&#x27;)
+obj.remove_topic()</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 문장 정보를 <code>dict</code>로 저장하고, <code>class</code> 안에서 관리하는 OOP 방식입니다.
+    딕셔너리는 <code>{"key": value}</code> 구조로 데이터를 저장하며, <code>items()</code>, <code>keys()</code>,
+    <code>pop()</code>, <code>update()</code>, <code>dict(zip())</code>, 딕셔너리 컴프리헨션 등을 통해
+    데이터를 체계적으로 처리할 수 있습니다. 또한 함수, 람다, join, zip, map, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용하여 실전적인 데이터 처리 구조를 익힙니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q6.</b> 6번 예제에서 items()의 역할은?</p>
+    <label class="choice"><input type="radio" name="q6" value="0"> 키와 값을 쌍으로 반복</label>
+<label class="choice"><input type="radio" name="q6" value="1"> 키만 삭제</label>
+<label class="choice"><input type="radio" name="q6" value="2"> 값만 대문자화</label>
+<label class="choice"><input type="radio" name="q6" value="3"> 파일 다운로드</label>
+<label class="choice"><input type="radio" name="q6" value="4"> 점수 초기화</label>
+    <button class="small" onclick="checkOne(6)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(6)">상세 풀이 보기</button>
+    <div class="solution" id="sol6">
+      <b>정답:</b> 1번<br>
+      items()는 딕셔너리의 키와 값을 쌍으로 꺼내 반복할 수 있게 합니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson7">
+  <div class="badge">문장 7</div>
+  <h2>for문으로 딕셔너리 순회</h2>
+  <div class="sentence">
+    <p class="en">Epicurus taught that simple pleasures, friendship, and peace of mind are enough for a happy life.</p>
+    <p class="ko">에피쿠로스는 단순한 즐거움, 우정, 마음의 평화가 행복한 삶에 충분하다고 가르쳤다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> for, items<br><b>학습 목표:</b> items()로 키와 값을 반복 출력합니다.</div>
+  <h3>OOP 파이썬 코드</h3>
+  <pre><code>class DictLooper:
+    def __init__(self, english, korean):
+        self.data = {&quot;en&quot;: english, &quot;ko&quot;: korean}
+
+    def loop(self):
+        for key, value in self.data.items():
+            print(key, &quot;=&gt;&quot;, value[:25])
+
+obj = DictLooper(&#x27;Epicurus taught that simple pleasures, friendship, and peace of mind are enough for a happy life.&#x27;, &#x27;에피쿠로스는 단순한 즐거움, 우정, 마음의 평화가 행복한 삶에 충분하다고 가르쳤다.&#x27;)
+obj.loop()</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 문장 정보를 <code>dict</code>로 저장하고, <code>class</code> 안에서 관리하는 OOP 방식입니다.
+    딕셔너리는 <code>{"key": value}</code> 구조로 데이터를 저장하며, <code>items()</code>, <code>keys()</code>,
+    <code>pop()</code>, <code>update()</code>, <code>dict(zip())</code>, 딕셔너리 컴프리헨션 등을 통해
+    데이터를 체계적으로 처리할 수 있습니다. 또한 함수, 람다, join, zip, map, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용하여 실전적인 데이터 처리 구조를 익힙니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q7.</b> 7번 예제에서 sorted(data.items())의 결과는?</p>
+    <label class="choice"><input type="radio" name="q7" value="0"> 정렬된 키-값 쌍 목록</label>
+<label class="choice"><input type="radio" name="q7" value="1"> 딕셔너리 삭제</label>
+<label class="choice"><input type="radio" name="q7" value="2"> 문자열 슬라이싱</label>
+<label class="choice"><input type="radio" name="q7" value="3"> 클래스 제거</label>
+<label class="choice"><input type="radio" name="q7" value="4"> 오답 표시</label>
+    <button class="small" onclick="checkOne(7)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(7)">상세 풀이 보기</button>
+    <div class="solution" id="sol7">
+      <b>정답:</b> 1번<br>
+      sorted(data.items())는 딕셔너리 항목을 정렬된 리스트 형태로 반환합니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson8">
+  <div class="badge">문장 8</div>
+  <h2>if문으로 키 존재 확인</h2>
+  <div class="sentence">
+    <p class="en">His idea reminds us that happiness does not always come from having more.</p>
+    <p class="ko">그의 생각은 행복이 항상 더 많이 가지는 데서 오는 것은 아님을 일깨워 준다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> if, in, dict<br><b>학습 목표:</b> 딕셔너리에 특정 키가 있는지 확인합니다.</div>
+  <h3>OOP 파이썬 코드</h3>
+  <pre><code>class KeyChecker:
+    def __init__(self, sentence):
+        self.data = {&quot;sentence&quot;: sentence, &quot;keyword&quot;: &quot;happiness&quot;}
+
+    def check(self):
+        if &quot;keyword&quot; in self.data:
+            print(&quot;키 있음:&quot;, self.data[&quot;keyword&quot;])
+        if self.data[&quot;keyword&quot;] in self.data[&quot;sentence&quot;].lower():
+            print(&quot;문장에 happiness가 있습니다.&quot;)
+
+obj = KeyChecker(&#x27;His idea reminds us that happiness does not always come from having more.&#x27;)
+obj.check()</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 문장 정보를 <code>dict</code>로 저장하고, <code>class</code> 안에서 관리하는 OOP 방식입니다.
+    딕셔너리는 <code>{"key": value}</code> 구조로 데이터를 저장하며, <code>items()</code>, <code>keys()</code>,
+    <code>pop()</code>, <code>update()</code>, <code>dict(zip())</code>, 딕셔너리 컴프리헨션 등을 통해
+    데이터를 체계적으로 처리할 수 있습니다. 또한 함수, 람다, join, zip, map, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용하여 실전적인 데이터 처리 구조를 익힙니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q8.</b> 8번 예제에서 딕셔너리에서 data[&#x27;english&#x27;]의 의미는?</p>
+    <label class="choice"><input type="radio" name="q8" value="0"> english 키에 연결된 값</label>
+<label class="choice"><input type="radio" name="q8" value="1"> english 키 삭제</label>
+<label class="choice"><input type="radio" name="q8" value="2"> 딕셔너리 전체 정렬</label>
+<label class="choice"><input type="radio" name="q8" value="3"> 리스트 뒤집기</label>
+<label class="choice"><input type="radio" name="q8" value="4"> 반복문 종료</label>
+    <button class="small" onclick="checkOne(8)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(8)">상세 풀이 보기</button>
+    <div class="solution" id="sol8">
+      <b>정답:</b> 1번<br>
+      딕셔너리는 키와 값의 쌍으로 데이터를 저장합니다. data[&#x27;english&#x27;]는 english 키의 값을 가져옵니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson9">
+  <div class="badge">문장 9</div>
+  <h2>while문으로 키 목록 처리</h2>
+  <div class="sentence">
+    <p class="en">Confucius saw happiness in harmonious relationships and a life guided by respect.</p>
+    <p class="ko">공자는 조화로운 관계와 존중으로 이끌리는 삶 속에서 행복을 보았다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> while, keys<br><b>학습 목표:</b> while문으로 키 목록을 하나씩 처리합니다.</div>
+  <h3>OOP 파이썬 코드</h3>
+  <pre><code>class WhileDictReader:
+    def __init__(self, english, korean):
+        self.data = {&quot;english&quot;: english, &quot;korean&quot;: korean, &quot;theme&quot;: &quot;happiness&quot;}
+
+    def read_keys(self):
+        keys = list(self.data.keys())
+        i = 0
+        while i &lt; len(keys):
+            key = keys[i]
+            print(key, &quot;:&quot;, str(self.data[key])[:20])
+            i += 1
+
+obj = WhileDictReader(&#x27;Confucius saw happiness in harmonious relationships and a life guided by respect.&#x27;, &#x27;공자는 조화로운 관계와 존중으로 이끌리는 삶 속에서 행복을 보았다.&#x27;)
+obj.read_keys()</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 문장 정보를 <code>dict</code>로 저장하고, <code>class</code> 안에서 관리하는 OOP 방식입니다.
+    딕셔너리는 <code>{"key": value}</code> 구조로 데이터를 저장하며, <code>items()</code>, <code>keys()</code>,
+    <code>pop()</code>, <code>update()</code>, <code>dict(zip())</code>, 딕셔너리 컴프리헨션 등을 통해
+    데이터를 체계적으로 처리할 수 있습니다. 또한 함수, 람다, join, zip, map, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용하여 실전적인 데이터 처리 구조를 익힙니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q9.</b> 9번 예제에서 lambda s: s[:5]의 의미는?</p>
+    <label class="choice"><input type="radio" name="q9" value="0"> 문자열 앞 5글자 반환 함수</label>
+<label class="choice"><input type="radio" name="q9" value="1"> 문자열 삭제 함수</label>
+<label class="choice"><input type="radio" name="q9" value="2"> 딕셔너리 병합</label>
+<label class="choice"><input type="radio" name="q9" value="3"> 리스트 정렬</label>
+<label class="choice"><input type="radio" name="q9" value="4"> 파일 저장</label>
+    <button class="small" onclick="checkOne(9)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(9)">상세 풀이 보기</button>
+    <div class="solution" id="sol9">
+      <b>정답:</b> 1번<br>
+      lambda는 짧은 익명 함수입니다. s[:5]는 문자열 앞 5글자를 반환합니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson10">
+  <div class="badge">문장 10</div>
+  <h2>*args로 여러 딕셔너리 처리</h2>
+  <div class="sentence">
+    <p class="en">For example, a warm conversation with family can give deeper happiness than expensive possessions.</p>
+    <p class="ko">예를 들어 가족과의 따뜻한 대화는 값비싼 소유물보다 더 깊은 행복을 줄 수 있다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> *args, dict<br><b>학습 목표:</b> 여러 딕셔너리를 가변 인자로 받아 처리합니다.</div>
+  <h3>OOP 파이썬 코드</h3>
+  <pre><code>class MultiDict:
+    def collect(self, *dicts):
+        result = {}
+        for d in dicts:
+            result.update(d)
+        return result
+
+a = {&quot;en&quot;: &#x27;For example, a warm conversation with family can give deeper happiness than expensive possessions.&#x27;}
+b = {&quot;ko&quot;: &#x27;예를 들어 가족과의 따뜻한 대화는 값비싼 소유물보다 더 깊은 행복을 줄 수 있다.&#x27;}
+obj = MultiDict()
+print(obj.collect(a, b))</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 문장 정보를 <code>dict</code>로 저장하고, <code>class</code> 안에서 관리하는 OOP 방식입니다.
+    딕셔너리는 <code>{"key": value}</code> 구조로 데이터를 저장하며, <code>items()</code>, <code>keys()</code>,
+    <code>pop()</code>, <code>update()</code>, <code>dict(zip())</code>, 딕셔너리 컴프리헨션 등을 통해
+    데이터를 체계적으로 처리할 수 있습니다. 또한 함수, 람다, join, zip, map, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용하여 실전적인 데이터 처리 구조를 익힙니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q10.</b> 10번 예제에서 join의 역할은?</p>
+    <label class="choice"><input type="radio" name="q10" value="0"> 문자열들을 하나로 연결</label>
+<label class="choice"><input type="radio" name="q10" value="1"> 딕셔너리 삭제</label>
+<label class="choice"><input type="radio" name="q10" value="2"> 클래스 제거</label>
+<label class="choice"><input type="radio" name="q10" value="3"> 점수 계산</label>
+<label class="choice"><input type="radio" name="q10" value="4"> 조건 종료</label>
+    <button class="small" onclick="checkOne(10)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(10)">상세 풀이 보기</button>
+    <div class="solution" id="sol10">
+      <b>정답:</b> 1번<br>
+      join은 문자열 리스트를 지정한 구분자로 연결해 하나의 문자열을 만듭니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson11">
+  <div class="badge">문장 11</div>
+  <h2>**kwargs로 딕셔너리 만들기</h2>
+  <div class="sentence">
+    <p class="en">A teacher may find happiness when a struggling student gains confidence.</p>
+    <p class="ko">교사는 어려움을 겪던 학생이 자신감을 얻을 때 행복을 발견할 수 있다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> **kwargs, dict<br><b>학습 목표:</b> 키워드 인자를 받아 딕셔너리처럼 사용합니다.</div>
+  <h3>OOP 파이썬 코드</h3>
+  <pre><code>class KwargsDict:
+    def __init__(self, **kwargs):
+        self.data = kwargs
+
+    def summary(self):
+        return {
+            &quot;keys&quot;: list(self.data.keys()),
+            &quot;english_front&quot;: self.data[&quot;english&quot;][:25]
+        }
+
+obj = KwargsDict(english=&#x27;A teacher may find happiness when a struggling student gains confidence.&#x27;, korean=&#x27;교사는 어려움을 겪던 학생이 자신감을 얻을 때 행복을 발견할 수 있다.&#x27;, number=11)
+print(obj.summary())</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 문장 정보를 <code>dict</code>로 저장하고, <code>class</code> 안에서 관리하는 OOP 방식입니다.
+    딕셔너리는 <code>{"key": value}</code> 구조로 데이터를 저장하며, <code>items()</code>, <code>keys()</code>,
+    <code>pop()</code>, <code>update()</code>, <code>dict(zip())</code>, 딕셔너리 컴프리헨션 등을 통해
+    데이터를 체계적으로 처리할 수 있습니다. 또한 함수, 람다, join, zip, map, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용하여 실전적인 데이터 처리 구조를 익힙니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q11.</b> 11번 예제에서 dict(zip(keys, values))의 의미는?</p>
+    <label class="choice"><input type="radio" name="q11" value="0"> 키와 값을 묶어 딕셔너리 생성</label>
+<label class="choice"><input type="radio" name="q11" value="1"> 파일 압축</label>
+<label class="choice"><input type="radio" name="q11" value="2"> 값 전체 삭제</label>
+<label class="choice"><input type="radio" name="q11" value="3"> 문자열 뒤집기</label>
+<label class="choice"><input type="radio" name="q11" value="4"> HTML 실행</label>
+    <button class="small" onclick="checkOne(11)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(11)">상세 풀이 보기</button>
+    <div class="solution" id="sol11">
+      <b>정답:</b> 1번<br>
+      zip(keys, values)는 같은 위치의 키와 값을 묶고 dict가 이를 딕셔너리로 변환합니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson12">
+  <div class="badge">문장 12</div>
+  <h2>filter로 딕셔너리 항목 필터링</h2>
+  <div class="sentence">
+    <p class="en">A student may feel happiness when effort finally becomes understanding.</p>
+    <p class="ko">학생은 노력이 마침내 이해로 바뀔 때 행복을 느낄 수 있다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> filter, lambda, dict<br><b>학습 목표:</b> 조건에 맞는 딕셔너리 항목만 남깁니다.</div>
+  <h3>OOP 파이썬 코드</h3>
+  <pre><code>class DictFilter:
+    def __init__(self, sentence):
+        words = sentence.replace(&quot;.&quot;, &quot;&quot;).replace(&quot;,&quot;, &quot;&quot;).split()
+        self.data = {word: len(word) for word in words}
+
+    def long_words(self):
+        return dict(filter(lambda item: item[1] &gt;= 8, self.data.items()))
+
+obj = DictFilter(&#x27;A student may feel happiness when effort finally becomes understanding.&#x27;)
+print(obj.long_words())</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 문장 정보를 <code>dict</code>로 저장하고, <code>class</code> 안에서 관리하는 OOP 방식입니다.
+    딕셔너리는 <code>{"key": value}</code> 구조로 데이터를 저장하며, <code>items()</code>, <code>keys()</code>,
+    <code>pop()</code>, <code>update()</code>, <code>dict(zip())</code>, 딕셔너리 컴프리헨션 등을 통해
+    데이터를 체계적으로 처리할 수 있습니다. 또한 함수, 람다, join, zip, map, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용하여 실전적인 데이터 처리 구조를 익힙니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q12.</b> 12번 예제에서 pop(&#x27;key&#x27;)의 역할은?</p>
+    <label class="choice"><input type="radio" name="q12" value="0"> 해당 키의 값을 꺼내고 삭제</label>
+<label class="choice"><input type="radio" name="q12" value="1"> 값을 복사만 함</label>
+<label class="choice"><input type="radio" name="q12" value="2"> 모든 키 정렬</label>
+<label class="choice"><input type="radio" name="q12" value="3"> 반복 시작</label>
+<label class="choice"><input type="radio" name="q12" value="4"> 클래스 생성</label>
+    <button class="small" onclick="checkOne(12)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(12)">상세 풀이 보기</button>
+    <div class="solution" id="sol12">
+      <b>정답:</b> 1번<br>
+      딕셔너리 pop은 지정한 키의 값을 반환하면서 그 항목을 딕셔너리에서 제거합니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson13">
+  <div class="badge">문장 13</div>
+  <h2>인덱스와 키 순서</h2>
+  <div class="sentence">
+    <p class="en">Modern psychology also suggests that gratitude, meaningful relationships, and purpose support happiness.</p>
+    <p class="ko">현대 심리학도 감사, 의미 있는 관계, 목적이 행복을 지탱한다고 말한다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> index, keys, dict<br><b>학습 목표:</b> 키 목록에서 인덱스를 활용해 특정 항목을 찾습니다.</div>
+  <h3>OOP 파이썬 코드</h3>
+  <pre><code>class KeyIndex:
+    def __init__(self, english, korean):
+        self.data = {&quot;english&quot;: english, &quot;korean&quot;: korean, &quot;topic&quot;: &quot;happiness&quot;}
+
+    def find_key(self, target):
+        keys = list(self.data.keys())
+        index = keys.index(target)
+        print(&quot;키 위치:&quot;, index)
+        print(&quot;값:&quot;, self.data[target][:30])
+
+obj = KeyIndex(&#x27;Modern psychology also suggests that gratitude, meaningful relationships, and purpose support happiness.&#x27;, &#x27;현대 심리학도 감사, 의미 있는 관계, 목적이 행복을 지탱한다고 말한다.&#x27;)
+obj.find_key(&quot;english&quot;)</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 문장 정보를 <code>dict</code>로 저장하고, <code>class</code> 안에서 관리하는 OOP 방식입니다.
+    딕셔너리는 <code>{"key": value}</code> 구조로 데이터를 저장하며, <code>items()</code>, <code>keys()</code>,
+    <code>pop()</code>, <code>update()</code>, <code>dict(zip())</code>, 딕셔너리 컴프리헨션 등을 통해
+    데이터를 체계적으로 처리할 수 있습니다. 또한 함수, 람다, join, zip, map, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용하여 실전적인 데이터 처리 구조를 익힙니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q13.</b> 13번 예제에서 items()의 역할은?</p>
+    <label class="choice"><input type="radio" name="q13" value="0"> 키와 값을 쌍으로 반복</label>
+<label class="choice"><input type="radio" name="q13" value="1"> 키만 삭제</label>
+<label class="choice"><input type="radio" name="q13" value="2"> 값만 대문자화</label>
+<label class="choice"><input type="radio" name="q13" value="3"> 파일 다운로드</label>
+<label class="choice"><input type="radio" name="q13" value="4"> 점수 초기화</label>
+    <button class="small" onclick="checkOne(13)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(13)">상세 풀이 보기</button>
+    <div class="solution" id="sol13">
+      <b>정답:</b> 1번<br>
+      items()는 딕셔너리의 키와 값을 쌍으로 꺼내 반복할 수 있게 합니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson14">
+  <div class="badge">문장 14</div>
+  <h2>정렬된 딕셔너리 보기</h2>
+  <div class="sentence">
+    <p class="en">However, happiness becomes fragile when it depends only on comparison or approval.</p>
+    <p class="ko">그러나 행복이 비교나 인정에만 의존할 때 그것은 쉽게 흔들린다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> sorted, dict<br><b>학습 목표:</b> 키 또는 값 기준으로 딕셔너리 항목을 정렬합니다.</div>
+  <h3>OOP 파이썬 코드</h3>
+  <pre><code>class SortedDict:
+    def __init__(self, sentence):
+        words = sentence.replace(&quot;.&quot;, &quot;&quot;).replace(&quot;,&quot;, &quot;&quot;).split()
+        self.data = {word: len(word) for word in words}
+
+    def sort_by_key(self):
+        return dict(sorted(self.data.items()))
+
+obj = SortedDict(&#x27;However, happiness becomes fragile when it depends only on comparison or approval.&#x27;)
+print(obj.sort_by_key())</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 문장 정보를 <code>dict</code>로 저장하고, <code>class</code> 안에서 관리하는 OOP 방식입니다.
+    딕셔너리는 <code>{"key": value}</code> 구조로 데이터를 저장하며, <code>items()</code>, <code>keys()</code>,
+    <code>pop()</code>, <code>update()</code>, <code>dict(zip())</code>, 딕셔너리 컴프리헨션 등을 통해
+    데이터를 체계적으로 처리할 수 있습니다. 또한 함수, 람다, join, zip, map, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용하여 실전적인 데이터 처리 구조를 익힙니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q14.</b> 14번 예제에서 sorted(data.items())의 결과는?</p>
+    <label class="choice"><input type="radio" name="q14" value="0"> 정렬된 키-값 쌍 목록</label>
+<label class="choice"><input type="radio" name="q14" value="1"> 딕셔너리 삭제</label>
+<label class="choice"><input type="radio" name="q14" value="2"> 문자열 슬라이싱</label>
+<label class="choice"><input type="radio" name="q14" value="3"> 클래스 제거</label>
+<label class="choice"><input type="radio" name="q14" value="4"> 오답 표시</label>
+    <button class="small" onclick="checkOne(14)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(14)">상세 풀이 보기</button>
+    <div class="solution" id="sol14">
+      <b>정답:</b> 1번<br>
+      sorted(data.items())는 딕셔너리 항목을 정렬된 리스트 형태로 반환합니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson15">
+  <div class="badge">문장 15</div>
+  <h2>중첩 딕셔너리</h2>
+  <div class="sentence">
+    <p class="en">True happiness often comes quietly through gratitude, service, learning, and love.</p>
+    <p class="ko">참된 행복은 감사, 봉사, 배움, 사랑을 통해 조용히 오는 경우가 많다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> nested dict, OOP<br><b>학습 목표:</b> 영어와 한글을 중첩 딕셔너리로 저장합니다.</div>
+  <h3>OOP 파이썬 코드</h3>
+  <pre><code>class NestedSentence:
+    def __init__(self, english, korean):
+        self.data = {
+            &quot;sentence&quot;: {
+                &quot;english&quot;: english,
+                &quot;korean&quot;: korean
+            },
+            &quot;meta&quot;: {
+                &quot;theme&quot;: &quot;happiness&quot;,
+                &quot;length&quot;: len(english)
+            }
+        }
+
+    def show(self):
+        print(self.data[&quot;sentence&quot;][&quot;english&quot;][:30])
+        print(self.data[&quot;meta&quot;])
+
+obj = NestedSentence(&#x27;True happiness often comes quietly through gratitude, service, learning, and love.&#x27;, &#x27;참된 행복은 감사, 봉사, 배움, 사랑을 통해 조용히 오는 경우가 많다.&#x27;)
+obj.show()</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 문장 정보를 <code>dict</code>로 저장하고, <code>class</code> 안에서 관리하는 OOP 방식입니다.
+    딕셔너리는 <code>{"key": value}</code> 구조로 데이터를 저장하며, <code>items()</code>, <code>keys()</code>,
+    <code>pop()</code>, <code>update()</code>, <code>dict(zip())</code>, 딕셔너리 컴프리헨션 등을 통해
+    데이터를 체계적으로 처리할 수 있습니다. 또한 함수, 람다, join, zip, map, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용하여 실전적인 데이터 처리 구조를 익힙니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q15.</b> 15번 예제에서 딕셔너리에서 data[&#x27;english&#x27;]의 의미는?</p>
+    <label class="choice"><input type="radio" name="q15" value="0"> english 키에 연결된 값</label>
+<label class="choice"><input type="radio" name="q15" value="1"> english 키 삭제</label>
+<label class="choice"><input type="radio" name="q15" value="2"> 딕셔너리 전체 정렬</label>
+<label class="choice"><input type="radio" name="q15" value="3"> 리스트 뒤집기</label>
+<label class="choice"><input type="radio" name="q15" value="4"> 반복문 종료</label>
+    <button class="small" onclick="checkOne(15)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(15)">상세 풀이 보기</button>
+    <div class="solution" id="sol15">
+      <b>정답:</b> 1번<br>
+      딕셔너리는 키와 값의 쌍으로 데이터를 저장합니다. data[&#x27;english&#x27;]는 english 키의 값을 가져옵니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson16">
+  <div class="badge">문장 16</div>
+  <h2>딕셔너리 컴프리헨션</h2>
+  <div class="sentence">
+    <p class="en">It also comes when our actions match our values.</p>
+    <p class="ko">행복은 우리의 행동이 우리의 가치와 일치할 때에도 온다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> dict comprehension<br><b>학습 목표:</b> 조건에 맞는 새 딕셔너리를 빠르게 만듭니다.</div>
+  <h3>OOP 파이썬 코드</h3>
+  <pre><code>class DictComprehension:
+    def __init__(self, sentence):
+        self.words = sentence.replace(&quot;.&quot;, &quot;&quot;).replace(&quot;,&quot;, &quot;&quot;).split()
+
+    def make_dict(self):
+        return {word: word[:3] for word in self.words if len(word) &gt;= 5}
+
+obj = DictComprehension(&#x27;It also comes when our actions match our values.&#x27;)
+print(obj.make_dict())</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 문장 정보를 <code>dict</code>로 저장하고, <code>class</code> 안에서 관리하는 OOP 방식입니다.
+    딕셔너리는 <code>{"key": value}</code> 구조로 데이터를 저장하며, <code>items()</code>, <code>keys()</code>,
+    <code>pop()</code>, <code>update()</code>, <code>dict(zip())</code>, 딕셔너리 컴프리헨션 등을 통해
+    데이터를 체계적으로 처리할 수 있습니다. 또한 함수, 람다, join, zip, map, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용하여 실전적인 데이터 처리 구조를 익힙니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q16.</b> 16번 예제에서 lambda s: s[:5]의 의미는?</p>
+    <label class="choice"><input type="radio" name="q16" value="0"> 문자열 앞 5글자 반환 함수</label>
+<label class="choice"><input type="radio" name="q16" value="1"> 문자열 삭제 함수</label>
+<label class="choice"><input type="radio" name="q16" value="2"> 딕셔너리 병합</label>
+<label class="choice"><input type="radio" name="q16" value="3"> 리스트 정렬</label>
+<label class="choice"><input type="radio" name="q16" value="4"> 파일 저장</label>
+    <button class="small" onclick="checkOne(16)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(16)">상세 풀이 보기</button>
+    <div class="solution" id="sol16">
+      <b>정답:</b> 1번<br>
+      lambda는 짧은 익명 함수입니다. s[:5]는 문자열 앞 5글자를 반환합니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson17">
+  <div class="badge">문장 17</div>
+  <h2>enumerate와 딕셔너리</h2>
+  <div class="sentence">
+    <p class="en">A happy life is not free from pain, but it can find meaning even in difficulty.</p>
+    <p class="ko">행복한 삶은 고통이 없는 삶이 아니지만 어려움 속에서도 의미를 찾을 수 있다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> enumerate, dict<br><b>학습 목표:</b> 번호를 키로 하여 문장 딕셔너리를 만듭니다.</div>
+  <h3>OOP 파이썬 코드</h3>
+  <pre><code>class EnumerateDict:
+    def __init__(self, sentence):
+        self.words = sentence.split()
+
+    def numbered(self):
+        return {index: word for index, word in enumerate(self.words[:8], start=1)}
+
+obj = EnumerateDict(&#x27;A happy life is not free from pain, but it can find meaning even in difficulty.&#x27;)
+print(obj.numbered())</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 문장 정보를 <code>dict</code>로 저장하고, <code>class</code> 안에서 관리하는 OOP 방식입니다.
+    딕셔너리는 <code>{"key": value}</code> 구조로 데이터를 저장하며, <code>items()</code>, <code>keys()</code>,
+    <code>pop()</code>, <code>update()</code>, <code>dict(zip())</code>, 딕셔너리 컴프리헨션 등을 통해
+    데이터를 체계적으로 처리할 수 있습니다. 또한 함수, 람다, join, zip, map, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용하여 실전적인 데이터 처리 구조를 익힙니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q17.</b> 17번 예제에서 join의 역할은?</p>
+    <label class="choice"><input type="radio" name="q17" value="0"> 문자열들을 하나로 연결</label>
+<label class="choice"><input type="radio" name="q17" value="1"> 딕셔너리 삭제</label>
+<label class="choice"><input type="radio" name="q17" value="2"> 클래스 제거</label>
+<label class="choice"><input type="radio" name="q17" value="3"> 점수 계산</label>
+<label class="choice"><input type="radio" name="q17" value="4"> 조건 종료</label>
+    <button class="small" onclick="checkOne(17)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(17)">상세 풀이 보기</button>
+    <div class="solution" id="sol17">
+      <b>정답:</b> 1번<br>
+      join은 문자열 리스트를 지정한 구분자로 연결해 하나의 문자열을 만듭니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson18">
+  <div class="badge">문장 18</div>
+  <h2>문자열 슬라이싱 값 저장</h2>
+  <div class="sentence">
+    <p class="en">Ultimately, happiness comes from living wisely, loving sincerely, and sharing goodness with others.</p>
+    <p class="ko">궁극적으로 행복은 지혜롭게 살고 진심으로 사랑하며 선함을 다른 사람과 나누는 데서 온다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> slicing, dict values<br><b>학습 목표:</b> 문자열 조각을 딕셔너리 값으로 저장합니다.</div>
+  <h3>OOP 파이썬 코드</h3>
+  <pre><code>class SliceStore:
+    def __init__(self, sentence):
+        self.data = {&quot;original&quot;: sentence}
+
+    def store_slices(self):
+        text = self.data[&quot;original&quot;]
+        self.data[&quot;front&quot;] = text[:25]
+        self.data[&quot;middle&quot;] = text[25:55]
+        return self.data
+
+obj = SliceStore(&#x27;Ultimately, happiness comes from living wisely, loving sincerely, and sharing goodness with others.&#x27;)
+print(obj.store_slices())</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 문장 정보를 <code>dict</code>로 저장하고, <code>class</code> 안에서 관리하는 OOP 방식입니다.
+    딕셔너리는 <code>{"key": value}</code> 구조로 데이터를 저장하며, <code>items()</code>, <code>keys()</code>,
+    <code>pop()</code>, <code>update()</code>, <code>dict(zip())</code>, 딕셔너리 컴프리헨션 등을 통해
+    데이터를 체계적으로 처리할 수 있습니다. 또한 함수, 람다, join, zip, map, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용하여 실전적인 데이터 처리 구조를 익힙니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q18.</b> 18번 예제에서 dict(zip(keys, values))의 의미는?</p>
+    <label class="choice"><input type="radio" name="q18" value="0"> 키와 값을 묶어 딕셔너리 생성</label>
+<label class="choice"><input type="radio" name="q18" value="1"> 파일 압축</label>
+<label class="choice"><input type="radio" name="q18" value="2"> 값 전체 삭제</label>
+<label class="choice"><input type="radio" name="q18" value="3"> 문자열 뒤집기</label>
+<label class="choice"><input type="radio" name="q18" value="4"> HTML 실행</label>
+    <button class="small" onclick="checkOne(18)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(18)">상세 풀이 보기</button>
+    <div class="solution" id="sol18">
+      <b>정답:</b> 1번<br>
+      zip(keys, values)는 같은 위치의 키와 값을 묶고 dict가 이를 딕셔너리로 변환합니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson19">
+  <div class="badge">문장 19</div>
+  <h2>음수 인덱스와 딕셔너리</h2>
+  <div class="sentence">
+    <p class="en">Today, I will begin my day by looking for happiness in gratitude.</p>
+    <p class="ko">오늘 나는 감사 속에서 행복을 찾으며 하루를 시작하겠다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> negative index, dict<br><b>학습 목표:</b> 문장의 뒷부분을 딕셔너리에 저장합니다.</div>
+  <h3>OOP 파이썬 코드</h3>
+  <pre><code>class BackSlice:
+    def __init__(self, sentence):
+        self.data = {&quot;sentence&quot;: sentence}
+
+    def back_parts(self):
+        text = self.data[&quot;sentence&quot;]
+        self.data[&quot;last_20&quot;] = text[-20:]
+        self.data[&quot;without_last&quot;] = text[:-1]
+        return self.data
+
+obj = BackSlice(&#x27;Today, I will begin my day by looking for happiness in gratitude.&#x27;)
+print(obj.back_parts())</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 문장 정보를 <code>dict</code>로 저장하고, <code>class</code> 안에서 관리하는 OOP 방식입니다.
+    딕셔너리는 <code>{"key": value}</code> 구조로 데이터를 저장하며, <code>items()</code>, <code>keys()</code>,
+    <code>pop()</code>, <code>update()</code>, <code>dict(zip())</code>, 딕셔너리 컴프리헨션 등을 통해
+    데이터를 체계적으로 처리할 수 있습니다. 또한 함수, 람다, join, zip, map, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용하여 실전적인 데이터 처리 구조를 익힙니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q19.</b> 19번 예제에서 pop(&#x27;key&#x27;)의 역할은?</p>
+    <label class="choice"><input type="radio" name="q19" value="0"> 해당 키의 값을 꺼내고 삭제</label>
+<label class="choice"><input type="radio" name="q19" value="1"> 값을 복사만 함</label>
+<label class="choice"><input type="radio" name="q19" value="2"> 모든 키 정렬</label>
+<label class="choice"><input type="radio" name="q19" value="3"> 반복 시작</label>
+<label class="choice"><input type="radio" name="q19" value="4"> 클래스 생성</label>
+    <button class="small" onclick="checkOne(19)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(19)">상세 풀이 보기</button>
+    <div class="solution" id="sol19">
+      <b>정답:</b> 1번<br>
+      딕셔너리 pop은 지정한 키의 값을 반환하면서 그 항목을 딕셔너리에서 제거합니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson20">
+  <div class="badge">문장 20</div>
+  <h2>간격 슬라이싱과 딕셔너리</h2>
+  <div class="sentence">
+    <p class="en">I will not chase only big success, but value small peaceful moments.</p>
+    <p class="ko">나는 큰 성공만 좇지 않고 작고 평화로운 순간들을 소중히 여기겠다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> step slicing, dict<br><b>학습 목표:</b> 건너뛰기 슬라이싱 결과를 딕셔너리에 저장합니다.</div>
+  <h3>OOP 파이썬 코드</h3>
+  <pre><code>class StepSlice:
+    def __init__(self, sentence):
+        self.data = {&quot;sentence&quot;: sentence}
+
+    def step(self):
+        text = self.data[&quot;sentence&quot;]
+        self.data[&quot;even_chars&quot;] = text[::2]
+        self.data[&quot;odd_chars&quot;] = text[1::2]
+        return self.data
+
+obj = StepSlice(&#x27;I will not chase only big success, but value small peaceful moments.&#x27;)
+print(obj.step())</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 문장 정보를 <code>dict</code>로 저장하고, <code>class</code> 안에서 관리하는 OOP 방식입니다.
+    딕셔너리는 <code>{"key": value}</code> 구조로 데이터를 저장하며, <code>items()</code>, <code>keys()</code>,
+    <code>pop()</code>, <code>update()</code>, <code>dict(zip())</code>, 딕셔너리 컴프리헨션 등을 통해
+    데이터를 체계적으로 처리할 수 있습니다. 또한 함수, 람다, join, zip, map, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용하여 실전적인 데이터 처리 구조를 익힙니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q20.</b> 20번 예제에서 items()의 역할은?</p>
+    <label class="choice"><input type="radio" name="q20" value="0"> 키와 값을 쌍으로 반복</label>
+<label class="choice"><input type="radio" name="q20" value="1"> 키만 삭제</label>
+<label class="choice"><input type="radio" name="q20" value="2"> 값만 대문자화</label>
+<label class="choice"><input type="radio" name="q20" value="3"> 파일 다운로드</label>
+<label class="choice"><input type="radio" name="q20" value="4"> 점수 초기화</label>
+    <button class="small" onclick="checkOne(20)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(20)">상세 풀이 보기</button>
+    <div class="solution" id="sol20">
+      <b>정답:</b> 1번<br>
+      items()는 딕셔너리의 키와 값을 쌍으로 꺼내 반복할 수 있게 합니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson21">
+  <div class="badge">문장 21</div>
+  <h2>불리언 값 저장</h2>
+  <div class="sentence">
+    <p class="en">Happiness comes from a heart that notices kindness and meaning.</p>
+    <p class="ko">행복은 친절과 의미를 알아보는 마음에서 온다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> boolean, dict<br><b>학습 목표:</b> 문장 분석 결과를 True/False 값으로 저장합니다.</div>
+  <h3>OOP 파이썬 코드</h3>
+  <pre><code>class BooleanDict:
+    def __init__(self, sentence):
+        self.data = {&quot;sentence&quot;: sentence}
+
+    def analyze(self):
+        text = self.data[&quot;sentence&quot;]
+        self.data[&quot;is_long&quot;] = len(text) &gt;= 70
+        self.data[&quot;has_happiness&quot;] = &quot;happiness&quot; in text.lower()
+        return self.data
+
+obj = BooleanDict(&#x27;Happiness comes from a heart that notices kindness and meaning.&#x27;)
+print(obj.analyze())</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 문장 정보를 <code>dict</code>로 저장하고, <code>class</code> 안에서 관리하는 OOP 방식입니다.
+    딕셔너리는 <code>{"key": value}</code> 구조로 데이터를 저장하며, <code>items()</code>, <code>keys()</code>,
+    <code>pop()</code>, <code>update()</code>, <code>dict(zip())</code>, 딕셔너리 컴프리헨션 등을 통해
+    데이터를 체계적으로 처리할 수 있습니다. 또한 함수, 람다, join, zip, map, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용하여 실전적인 데이터 처리 구조를 익힙니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q21.</b> 21번 예제에서 sorted(data.items())의 결과는?</p>
+    <label class="choice"><input type="radio" name="q21" value="0"> 정렬된 키-값 쌍 목록</label>
+<label class="choice"><input type="radio" name="q21" value="1"> 딕셔너리 삭제</label>
+<label class="choice"><input type="radio" name="q21" value="2"> 문자열 슬라이싱</label>
+<label class="choice"><input type="radio" name="q21" value="3"> 클래스 제거</label>
+<label class="choice"><input type="radio" name="q21" value="4"> 오답 표시</label>
+    <button class="small" onclick="checkOne(21)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(21)">상세 풀이 보기</button>
+    <div class="solution" id="sol21">
+      <b>정답:</b> 1번<br>
+      sorted(data.items())는 딕셔너리 항목을 정렬된 리스트 형태로 반환합니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson22">
+  <div class="badge">문장 22</div>
+  <h2>딕셔너리 병합</h2>
+  <div class="sentence">
+    <p class="en">I will speak warmly to my students and people around me.</p>
+    <p class="ko">나는 학생들과 주변 사람들에게 따뜻하게 말하겠다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> dict merge, update<br><b>학습 목표:</b> 여러 딕셔너리를 병합하여 하나로 관리합니다.</div>
+  <h3>OOP 파이썬 코드</h3>
+  <pre><code>class MergeDict:
+    def __init__(self, english, korean):
+        self.basic = {&quot;english&quot;: english}
+        self.extra = {&quot;korean&quot;: korean, &quot;theme&quot;: &quot;happiness&quot;}
+
+    def merge(self):
+        self.basic.update(self.extra)
+        return self.basic
+
+obj = MergeDict(&#x27;I will speak warmly to my students and people around me.&#x27;, &#x27;나는 학생들과 주변 사람들에게 따뜻하게 말하겠다.&#x27;)
+print(obj.merge())</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 문장 정보를 <code>dict</code>로 저장하고, <code>class</code> 안에서 관리하는 OOP 방식입니다.
+    딕셔너리는 <code>{"key": value}</code> 구조로 데이터를 저장하며, <code>items()</code>, <code>keys()</code>,
+    <code>pop()</code>, <code>update()</code>, <code>dict(zip())</code>, 딕셔너리 컴프리헨션 등을 통해
+    데이터를 체계적으로 처리할 수 있습니다. 또한 함수, 람다, join, zip, map, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용하여 실전적인 데이터 처리 구조를 익힙니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q22.</b> 22번 예제에서 딕셔너리에서 data[&#x27;english&#x27;]의 의미는?</p>
+    <label class="choice"><input type="radio" name="q22" value="0"> english 키에 연결된 값</label>
+<label class="choice"><input type="radio" name="q22" value="1"> english 키 삭제</label>
+<label class="choice"><input type="radio" name="q22" value="2"> 딕셔너리 전체 정렬</label>
+<label class="choice"><input type="radio" name="q22" value="3"> 리스트 뒤집기</label>
+<label class="choice"><input type="radio" name="q22" value="4"> 반복문 종료</label>
+    <button class="small" onclick="checkOne(22)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(22)">상세 풀이 보기</button>
+    <div class="solution" id="sol22">
+      <b>정답:</b> 1번<br>
+      딕셔너리는 키와 값의 쌍으로 데이터를 저장합니다. data[&#x27;english&#x27;]는 english 키의 값을 가져옵니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson23">
+  <div class="badge">문장 23</div>
+  <h2>값 길이 기준 정렬</h2>
+  <div class="sentence">
+    <p class="en">I will enjoy simple things, such as light, food, conversation, and rest.</p>
+    <p class="ko">나는 빛, 음식, 대화, 휴식 같은 단순한 것들을 누리겠다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> sort by value length<br><b>학습 목표:</b> 딕셔너리 값을 길이 기준으로 정렬합니다.</div>
+  <h3>OOP 파이썬 코드</h3>
+  <pre><code>class ValueLengthSorter:
+    def __init__(self, *sentences):
+        self.data = {f&quot;s{i}&quot;: s for i, s in enumerate(sentences, start=1)}
+
+    def sort_by_length(self):
+        return dict(sorted(self.data.items(), key=lambda item: len(item[1])))
+
+obj = ValueLengthSorter(
+    &#x27;Happiness comes from a heart that notices kindness and meaning.&#x27;,
+    &#x27;I will speak warmly to my students and people around me.&#x27;,
+    &#x27;I will enjoy simple things, such as light, food, conversation, and rest.&#x27;
+)
+print(obj.sort_by_length())</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 문장 정보를 <code>dict</code>로 저장하고, <code>class</code> 안에서 관리하는 OOP 방식입니다.
+    딕셔너리는 <code>{"key": value}</code> 구조로 데이터를 저장하며, <code>items()</code>, <code>keys()</code>,
+    <code>pop()</code>, <code>update()</code>, <code>dict(zip())</code>, 딕셔너리 컴프리헨션 등을 통해
+    데이터를 체계적으로 처리할 수 있습니다. 또한 함수, 람다, join, zip, map, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용하여 실전적인 데이터 처리 구조를 익힙니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q23.</b> 23번 예제에서 lambda s: s[:5]의 의미는?</p>
+    <label class="choice"><input type="radio" name="q23" value="0"> 문자열 앞 5글자 반환 함수</label>
+<label class="choice"><input type="radio" name="q23" value="1"> 문자열 삭제 함수</label>
+<label class="choice"><input type="radio" name="q23" value="2"> 딕셔너리 병합</label>
+<label class="choice"><input type="radio" name="q23" value="3"> 리스트 정렬</label>
+<label class="choice"><input type="radio" name="q23" value="4"> 파일 저장</label>
+    <button class="small" onclick="checkOne(23)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(23)">상세 풀이 보기</button>
+    <div class="solution" id="sol23">
+      <b>정답:</b> 1번<br>
+      lambda는 짧은 익명 함수입니다. s[:5]는 문자열 앞 5글자를 반환합니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson24">
+  <div class="badge">문장 24</div>
+  <h2>한글 문장 딕셔너리</h2>
+  <div class="sentence">
+    <p class="en">When I feel tired, I will remember what I am thankful for.</p>
+    <p class="ko">피곤할 때 나는 내가 감사할 것을 기억하겠다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> Korean, dict<br><b>학습 목표:</b> 한글 문장을 딕셔너리로 분석합니다.</div>
+  <h3>OOP 파이썬 코드</h3>
+  <pre><code>class KoreanDict:
+    def __init__(self, korean):
+        self.data = {&quot;korean&quot;: korean}
+
+    def analyze(self):
+        text = self.data[&quot;korean&quot;]
+        self.data[&quot;front&quot;] = text[:12]
+        self.data[&quot;back&quot;] = text[-12:]
+        self.data[&quot;words&quot;] = text.split()
+        return self.data
+
+obj = KoreanDict(&#x27;피곤할 때 나는 내가 감사할 것을 기억하겠다.&#x27;)
+print(obj.analyze())</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 문장 정보를 <code>dict</code>로 저장하고, <code>class</code> 안에서 관리하는 OOP 방식입니다.
+    딕셔너리는 <code>{"key": value}</code> 구조로 데이터를 저장하며, <code>items()</code>, <code>keys()</code>,
+    <code>pop()</code>, <code>update()</code>, <code>dict(zip())</code>, 딕셔너리 컴프리헨션 등을 통해
+    데이터를 체계적으로 처리할 수 있습니다. 또한 함수, 람다, join, zip, map, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용하여 실전적인 데이터 처리 구조를 익힙니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q24.</b> 24번 예제에서 join의 역할은?</p>
+    <label class="choice"><input type="radio" name="q24" value="0"> 문자열들을 하나로 연결</label>
+<label class="choice"><input type="radio" name="q24" value="1"> 딕셔너리 삭제</label>
+<label class="choice"><input type="radio" name="q24" value="2"> 클래스 제거</label>
+<label class="choice"><input type="radio" name="q24" value="3"> 점수 계산</label>
+<label class="choice"><input type="radio" name="q24" value="4"> 조건 종료</label>
+    <button class="small" onclick="checkOne(24)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(24)">상세 풀이 보기</button>
+    <div class="solution" id="sol24">
+      <b>정답:</b> 1번<br>
+      join은 문자열 리스트를 지정한 구분자로 연결해 하나의 문자열을 만듭니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson25">
+  <div class="badge">문장 25</div>
+  <h2>영어·한글 쌍 딕셔너리</h2>
+  <div class="sentence">
+    <p class="en">I will help someone today, because shared goodness brings deep joy.</p>
+    <p class="ko">나누어진 선함은 깊은 기쁨을 가져오므로 나는 오늘 누군가를 돕겠다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> bilingual dict<br><b>학습 목표:</b> 영어와 한글을 한 쌍으로 저장합니다.</div>
+  <h3>OOP 파이썬 코드</h3>
+  <pre><code>class BilingualDict:
+    def __init__(self, english, korean):
+        self.data = {
+            &quot;english&quot;: {&quot;text&quot;: english, &quot;front&quot;: english[:25]},
+            &quot;korean&quot;: {&quot;text&quot;: korean, &quot;front&quot;: korean[:15]}
+        }
+
+    def show(self):
+        for lang, info in self.data.items():
+            print(lang, &quot;=&gt;&quot;, info[&quot;front&quot;])
+
+obj = BilingualDict(&#x27;I will help someone today, because shared goodness brings deep joy.&#x27;, &#x27;나누어진 선함은 깊은 기쁨을 가져오므로 나는 오늘 누군가를 돕겠다.&#x27;)
+obj.show()</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 문장 정보를 <code>dict</code>로 저장하고, <code>class</code> 안에서 관리하는 OOP 방식입니다.
+    딕셔너리는 <code>{"key": value}</code> 구조로 데이터를 저장하며, <code>items()</code>, <code>keys()</code>,
+    <code>pop()</code>, <code>update()</code>, <code>dict(zip())</code>, 딕셔너리 컴프리헨션 등을 통해
+    데이터를 체계적으로 처리할 수 있습니다. 또한 함수, 람다, join, zip, map, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용하여 실전적인 데이터 처리 구조를 익힙니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q25.</b> 25번 예제에서 dict(zip(keys, values))의 의미는?</p>
+    <label class="choice"><input type="radio" name="q25" value="0"> 키와 값을 묶어 딕셔너리 생성</label>
+<label class="choice"><input type="radio" name="q25" value="1"> 파일 압축</label>
+<label class="choice"><input type="radio" name="q25" value="2"> 값 전체 삭제</label>
+<label class="choice"><input type="radio" name="q25" value="3"> 문자열 뒤집기</label>
+<label class="choice"><input type="radio" name="q25" value="4"> HTML 실행</label>
+    <button class="small" onclick="checkOne(25)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(25)">상세 풀이 보기</button>
+    <div class="solution" id="sol25">
+      <b>정답:</b> 1번<br>
+      zip(keys, values)는 같은 위치의 키와 값을 묶고 dict가 이를 딕셔너리로 변환합니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson26">
+  <div class="badge">문장 26</div>
+  <h2>검색 결과 딕셔너리</h2>
+  <div class="sentence">
+    <p class="en">I will avoid comparison and walk my own meaningful path.</p>
+    <p class="ko">나는 비교를 피하고 나의 의미 있는 길을 걸어가겠다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> search, filter, dict<br><b>학습 목표:</b> 특정 단어가 들어간 문장을 딕셔너리에 저장합니다.</div>
+  <h3>OOP 파이썬 코드</h3>
+  <pre><code>class SearchDict:
+    def __init__(self, *sentences):
+        self.data = {i: s for i, s in enumerate(sentences, start=1)}
+
+    def search(self, keyword):
+        return dict(filter(lambda item: keyword.lower() in item[1].lower(), self.data.items()))
+
+obj = SearchDict(
+    &#x27;I will enjoy simple things, such as light, food, conversation, and rest.&#x27;,
+    &#x27;When I feel tired, I will remember what I am thankful for.&#x27;,
+    &#x27;I will help someone today, because shared goodness brings deep joy.&#x27;,
+    &#x27;I will avoid comparison and walk my own meaningful path.&#x27;
+)
+print(obj.search(&quot;happiness&quot;))</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 문장 정보를 <code>dict</code>로 저장하고, <code>class</code> 안에서 관리하는 OOP 방식입니다.
+    딕셔너리는 <code>{"key": value}</code> 구조로 데이터를 저장하며, <code>items()</code>, <code>keys()</code>,
+    <code>pop()</code>, <code>update()</code>, <code>dict(zip())</code>, 딕셔너리 컴프리헨션 등을 통해
+    데이터를 체계적으로 처리할 수 있습니다. 또한 함수, 람다, join, zip, map, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용하여 실전적인 데이터 처리 구조를 익힙니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q26.</b> 26번 예제에서 pop(&#x27;key&#x27;)의 역할은?</p>
+    <label class="choice"><input type="radio" name="q26" value="0"> 해당 키의 값을 꺼내고 삭제</label>
+<label class="choice"><input type="radio" name="q26" value="1"> 값을 복사만 함</label>
+<label class="choice"><input type="radio" name="q26" value="2"> 모든 키 정렬</label>
+<label class="choice"><input type="radio" name="q26" value="3"> 반복 시작</label>
+<label class="choice"><input type="radio" name="q26" value="4"> 클래스 생성</label>
+    <button class="small" onclick="checkOne(26)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(26)">상세 풀이 보기</button>
+    <div class="solution" id="sol26">
+      <b>정답:</b> 1번<br>
+      딕셔너리 pop은 지정한 키의 값을 반환하면서 그 항목을 딕셔너리에서 제거합니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson27">
+  <div class="badge">문장 27</div>
+  <h2>OOP 종합 분석기</h2>
+  <div class="sentence">
+    <p class="en">With gratitude and love, I can make today happier and more meaningful.</p>
+    <p class="ko">감사와 사랑으로 나는 오늘을 더 행복하고 의미 있게 만들 수 있다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> class, *args, **kwargs<br><b>학습 목표:</b> 클래스 안에서 가변 인자와 옵션을 활용해 분석합니다.</div>
+  <h3>OOP 파이썬 코드</h3>
+  <pre><code>class OOPAnalyzer:
+    def __init__(self, *sentences, **options):
+        self.sentences = sentences
+        self.options = options
+        self.data = {}
+
+    def analyze(self):
+        start = self.options.get(&quot;start&quot;, 0)
+        end = self.options.get(&quot;end&quot;, 20)
+        for i, sentence in enumerate(self.sentences, start=1):
+            self.data[i] = sentence[start:end]
+        return self.data
+
+obj = OOPAnalyzer(&#x27;I will avoid comparison and walk my own meaningful path.&#x27;, &#x27;With gratitude and love, I can make today happier and more meaningful.&#x27;, start=0, end=30)
+print(obj.analyze())</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 문장 정보를 <code>dict</code>로 저장하고, <code>class</code> 안에서 관리하는 OOP 방식입니다.
+    딕셔너리는 <code>{"key": value}</code> 구조로 데이터를 저장하며, <code>items()</code>, <code>keys()</code>,
+    <code>pop()</code>, <code>update()</code>, <code>dict(zip())</code>, 딕셔너리 컴프리헨션 등을 통해
+    데이터를 체계적으로 처리할 수 있습니다. 또한 함수, 람다, join, zip, map, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용하여 실전적인 데이터 처리 구조를 익힙니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q27.</b> 27번 예제에서 items()의 역할은?</p>
+    <label class="choice"><input type="radio" name="q27" value="0"> 키와 값을 쌍으로 반복</label>
+<label class="choice"><input type="radio" name="q27" value="1"> 키만 삭제</label>
+<label class="choice"><input type="radio" name="q27" value="2"> 값만 대문자화</label>
+<label class="choice"><input type="radio" name="q27" value="3"> 파일 다운로드</label>
+<label class="choice"><input type="radio" name="q27" value="4"> 점수 초기화</label>
+    <button class="small" onclick="checkOne(27)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(27)">상세 풀이 보기</button>
+    <div class="solution" id="sol27">
+      <b>정답:</b> 1번<br>
+      items()는 딕셔너리의 키와 값을 쌍으로 꺼내 반복할 수 있게 합니다.
+    </div>
+  </div>
+</section>
+
+<section class="lesson" id="lesson28">
+  <div class="badge">문장 28</div>
+  <h2>최종 OOP 딕셔너리 미션</h2>
+  <div class="sentence">
+    <p class="en">Today, I will live as a person who finds happiness in wisdom, kindness, and purpose.</p>
+    <p class="ko">오늘 나는 지혜와 친절과 목적 속에서 행복을 찾는 사람으로 살아가겠다.</p>
+  </div>
+  <div class="concept"><b>핵심 문법:</b> OOP, filter, sorted, dict<br><b>학습 목표:</b> 필터, 정렬, 딕셔너리, 클래스를 종합합니다.</div>
+  <h3>OOP 파이썬 코드</h3>
+  <pre><code>class FinalDictMission:
+    def __init__(self, *sentences):
+        self.data = {i: s for i, s in enumerate(sentences, start=1)}
+
+    def run(self, keyword=&quot;happiness&quot;):
+        filtered = dict(filter(lambda item: keyword.lower() in item[1].lower(), self.data.items()))
+        sorted_items = sorted(filtered.items(), key=lambda item: len(item[1]))
+        result = {}
+        for index, sentence in sorted_items:
+            result[index] = {
+                &quot;front&quot;: sentence[:25],
+                &quot;back&quot;: sentence[-20:],
+                &quot;length&quot;: len(sentence)
+            }
+        return result
+
+obj = FinalDictMission(
+    &#x27;I will avoid comparison and walk my own meaningful path.&#x27;,
+    &#x27;With gratitude and love, I can make today happier and more meaningful.&#x27;,
+    &#x27;Today, I will live as a person who finds happiness in wisdom, kindness, and purpose.&#x27;
+)
+print(obj.run())</code></pre>
+  <h3>상세 풀이</h3>
+  <div class="explain">
+    이 예제는 문장 정보를 <code>dict</code>로 저장하고, <code>class</code> 안에서 관리하는 OOP 방식입니다.
+    딕셔너리는 <code>{"key": value}</code> 구조로 데이터를 저장하며, <code>items()</code>, <code>keys()</code>,
+    <code>pop()</code>, <code>update()</code>, <code>dict(zip())</code>, 딕셔너리 컴프리헨션 등을 통해
+    데이터를 체계적으로 처리할 수 있습니다. 또한 함수, 람다, join, zip, map, for, if, while,
+    <code>*args</code>, <code>**kwargs</code>, filter, index, sorted를 함께 사용하여 실전적인 데이터 처리 구조를 익힙니다.
+  </div>
+  <h3>확인 문제</h3>
+  <div class="quiz">
+    <p><b>Q28.</b> 28번 예제에서 sorted(data.items())의 결과는?</p>
+    <label class="choice"><input type="radio" name="q28" value="0"> 정렬된 키-값 쌍 목록</label>
+<label class="choice"><input type="radio" name="q28" value="1"> 딕셔너리 삭제</label>
+<label class="choice"><input type="radio" name="q28" value="2"> 문자열 슬라이싱</label>
+<label class="choice"><input type="radio" name="q28" value="3"> 클래스 제거</label>
+<label class="choice"><input type="radio" name="q28" value="4"> 오답 표시</label>
+    <button class="small" onclick="checkOne(28)">정답 확인</button>
+    <button class="small ghost" onclick="toggleSolution(28)">상세 풀이 보기</button>
+    <div class="solution" id="sol28">
+      <b>정답:</b> 1번<br>
+      sorted(data.items())는 딕셔너리 항목을 정렬된 리스트 형태로 반환합니다.
+    </div>
+  </div>
+</section>
+
+
+  <section class="lesson">
+    <h2>전체 문장 Text</h2>
+    <div class="footertext">1. The question “Where does happiness come from?” asks whether happiness comes from outside conditions or inner ways of living.
+“행복은 어디에서 오는가?”라는 질문은 행복이 외부 조건에서 오는지, 아니면 내면의 삶의 방식에서 오는지를 묻는다.
+2. In humanistic philosophy, happiness is not only pleasure, but a deep harmony of the soul, relationships, and purpose.
+인문 철학에서 행복은 단순한 즐거움이 아니라 영혼과 관계와 목적의 깊은 조화이다.
+3. Aristotle called true happiness eudaimonia, meaning a flourishing life shaped by virtue.
+아리스토텔레스는 참된 행복을 에우다이모니아라고 불렀는데, 이는 덕으로 형성된 번영하는 삶을 뜻한다.
+4. For Aristotle, happiness comes from becoming a good person through repeated good actions.
+아리스토텔레스에게 행복은 반복되는 선한 행동을 통해 좋은 사람이 되어 가는 데서 온다.
+5. Socrates believed that a healthy soul is more important for happiness than wealth or fame.
+소크라테스는 행복을 위해 건강한 영혼이 부나 명예보다 더 중요하다고 믿었다.
+6. His life teaches us that happiness grows from self-examination and moral honesty.
+그의 삶은 행복이 자기 성찰과 도덕적 정직에서 자란다는 것을 가르쳐 준다.
+7. Epicurus taught that simple pleasures, friendship, and peace of mind are enough for a happy life.
+에피쿠로스는 단순한 즐거움, 우정, 마음의 평화가 행복한 삶에 충분하다고 가르쳤다.
+8. His idea reminds us that happiness does not always come from having more.
+그의 생각은 행복이 항상 더 많이 가지는 데서 오는 것은 아님을 일깨워 준다.
+9. Confucius saw happiness in harmonious relationships and a life guided by respect.
+공자는 조화로운 관계와 존중으로 이끌리는 삶 속에서 행복을 보았다.
+10. For example, a warm conversation with family can give deeper happiness than expensive possessions.
+예를 들어 가족과의 따뜻한 대화는 값비싼 소유물보다 더 깊은 행복을 줄 수 있다.
+11. A teacher may find happiness when a struggling student gains confidence.
+교사는 어려움을 겪던 학생이 자신감을 얻을 때 행복을 발견할 수 있다.
+12. A student may feel happiness when effort finally becomes understanding.
+학생은 노력이 마침내 이해로 바뀔 때 행복을 느낄 수 있다.
+13. Modern psychology also suggests that gratitude, meaningful relationships, and purpose support happiness.
+현대 심리학도 감사, 의미 있는 관계, 목적이 행복을 지탱한다고 말한다.
+14. However, happiness becomes fragile when it depends only on comparison or approval.
+그러나 행복이 비교나 인정에만 의존할 때 그것은 쉽게 흔들린다.
+15. True happiness often comes quietly through gratitude, service, learning, and love.
+참된 행복은 감사, 봉사, 배움, 사랑을 통해 조용히 오는 경우가 많다.
+16. It also comes when our actions match our values.
+행복은 우리의 행동이 우리의 가치와 일치할 때에도 온다.
+17. A happy life is not free from pain, but it can find meaning even in difficulty.
+행복한 삶은 고통이 없는 삶이 아니지만 어려움 속에서도 의미를 찾을 수 있다.
+18. Ultimately, happiness comes from living wisely, loving sincerely, and sharing goodness with others.
+궁극적으로 행복은 지혜롭게 살고 진심으로 사랑하며 선함을 다른 사람과 나누는 데서 온다.
+19. Today, I will begin my day by looking for happiness in gratitude.
+오늘 나는 감사 속에서 행복을 찾으며 하루를 시작하겠다.
+20. I will not chase only big success, but value small peaceful moments.
+나는 큰 성공만 좇지 않고 작고 평화로운 순간들을 소중히 여기겠다.
+21. Happiness comes from a heart that notices kindness and meaning.
+행복은 친절과 의미를 알아보는 마음에서 온다.
+22. I will speak warmly to my students and people around me.
+나는 학생들과 주변 사람들에게 따뜻하게 말하겠다.
+23. I will enjoy simple things, such as light, food, conversation, and rest.
+나는 빛, 음식, 대화, 휴식 같은 단순한 것들을 누리겠다.
+24. When I feel tired, I will remember what I am thankful for.
+피곤할 때 나는 내가 감사할 것을 기억하겠다.
+25. I will help someone today, because shared goodness brings deep joy.
+나누어진 선함은 깊은 기쁨을 가져오므로 나는 오늘 누군가를 돕겠다.
+26. I will avoid comparison and walk my own meaningful path.
+나는 비교를 피하고 나의 의미 있는 길을 걸어가겠다.
+27. With gratitude and love, I can make today happier and more meaningful.
+감사와 사랑으로 나는 오늘을 더 행복하고 의미 있게 만들 수 있다.
+28. Today, I will live as a person who finds happiness in wisdom, kindness, and purpose.
+오늘 나는 지혜와 친절과 목적 속에서 행복을 찾는 사람으로 살아가겠다.</div>
+  </section>
+</div>
+
+<script>
+const answers = {"1": 0, "2": 0, "3": 0, "4": 0, "5": 0, "6": 0, "7": 0, "8": 0, "9": 0, "10": 0, "11": 0, "12": 0, "13": 0, "14": 0, "15": 0, "16": 0, "17": 0, "18": 0, "19": 0, "20": 0, "21": 0, "22": 0, "23": 0, "24": 0, "25": 0, "26": 0, "27": 0, "28": 0};
+const explanations = {"1": "딕셔너리는 키와 값의 쌍으로 데이터를 저장합니다. data['english']는 english 키의 값을 가져옵니다.", "2": "lambda는 짧은 익명 함수입니다. s[:5]는 문자열 앞 5글자를 반환합니다.", "3": "join은 문자열 리스트를 지정한 구분자로 연결해 하나의 문자열을 만듭니다.", "4": "zip(keys, values)는 같은 위치의 키와 값을 묶고 dict가 이를 딕셔너리로 변환합니다.", "5": "딕셔너리 pop은 지정한 키의 값을 반환하면서 그 항목을 딕셔너리에서 제거합니다.", "6": "items()는 딕셔너리의 키와 값을 쌍으로 꺼내 반복할 수 있게 합니다.", "7": "sorted(data.items())는 딕셔너리 항목을 정렬된 리스트 형태로 반환합니다.", "8": "딕셔너리는 키와 값의 쌍으로 데이터를 저장합니다. data['english']는 english 키의 값을 가져옵니다.", "9": "lambda는 짧은 익명 함수입니다. s[:5]는 문자열 앞 5글자를 반환합니다.", "10": "join은 문자열 리스트를 지정한 구분자로 연결해 하나의 문자열을 만듭니다.", "11": "zip(keys, values)는 같은 위치의 키와 값을 묶고 dict가 이를 딕셔너리로 변환합니다.", "12": "딕셔너리 pop은 지정한 키의 값을 반환하면서 그 항목을 딕셔너리에서 제거합니다.", "13": "items()는 딕셔너리의 키와 값을 쌍으로 꺼내 반복할 수 있게 합니다.", "14": "sorted(data.items())는 딕셔너리 항목을 정렬된 리스트 형태로 반환합니다.", "15": "딕셔너리는 키와 값의 쌍으로 데이터를 저장합니다. data['english']는 english 키의 값을 가져옵니다.", "16": "lambda는 짧은 익명 함수입니다. s[:5]는 문자열 앞 5글자를 반환합니다.", "17": "join은 문자열 리스트를 지정한 구분자로 연결해 하나의 문자열을 만듭니다.", "18": "zip(keys, values)는 같은 위치의 키와 값을 묶고 dict가 이를 딕셔너리로 변환합니다.", "19": "딕셔너리 pop은 지정한 키의 값을 반환하면서 그 항목을 딕셔너리에서 제거합니다.", "20": "items()는 딕셔너리의 키와 값을 쌍으로 꺼내 반복할 수 있게 합니다.", "21": "sorted(data.items())는 딕셔너리 항목을 정렬된 리스트 형태로 반환합니다.", "22": "딕셔너리는 키와 값의 쌍으로 데이터를 저장합니다. data['english']는 english 키의 값을 가져옵니다.", "23": "lambda는 짧은 익명 함수입니다. s[:5]는 문자열 앞 5글자를 반환합니다.", "24": "join은 문자열 리스트를 지정한 구분자로 연결해 하나의 문자열을 만듭니다.", "25": "zip(keys, values)는 같은 위치의 키와 값을 묶고 dict가 이를 딕셔너리로 변환합니다.", "26": "딕셔너리 pop은 지정한 키의 값을 반환하면서 그 항목을 딕셔너리에서 제거합니다.", "27": "items()는 딕셔너리의 키와 값을 쌍으로 꺼내 반복할 수 있게 합니다.", "28": "sorted(data.items())는 딕셔너리 항목을 정렬된 리스트 형태로 반환합니다."};
+const total = Object.keys(answers).length;
+
+document.querySelectorAll('.choice input').forEach(input => {
+  input.addEventListener('change', e => {
+    const name = e.target.name;
+    document.querySelectorAll('input[name="'+name+'"]').forEach(x => x.closest('.choice').classList.remove('selected'));
+    e.target.closest('.choice').classList.add('selected');
+  });
+});
+
+function goLesson(id){
+  document.getElementById(id).scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+function toggleSolution(n){
+  const el = document.getElementById('sol'+n);
+  el.style.display = el.style.display === 'block' ? 'none' : 'block';
+}
+
+function checkOne(n){
+  const checked = document.querySelector('input[name="q'+n+'"]:checked');
+  const sol = document.getElementById('sol'+n);
+  sol.style.display = 'block';
+  if(!checked){
+    sol.innerHTML = '<b>선택 없음</b><br>답을 먼저 선택하세요.<br><br>' + explanations[n];
+    return;
+  }
+  const ok = Number(checked.value) === answers[n];
+  sol.innerHTML = (ok ? '<b>정답입니다.</b>' : '<b>오답입니다.</b>') +
+    '<br><b>정답:</b> ' + (answers[n]+1) + '번<br>' + explanations[n];
+}
+
+function scoreAll(){
+  let correct = 0;
+  for(let n=1;n<=total;n++){
+    const checked = document.querySelector('input[name="q'+n+'"]:checked');
+    if(checked && Number(checked.value) === answers[n]) correct++;
+  }
+  const percent = Math.round(correct / total * 100);
+  document.getElementById('result').textContent = `점수: ${correct}/${total}문항, ${percent}점`;
+  return percent;
+}
+
+function nowString(){
+  const d = new Date();
+  const pad = n => String(n).padStart(2,'0');
+  return d.getFullYear()+pad(d.getMonth()+1)+pad(d.getDate())+'_'+pad(d.getHours())+pad(d.getMinutes())+pad(d.getSeconds());
+}
+
+function saveTxt(){
+  const sid = document.getElementById('studentId').value.trim() || '1100';
+  const name = document.getElementById('studentName').value.trim() || '인수샘';
+  const score = scoreAll();
+  let lines = [];
+  lines.push('06 OOP 파이썬 딕셔너리 평가 결과');
+  lines.push('학번: ' + sid);
+  lines.push('이름: ' + name);
+  lines.push('점수: ' + score);
+  lines.push('응시시각: ' + nowString());
+  lines.push('');
+  for(let n=1;n<=total;n++){
+    const checked = document.querySelector('input[name="q'+n+'"]:checked');
+    const user = checked ? Number(checked.value)+1 : '미응답';
+    const correct = answers[n]+1;
+    lines.push(`Q${n} 내 답: ${user} / 정답: ${correct}`);
+  }
+  const blob = new Blob([lines.join('\n')], {type:'text/plain;charset=utf-8'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `${sid}_${name}_06_${score}_${nowString()}.txt`;
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+</script>
+</body>
+</html>
