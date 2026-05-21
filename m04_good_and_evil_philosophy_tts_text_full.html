@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Good and Evil 선과 악 TTS 학습</title>
+<style>
+body{font-family:'Malgun Gothic',Arial,sans-serif;margin:0;background:linear-gradient(135deg,#f4f4f4,#fff6ec);color:#222;}
+.wrap{max-width:1050px;margin:34px auto;padding:22px;}
+.card{background:#fff;border-radius:24px;padding:30px;box-shadow:0 12px 34px rgba(0,0,0,.12);}
+h1{text-align:center;color:#333;font-size:36px;margin:6px 0 10px;}
+.subtitle{text-align:center;line-height:1.7;color:#555;font-size:17px;}
+.info{background:#fff7ef;border-left:7px solid #7a4b28;padding:16px 20px;border-radius:16px;margin:20px 0;line-height:1.8;font-size:18px;}
+.controls{text-align:center;margin:20px 0;}
+button{border:none;border-radius:999px;padding:9px 15px;margin:4px;background:#333;color:white;cursor:pointer;font-weight:700;}
+button:hover{filter:brightness(1.12);}
+.btn-ko{background:#9a5a22;}
+.stop{background:#666;}
+.section{margin-top:30px;padding-top:18px;border-top:2px dashed #ddd;}
+h2{color:#6f4a00;font-size:25px;}
+.pair{display:grid;grid-template-columns:44px 1fr auto;gap:8px 12px;align-items:center;margin:13px 0;padding:16px;border:1px solid #eee;border-radius:18px;background:#fffdfb;}
+.num{grid-row:1 / span 2;font-size:22px;font-weight:800;color:#999;text-align:center;}
+.en{font-size:18px;font-weight:700;color:#333;line-height:1.55;}
+.ko{font-size:17px;color:#3a2a20;line-height:1.55;}
+pre{white-space:pre-wrap;word-break:keep-all;background:#fffdf7;border-radius:18px;padding:20px;line-height:1.85;font-size:16px;border:1px solid #f0e5c8;}
+@media(max-width:720px){.pair{grid-template-columns:34px 1fr;}.pair button{grid-column:2;justify-self:start;}h1{font-size:28px;}}
+</style>
+</head>
+<body>
+<div class="wrap"><div class="card">
+<h1>Good and Evil<br>선과 악 TTS 학습</h1>
+<div class="subtitle">선과 악의 인문 철학적 설명 18문장 + 오늘 하루 의미 있는 삶 실천 10문장</div>
+<div class="info">
+<strong>Good and Evil:</strong> 선은 존엄·정의·연민·책임과 연결되고, 악은 잔인함뿐 아니라 고통에 대한 무관심 속에도 나타납니다.<br>
+<strong>Kant & Nietzsche:</strong> 칸트는 도덕 법칙과 의무를, 니체는 기존 도덕의 재평가를 강조했습니다.
+</div>
+<div class="controls">
+<button onclick="speakAll('en-US')">영어 전체 듣기</button>
+<button class="btn-ko" onclick="speakAll('ko-KR')">한국어 전체 듣기</button>
+<button class="stop" onclick="speechSynthesis.cancel()">정지</button>
+</div>
+
+<div class="section">
+<h2>Ⅰ. Good and Evil(선과 악) — 인문 철학적 설명 18문장</h2>
+
+<div class="pair">
+  <div class="num">1</div>
+  <div class="en">Good and evil are among the deepest questions in religion, philosophy, and politics.</div>
+  <button onclick="speak(\"Good and evil are among the deepest questions in religion, philosophy, and politics.\", 'en-US')">영어 듣기</button>
+  <div class="ko">선과 악은 종교, 철학, 정치에서 가장 깊은 질문들 가운데 하나이다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc120\\uacfc \\uc545\\uc740 \\uc885\\uad50, \\ucca0\\ud559, \\uc815\\uce58\\uc5d0\\uc11c \\uac00\\uc7a5 \\uae4a\\uc740 \\uc9c8\\ubb38\\ub4e4 \\uac00\\uc6b4\\ub370 \\ud558\\ub098\\uc774\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">2</div>
+  <div class="en">In humanistic philosophy, good is often connected with dignity, justice, compassion, and responsibility.</div>
+  <button onclick="speak(\"In humanistic philosophy, good is often connected with dignity, justice, compassion, and responsibility.\", 'en-US')">영어 듣기</button>
+  <div class="ko">인문 철학에서 선은 흔히 존엄, 정의, 연민, 책임과 연결된다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc778\\ubb38 \\ucca0\\ud559\\uc5d0\\uc11c \\uc120\\uc740 \\ud754\\ud788 \\uc874\\uc5c4, \\uc815\\uc758, \\uc5f0\\ubbfc, \\ucc45\\uc784\\uacfc \\uc5f0\\uacb0\\ub41c\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">3</div>
+  <div class="en">Evil is not only cruel action, but also indifference to another person’s suffering.</div>
+  <button onclick="speak(\"Evil is not only cruel action, but also indifference to another person\\u2019s suffering.\", 'en-US')">영어 듣기</button>
+  <div class="ko">악은 잔인한 행동만이 아니라 다른 사람의 고통에 대한 무관심이기도 하다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc545\\uc740 \\uc794\\uc778\\ud55c \\ud589\\ub3d9\\ub9cc\\uc774 \\uc544\\ub2c8\\ub77c \\ub2e4\\ub978 \\uc0ac\\ub78c\\uc758 \\uace0\\ud1b5\\uc5d0 \\ub300\\ud55c \\ubb34\\uad00\\uc2ec\\uc774\\uae30\\ub3c4 \\ud558\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">4</div>
+  <div class="en">Socrates believed that people do wrong because they lack true knowledge of the good.</div>
+  <button onclick="speak(\"Socrates believed that people do wrong because they lack true knowledge of the good.\", 'en-US')">영어 듣기</button>
+  <div class="ko">소크라테스는 사람들이 참된 선에 대한 지식이 부족하기 때문에 잘못을 저지른다고 보았다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc18c\\ud06c\\ub77c\\ud14c\\uc2a4\\ub294 \\uc0ac\\ub78c\\ub4e4\\uc774 \\ucc38\\ub41c \\uc120\\uc5d0 \\ub300\\ud55c \\uc9c0\\uc2dd\\uc774 \\ubd80\\uc871\\ud558\\uae30 \\ub54c\\ubb38\\uc5d0 \\uc798\\ubabb\\uc744 \\uc800\\uc9c0\\ub978\\ub2e4\\uace0 \\ubcf4\\uc558\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">5</div>
+  <div class="en">His idea teaches us that moral education begins with honest questioning.</div>
+  <button onclick="speak(\"His idea teaches us that moral education begins with honest questioning.\", 'en-US')">영어 듣기</button>
+  <div class="ko">그의 생각은 도덕 교육이 정직한 질문에서 시작된다는 것을 가르쳐 준다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uadf8\\uc758 \\uc0dd\\uac01\\uc740 \\ub3c4\\ub355 \\uad50\\uc721\\uc774 \\uc815\\uc9c1\\ud55c \\uc9c8\\ubb38\\uc5d0\\uc11c \\uc2dc\\uc791\\ub41c\\ub2e4\\ub294 \\uac83\\uc744 \\uac00\\ub974\\uccd0 \\uc900\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">6</div>
+  <div class="en">Immanuel Kant argued that a good action must be done from duty and respect for moral law.</div>
+  <button onclick="speak(\"Immanuel Kant argued that a good action must be done from duty and respect for moral law.\", 'en-US')">영어 듣기</button>
+  <div class="ko">임마누엘 칸트는 선한 행동이 의무와 도덕 법칙에 대한 존중에서 나와야 한다고 주장했다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc784\\ub9c8\\ub204\\uc5d8 \\uce78\\ud2b8\\ub294 \\uc120\\ud55c \\ud589\\ub3d9\\uc774 \\uc758\\ubb34\\uc640 \\ub3c4\\ub355 \\ubc95\\uce59\\uc5d0 \\ub300\\ud55c \\uc874\\uc911\\uc5d0\\uc11c \\ub098\\uc640\\uc57c \\ud55c\\ub2e4\\uace0 \\uc8fc\\uc7a5\\ud588\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">7</div>
+  <div class="en">For Kant, a person should treat others as ends, not merely as tools.</div>
+  <button onclick="speak(\"For Kant, a person should treat others as ends, not merely as tools.\", 'en-US')">영어 듣기</button>
+  <div class="ko">칸트에게 사람은 다른 사람을 단순한 수단이 아니라 목적으로 대해야 한다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uce78\\ud2b8\\uc5d0\\uac8c \\uc0ac\\ub78c\\uc740 \\ub2e4\\ub978 \\uc0ac\\ub78c\\uc744 \\ub2e8\\uc21c\\ud55c \\uc218\\ub2e8\\uc774 \\uc544\\ub2c8\\ub77c \\ubaa9\\uc801\\uc73c\\ub85c \\ub300\\ud574\\uc57c \\ud55c\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">8</div>
+  <div class="en">For example, helping a student only for praise is different from helping with sincere respect.</div>
+  <button onclick="speak(\"For example, helping a student only for praise is different from helping with sincere respect.\", 'en-US')">영어 듣기</button>
+  <div class="ko">예를 들어 칭찬을 받기 위해 학생을 돕는 것과 진심 어린 존중으로 돕는 것은 다르다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc608\\ub97c \\ub4e4\\uc5b4 \\uce6d\\ucc2c\\uc744 \\ubc1b\\uae30 \\uc704\\ud574 \\ud559\\uc0dd\\uc744 \\ub3d5\\ub294 \\uac83\\uacfc \\uc9c4\\uc2ec \\uc5b4\\ub9b0 \\uc874\\uc911\\uc73c\\ub85c \\ub3d5\\ub294 \\uac83\\uc740 \\ub2e4\\ub974\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">9</div>
+  <div class="en">Friedrich Nietzsche questioned traditional morality and asked whether old values truly serve life.</div>
+  <button onclick="speak(\"Friedrich Nietzsche questioned traditional morality and asked whether old values truly serve life.\", 'en-US')">영어 듣기</button>
+  <div class="ko">프리드리히 니체는 기존 도덕을 의심하며 오래된 가치가 진정 삶에 도움이 되는지 물었다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ud504\\ub9ac\\ub4dc\\ub9ac\\ud788 \\ub2c8\\uccb4\\ub294 \\uae30\\uc874 \\ub3c4\\ub355\\uc744 \\uc758\\uc2ec\\ud558\\uba70 \\uc624\\ub798\\ub41c \\uac00\\uce58\\uac00 \\uc9c4\\uc815 \\uc0b6\\uc5d0 \\ub3c4\\uc6c0\\uc774 \\ub418\\ub294\\uc9c0 \\ubb3c\\uc5c8\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">10</div>
+  <div class="en">His challenge reminds us to examine whether our ideas of good and evil are honest or merely inherited.</div>
+  <button onclick="speak(\"His challenge reminds us to examine whether our ideas of good and evil are honest or merely inherited.\", 'en-US')">영어 듣기</button>
+  <div class="ko">그의 도전은 선과 악에 대한 우리의 생각이 정직한 것인지 단지 물려받은 것인지 성찰하게 한다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uadf8\\uc758 \\ub3c4\\uc804\\uc740 \\uc120\\uacfc \\uc545\\uc5d0 \\ub300\\ud55c \\uc6b0\\ub9ac\\uc758 \\uc0dd\\uac01\\uc774 \\uc815\\uc9c1\\ud55c \\uac83\\uc778\\uc9c0 \\ub2e8\\uc9c0 \\ubb3c\\ub824\\ubc1b\\uc740 \\uac83\\uc778\\uc9c0 \\uc131\\ucc30\\ud558\\uac8c \\ud55c\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">11</div>
+  <div class="en">However, questioning morality does not mean living without responsibility.</div>
+  <button onclick="speak(\"However, questioning morality does not mean living without responsibility.\", 'en-US')">영어 듣기</button>
+  <div class="ko">그러나 도덕을 질문한다는 것이 책임 없이 산다는 뜻은 아니다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uadf8\\ub7ec\\ub098 \\ub3c4\\ub355\\uc744 \\uc9c8\\ubb38\\ud55c\\ub2e4\\ub294 \\uac83\\uc774 \\ucc45\\uc784 \\uc5c6\\uc774 \\uc0b0\\ub2e4\\ub294 \\ub73b\\uc740 \\uc544\\ub2c8\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">12</div>
+  <div class="en">It means we must choose values carefully and live them courageously.</div>
+  <button onclick="speak(\"It means we must choose values carefully and live them courageously.\", 'en-US')">영어 듣기</button>
+  <div class="ko">그것은 우리가 가치를 신중히 선택하고 용기 있게 실천해야 한다는 뜻이다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uadf8\\uac83\\uc740 \\uc6b0\\ub9ac\\uac00 \\uac00\\uce58\\ub97c \\uc2e0\\uc911\\ud788 \\uc120\\ud0dd\\ud558\\uace0 \\uc6a9\\uae30 \\uc788\\uac8c \\uc2e4\\ucc9c\\ud574\\uc57c \\ud55c\\ub2e4\\ub294 \\ub73b\\uc774\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">13</div>
+  <div class="en">In daily life, good appears when we protect the weak, tell the truth, and repair harm.</div>
+  <button onclick="speak(\"In daily life, good appears when we protect the weak, tell the truth, and repair harm.\", 'en-US')">영어 듣기</button>
+  <div class="ko">일상에서 선은 약한 사람을 보호하고 진실을 말하며 해를 바로잡을 때 나타난다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc77c\\uc0c1\\uc5d0\\uc11c \\uc120\\uc740 \\uc57d\\ud55c \\uc0ac\\ub78c\\uc744 \\ubcf4\\ud638\\ud558\\uace0 \\uc9c4\\uc2e4\\uc744 \\ub9d0\\ud558\\uba70 \\ud574\\ub97c \\ubc14\\ub85c\\uc7a1\\uc744 \\ub54c \\ub098\\ud0c0\\ub09c\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">14</div>
+  <div class="en">Evil can appear quietly when we mock others, ignore injustice, or excuse selfishness.</div>
+  <button onclick="speak(\"Evil can appear quietly when we mock others, ignore injustice, or excuse selfishness.\", 'en-US')">영어 듣기</button>
+  <div class="ko">악은 다른 사람을 조롱하고 불의를 외면하며 이기심을 합리화할 때 조용히 나타날 수 있다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc545\\uc740 \\ub2e4\\ub978 \\uc0ac\\ub78c\\uc744 \\uc870\\ub871\\ud558\\uace0 \\ubd88\\uc758\\ub97c \\uc678\\uba74\\ud558\\uba70 \\uc774\\uae30\\uc2ec\\uc744 \\ud569\\ub9ac\\ud654\\ud560 \\ub54c \\uc870\\uc6a9\\ud788 \\ub098\\ud0c0\\ub0a0 \\uc218 \\uc788\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">15</div>
+  <div class="en">A teacher who speaks fairly to every student practices goodness in a concrete way.</div>
+  <button onclick="speak(\"A teacher who speaks fairly to every student practices goodness in a concrete way.\", 'en-US')">영어 듣기</button>
+  <div class="ko">모든 학생에게 공정하게 말하는 교사는 구체적인 방식으로 선을 실천한다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ubaa8\\ub4e0 \\ud559\\uc0dd\\uc5d0\\uac8c \\uacf5\\uc815\\ud558\\uac8c \\ub9d0\\ud558\\ub294 \\uad50\\uc0ac\\ub294 \\uad6c\\uccb4\\uc801\\uc778 \\ubc29\\uc2dd\\uc73c\\ub85c \\uc120\\uc744 \\uc2e4\\ucc9c\\ud55c\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">16</div>
+  <div class="en">A student who admits cheating and chooses honesty begins to overcome evil within the self.</div>
+  <button onclick="speak(\"A student who admits cheating and chooses honesty begins to overcome evil within the self.\", 'en-US')">영어 듣기</button>
+  <div class="ko">부정행위를 인정하고 정직을 선택하는 학생은 자기 안의 악을 극복하기 시작한다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ubd80\\uc815\\ud589\\uc704\\ub97c \\uc778\\uc815\\ud558\\uace0 \\uc815\\uc9c1\\uc744 \\uc120\\ud0dd\\ud558\\ub294 \\ud559\\uc0dd\\uc740 \\uc790\\uae30 \\uc548\\uc758 \\uc545\\uc744 \\uadf9\\ubcf5\\ud558\\uae30 \\uc2dc\\uc791\\ud55c\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">17</div>
+  <div class="en">Good becomes strong when it is joined with wisdom, courage, and compassion.</div>
+  <button onclick="speak(\"Good becomes strong when it is joined with wisdom, courage, and compassion.\", 'en-US')">영어 듣기</button>
+  <div class="ko">선은 지혜와 용기와 연민이 결합될 때 강해진다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc120\\uc740 \\uc9c0\\ud61c\\uc640 \\uc6a9\\uae30\\uc640 \\uc5f0\\ubbfc\\uc774 \\uacb0\\ud569\\ub420 \\ub54c \\uac15\\ud574\\uc9c4\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">18</div>
+  <div class="en">Ultimately, the question of good and evil asks us what kind of human beings we choose to become.</div>
+  <button onclick="speak(\"Ultimately, the question of good and evil asks us what kind of human beings we choose to become.\", 'en-US')">영어 듣기</button>
+  <div class="ko">궁극적으로 선과 악의 질문은 우리가 어떤 인간이 되기를 선택하는지를 묻는다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uad81\\uadf9\\uc801\\uc73c\\ub85c \\uc120\\uacfc \\uc545\\uc758 \\uc9c8\\ubb38\\uc740 \\uc6b0\\ub9ac\\uac00 \\uc5b4\\ub5a4 \\uc778\\uac04\\uc774 \\ub418\\uae30\\ub97c \\uc120\\ud0dd\\ud558\\ub294\\uc9c0\\ub97c \\ubb3b\\ub294\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+</div>
+
+<div class="section">
+<h2>Ⅱ. Good and Evil(선과 악) — 오늘 하루 실천 10문장</h2>
+
+<div class="pair">
+  <div class="num">1</div>
+  <div class="en">Today, I will begin my day by choosing goodness in my thoughts and actions.</div>
+  <button onclick="speak(\"Today, I will begin my day by choosing goodness in my thoughts and actions.\", 'en-US')">영어 듣기</button>
+  <div class="ko">오늘 나는 생각과 행동에서 선을 선택하며 하루를 시작하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc624\\ub298 \\ub098\\ub294 \\uc0dd\\uac01\\uacfc \\ud589\\ub3d9\\uc5d0\\uc11c \\uc120\\uc744 \\uc120\\ud0dd\\ud558\\uba70 \\ud558\\ub8e8\\ub97c \\uc2dc\\uc791\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">2</div>
+  <div class="en">I will treat every person I meet with dignity and respect.</div>
+  <button onclick="speak(\"I will treat every person I meet with dignity and respect.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 만나는 모든 사람을 존엄과 존중으로 대하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\ub9cc\\ub098\\ub294 \\ubaa8\\ub4e0 \\uc0ac\\ub78c\\uc744 \\uc874\\uc5c4\\uacfc \\uc874\\uc911\\uc73c\\ub85c \\ub300\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">3</div>
+  <div class="en">Goodness means doing what is right even when no one is watching.</div>
+  <button onclick="speak(\"Goodness means doing what is right even when no one is watching.\", 'en-US')">영어 듣기</button>
+  <div class="ko">선함은 아무도 보지 않을 때에도 옳은 일을 하는 것이다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc120\\ud568\\uc740 \\uc544\\ubb34\\ub3c4 \\ubcf4\\uc9c0 \\uc54a\\uc744 \\ub54c\\uc5d0\\ub3c4 \\uc633\\uc740 \\uc77c\\uc744 \\ud558\\ub294 \\uac83\\uc774\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">4</div>
+  <div class="en">I will speak honestly and avoid words that hurt others.</div>
+  <button onclick="speak(\"I will speak honestly and avoid words that hurt others.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 정직하게 말하고 다른 사람에게 상처 주는 말을 피하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\uc815\\uc9c1\\ud558\\uac8c \\ub9d0\\ud558\\uace0 \\ub2e4\\ub978 \\uc0ac\\ub78c\\uc5d0\\uac8c \\uc0c1\\ucc98 \\uc8fc\\ub294 \\ub9d0\\uc744 \\ud53c\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">5</div>
+  <div class="en">When I see someone in difficulty, I will not pass by with indifference.</div>
+  <button onclick="speak(\"When I see someone in difficulty, I will not pass by with indifference.\", 'en-US')">영어 듣기</button>
+  <div class="ko">어려움에 처한 사람을 볼 때 나는 무관심하게 지나치지 않겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc5b4\\ub824\\uc6c0\\uc5d0 \\ucc98\\ud55c \\uc0ac\\ub78c\\uc744 \\ubcfc \\ub54c \\ub098\\ub294 \\ubb34\\uad00\\uc2ec\\ud558\\uac8c \\uc9c0\\ub098\\uce58\\uc9c0 \\uc54a\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">6</div>
+  <div class="en">I will encourage my students to think about justice, kindness, and responsibility.</div>
+  <button onclick="speak(\"I will encourage my students to think about justice, kindness, and responsibility.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 학생들이 정의와 친절과 책임에 대해 생각하도록 격려하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\ud559\\uc0dd\\ub4e4\\uc774 \\uc815\\uc758\\uc640 \\uce5c\\uc808\\uacfc \\ucc45\\uc784\\uc5d0 \\ub300\\ud574 \\uc0dd\\uac01\\ud558\\ub3c4\\ub85d \\uaca9\\ub824\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">7</div>
+  <div class="en">If I make a mistake, I will admit it and try to make it right.</div>
+  <button onclick="speak(\"If I make a mistake, I will admit it and try to make it right.\", 'en-US')">영어 듣기</button>
+  <div class="ko">내가 실수하면 그것을 인정하고 바로잡으려고 노력하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub0b4\\uac00 \\uc2e4\\uc218\\ud558\\uba74 \\uadf8\\uac83\\uc744 \\uc778\\uc815\\ud558\\uace0 \\ubc14\\ub85c\\uc7a1\\uc73c\\ub824\\uace0 \\ub178\\ub825\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">8</div>
+  <div class="en">I will examine my heart so that pride and selfishness do not control me.</div>
+  <button onclick="speak(\"I will examine my heart so that pride and selfishness do not control me.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 교만과 이기심이 나를 지배하지 않도록 내 마음을 성찰하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\uad50\\ub9cc\\uacfc \\uc774\\uae30\\uc2ec\\uc774 \\ub098\\ub97c \\uc9c0\\ubc30\\ud558\\uc9c0 \\uc54a\\ub3c4\\ub85d \\ub0b4 \\ub9c8\\uc74c\\uc744 \\uc131\\ucc30\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">9</div>
+  <div class="en">With wisdom and compassion, I can make today more meaningful.</div>
+  <button onclick="speak(\"With wisdom and compassion, I can make today more meaningful.\", 'en-US')">영어 듣기</button>
+  <div class="ko">지혜와 연민으로 나는 오늘을 더 의미 있게 만들 수 있다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc9c0\\ud61c\\uc640 \\uc5f0\\ubbfc\\uc73c\\ub85c \\ub098\\ub294 \\uc624\\ub298\\uc744 \\ub354 \\uc758\\ubbf8 \\uc788\\uac8c \\ub9cc\\ub4e4 \\uc218 \\uc788\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">10</div>
+  <div class="en">Today, I will live as a person who chooses good and resists evil.</div>
+  <button onclick="speak(\"Today, I will live as a person who chooses good and resists evil.\", 'en-US')">영어 듣기</button>
+  <div class="ko">오늘 나는 선을 선택하고 악에 맞서는 사람으로 살아가겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc624\\ub298 \\ub098\\ub294 \\uc120\\uc744 \\uc120\\ud0dd\\ud558\\uace0 \\uc545\\uc5d0 \\ub9de\\uc11c\\ub294 \\uc0ac\\ub78c\\uc73c\\ub85c \\uc0b4\\uc544\\uac00\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+</div>
+
+<div class="section">
+<h2>전체 원문 Text</h2>
+<pre>선과 악 (Good and Evil)
+무엇이 선이며 무엇이 악인가에 대한 질문은 종교·철학·정치 전반에 영향을 주었다.
+Immanuel Kant는 도덕 법칙을 강조했고, Friedrich Nietzsche는 기존 도덕의 재평가를 주장했다.
+
+선과 악 (Good and Evil)을 인문 철학적으로 예시와 일화를 들어서
+영어18문장(한글 해석)으로 설명
+
+Good and evil are among the deepest questions in religion, philosophy, and politics.
+선과 악은 종교, 철학, 정치에서 가장 깊은 질문들 가운데 하나이다.
+In humanistic philosophy, good is often connected with dignity, justice, compassion, and responsibility.
+인문 철학에서 선은 흔히 존엄, 정의, 연민, 책임과 연결된다.
+Evil is not only cruel action, but also indifference to another person’s suffering.
+악은 잔인한 행동만이 아니라 다른 사람의 고통에 대한 무관심이기도 하다.
+Socrates believed that people do wrong because they lack true knowledge of the good.
+소크라테스는 사람들이 참된 선에 대한 지식이 부족하기 때문에 잘못을 저지른다고 보았다.
+His idea teaches us that moral education begins with honest questioning.
+그의 생각은 도덕 교육이 정직한 질문에서 시작된다는 것을 가르쳐 준다.
+Immanuel Kant argued that a good action must be done from duty and respect for moral law.
+임마누엘 칸트는 선한 행동이 의무와 도덕 법칙에 대한 존중에서 나와야 한다고 주장했다.
+For Kant, a person should treat others as ends, not merely as tools.
+칸트에게 사람은 다른 사람을 단순한 수단이 아니라 목적으로 대해야 한다.
+For example, helping a student only for praise is different from helping with sincere respect.
+예를 들어 칭찬을 받기 위해 학생을 돕는 것과 진심 어린 존중으로 돕는 것은 다르다.
+Friedrich Nietzsche questioned traditional morality and asked whether old values truly serve life.
+프리드리히 니체는 기존 도덕을 의심하며 오래된 가치가 진정 삶에 도움이 되는지 물었다.
+His challenge reminds us to examine whether our ideas of good and evil are honest or merely inherited.
+그의 도전은 선과 악에 대한 우리의 생각이 정직한 것인지 단지 물려받은 것인지 성찰하게 한다.
+However, questioning morality does not mean living without responsibility.
+그러나 도덕을 질문한다는 것이 책임 없이 산다는 뜻은 아니다.
+It means we must choose values carefully and live them courageously.
+그것은 우리가 가치를 신중히 선택하고 용기 있게 실천해야 한다는 뜻이다.
+In daily life, good appears when we protect the weak, tell the truth, and repair harm.
+일상에서 선은 약한 사람을 보호하고 진실을 말하며 해를 바로잡을 때 나타난다.
+Evil can appear quietly when we mock others, ignore injustice, or excuse selfishness.
+악은 다른 사람을 조롱하고 불의를 외면하며 이기심을 합리화할 때 조용히 나타날 수 있다.
+A teacher who speaks fairly to every student practices goodness in a concrete way.
+모든 학생에게 공정하게 말하는 교사는 구체적인 방식으로 선을 실천한다.
+A student who admits cheating and chooses honesty begins to overcome evil within the self.
+부정행위를 인정하고 정직을 선택하는 학생은 자기 안의 악을 극복하기 시작한다.
+Good becomes strong when it is joined with wisdom, courage, and compassion.
+선은 지혜와 용기와 연민이 결합될 때 강해진다.
+Ultimately, the question of good and evil asks us what kind of human beings we choose to become.
+궁극적으로 선과 악의 질문은 우리가 어떤 인간이 되기를 선택하는지를 묻는다.
+
+오늘 하루 선과 악 (Good and Evil)을 생각하고 의미있는 삶을 실천하며 살고 싶다.
+영어 10줄(한글 해석)로 오늘의 삶을 이야기 하기
+
+Today, I will begin my day by choosing goodness in my thoughts and actions.
+오늘 나는 생각과 행동에서 선을 선택하며 하루를 시작하겠다.
+I will treat every person I meet with dignity and respect.
+나는 만나는 모든 사람을 존엄과 존중으로 대하겠다.
+Goodness means doing what is right even when no one is watching.
+선함은 아무도 보지 않을 때에도 옳은 일을 하는 것이다.
+I will speak honestly and avoid words that hurt others.
+나는 정직하게 말하고 다른 사람에게 상처 주는 말을 피하겠다.
+When I see someone in difficulty, I will not pass by with indifference.
+어려움에 처한 사람을 볼 때 나는 무관심하게 지나치지 않겠다.
+I will encourage my students to think about justice, kindness, and responsibility.
+나는 학생들이 정의와 친절과 책임에 대해 생각하도록 격려하겠다.
+If I make a mistake, I will admit it and try to make it right.
+내가 실수하면 그것을 인정하고 바로잡으려고 노력하겠다.
+I will examine my heart so that pride and selfishness do not control me.
+나는 교만과 이기심이 나를 지배하지 않도록 내 마음을 성찰하겠다.
+With wisdom and compassion, I can make today more meaningful.
+지혜와 연민으로 나는 오늘을 더 의미 있게 만들 수 있다.
+Today, I will live as a person who chooses good and resists evil.
+오늘 나는 선을 선택하고 악에 맞서는 사람으로 살아가겠다.</pre>
+</div>
+
+<script>
+const EN_TEXT = "Good and evil are among the deepest questions in religion, philosophy, and politics.\nIn humanistic philosophy, good is often connected with dignity, justice, compassion, and responsibility.\nEvil is not only cruel action, but also indifference to another person’s suffering.\nSocrates believed that people do wrong because they lack true knowledge of the good.\nHis idea teaches us that moral education begins with honest questioning.\nImmanuel Kant argued that a good action must be done from duty and respect for moral law.\nFor Kant, a person should treat others as ends, not merely as tools.\nFor example, helping a student only for praise is different from helping with sincere respect.\nFriedrich Nietzsche questioned traditional morality and asked whether old values truly serve life.\nHis challenge reminds us to examine whether our ideas of good and evil are honest or merely inherited.\nHowever, questioning morality does not mean living without responsibility.\nIt means we must choose values carefully and live them courageously.\nIn daily life, good appears when we protect the weak, tell the truth, and repair harm.\nEvil can appear quietly when we mock others, ignore injustice, or excuse selfishness.\nA teacher who speaks fairly to every student practices goodness in a concrete way.\nA student who admits cheating and chooses honesty begins to overcome evil within the self.\nGood becomes strong when it is joined with wisdom, courage, and compassion.\nUltimately, the question of good and evil asks us what kind of human beings we choose to become.\nToday, I will begin my day by choosing goodness in my thoughts and actions.\nI will treat every person I meet with dignity and respect.\nGoodness means doing what is right even when no one is watching.\nI will speak honestly and avoid words that hurt others.\nWhen I see someone in difficulty, I will not pass by with indifference.\nI will encourage my students to think about justice, kindness, and responsibility.\nIf I make a mistake, I will admit it and try to make it right.\nI will examine my heart so that pride and selfishness do not control me.\nWith wisdom and compassion, I can make today more meaningful.\nToday, I will live as a person who chooses good and resists evil.";
+const KO_TEXT = "선과 악은 종교, 철학, 정치에서 가장 깊은 질문들 가운데 하나이다.\n인문 철학에서 선은 흔히 존엄, 정의, 연민, 책임과 연결된다.\n악은 잔인한 행동만이 아니라 다른 사람의 고통에 대한 무관심이기도 하다.\n소크라테스는 사람들이 참된 선에 대한 지식이 부족하기 때문에 잘못을 저지른다고 보았다.\n그의 생각은 도덕 교육이 정직한 질문에서 시작된다는 것을 가르쳐 준다.\n임마누엘 칸트는 선한 행동이 의무와 도덕 법칙에 대한 존중에서 나와야 한다고 주장했다.\n칸트에게 사람은 다른 사람을 단순한 수단이 아니라 목적으로 대해야 한다.\n예를 들어 칭찬을 받기 위해 학생을 돕는 것과 진심 어린 존중으로 돕는 것은 다르다.\n프리드리히 니체는 기존 도덕을 의심하며 오래된 가치가 진정 삶에 도움이 되는지 물었다.\n그의 도전은 선과 악에 대한 우리의 생각이 정직한 것인지 단지 물려받은 것인지 성찰하게 한다.\n그러나 도덕을 질문한다는 것이 책임 없이 산다는 뜻은 아니다.\n그것은 우리가 가치를 신중히 선택하고 용기 있게 실천해야 한다는 뜻이다.\n일상에서 선은 약한 사람을 보호하고 진실을 말하며 해를 바로잡을 때 나타난다.\n악은 다른 사람을 조롱하고 불의를 외면하며 이기심을 합리화할 때 조용히 나타날 수 있다.\n모든 학생에게 공정하게 말하는 교사는 구체적인 방식으로 선을 실천한다.\n부정행위를 인정하고 정직을 선택하는 학생은 자기 안의 악을 극복하기 시작한다.\n선은 지혜와 용기와 연민이 결합될 때 강해진다.\n궁극적으로 선과 악의 질문은 우리가 어떤 인간이 되기를 선택하는지를 묻는다.\n오늘 나는 생각과 행동에서 선을 선택하며 하루를 시작하겠다.\n나는 만나는 모든 사람을 존엄과 존중으로 대하겠다.\n선함은 아무도 보지 않을 때에도 옳은 일을 하는 것이다.\n나는 정직하게 말하고 다른 사람에게 상처 주는 말을 피하겠다.\n어려움에 처한 사람을 볼 때 나는 무관심하게 지나치지 않겠다.\n나는 학생들이 정의와 친절과 책임에 대해 생각하도록 격려하겠다.\n내가 실수하면 그것을 인정하고 바로잡으려고 노력하겠다.\n나는 교만과 이기심이 나를 지배하지 않도록 내 마음을 성찰하겠다.\n지혜와 연민으로 나는 오늘을 더 의미 있게 만들 수 있다.\n오늘 나는 선을 선택하고 악에 맞서는 사람으로 살아가겠다.";
+function speak(text, lang){
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = lang;
+  u.rate = lang === 'en-US' ? 0.88 : 0.95;
+  u.pitch = 1;
+  speechSynthesis.speak(u);
+}
+function speakAll(lang){
+  speechSynthesis.cancel();
+  const text = lang === 'en-US' ? EN_TEXT : KO_TEXT;
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = lang;
+  u.rate = lang === 'en-US' ? 0.88 : 0.95;
+  u.pitch = 1;
+  speechSynthesis.speak(u);
+}
+</script>
+</div></div>
+</body>
+</html>

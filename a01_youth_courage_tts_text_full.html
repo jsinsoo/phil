@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Youth &amp; Courage TTS 학습</title>
+<style>
+body{font-family:'Malgun Gothic',Arial,sans-serif;margin:0;background:linear-gradient(135deg,#eef5ff,#fff8ed);color:#222;}
+.wrap{max-width:1050px;margin:34px auto;padding:22px;}
+.card{background:#fff;border-radius:24px;padding:30px;box-shadow:0 12px 34px rgba(0,0,0,.12);}
+h1{text-align:center;color:#263d73;font-size:36px;margin:6px 0 10px;}
+.subtitle{text-align:center;line-height:1.7;color:#555;font-size:17px;}
+.info{background:#f0f6ff;border-left:7px solid #456fc0;padding:16px 20px;border-radius:16px;margin:20px 0;line-height:1.8;font-size:18px;}
+.controls{text-align:center;margin:20px 0;}
+button{border:none;border-radius:999px;padding:9px 15px;margin:4px;background:#304f91;color:white;cursor:pointer;font-weight:700;}
+button:hover{filter:brightness(1.08);}
+.btn-ko{background:#b46b1d;}
+.stop{background:#555;}
+.section{margin-top:30px;padding-top:18px;border-top:2px dashed #ddd;}
+h2{color:#7a4b00;font-size:25px;}
+.pair{display:grid;grid-template-columns:44px 1fr auto;gap:8px 12px;align-items:center;margin:13px 0;padding:16px;border:1px solid #eee;border-radius:18px;background:#fbfbfb;}
+.num{grid-row:1 / span 2;font-size:22px;font-weight:800;color:#789;text-align:center;}
+.en{font-size:18px;font-weight:700;color:#1d3e73;line-height:1.55;}
+.ko{font-size:17px;color:#333;line-height:1.55;}
+pre{white-space:pre-wrap;word-break:keep-all;background:#fffdf7;border-radius:18px;padding:20px;line-height:1.85;font-size:16px;border:1px solid #f0e5c8;}
+@media(max-width:720px){.pair{grid-template-columns:34px 1fr;}.pair button{grid-column:2;justify-self:start;}}
+</style>
+</head>
+<body>
+<div class="wrap"><div class="card">
+<h1>Youth & Courage TTS 학습</h1>
+<div class="subtitle">Youth(젊음)의 인문 철학적 설명 18문장 + Courage(용기)의 오늘 하루 실천 10문장</div>
+<div class="info">
+<strong>Youth:</strong> 젊음은 나이가 아니라 배움, 질문, 성장, 책임의 태도입니다.<br>
+<strong>Courage:</strong> 용기는 두려움이 없어지는 것이 아니라, 두려움 속에서도 옳은 일을 선택하는 힘입니다.
+</div>
+<div class="controls">
+<button onclick="speakAll('en-US')">영어 전체 듣기</button>
+<button class="btn-ko" onclick="speakAll('ko-KR')">한국어 전체 듣기</button>
+<button class="stop" onclick="speechSynthesis.cancel()">정지</button>
+</div>
+
+<div class="section">
+<h2>Ⅰ. Youth(젊음) — 인문 철학적 설명 18문장</h2>
+
+<div class="pair">
+  <div class="num">1</div>
+  <div class="en">Youth is not only a period of life, but also a way of looking at the world with wonder.</div>
+  <button onclick="speak(\"Youth is not only a period of life, but also a way of looking at the world with wonder.\", 'en-US')">영어 듣기</button>
+  <div class="ko">젊음은 단순히 삶의 한 시기가 아니라, 세상을 경이롭게 바라보는 태도이다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc80a\\uc74c\\uc740 \\ub2e8\\uc21c\\ud788 \\uc0b6\\uc758 \\ud55c \\uc2dc\\uae30\\uac00 \\uc544\\ub2c8\\ub77c, \\uc138\\uc0c1\\uc744 \\uacbd\\uc774\\ub86d\\uac8c \\ubc14\\ub77c\\ubcf4\\ub294 \\ud0dc\\ub3c4\\uc774\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">2</div>
+  <div class="en">In humanistic philosophy, youth means the power to ask new questions about life and society.</div>
+  <button onclick="speak(\"In humanistic philosophy, youth means the power to ask new questions about life and society.\", 'en-US')">영어 듣기</button>
+  <div class="ko">인문 철학에서 젊음은 삶과 사회에 대해 새로운 질문을 던지는 힘을 의미한다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc778\\ubb38 \\ucca0\\ud559\\uc5d0\\uc11c \\uc80a\\uc74c\\uc740 \\uc0b6\\uacfc \\uc0ac\\ud68c\\uc5d0 \\ub300\\ud574 \\uc0c8\\ub85c\\uc6b4 \\uc9c8\\ubb38\\uc744 \\ub358\\uc9c0\\ub294 \\ud798\\uc744 \\uc758\\ubbf8\\ud55c\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">3</div>
+  <div class="en">Socrates showed the spirit of youth when he kept asking people what truth and goodness meant.</div>
+  <button onclick="speak(\"Socrates showed the spirit of youth when he kept asking people what truth and goodness meant.\", 'en-US')">영어 듣기</button>
+  <div class="ko">소크라테스는 진리와 선이 무엇인지 계속 질문함으로써 젊음의 정신을 보여 주었다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc18c\\ud06c\\ub77c\\ud14c\\uc2a4\\ub294 \\uc9c4\\ub9ac\\uc640 \\uc120\\uc774 \\ubb34\\uc5c7\\uc778\\uc9c0 \\uacc4\\uc18d \\uc9c8\\ubb38\\ud568\\uc73c\\ub85c\\uc368 \\uc80a\\uc74c\\uc758 \\uc815\\uc2e0\\uc744 \\ubcf4\\uc5ec \\uc8fc\\uc5c8\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">4</div>
+  <div class="en">Even though he was old, his mind stayed young because he never stopped seeking wisdom.</div>
+  <button onclick="speak(\"Even though he was old, his mind stayed young because he never stopped seeking wisdom.\", 'en-US')">영어 듣기</button>
+  <div class="ko">그는 나이가 많았지만 지혜를 찾는 일을 멈추지 않았기 때문에 마음은 젊었다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uadf8\\ub294 \\ub098\\uc774\\uac00 \\ub9ce\\uc558\\uc9c0\\ub9cc \\uc9c0\\ud61c\\ub97c \\ucc3e\\ub294 \\uc77c\\uc744 \\uba48\\ucd94\\uc9c0 \\uc54a\\uc558\\uae30 \\ub54c\\ubb38\\uc5d0 \\ub9c8\\uc74c\\uc740 \\uc80a\\uc5c8\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">5</div>
+  <div class="en">Youth also appears in the courage to change oneself instead of simply following habit.</div>
+  <button onclick="speak(\"Youth also appears in the courage to change oneself instead of simply following habit.\", 'en-US')">영어 듣기</button>
+  <div class="ko">젊음은 습관을 그대로 따르기보다 자신을 변화시키려는 용기에서도 나타난다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc80a\\uc74c\\uc740 \\uc2b5\\uad00\\uc744 \\uadf8\\ub300\\ub85c \\ub530\\ub974\\uae30\\ubcf4\\ub2e4 \\uc790\\uc2e0\\uc744 \\ubcc0\\ud654\\uc2dc\\ud0a4\\ub824\\ub294 \\uc6a9\\uae30\\uc5d0\\uc11c\\ub3c4 \\ub098\\ud0c0\\ub09c\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">6</div>
+  <div class="en">For example, a student who admits a mistake and tries again is practicing the philosophy of youth.</div>
+  <button onclick="speak(\"For example, a student who admits a mistake and tries again is practicing the philosophy of youth.\", 'en-US')">영어 듣기</button>
+  <div class="ko">예를 들어 실수를 인정하고 다시 도전하는 학생은 젊음의 철학을 실천하고 있는 것이다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc608\\ub97c \\ub4e4\\uc5b4 \\uc2e4\\uc218\\ub97c \\uc778\\uc815\\ud558\\uace0 \\ub2e4\\uc2dc \\ub3c4\\uc804\\ud558\\ub294 \\ud559\\uc0dd\\uc740 \\uc80a\\uc74c\\uc758 \\ucca0\\ud559\\uc744 \\uc2e4\\ucc9c\\ud558\\uace0 \\uc788\\ub294 \\uac83\\uc774\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">7</div>
+  <div class="en">Confucius valued learning throughout life, and this shows that youth can live in a humble learner’s heart.</div>
+  <button onclick="speak(\"Confucius valued learning throughout life, and this shows that youth can live in a humble learner\\u2019s heart.\", 'en-US')">영어 듣기</button>
+  <div class="ko">공자는 평생 배움을 중시했으며, 이는 젊음이 겸손한 배움의 마음속에 살아 있음을 보여 준다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uacf5\\uc790\\ub294 \\ud3c9\\uc0dd \\ubc30\\uc6c0\\uc744 \\uc911\\uc2dc\\ud588\\uc73c\\uba70, \\uc774\\ub294 \\uc80a\\uc74c\\uc774 \\uacb8\\uc190\\ud55c \\ubc30\\uc6c0\\uc758 \\ub9c8\\uc74c\\uc18d\\uc5d0 \\uc0b4\\uc544 \\uc788\\uc74c\\uc744 \\ubcf4\\uc5ec \\uc900\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">8</div>
+  <div class="en">A person becomes old in spirit when curiosity disappears, not when hair turns gray.</div>
+  <button onclick="speak(\"A person becomes old in spirit when curiosity disappears, not when hair turns gray.\", 'en-US')">영어 듣기</button>
+  <div class="ko">사람은 머리가 희어질 때가 아니라 호기심이 사라질 때 정신적으로 늙는다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc0ac\\ub78c\\uc740 \\uba38\\ub9ac\\uac00 \\ud76c\\uc5b4\\uc9c8 \\ub54c\\uac00 \\uc544\\ub2c8\\ub77c \\ud638\\uae30\\uc2ec\\uc774 \\uc0ac\\ub77c\\uc9c8 \\ub54c \\uc815\\uc2e0\\uc801\\uc73c\\ub85c \\ub299\\ub294\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">9</div>
+  <div class="en">The story of young Helen Keller reminds us that youth can overcome darkness through hope and effort.</div>
+  <button onclick="speak(\"The story of young Helen Keller reminds us that youth can overcome darkness through hope and effort.\", 'en-US')">영어 듣기</button>
+  <div class="ko">어린 헬렌 켈러의 이야기는 젊음이 희망과 노력으로 어둠을 이겨 낼 수 있음을 일깨워 준다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc5b4\\ub9b0 \\ud5ec\\ub80c \\ucf08\\ub7ec\\uc758 \\uc774\\uc57c\\uae30\\ub294 \\uc80a\\uc74c\\uc774 \\ud76c\\ub9dd\\uacfc \\ub178\\ub825\\uc73c\\ub85c \\uc5b4\\ub460\\uc744 \\uc774\\uaca8 \\ub0bc \\uc218 \\uc788\\uc74c\\uc744 \\uc77c\\uae68\\uc6cc \\uc900\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">10</div>
+  <div class="en">Her life teaches us that the youthful soul searches for light even in difficult conditions.</div>
+  <button onclick="speak(\"Her life teaches us that the youthful soul searches for light even in difficult conditions.\", 'en-US')">영어 듣기</button>
+  <div class="ko">그녀의 삶은 젊은 영혼이 어려운 상황 속에서도 빛을 찾는다는 것을 가르쳐 준다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uadf8\\ub140\\uc758 \\uc0b6\\uc740 \\uc80a\\uc740 \\uc601\\ud63c\\uc774 \\uc5b4\\ub824\\uc6b4 \\uc0c1\\ud669 \\uc18d\\uc5d0\\uc11c\\ub3c4 \\ube5b\\uc744 \\ucc3e\\ub294\\ub2e4\\ub294 \\uac83\\uc744 \\uac00\\ub974\\uccd0 \\uc900\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">11</div>
+  <div class="en">Youth is also connected with responsibility, because dreams become meaningful when they serve others.</div>
+  <button onclick="speak(\"Youth is also connected with responsibility, because dreams become meaningful when they serve others.\", 'en-US')">영어 듣기</button>
+  <div class="ko">젊음은 책임과도 연결된다. 꿈은 다른 사람을 이롭게 할 때 의미 있어지기 때문이다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc80a\\uc74c\\uc740 \\ucc45\\uc784\\uacfc\\ub3c4 \\uc5f0\\uacb0\\ub41c\\ub2e4. \\uafc8\\uc740 \\ub2e4\\ub978 \\uc0ac\\ub78c\\uc744 \\uc774\\ub86d\\uac8c \\ud560 \\ub54c \\uc758\\ubbf8 \\uc788\\uc5b4\\uc9c0\\uae30 \\ub54c\\ubb38\\uc774\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">12</div>
+  <div class="en">A young heart does not ask only, “What can I get?” but also, “What can I give?”</div>
+  <button onclick="speak(\"A young heart does not ask only, \\u201cWhat can I get?\\u201d but also, \\u201cWhat can I give?\\u201d\", 'en-US')">영어 듣기</button>
+  <div class="ko">젊은 마음은 ‘내가 무엇을 얻을 수 있을까?’만 묻지 않고 ‘내가 무엇을 줄 수 있을까?’도 묻는다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc80a\\uc740 \\ub9c8\\uc74c\\uc740 \\u2018\\ub0b4\\uac00 \\ubb34\\uc5c7\\uc744 \\uc5bb\\uc744 \\uc218 \\uc788\\uc744\\uae4c?\\u2019\\ub9cc \\ubb3b\\uc9c0 \\uc54a\\uace0 \\u2018\\ub0b4\\uac00 \\ubb34\\uc5c7\\uc744 \\uc904 \\uc218 \\uc788\\uc744\\uae4c?\\u2019\\ub3c4 \\ubb3b\\ub294\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">13</div>
+  <div class="en">In literature, youth often appears as a journey from innocence to wisdom.</div>
+  <button onclick="speak(\"In literature, youth often appears as a journey from innocence to wisdom.\", 'en-US')">영어 듣기</button>
+  <div class="ko">문학에서 젊음은 순수함에서 지혜로 나아가는 여정으로 자주 나타난다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ubb38\\ud559\\uc5d0\\uc11c \\uc80a\\uc74c\\uc740 \\uc21c\\uc218\\ud568\\uc5d0\\uc11c \\uc9c0\\ud61c\\ub85c \\ub098\\uc544\\uac00\\ub294 \\uc5ec\\uc815\\uc73c\\ub85c \\uc790\\uc8fc \\ub098\\ud0c0\\ub09c\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">14</div>
+  <div class="en">When a person faces failure and still chooses hope, youth becomes a moral strength.</div>
+  <button onclick="speak(\"When a person faces failure and still chooses hope, youth becomes a moral strength.\", 'en-US')">영어 듣기</button>
+  <div class="ko">사람이 실패를 마주하고도 희망을 선택할 때, 젊음은 도덕적 힘이 된다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc0ac\\ub78c\\uc774 \\uc2e4\\ud328\\ub97c \\ub9c8\\uc8fc\\ud558\\uace0\\ub3c4 \\ud76c\\ub9dd\\uc744 \\uc120\\ud0dd\\ud560 \\ub54c, \\uc80a\\uc74c\\uc740 \\ub3c4\\ub355\\uc801 \\ud798\\uc774 \\ub41c\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">15</div>
+  <div class="en">The fire of youth should not burn others, but should light the path for everyone.</div>
+  <button onclick="speak(\"The fire of youth should not burn others, but should light the path for everyone.\", 'en-US')">영어 듣기</button>
+  <div class="ko">젊음의 불꽃은 다른 사람을 태우는 것이 아니라 모두의 길을 밝히는 것이어야 한다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc80a\\uc74c\\uc758 \\ubd88\\uaf43\\uc740 \\ub2e4\\ub978 \\uc0ac\\ub78c\\uc744 \\ud0dc\\uc6b0\\ub294 \\uac83\\uc774 \\uc544\\ub2c8\\ub77c \\ubaa8\\ub450\\uc758 \\uae38\\uc744 \\ubc1d\\ud788\\ub294 \\uac83\\uc774\\uc5b4\\uc57c \\ud55c\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">16</div>
+  <div class="en">Therefore, true youth is passion guided by wisdom, freedom guided by responsibility, and courage guided by love.</div>
+  <button onclick="speak(\"Therefore, true youth is passion guided by wisdom, freedom guided by responsibility, and courage guided by love.\", 'en-US')">영어 듣기</button>
+  <div class="ko">그러므로 참된 젊음은 지혜가 이끄는 열정, 책임이 이끄는 자유, 사랑이 이끄는 용기이다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uadf8\\ub7ec\\ubbc0\\ub85c \\ucc38\\ub41c \\uc80a\\uc74c\\uc740 \\uc9c0\\ud61c\\uac00 \\uc774\\ub044\\ub294 \\uc5f4\\uc815, \\ucc45\\uc784\\uc774 \\uc774\\ub044\\ub294 \\uc790\\uc720, \\uc0ac\\ub791\\uc774 \\uc774\\ub044\\ub294 \\uc6a9\\uae30\\uc774\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">17</div>
+  <div class="en">We can remain young by learning, serving, forgiving, and beginning again each day.</div>
+  <button onclick="speak(\"We can remain young by learning, serving, forgiving, and beginning again each day.\", 'en-US')">영어 듣기</button>
+  <div class="ko">우리는 배우고, 섬기고, 용서하고, 매일 다시 시작함으로써 젊게 살아갈 수 있다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc6b0\\ub9ac\\ub294 \\ubc30\\uc6b0\\uace0, \\uc12c\\uae30\\uace0, \\uc6a9\\uc11c\\ud558\\uace0, \\ub9e4\\uc77c \\ub2e4\\uc2dc \\uc2dc\\uc791\\ud568\\uc73c\\ub85c\\uc368 \\uc80a\\uac8c \\uc0b4\\uc544\\uac08 \\uc218 \\uc788\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">18</div>
+  <div class="en">Youth is finally the promise that life can still grow, deepen, and become more beautiful.</div>
+  <button onclick="speak(\"Youth is finally the promise that life can still grow, deepen, and become more beautiful.\", 'en-US')">영어 듣기</button>
+  <div class="ko">젊음은 결국 삶이 여전히 성장하고 깊어지며 더 아름다워질 수 있다는 약속이다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc80a\\uc74c\\uc740 \\uacb0\\uad6d \\uc0b6\\uc774 \\uc5ec\\uc804\\ud788 \\uc131\\uc7a5\\ud558\\uace0 \\uae4a\\uc5b4\\uc9c0\\uba70 \\ub354 \\uc544\\ub984\\ub2e4\\uc6cc\\uc9c8 \\uc218 \\uc788\\ub2e4\\ub294 \\uc57d\\uc18d\\uc774\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+</div>
+
+<div class="section">
+<h2>Ⅱ. Courage(용기) — 오늘 하루 실천 10문장</h2>
+
+<div class="pair">
+  <div class="num">1</div>
+  <div class="en">Today, I will begin my day with courage and a calm heart.</div>
+  <button onclick="speak(\"Today, I will begin my day with courage and a calm heart.\", 'en-US')">영어 듣기</button>
+  <div class="ko">오늘 나는 용기와 차분한 마음으로 하루를 시작하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc624\\ub298 \\ub098\\ub294 \\uc6a9\\uae30\\uc640 \\ucc28\\ubd84\\ud55c \\ub9c8\\uc74c\\uc73c\\ub85c \\ud558\\ub8e8\\ub97c \\uc2dc\\uc791\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">2</div>
+  <div class="en">I will not run away from difficult tasks, but face them step by step.</div>
+  <button onclick="speak(\"I will not run away from difficult tasks, but face them step by step.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 어려운 일을 피하지 않고 한 걸음씩 마주하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\uc5b4\\ub824\\uc6b4 \\uc77c\\uc744 \\ud53c\\ud558\\uc9c0 \\uc54a\\uace0 \\ud55c \\uac78\\uc74c\\uc529 \\ub9c8\\uc8fc\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">3</div>
+  <div class="en">Courage means doing what is right even when it is not easy.</div>
+  <button onclick="speak(\"Courage means doing what is right even when it is not easy.\", 'en-US')">영어 듣기</button>
+  <div class="ko">용기란 쉽지 않을 때에도 옳은 일을 하는 것이다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc6a9\\uae30\\ub780 \\uc27d\\uc9c0 \\uc54a\\uc744 \\ub54c\\uc5d0\\ub3c4 \\uc633\\uc740 \\uc77c\\uc744 \\ud558\\ub294 \\uac83\\uc774\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">4</div>
+  <div class="en">I will speak honestly and kindly to the people around me.</div>
+  <button onclick="speak(\"I will speak honestly and kindly to the people around me.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 주변 사람들에게 정직하고 친절하게 말하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\uc8fc\\ubcc0 \\uc0ac\\ub78c\\ub4e4\\uc5d0\\uac8c \\uc815\\uc9c1\\ud558\\uace0 \\uce5c\\uc808\\ud558\\uac8c \\ub9d0\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">5</div>
+  <div class="en">When I make a mistake, I will admit it and learn from it.</div>
+  <button onclick="speak(\"When I make a mistake, I will admit it and learn from it.\", 'en-US')">영어 듣기</button>
+  <div class="ko">실수했을 때 나는 그것을 인정하고 그 안에서 배우겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc2e4\\uc218\\ud588\\uc744 \\ub54c \\ub098\\ub294 \\uadf8\\uac83\\uc744 \\uc778\\uc815\\ud558\\uace0 \\uadf8 \\uc548\\uc5d0\\uc11c \\ubc30\\uc6b0\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">6</div>
+  <div class="en">I will encourage my students to believe in their own possibilities.</div>
+  <button onclick="speak(\"I will encourage my students to believe in their own possibilities.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 학생들이 자신의 가능성을 믿도록 격려하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\ud559\\uc0dd\\ub4e4\\uc774 \\uc790\\uc2e0\\uc758 \\uac00\\ub2a5\\uc131\\uc744 \\ubbff\\ub3c4\\ub85d \\uaca9\\ub824\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">7</div>
+  <div class="en">I will try one new thing today, even if it feels small.</div>
+  <button onclick="speak(\"I will try one new thing today, even if it feels small.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 작게 느껴지더라도 오늘 새로운 일 하나에 도전하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\uc791\\uac8c \\ub290\\uaef4\\uc9c0\\ub354\\ub77c\\ub3c4 \\uc624\\ub298 \\uc0c8\\ub85c\\uc6b4 \\uc77c \\ud558\\ub098\\uc5d0 \\ub3c4\\uc804\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">8</div>
+  <div class="en">I will choose hope instead of fear and action instead of hesitation.</div>
+  <button onclick="speak(\"I will choose hope instead of fear and action instead of hesitation.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 두려움 대신 희망을, 망설임 대신 행동을 선택하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\ub450\\ub824\\uc6c0 \\ub300\\uc2e0 \\ud76c\\ub9dd\\uc744, \\ub9dd\\uc124\\uc784 \\ub300\\uc2e0 \\ud589\\ub3d9\\uc744 \\uc120\\ud0dd\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">9</div>
+  <div class="en">With courage, I can turn today’s challenge into tomorrow’s growth.</div>
+  <button onclick="speak(\"With courage, I can turn today\\u2019s challenge into tomorrow\\u2019s growth.\", 'en-US')">영어 듣기</button>
+  <div class="ko">용기를 가지고 나는 오늘의 도전을 내일의 성장으로 바꿀 수 있다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc6a9\\uae30\\ub97c \\uac00\\uc9c0\\uace0 \\ub098\\ub294 \\uc624\\ub298\\uc758 \\ub3c4\\uc804\\uc744 \\ub0b4\\uc77c\\uc758 \\uc131\\uc7a5\\uc73c\\ub85c \\ubc14\\uafc0 \\uc218 \\uc788\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">10</div>
+  <div class="en">Today, I will live bravely, warmly, and meaningfully.</div>
+  <button onclick="speak(\"Today, I will live bravely, warmly, and meaningfully.\", 'en-US')">영어 듣기</button>
+  <div class="ko">오늘 나는 용감하고 따뜻하며 의미 있게 살아가겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc624\\ub298 \\ub098\\ub294 \\uc6a9\\uac10\\ud558\\uace0 \\ub530\\ub73b\\ud558\\uba70 \\uc758\\ubbf8 \\uc788\\uac8c \\uc0b4\\uc544\\uac00\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+</div>
+
+<div class="section">
+<h2>전체 원문 Text</h2>
+<pre>Youth (젊음)을 인문 철학적으로 예시와 일화를 들어서
+영어18문장(한글 해석)으로 설명
+
+Youth is not only a period of life, but also a way of looking at the world with wonder.
+젊음은 단순히 삶의 한 시기가 아니라, 세상을 경이롭게 바라보는 태도이다.
+In humanistic philosophy, youth means the power to ask new questions about life and society.
+인문 철학에서 젊음은 삶과 사회에 대해 새로운 질문을 던지는 힘을 의미한다.
+Socrates showed the spirit of youth when he kept asking people what truth and goodness meant.
+소크라테스는 진리와 선이 무엇인지 계속 질문함으로써 젊음의 정신을 보여 주었다.
+Even though he was old, his mind stayed young because he never stopped seeking wisdom.
+그는 나이가 많았지만 지혜를 찾는 일을 멈추지 않았기 때문에 마음은 젊었다.
+Youth also appears in the courage to change oneself instead of simply following habit.
+젊음은 습관을 그대로 따르기보다 자신을 변화시키려는 용기에서도 나타난다.
+For example, a student who admits a mistake and tries again is practicing the philosophy of youth.
+예를 들어 실수를 인정하고 다시 도전하는 학생은 젊음의 철학을 실천하고 있는 것이다.
+Confucius valued learning throughout life, and this shows that youth can live in a humble learner’s heart.
+공자는 평생 배움을 중시했으며, 이는 젊음이 겸손한 배움의 마음속에 살아 있음을 보여 준다.
+A person becomes old in spirit when curiosity disappears, not when hair turns gray.
+사람은 머리가 희어질 때가 아니라 호기심이 사라질 때 정신적으로 늙는다.
+The story of young Helen Keller reminds us that youth can overcome darkness through hope and effort.
+어린 헬렌 켈러의 이야기는 젊음이 희망과 노력으로 어둠을 이겨 낼 수 있음을 일깨워 준다.
+Her life teaches us that the youthful soul searches for light even in difficult conditions.
+그녀의 삶은 젊은 영혼이 어려운 상황 속에서도 빛을 찾는다는 것을 가르쳐 준다.
+Youth is also connected with responsibility, because dreams become meaningful when they serve others.
+젊음은 책임과도 연결된다. 꿈은 다른 사람을 이롭게 할 때 의미 있어지기 때문이다.
+A young heart does not ask only, “What can I get?” but also, “What can I give?”
+젊은 마음은 ‘내가 무엇을 얻을 수 있을까?’만 묻지 않고 ‘내가 무엇을 줄 수 있을까?’도 묻는다.
+In literature, youth often appears as a journey from innocence to wisdom.
+문학에서 젊음은 순수함에서 지혜로 나아가는 여정으로 자주 나타난다.
+When a person faces failure and still chooses hope, youth becomes a moral strength.
+사람이 실패를 마주하고도 희망을 선택할 때, 젊음은 도덕적 힘이 된다.
+The fire of youth should not burn others, but should light the path for everyone.
+젊음의 불꽃은 다른 사람을 태우는 것이 아니라 모두의 길을 밝히는 것이어야 한다.
+Therefore, true youth is passion guided by wisdom, freedom guided by responsibility, and courage guided by love.
+그러므로 참된 젊음은 지혜가 이끄는 열정, 책임이 이끄는 자유, 사랑이 이끄는 용기이다.
+We can remain young by learning, serving, forgiving, and beginning again each day.
+우리는 배우고, 섬기고, 용서하고, 매일 다시 시작함으로써 젊게 살아갈 수 있다.
+Youth is finally the promise that life can still grow, deepen, and become more beautiful.
+젊음은 결국 삶이 여전히 성장하고 깊어지며 더 아름다워질 수 있다는 약속이다.
+
+오늘 하루 Courage (용기)을 생각하고 실천하며 살고 싶다.
+영어 10줄(한글 해석)로 오늘의 삶을 이야기 하기
+
+Today, I will begin my day with courage and a calm heart.
+오늘 나는 용기와 차분한 마음으로 하루를 시작하겠다.
+I will not run away from difficult tasks, but face them step by step.
+나는 어려운 일을 피하지 않고 한 걸음씩 마주하겠다.
+Courage means doing what is right even when it is not easy.
+용기란 쉽지 않을 때에도 옳은 일을 하는 것이다.
+I will speak honestly and kindly to the people around me.
+나는 주변 사람들에게 정직하고 친절하게 말하겠다.
+When I make a mistake, I will admit it and learn from it.
+실수했을 때 나는 그것을 인정하고 그 안에서 배우겠다.
+I will encourage my students to believe in their own possibilities.
+나는 학생들이 자신의 가능성을 믿도록 격려하겠다.
+I will try one new thing today, even if it feels small.
+나는 작게 느껴지더라도 오늘 새로운 일 하나에 도전하겠다.
+I will choose hope instead of fear and action instead of hesitation.
+나는 두려움 대신 희망을, 망설임 대신 행동을 선택하겠다.
+With courage, I can turn today’s challenge into tomorrow’s growth.
+용기를 가지고 나는 오늘의 도전을 내일의 성장으로 바꿀 수 있다.
+Today, I will live bravely, warmly, and meaningfully.
+오늘 나는 용감하고 따뜻하며 의미 있게 살아가겠다.</pre>
+</div>
+
+<script>
+const EN_TEXT = "Youth is not only a period of life, but also a way of looking at the world with wonder.\nIn humanistic philosophy, youth means the power to ask new questions about life and society.\nSocrates showed the spirit of youth when he kept asking people what truth and goodness meant.\nEven though he was old, his mind stayed young because he never stopped seeking wisdom.\nYouth also appears in the courage to change oneself instead of simply following habit.\nFor example, a student who admits a mistake and tries again is practicing the philosophy of youth.\nConfucius valued learning throughout life, and this shows that youth can live in a humble learner’s heart.\nA person becomes old in spirit when curiosity disappears, not when hair turns gray.\nThe story of young Helen Keller reminds us that youth can overcome darkness through hope and effort.\nHer life teaches us that the youthful soul searches for light even in difficult conditions.\nYouth is also connected with responsibility, because dreams become meaningful when they serve others.\nA young heart does not ask only, “What can I get?” but also, “What can I give?”\nIn literature, youth often appears as a journey from innocence to wisdom.\nWhen a person faces failure and still chooses hope, youth becomes a moral strength.\nThe fire of youth should not burn others, but should light the path for everyone.\nTherefore, true youth is passion guided by wisdom, freedom guided by responsibility, and courage guided by love.\nWe can remain young by learning, serving, forgiving, and beginning again each day.\nYouth is finally the promise that life can still grow, deepen, and become more beautiful.\nToday, I will begin my day with courage and a calm heart.\nI will not run away from difficult tasks, but face them step by step.\nCourage means doing what is right even when it is not easy.\nI will speak honestly and kindly to the people around me.\nWhen I make a mistake, I will admit it and learn from it.\nI will encourage my students to believe in their own possibilities.\nI will try one new thing today, even if it feels small.\nI will choose hope instead of fear and action instead of hesitation.\nWith courage, I can turn today’s challenge into tomorrow’s growth.\nToday, I will live bravely, warmly, and meaningfully.";
+const KO_TEXT = "젊음은 단순히 삶의 한 시기가 아니라, 세상을 경이롭게 바라보는 태도이다.\n인문 철학에서 젊음은 삶과 사회에 대해 새로운 질문을 던지는 힘을 의미한다.\n소크라테스는 진리와 선이 무엇인지 계속 질문함으로써 젊음의 정신을 보여 주었다.\n그는 나이가 많았지만 지혜를 찾는 일을 멈추지 않았기 때문에 마음은 젊었다.\n젊음은 습관을 그대로 따르기보다 자신을 변화시키려는 용기에서도 나타난다.\n예를 들어 실수를 인정하고 다시 도전하는 학생은 젊음의 철학을 실천하고 있는 것이다.\n공자는 평생 배움을 중시했으며, 이는 젊음이 겸손한 배움의 마음속에 살아 있음을 보여 준다.\n사람은 머리가 희어질 때가 아니라 호기심이 사라질 때 정신적으로 늙는다.\n어린 헬렌 켈러의 이야기는 젊음이 희망과 노력으로 어둠을 이겨 낼 수 있음을 일깨워 준다.\n그녀의 삶은 젊은 영혼이 어려운 상황 속에서도 빛을 찾는다는 것을 가르쳐 준다.\n젊음은 책임과도 연결된다. 꿈은 다른 사람을 이롭게 할 때 의미 있어지기 때문이다.\n젊은 마음은 ‘내가 무엇을 얻을 수 있을까?’만 묻지 않고 ‘내가 무엇을 줄 수 있을까?’도 묻는다.\n문학에서 젊음은 순수함에서 지혜로 나아가는 여정으로 자주 나타난다.\n사람이 실패를 마주하고도 희망을 선택할 때, 젊음은 도덕적 힘이 된다.\n젊음의 불꽃은 다른 사람을 태우는 것이 아니라 모두의 길을 밝히는 것이어야 한다.\n그러므로 참된 젊음은 지혜가 이끄는 열정, 책임이 이끄는 자유, 사랑이 이끄는 용기이다.\n우리는 배우고, 섬기고, 용서하고, 매일 다시 시작함으로써 젊게 살아갈 수 있다.\n젊음은 결국 삶이 여전히 성장하고 깊어지며 더 아름다워질 수 있다는 약속이다.\n오늘 나는 용기와 차분한 마음으로 하루를 시작하겠다.\n나는 어려운 일을 피하지 않고 한 걸음씩 마주하겠다.\n용기란 쉽지 않을 때에도 옳은 일을 하는 것이다.\n나는 주변 사람들에게 정직하고 친절하게 말하겠다.\n실수했을 때 나는 그것을 인정하고 그 안에서 배우겠다.\n나는 학생들이 자신의 가능성을 믿도록 격려하겠다.\n나는 작게 느껴지더라도 오늘 새로운 일 하나에 도전하겠다.\n나는 두려움 대신 희망을, 망설임 대신 행동을 선택하겠다.\n용기를 가지고 나는 오늘의 도전을 내일의 성장으로 바꿀 수 있다.\n오늘 나는 용감하고 따뜻하며 의미 있게 살아가겠다.";
+function speak(text, lang){
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = lang;
+  u.rate = lang === 'en-US' ? 0.88 : 0.95;
+  u.pitch = 1;
+  speechSynthesis.speak(u);
+}
+function speakAll(lang){
+  speechSynthesis.cancel();
+  const text = lang === 'en-US' ? EN_TEXT : KO_TEXT;
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = lang;
+  u.rate = lang === 'en-US' ? 0.88 : 0.95;
+  u.pitch = 1;
+  speechSynthesis.speak(u);
+}
+</script>
+</div></div>
+</body>
+</html>

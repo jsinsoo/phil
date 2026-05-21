@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adventure 모험 TTS 학습</title>
+<style>
+body{font-family:'Malgun Gothic',Arial,sans-serif;margin:0;background:linear-gradient(135deg,#eefaf3,#fff8ec);color:#222;}
+.wrap{max-width:1050px;margin:34px auto;padding:22px;}
+.card{background:#fff;border-radius:24px;padding:30px;box-shadow:0 12px 34px rgba(0,0,0,.12);}
+h1{text-align:center;color:#1f6b4a;font-size:36px;margin:6px 0 10px;}
+.subtitle{text-align:center;line-height:1.7;color:#555;font-size:17px;}
+.info{background:#f0fff7;border-left:7px solid #36a26c;padding:16px 20px;border-radius:16px;margin:20px 0;line-height:1.8;font-size:18px;}
+.controls{text-align:center;margin:20px 0;}
+button{border:none;border-radius:999px;padding:9px 15px;margin:4px;background:#23734e;color:white;cursor:pointer;font-weight:700;}
+button:hover{filter:brightness(1.08);}
+.btn-ko{background:#b46b1d;}
+.stop{background:#555;}
+.section{margin-top:30px;padding-top:18px;border-top:2px dashed #ddd;}
+h2{color:#6f4a00;font-size:25px;}
+.pair{display:grid;grid-template-columns:44px 1fr auto;gap:8px 12px;align-items:center;margin:13px 0;padding:16px;border:1px solid #eee;border-radius:18px;background:#fbfffd;}
+.num{grid-row:1 / span 2;font-size:22px;font-weight:800;color:#73a88d;text-align:center;}
+.en{font-size:18px;font-weight:700;color:#1f6b4a;line-height:1.55;}
+.ko{font-size:17px;color:#333;line-height:1.55;}
+pre{white-space:pre-wrap;word-break:keep-all;background:#fffdf7;border-radius:18px;padding:20px;line-height:1.85;font-size:16px;border:1px solid #f0e5c8;}
+@media(max-width:720px){.pair{grid-template-columns:34px 1fr;}.pair button{grid-column:2;justify-self:start;}}
+</style>
+</head>
+<body>
+<div class="wrap"><div class="card">
+<h1>Adventure 모험 TTS 학습</h1>
+<div class="subtitle">Adventure(모험)의 인문 철학적 설명 18문장 + 오늘 하루 실천 10문장</div>
+<div class="info">
+<strong>Adventure:</strong> 모험은 미지의 길을 향해 나아가며 자신과 세계를 새롭게 발견하는 삶의 여정입니다.<br>
+<strong>Practice:</strong> 오늘의 작은 새로움과 도전을 배움과 성장의 기회로 받아들입니다.
+</div>
+<div class="controls">
+<button onclick="speakAll('en-US')">영어 전체 듣기</button>
+<button class="btn-ko" onclick="speakAll('ko-KR')">한국어 전체 듣기</button>
+<button class="stop" onclick="speechSynthesis.cancel()">정지</button>
+</div>
+
+<div class="section">
+<h2>Ⅰ. Adventure(모험) — 인문 철학적 설명 18문장</h2>
+
+<div class="pair">
+  <div class="num">1</div>
+  <div class="en">Adventure is the human willingness to leave the familiar and discover a wider world.</div>
+  <button onclick="speak(\"Adventure is the human willingness to leave the familiar and discover a wider world.\", 'en-US')">영어 듣기</button>
+  <div class="ko">모험은 익숙한 곳을 떠나 더 넓은 세계를 발견하려는 인간의 의지이다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ubaa8\\ud5d8\\uc740 \\uc775\\uc219\\ud55c \\uacf3\\uc744 \\ub5a0\\ub098 \\ub354 \\ub113\\uc740 \\uc138\\uacc4\\ub97c \\ubc1c\\uacac\\ud558\\ub824\\ub294 \\uc778\\uac04\\uc758 \\uc758\\uc9c0\\uc774\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">2</div>
+  <div class="en">In humanistic philosophy, adventure is not only travel, but a journey toward self-knowledge.</div>
+  <button onclick="speak(\"In humanistic philosophy, adventure is not only travel, but a journey toward self-knowledge.\", 'en-US')">영어 듣기</button>
+  <div class="ko">인문 철학에서 모험은 단순한 여행이 아니라 자기 이해를 향한 여정이다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc778\\ubb38 \\ucca0\\ud559\\uc5d0\\uc11c \\ubaa8\\ud5d8\\uc740 \\ub2e8\\uc21c\\ud55c \\uc5ec\\ud589\\uc774 \\uc544\\ub2c8\\ub77c \\uc790\\uae30 \\uc774\\ud574\\ub97c \\ud5a5\\ud55c \\uc5ec\\uc815\\uc774\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">3</div>
+  <div class="en">Socrates lived an intellectual adventure by questioning what people thought they already knew.</div>
+  <button onclick="speak(\"Socrates lived an intellectual adventure by questioning what people thought they already knew.\", 'en-US')">영어 듣기</button>
+  <div class="ko">소크라테스는 사람들이 이미 안다고 생각한 것들을 질문하며 지적인 모험을 살았다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc18c\\ud06c\\ub77c\\ud14c\\uc2a4\\ub294 \\uc0ac\\ub78c\\ub4e4\\uc774 \\uc774\\ubbf8 \\uc548\\ub2e4\\uace0 \\uc0dd\\uac01\\ud55c \\uac83\\ub4e4\\uc744 \\uc9c8\\ubb38\\ud558\\uba70 \\uc9c0\\uc801\\uc778 \\ubaa8\\ud5d8\\uc744 \\uc0b4\\uc558\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">4</div>
+  <div class="en">His life shows that the mind can travel far without leaving the city.</div>
+  <button onclick="speak(\"His life shows that the mind can travel far without leaving the city.\", 'en-US')">영어 듣기</button>
+  <div class="ko">그의 삶은 도시를 떠나지 않아도 정신은 멀리 여행할 수 있음을 보여 준다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uadf8\\uc758 \\uc0b6\\uc740 \\ub3c4\\uc2dc\\ub97c \\ub5a0\\ub098\\uc9c0 \\uc54a\\uc544\\ub3c4 \\uc815\\uc2e0\\uc740 \\uba40\\ub9ac \\uc5ec\\ud589\\ud560 \\uc218 \\uc788\\uc74c\\uc744 \\ubcf4\\uc5ec \\uc900\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">5</div>
+  <div class="en">Odysseus in ancient stories represents the adventure of returning home with wisdom.</div>
+  <button onclick="speak(\"Odysseus in ancient stories represents the adventure of returning home with wisdom.\", 'en-US')">영어 듣기</button>
+  <div class="ko">고대 이야기 속 오디세우스는 지혜를 가지고 집으로 돌아가는 모험을 상징한다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uace0\\ub300 \\uc774\\uc57c\\uae30 \\uc18d \\uc624\\ub514\\uc138\\uc6b0\\uc2a4\\ub294 \\uc9c0\\ud61c\\ub97c \\uac00\\uc9c0\\uace0 \\uc9d1\\uc73c\\ub85c \\ub3cc\\uc544\\uac00\\ub294 \\ubaa8\\ud5d8\\uc744 \\uc0c1\\uc9d5\\ud55c\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">6</div>
+  <div class="en">His journey teaches us that adventure often changes the traveler more than the destination.</div>
+  <button onclick="speak(\"His journey teaches us that adventure often changes the traveler more than the destination.\", 'en-US')">영어 듣기</button>
+  <div class="ko">그의 여정은 모험이 목적지보다 여행자 자신을 더 많이 변화시킨다는 것을 가르쳐 준다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uadf8\\uc758 \\uc5ec\\uc815\\uc740 \\ubaa8\\ud5d8\\uc774 \\ubaa9\\uc801\\uc9c0\\ubcf4\\ub2e4 \\uc5ec\\ud589\\uc790 \\uc790\\uc2e0\\uc744 \\ub354 \\ub9ce\\uc774 \\ubcc0\\ud654\\uc2dc\\ud0a8\\ub2e4\\ub294 \\uac83\\uc744 \\uac00\\ub974\\uccd0 \\uc900\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">7</div>
+  <div class="en">For example, a student who studies a difficult subject is beginning an adventure of the mind.</div>
+  <button onclick="speak(\"For example, a student who studies a difficult subject is beginning an adventure of the mind.\", 'en-US')">영어 듣기</button>
+  <div class="ko">예를 들어 어려운 과목을 공부하는 학생은 정신의 모험을 시작하는 것이다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc608\\ub97c \\ub4e4\\uc5b4 \\uc5b4\\ub824\\uc6b4 \\uacfc\\ubaa9\\uc744 \\uacf5\\ubd80\\ud558\\ub294 \\ud559\\uc0dd\\uc740 \\uc815\\uc2e0\\uc758 \\ubaa8\\ud5d8\\uc744 \\uc2dc\\uc791\\ud558\\ub294 \\uac83\\uc774\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">8</div>
+  <div class="en">A teacher who tries a new way of teaching is also entering a meaningful adventure.</div>
+  <button onclick="speak(\"A teacher who tries a new way of teaching is also entering a meaningful adventure.\", 'en-US')">영어 듣기</button>
+  <div class="ko">새로운 수업 방법을 시도하는 교사도 의미 있는 모험에 들어서는 것이다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc0c8\\ub85c\\uc6b4 \\uc218\\uc5c5 \\ubc29\\ubc95\\uc744 \\uc2dc\\ub3c4\\ud558\\ub294 \\uad50\\uc0ac\\ub3c4 \\uc758\\ubbf8 \\uc788\\ub294 \\ubaa8\\ud5d8\\uc5d0 \\ub4e4\\uc5b4\\uc11c\\ub294 \\uac83\\uc774\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">9</div>
+  <div class="en">Adventure requires curiosity, because curiosity opens the first door.</div>
+  <button onclick="speak(\"Adventure requires curiosity, because curiosity opens the first door.\", 'en-US')">영어 듣기</button>
+  <div class="ko">모험에는 호기심이 필요하다. 호기심이 첫 번째 문을 열기 때문이다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ubaa8\\ud5d8\\uc5d0\\ub294 \\ud638\\uae30\\uc2ec\\uc774 \\ud544\\uc694\\ud558\\ub2e4. \\ud638\\uae30\\uc2ec\\uc774 \\uccab \\ubc88\\uc9f8 \\ubb38\\uc744 \\uc5f4\\uae30 \\ub54c\\ubb38\\uc774\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">10</div>
+  <div class="en">It also requires courage, because every new path contains uncertainty.</div>
+  <button onclick="speak(\"It also requires courage, because every new path contains uncertainty.\", 'en-US')">영어 듣기</button>
+  <div class="ko">모험에는 용기도 필요하다. 모든 새로운 길에는 불확실성이 있기 때문이다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ubaa8\\ud5d8\\uc5d0\\ub294 \\uc6a9\\uae30\\ub3c4 \\ud544\\uc694\\ud558\\ub2e4. \\ubaa8\\ub4e0 \\uc0c8\\ub85c\\uc6b4 \\uae38\\uc5d0\\ub294 \\ubd88\\ud655\\uc2e4\\uc131\\uc774 \\uc788\\uae30 \\ub54c\\ubb38\\uc774\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">11</div>
+  <div class="en">The story of explorers reminds us that adventure can expand human knowledge.</div>
+  <button onclick="speak(\"The story of explorers reminds us that adventure can expand human knowledge.\", 'en-US')">영어 듣기</button>
+  <div class="ko">탐험가들의 이야기는 모험이 인간의 지식을 확장할 수 있음을 일깨워 준다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ud0d0\\ud5d8\\uac00\\ub4e4\\uc758 \\uc774\\uc57c\\uae30\\ub294 \\ubaa8\\ud5d8\\uc774 \\uc778\\uac04\\uc758 \\uc9c0\\uc2dd\\uc744 \\ud655\\uc7a5\\ud560 \\uc218 \\uc788\\uc74c\\uc744 \\uc77c\\uae68\\uc6cc \\uc900\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">12</div>
+  <div class="en">However, true adventure must respect people, nature, and life.</div>
+  <button onclick="speak(\"However, true adventure must respect people, nature, and life.\", 'en-US')">영어 듣기</button>
+  <div class="ko">그러나 참된 모험은 사람과 자연과 생명을 존중해야 한다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uadf8\\ub7ec\\ub098 \\ucc38\\ub41c \\ubaa8\\ud5d8\\uc740 \\uc0ac\\ub78c\\uacfc \\uc790\\uc5f0\\uacfc \\uc0dd\\uba85\\uc744 \\uc874\\uc911\\ud574\\uc57c \\ud55c\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">13</div>
+  <div class="en">Adventure without wisdom can become reckless danger.</div>
+  <button onclick="speak(\"Adventure without wisdom can become reckless danger.\", 'en-US')">영어 듣기</button>
+  <div class="ko">지혜 없는 모험은 무모한 위험이 될 수 있다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc9c0\\ud61c \\uc5c6\\ub294 \\ubaa8\\ud5d8\\uc740 \\ubb34\\ubaa8\\ud55c \\uc704\\ud5d8\\uc774 \\ub420 \\uc218 \\uc788\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">14</div>
+  <div class="en">Therefore, a wise adventurer asks not only where to go, but also why to go.</div>
+  <button onclick="speak(\"Therefore, a wise adventurer asks not only where to go, but also why to go.\", 'en-US')">영어 듣기</button>
+  <div class="ko">그러므로 지혜로운 모험가는 어디로 갈지만이 아니라 왜 가야 하는지도 묻는다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uadf8\\ub7ec\\ubbc0\\ub85c \\uc9c0\\ud61c\\ub85c\\uc6b4 \\ubaa8\\ud5d8\\uac00\\ub294 \\uc5b4\\ub514\\ub85c \\uac08\\uc9c0\\ub9cc\\uc774 \\uc544\\ub2c8\\ub77c \\uc65c \\uac00\\uc57c \\ud558\\ub294\\uc9c0\\ub3c4 \\ubb3b\\ub294\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">15</div>
+  <div class="en">In daily life, adventure appears when we try a new habit, meet a new idea, or forgive someone first.</div>
+  <button onclick="speak(\"In daily life, adventure appears when we try a new habit, meet a new idea, or forgive someone first.\", 'en-US')">영어 듣기</button>
+  <div class="ko">일상에서 모험은 새로운 습관을 시도하고, 새로운 생각을 만나고, 먼저 용서할 때 나타난다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc77c\\uc0c1\\uc5d0\\uc11c \\ubaa8\\ud5d8\\uc740 \\uc0c8\\ub85c\\uc6b4 \\uc2b5\\uad00\\uc744 \\uc2dc\\ub3c4\\ud558\\uace0, \\uc0c8\\ub85c\\uc6b4 \\uc0dd\\uac01\\uc744 \\ub9cc\\ub098\\uace0, \\uba3c\\uc800 \\uc6a9\\uc11c\\ud560 \\ub54c \\ub098\\ud0c0\\ub09c\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">16</div>
+  <div class="en">A small adventure can awaken a sleeping part of the heart.</div>
+  <button onclick="speak(\"A small adventure can awaken a sleeping part of the heart.\", 'en-US')">영어 듣기</button>
+  <div class="ko">작은 모험은 잠들어 있던 마음의 한 부분을 깨울 수 있다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc791\\uc740 \\ubaa8\\ud5d8\\uc740 \\uc7a0\\ub4e4\\uc5b4 \\uc788\\ub358 \\ub9c8\\uc74c\\uc758 \\ud55c \\ubd80\\ubd84\\uc744 \\uae68\\uc6b8 \\uc218 \\uc788\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">17</div>
+  <div class="en">Adventure becomes beautiful when it leads us to humility, gratitude, and wonder.</div>
+  <button onclick="speak(\"Adventure becomes beautiful when it leads us to humility, gratitude, and wonder.\", 'en-US')">영어 듣기</button>
+  <div class="ko">모험은 우리를 겸손과 감사와 경이로 이끌 때 아름다워진다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ubaa8\\ud5d8\\uc740 \\uc6b0\\ub9ac\\ub97c \\uacb8\\uc190\\uacfc \\uac10\\uc0ac\\uc640 \\uacbd\\uc774\\ub85c \\uc774\\ub04c \\ub54c \\uc544\\ub984\\ub2e4\\uc6cc\\uc9c4\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">18</div>
+  <div class="en">Ultimately, adventure is the promise that life still has unknown paths worth walking.</div>
+  <button onclick="speak(\"Ultimately, adventure is the promise that life still has unknown paths worth walking.\", 'en-US')">영어 듣기</button>
+  <div class="ko">궁극적으로 모험은 삶에 아직 걸어 볼 만한 미지의 길이 남아 있다는 약속이다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uad81\\uadf9\\uc801\\uc73c\\ub85c \\ubaa8\\ud5d8\\uc740 \\uc0b6\\uc5d0 \\uc544\\uc9c1 \\uac78\\uc5b4 \\ubcfc \\ub9cc\\ud55c \\ubbf8\\uc9c0\\uc758 \\uae38\\uc774 \\ub0a8\\uc544 \\uc788\\ub2e4\\ub294 \\uc57d\\uc18d\\uc774\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+</div>
+
+<div class="section">
+<h2>Ⅱ. Adventure(모험) — 오늘 하루 실천 10문장</h2>
+
+<div class="pair">
+  <div class="num">1</div>
+  <div class="en">Today, I will begin my day with the spirit of adventure.</div>
+  <button onclick="speak(\"Today, I will begin my day with the spirit of adventure.\", 'en-US')">영어 듣기</button>
+  <div class="ko">오늘 나는 모험의 정신으로 하루를 시작하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc624\\ub298 \\ub098\\ub294 \\ubaa8\\ud5d8\\uc758 \\uc815\\uc2e0\\uc73c\\ub85c \\ud558\\ub8e8\\ub97c \\uc2dc\\uc791\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">2</div>
+  <div class="en">I will welcome new experiences with curiosity and courage.</div>
+  <button onclick="speak(\"I will welcome new experiences with curiosity and courage.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 새로운 경험을 호기심과 용기로 맞이하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\uc0c8\\ub85c\\uc6b4 \\uacbd\\ud5d8\\uc744 \\ud638\\uae30\\uc2ec\\uacfc \\uc6a9\\uae30\\ub85c \\ub9de\\uc774\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">3</div>
+  <div class="en">Adventure means taking a step toward the unknown with a hopeful heart.</div>
+  <button onclick="speak(\"Adventure means taking a step toward the unknown with a hopeful heart.\", 'en-US')">영어 듣기</button>
+  <div class="ko">모험은 희망찬 마음으로 미지의 세계를 향해 한 걸음 내딛는 것이다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ubaa8\\ud5d8\\uc740 \\ud76c\\ub9dd\\ucc2c \\ub9c8\\uc74c\\uc73c\\ub85c \\ubbf8\\uc9c0\\uc758 \\uc138\\uacc4\\ub97c \\ud5a5\\ud574 \\ud55c \\uac78\\uc74c \\ub0b4\\ub51b\\ub294 \\uac83\\uc774\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">4</div>
+  <div class="en">I will try one new idea instead of repeating only old habits.</div>
+  <button onclick="speak(\"I will try one new idea instead of repeating only old habits.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 오래된 습관만 반복하지 않고 새로운 생각 하나를 시도하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\uc624\\ub798\\ub41c \\uc2b5\\uad00\\ub9cc \\ubc18\\ubcf5\\ud558\\uc9c0 \\uc54a\\uace0 \\uc0c8\\ub85c\\uc6b4 \\uc0dd\\uac01 \\ud558\\ub098\\ub97c \\uc2dc\\ub3c4\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">5</div>
+  <div class="en">When I face uncertainty, I will choose learning instead of fear.</div>
+  <button onclick="speak(\"When I face uncertainty, I will choose learning instead of fear.\", 'en-US')">영어 듣기</button>
+  <div class="ko">불확실함을 마주할 때 나는 두려움 대신 배움을 선택하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ubd88\\ud655\\uc2e4\\ud568\\uc744 \\ub9c8\\uc8fc\\ud560 \\ub54c \\ub098\\ub294 \\ub450\\ub824\\uc6c0 \\ub300\\uc2e0 \\ubc30\\uc6c0\\uc744 \\uc120\\ud0dd\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">6</div>
+  <div class="en">I will encourage my students to explore their talents and dreams.</div>
+  <button onclick="speak(\"I will encourage my students to explore their talents and dreams.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 학생들이 자신의 재능과 꿈을 탐색하도록 격려하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\ud559\\uc0dd\\ub4e4\\uc774 \\uc790\\uc2e0\\uc758 \\uc7ac\\ub2a5\\uacfc \\uafc8\\uc744 \\ud0d0\\uc0c9\\ud558\\ub3c4\\ub85d \\uaca9\\ub824\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">7</div>
+  <div class="en">I will treat every challenge today as a meaningful journey.</div>
+  <button onclick="speak(\"I will treat every challenge today as a meaningful journey.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 오늘의 모든 도전을 의미 있는 여정으로 대하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\uc624\\ub298\\uc758 \\ubaa8\\ub4e0 \\ub3c4\\uc804\\uc744 \\uc758\\ubbf8 \\uc788\\ub294 \\uc5ec\\uc815\\uc73c\\ub85c \\ub300\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">8</div>
+  <div class="en">I will respect others and nature as I move through my day.</div>
+  <button onclick="speak(\"I will respect others and nature as I move through my day.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 하루를 살아가며 다른 사람과 자연을 존중하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\ud558\\ub8e8\\ub97c \\uc0b4\\uc544\\uac00\\uba70 \\ub2e4\\ub978 \\uc0ac\\ub78c\\uacfc \\uc790\\uc5f0\\uc744 \\uc874\\uc911\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">9</div>
+  <div class="en">With adventure, an ordinary day can become a story of growth.</div>
+  <button onclick="speak(\"With adventure, an ordinary day can become a story of growth.\", 'en-US')">영어 듣기</button>
+  <div class="ko">모험을 통해 평범한 하루도 성장의 이야기가 될 수 있다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ubaa8\\ud5d8\\uc744 \\ud1b5\\ud574 \\ud3c9\\ubc94\\ud55c \\ud558\\ub8e8\\ub3c4 \\uc131\\uc7a5\\uc758 \\uc774\\uc57c\\uae30\\uac00 \\ub420 \\uc218 \\uc788\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">10</div>
+  <div class="en">Today, I will live bravely, curiously, and gratefully.</div>
+  <button onclick="speak(\"Today, I will live bravely, curiously, and gratefully.\", 'en-US')">영어 듣기</button>
+  <div class="ko">오늘 나는 용감하고 호기심 있게, 그리고 감사하며 살아가겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc624\\ub298 \\ub098\\ub294 \\uc6a9\\uac10\\ud558\\uace0 \\ud638\\uae30\\uc2ec \\uc788\\uac8c, \\uadf8\\ub9ac\\uace0 \\uac10\\uc0ac\\ud558\\uba70 \\uc0b4\\uc544\\uac00\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+</div>
+
+<div class="section">
+<h2>전체 원문 Text</h2>
+<pre>Adventure (모험)을 인문 철학적으로 예시와 일화를 들어서
+영어18문장(한글 해석)으로 설명
+
+Adventure is the human willingness to leave the familiar and discover a wider world.
+모험은 익숙한 곳을 떠나 더 넓은 세계를 발견하려는 인간의 의지이다.
+In humanistic philosophy, adventure is not only travel, but a journey toward self-knowledge.
+인문 철학에서 모험은 단순한 여행이 아니라 자기 이해를 향한 여정이다.
+Socrates lived an intellectual adventure by questioning what people thought they already knew.
+소크라테스는 사람들이 이미 안다고 생각한 것들을 질문하며 지적인 모험을 살았다.
+His life shows that the mind can travel far without leaving the city.
+그의 삶은 도시를 떠나지 않아도 정신은 멀리 여행할 수 있음을 보여 준다.
+Odysseus in ancient stories represents the adventure of returning home with wisdom.
+고대 이야기 속 오디세우스는 지혜를 가지고 집으로 돌아가는 모험을 상징한다.
+His journey teaches us that adventure often changes the traveler more than the destination.
+그의 여정은 모험이 목적지보다 여행자 자신을 더 많이 변화시킨다는 것을 가르쳐 준다.
+For example, a student who studies a difficult subject is beginning an adventure of the mind.
+예를 들어 어려운 과목을 공부하는 학생은 정신의 모험을 시작하는 것이다.
+A teacher who tries a new way of teaching is also entering a meaningful adventure.
+새로운 수업 방법을 시도하는 교사도 의미 있는 모험에 들어서는 것이다.
+Adventure requires curiosity, because curiosity opens the first door.
+모험에는 호기심이 필요하다. 호기심이 첫 번째 문을 열기 때문이다.
+It also requires courage, because every new path contains uncertainty.
+모험에는 용기도 필요하다. 모든 새로운 길에는 불확실성이 있기 때문이다.
+The story of explorers reminds us that adventure can expand human knowledge.
+탐험가들의 이야기는 모험이 인간의 지식을 확장할 수 있음을 일깨워 준다.
+However, true adventure must respect people, nature, and life.
+그러나 참된 모험은 사람과 자연과 생명을 존중해야 한다.
+Adventure without wisdom can become reckless danger.
+지혜 없는 모험은 무모한 위험이 될 수 있다.
+Therefore, a wise adventurer asks not only where to go, but also why to go.
+그러므로 지혜로운 모험가는 어디로 갈지만이 아니라 왜 가야 하는지도 묻는다.
+In daily life, adventure appears when we try a new habit, meet a new idea, or forgive someone first.
+일상에서 모험은 새로운 습관을 시도하고, 새로운 생각을 만나고, 먼저 용서할 때 나타난다.
+A small adventure can awaken a sleeping part of the heart.
+작은 모험은 잠들어 있던 마음의 한 부분을 깨울 수 있다.
+Adventure becomes beautiful when it leads us to humility, gratitude, and wonder.
+모험은 우리를 겸손과 감사와 경이로 이끌 때 아름다워진다.
+Ultimately, adventure is the promise that life still has unknown paths worth walking.
+궁극적으로 모험은 삶에 아직 걸어 볼 만한 미지의 길이 남아 있다는 약속이다.
+
+오늘 하루 Adventure (모험)을 생각하고 실천하며 살고 싶다.
+영어 10줄(한글 해석)로 오늘의 삶을 이야기 하기
+
+Today, I will begin my day with the spirit of adventure.
+오늘 나는 모험의 정신으로 하루를 시작하겠다.
+I will welcome new experiences with curiosity and courage.
+나는 새로운 경험을 호기심과 용기로 맞이하겠다.
+Adventure means taking a step toward the unknown with a hopeful heart.
+모험은 희망찬 마음으로 미지의 세계를 향해 한 걸음 내딛는 것이다.
+I will try one new idea instead of repeating only old habits.
+나는 오래된 습관만 반복하지 않고 새로운 생각 하나를 시도하겠다.
+When I face uncertainty, I will choose learning instead of fear.
+불확실함을 마주할 때 나는 두려움 대신 배움을 선택하겠다.
+I will encourage my students to explore their talents and dreams.
+나는 학생들이 자신의 재능과 꿈을 탐색하도록 격려하겠다.
+I will treat every challenge today as a meaningful journey.
+나는 오늘의 모든 도전을 의미 있는 여정으로 대하겠다.
+I will respect others and nature as I move through my day.
+나는 하루를 살아가며 다른 사람과 자연을 존중하겠다.
+With adventure, an ordinary day can become a story of growth.
+모험을 통해 평범한 하루도 성장의 이야기가 될 수 있다.
+Today, I will live bravely, curiously, and gratefully.
+오늘 나는 용감하고 호기심 있게, 그리고 감사하며 살아가겠다.</pre>
+</div>
+
+<script>
+const EN_TEXT = "Adventure is the human willingness to leave the familiar and discover a wider world.\nIn humanistic philosophy, adventure is not only travel, but a journey toward self-knowledge.\nSocrates lived an intellectual adventure by questioning what people thought they already knew.\nHis life shows that the mind can travel far without leaving the city.\nOdysseus in ancient stories represents the adventure of returning home with wisdom.\nHis journey teaches us that adventure often changes the traveler more than the destination.\nFor example, a student who studies a difficult subject is beginning an adventure of the mind.\nA teacher who tries a new way of teaching is also entering a meaningful adventure.\nAdventure requires curiosity, because curiosity opens the first door.\nIt also requires courage, because every new path contains uncertainty.\nThe story of explorers reminds us that adventure can expand human knowledge.\nHowever, true adventure must respect people, nature, and life.\nAdventure without wisdom can become reckless danger.\nTherefore, a wise adventurer asks not only where to go, but also why to go.\nIn daily life, adventure appears when we try a new habit, meet a new idea, or forgive someone first.\nA small adventure can awaken a sleeping part of the heart.\nAdventure becomes beautiful when it leads us to humility, gratitude, and wonder.\nUltimately, adventure is the promise that life still has unknown paths worth walking.\nToday, I will begin my day with the spirit of adventure.\nI will welcome new experiences with curiosity and courage.\nAdventure means taking a step toward the unknown with a hopeful heart.\nI will try one new idea instead of repeating only old habits.\nWhen I face uncertainty, I will choose learning instead of fear.\nI will encourage my students to explore their talents and dreams.\nI will treat every challenge today as a meaningful journey.\nI will respect others and nature as I move through my day.\nWith adventure, an ordinary day can become a story of growth.\nToday, I will live bravely, curiously, and gratefully.";
+const KO_TEXT = "모험은 익숙한 곳을 떠나 더 넓은 세계를 발견하려는 인간의 의지이다.\n인문 철학에서 모험은 단순한 여행이 아니라 자기 이해를 향한 여정이다.\n소크라테스는 사람들이 이미 안다고 생각한 것들을 질문하며 지적인 모험을 살았다.\n그의 삶은 도시를 떠나지 않아도 정신은 멀리 여행할 수 있음을 보여 준다.\n고대 이야기 속 오디세우스는 지혜를 가지고 집으로 돌아가는 모험을 상징한다.\n그의 여정은 모험이 목적지보다 여행자 자신을 더 많이 변화시킨다는 것을 가르쳐 준다.\n예를 들어 어려운 과목을 공부하는 학생은 정신의 모험을 시작하는 것이다.\n새로운 수업 방법을 시도하는 교사도 의미 있는 모험에 들어서는 것이다.\n모험에는 호기심이 필요하다. 호기심이 첫 번째 문을 열기 때문이다.\n모험에는 용기도 필요하다. 모든 새로운 길에는 불확실성이 있기 때문이다.\n탐험가들의 이야기는 모험이 인간의 지식을 확장할 수 있음을 일깨워 준다.\n그러나 참된 모험은 사람과 자연과 생명을 존중해야 한다.\n지혜 없는 모험은 무모한 위험이 될 수 있다.\n그러므로 지혜로운 모험가는 어디로 갈지만이 아니라 왜 가야 하는지도 묻는다.\n일상에서 모험은 새로운 습관을 시도하고, 새로운 생각을 만나고, 먼저 용서할 때 나타난다.\n작은 모험은 잠들어 있던 마음의 한 부분을 깨울 수 있다.\n모험은 우리를 겸손과 감사와 경이로 이끌 때 아름다워진다.\n궁극적으로 모험은 삶에 아직 걸어 볼 만한 미지의 길이 남아 있다는 약속이다.\n오늘 나는 모험의 정신으로 하루를 시작하겠다.\n나는 새로운 경험을 호기심과 용기로 맞이하겠다.\n모험은 희망찬 마음으로 미지의 세계를 향해 한 걸음 내딛는 것이다.\n나는 오래된 습관만 반복하지 않고 새로운 생각 하나를 시도하겠다.\n불확실함을 마주할 때 나는 두려움 대신 배움을 선택하겠다.\n나는 학생들이 자신의 재능과 꿈을 탐색하도록 격려하겠다.\n나는 오늘의 모든 도전을 의미 있는 여정으로 대하겠다.\n나는 하루를 살아가며 다른 사람과 자연을 존중하겠다.\n모험을 통해 평범한 하루도 성장의 이야기가 될 수 있다.\n오늘 나는 용감하고 호기심 있게, 그리고 감사하며 살아가겠다.";
+function speak(text, lang){
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = lang;
+  u.rate = lang === 'en-US' ? 0.88 : 0.95;
+  u.pitch = 1;
+  speechSynthesis.speak(u);
+}
+function speakAll(lang){
+  speechSynthesis.cancel();
+  const text = lang === 'en-US' ? EN_TEXT : KO_TEXT;
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = lang;
+  u.rate = lang === 'en-US' ? 0.88 : 0.95;
+  u.pitch = 1;
+  speechSynthesis.speak(u);
+}
+</script>
+</div></div>
+</body>
+</html>

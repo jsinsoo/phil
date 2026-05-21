@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meaning of Life 삶의 의미 TTS 학습</title>
+<style>
+body{font-family:'Malgun Gothic',Arial,sans-serif;margin:0;background:linear-gradient(135deg,#f4f7ff,#fff8ec);color:#222;}
+.wrap{max-width:1050px;margin:34px auto;padding:22px;}
+.card{background:#fff;border-radius:24px;padding:30px;box-shadow:0 12px 34px rgba(0,0,0,.12);}
+h1{text-align:center;color:#33406f;font-size:36px;margin:6px 0 10px;}
+.subtitle{text-align:center;line-height:1.7;color:#555;font-size:17px;}
+.info{background:#f2f5ff;border-left:7px solid #6676b8;padding:16px 20px;border-radius:16px;margin:20px 0;line-height:1.8;font-size:18px;}
+.controls{text-align:center;margin:20px 0;}
+button{border:none;border-radius:999px;padding:9px 15px;margin:4px;background:#3d4d8a;color:white;cursor:pointer;font-weight:700;}
+button:hover{filter:brightness(1.08);}
+.btn-ko{background:#a76625;}
+.stop{background:#555;}
+.section{margin-top:30px;padding-top:18px;border-top:2px dashed #ddd;}
+h2{color:#6f4a00;font-size:25px;}
+.pair{display:grid;grid-template-columns:44px 1fr auto;gap:8px 12px;align-items:center;margin:13px 0;padding:16px;border:1px solid #eee;border-radius:18px;background:#fbfbff;}
+.num{grid-row:1 / span 2;font-size:22px;font-weight:800;color:#858db3;text-align:center;}
+.en{font-size:18px;font-weight:700;color:#33406f;line-height:1.55;}
+.ko{font-size:17px;color:#333;line-height:1.55;}
+pre{white-space:pre-wrap;word-break:keep-all;background:#fffdf7;border-radius:18px;padding:20px;line-height:1.85;font-size:16px;border:1px solid #f0e5c8;}
+@media(max-width:720px){.pair{grid-template-columns:34px 1fr;}.pair button{grid-column:2;justify-self:start;}h1{font-size:28px;}}
+</style>
+</head>
+<body>
+<div class="wrap"><div class="card">
+<h1>Meaning of Life 삶의 의미 TTS 학습</h1>
+<div class="subtitle">삶의 의미(Meaning of Life)의 인문 철학적 설명 18문장 + 오늘 하루 실천 10문장</div>
+<div class="info">
+<strong>Meaning of Life:</strong> 삶의 의미는 거창한 성공만이 아니라 성찰, 사랑, 책임, 작은 선한 행동 속에서 발견됩니다.<br>
+<strong>Practice:</strong> 오늘 하루를 지혜롭고 따뜻하게 살아가며 의미를 직접 만들어 갑니다.
+</div>
+<div class="controls">
+<button onclick="speakAll('en-US')">영어 전체 듣기</button>
+<button class="btn-ko" onclick="speakAll('ko-KR')">한국어 전체 듣기</button>
+<button class="stop" onclick="speechSynthesis.cancel()">정지</button>
+</div>
+
+<div class="section">
+<h2>Ⅰ. Meaning of Life(삶의 의미) — 인문 철학적 설명 18문장</h2>
+
+<div class="pair">
+  <div class="num">1</div>
+  <div class="en">The meaning of life is not a single answer, but a lifelong question that guides our choices.</div>
+  <button onclick="speak(\"The meaning of life is not a single answer, but a lifelong question that guides our choices.\", 'en-US')">영어 듣기</button>
+  <div class="ko">삶의 의미는 하나의 정답이 아니라 우리의 선택을 이끄는 평생의 질문이다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc0b6\\uc758 \\uc758\\ubbf8\\ub294 \\ud558\\ub098\\uc758 \\uc815\\ub2f5\\uc774 \\uc544\\ub2c8\\ub77c \\uc6b0\\ub9ac\\uc758 \\uc120\\ud0dd\\uc744 \\uc774\\ub044\\ub294 \\ud3c9\\uc0dd\\uc758 \\uc9c8\\ubb38\\uc774\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">2</div>
+  <div class="en">In humanistic philosophy, meaning grows when a person connects freedom, responsibility, and love.</div>
+  <button onclick="speak(\"In humanistic philosophy, meaning grows when a person connects freedom, responsibility, and love.\", 'en-US')">영어 듣기</button>
+  <div class="ko">인문 철학에서 의미는 자유와 책임과 사랑이 연결될 때 자라난다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc778\\ubb38 \\ucca0\\ud559\\uc5d0\\uc11c \\uc758\\ubbf8\\ub294 \\uc790\\uc720\\uc640 \\ucc45\\uc784\\uacfc \\uc0ac\\ub791\\uc774 \\uc5f0\\uacb0\\ub420 \\ub54c \\uc790\\ub77c\\ub09c\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">3</div>
+  <div class="en">Socrates taught that an unexamined life is not truly worth living.</div>
+  <button onclick="speak(\"Socrates taught that an unexamined life is not truly worth living.\", 'en-US')">영어 듣기</button>
+  <div class="ko">소크라테스는 성찰하지 않는 삶은 참으로 살 가치가 없다고 가르쳤다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc18c\\ud06c\\ub77c\\ud14c\\uc2a4\\ub294 \\uc131\\ucc30\\ud558\\uc9c0 \\uc54a\\ub294 \\uc0b6\\uc740 \\ucc38\\uc73c\\ub85c \\uc0b4 \\uac00\\uce58\\uac00 \\uc5c6\\ub2e4\\uace0 \\uac00\\ub974\\ucce4\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">4</div>
+  <div class="en">His life reminds us that meaning begins when we honestly ask why and how we should live.</div>
+  <button onclick="speak(\"His life reminds us that meaning begins when we honestly ask why and how we should live.\", 'en-US')">영어 듣기</button>
+  <div class="ko">그의 삶은 우리가 왜, 어떻게 살아야 하는지 정직하게 물을 때 의미가 시작됨을 일깨워 준다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uadf8\\uc758 \\uc0b6\\uc740 \\uc6b0\\ub9ac\\uac00 \\uc65c, \\uc5b4\\ub5bb\\uac8c \\uc0b4\\uc544\\uc57c \\ud558\\ub294\\uc9c0 \\uc815\\uc9c1\\ud558\\uac8c \\ubb3c\\uc744 \\ub54c \\uc758\\ubbf8\\uac00 \\uc2dc\\uc791\\ub428\\uc744 \\uc77c\\uae68\\uc6cc \\uc900\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">5</div>
+  <div class="en">Aristotle believed that a meaningful life is a life of virtue, reason, and flourishing.</div>
+  <button onclick="speak(\"Aristotle believed that a meaningful life is a life of virtue, reason, and flourishing.\", 'en-US')">영어 듣기</button>
+  <div class="ko">아리스토텔레스는 의미 있는 삶이 덕과 이성과 번영의 삶이라고 믿었다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc544\\ub9ac\\uc2a4\\ud1a0\\ud154\\ub808\\uc2a4\\ub294 \\uc758\\ubbf8 \\uc788\\ub294 \\uc0b6\\uc774 \\ub355\\uacfc \\uc774\\uc131\\uacfc \\ubc88\\uc601\\uc758 \\uc0b6\\uc774\\ub77c\\uace0 \\ubbff\\uc5c8\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">6</div>
+  <div class="en">This means that meaning is found not only in success, but in becoming a better person.</div>
+  <button onclick="speak(\"This means that meaning is found not only in success, but in becoming a better person.\", 'en-US')">영어 듣기</button>
+  <div class="ko">이는 의미가 성공뿐 아니라 더 나은 사람이 되어 가는 과정에서 발견된다는 뜻이다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc774\\ub294 \\uc758\\ubbf8\\uac00 \\uc131\\uacf5\\ubfd0 \\uc544\\ub2c8\\ub77c \\ub354 \\ub098\\uc740 \\uc0ac\\ub78c\\uc774 \\ub418\\uc5b4 \\uac00\\ub294 \\uacfc\\uc815\\uc5d0\\uc11c \\ubc1c\\uacac\\ub41c\\ub2e4\\ub294 \\ub73b\\uc774\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">7</div>
+  <div class="en">For example, a teacher who helps one discouraged student can find deep meaning in that moment.</div>
+  <button onclick="speak(\"For example, a teacher who helps one discouraged student can find deep meaning in that moment.\", 'en-US')">영어 듣기</button>
+  <div class="ko">예를 들어 낙심한 학생 한 명을 돕는 교사는 그 순간 깊은 의미를 발견할 수 있다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc608\\ub97c \\ub4e4\\uc5b4 \\ub099\\uc2ec\\ud55c \\ud559\\uc0dd \\ud55c \\uba85\\uc744 \\ub3d5\\ub294 \\uad50\\uc0ac\\ub294 \\uadf8 \\uc21c\\uac04 \\uae4a\\uc740 \\uc758\\ubbf8\\ub97c \\ubc1c\\uacac\\ud560 \\uc218 \\uc788\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">8</div>
+  <div class="en">A student who studies to serve others, not only to win, is also searching for meaning.</div>
+  <button onclick="speak(\"A student who studies to serve others, not only to win, is also searching for meaning.\", 'en-US')">영어 듣기</button>
+  <div class="ko">이기기 위해서만이 아니라 다른 사람을 섬기기 위해 공부하는 학생도 의미를 찾고 있는 것이다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc774\\uae30\\uae30 \\uc704\\ud574\\uc11c\\ub9cc\\uc774 \\uc544\\ub2c8\\ub77c \\ub2e4\\ub978 \\uc0ac\\ub78c\\uc744 \\uc12c\\uae30\\uae30 \\uc704\\ud574 \\uacf5\\ubd80\\ud558\\ub294 \\ud559\\uc0dd\\ub3c4 \\uc758\\ubbf8\\ub97c \\ucc3e\\uace0 \\uc788\\ub294 \\uac83\\uc774\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">9</div>
+  <div class="en">Viktor Frankl showed that human beings can find meaning even in suffering.</div>
+  <button onclick="speak(\"Viktor Frankl showed that human beings can find meaning even in suffering.\", 'en-US')">영어 듣기</button>
+  <div class="ko">빅터 프랭클은 인간이 고통 속에서도 의미를 발견할 수 있음을 보여 주었다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ube45\\ud130 \\ud504\\ub7ad\\ud074\\uc740 \\uc778\\uac04\\uc774 \\uace0\\ud1b5 \\uc18d\\uc5d0\\uc11c\\ub3c4 \\uc758\\ubbf8\\ub97c \\ubc1c\\uacac\\ud560 \\uc218 \\uc788\\uc74c\\uc744 \\ubcf4\\uc5ec \\uc8fc\\uc5c8\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">10</div>
+  <div class="en">His story teaches us that meaning often comes from love, courage, and responsibility.</div>
+  <button onclick="speak(\"His story teaches us that meaning often comes from love, courage, and responsibility.\", 'en-US')">영어 듣기</button>
+  <div class="ko">그의 이야기는 의미가 종종 사랑과 용기와 책임에서 온다는 것을 가르쳐 준다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uadf8\\uc758 \\uc774\\uc57c\\uae30\\ub294 \\uc758\\ubbf8\\uac00 \\uc885\\uc885 \\uc0ac\\ub791\\uacfc \\uc6a9\\uae30\\uc640 \\ucc45\\uc784\\uc5d0\\uc11c \\uc628\\ub2e4\\ub294 \\uac83\\uc744 \\uac00\\ub974\\uccd0 \\uc900\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">11</div>
+  <div class="en">Meaning does not always appear in great achievements; it can live in small acts of kindness.</div>
+  <button onclick="speak(\"Meaning does not always appear in great achievements; it can live in small acts of kindness.\", 'en-US')">영어 듣기</button>
+  <div class="ko">의미는 언제나 위대한 성취 속에만 나타나는 것이 아니라 작은 친절 속에도 살아 있다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc758\\ubbf8\\ub294 \\uc5b8\\uc81c\\ub098 \\uc704\\ub300\\ud55c \\uc131\\ucde8 \\uc18d\\uc5d0\\ub9cc \\ub098\\ud0c0\\ub098\\ub294 \\uac83\\uc774 \\uc544\\ub2c8\\ub77c \\uc791\\uc740 \\uce5c\\uc808 \\uc18d\\uc5d0\\ub3c4 \\uc0b4\\uc544 \\uc788\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">12</div>
+  <div class="en">A warm word, a patient smile, or a sincere apology can make life more meaningful.</div>
+  <button onclick="speak(\"A warm word, a patient smile, or a sincere apology can make life more meaningful.\", 'en-US')">영어 듣기</button>
+  <div class="ko">따뜻한 말, 인내로운 미소, 진심 어린 사과도 삶을 더 의미 있게 만들 수 있다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub530\\ub73b\\ud55c \\ub9d0, \\uc778\\ub0b4\\ub85c\\uc6b4 \\ubbf8\\uc18c, \\uc9c4\\uc2ec \\uc5b4\\ub9b0 \\uc0ac\\uacfc\\ub3c4 \\uc0b6\\uc744 \\ub354 \\uc758\\ubbf8 \\uc788\\uac8c \\ub9cc\\ub4e4 \\uc218 \\uc788\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">13</div>
+  <div class="en">However, life loses meaning when we live only for pride, comparison, or empty desire.</div>
+  <button onclick="speak(\"However, life loses meaning when we live only for pride, comparison, or empty desire.\", 'en-US')">영어 듣기</button>
+  <div class="ko">그러나 자만과 비교와 공허한 욕망만을 위해 살 때 삶은 의미를 잃는다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uadf8\\ub7ec\\ub098 \\uc790\\ub9cc\\uacfc \\ube44\\uad50\\uc640 \\uacf5\\ud5c8\\ud55c \\uc695\\ub9dd\\ub9cc\\uc744 \\uc704\\ud574 \\uc0b4 \\ub54c \\uc0b6\\uc740 \\uc758\\ubbf8\\ub97c \\uc783\\ub294\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">14</div>
+  <div class="en">Therefore, we should ask what kind of person our daily actions are creating.</div>
+  <button onclick="speak(\"Therefore, we should ask what kind of person our daily actions are creating.\", 'en-US')">영어 듣기</button>
+  <div class="ko">그러므로 우리는 우리의 일상적 행동이 어떤 사람을 만들어 가고 있는지 물어야 한다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uadf8\\ub7ec\\ubbc0\\ub85c \\uc6b0\\ub9ac\\ub294 \\uc6b0\\ub9ac\\uc758 \\uc77c\\uc0c1\\uc801 \\ud589\\ub3d9\\uc774 \\uc5b4\\ub5a4 \\uc0ac\\ub78c\\uc744 \\ub9cc\\ub4e4\\uc5b4 \\uac00\\uace0 \\uc788\\ub294\\uc9c0 \\ubb3c\\uc5b4\\uc57c \\ud55c\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">15</div>
+  <div class="en">In literature, many heroes discover meaning after loss, wandering, and self-reflection.</div>
+  <button onclick="speak(\"In literature, many heroes discover meaning after loss, wandering, and self-reflection.\", 'en-US')">영어 듣기</button>
+  <div class="ko">문학에서 많은 주인공들은 상실과 방황과 자기 성찰 뒤에 의미를 발견한다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ubb38\\ud559\\uc5d0\\uc11c \\ub9ce\\uc740 \\uc8fc\\uc778\\uacf5\\ub4e4\\uc740 \\uc0c1\\uc2e4\\uacfc \\ubc29\\ud669\\uacfc \\uc790\\uae30 \\uc131\\ucc30 \\ub4a4\\uc5d0 \\uc758\\ubbf8\\ub97c \\ubc1c\\uacac\\ud55c\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">16</div>
+  <div class="en">This shows that even difficult seasons can become part of a meaningful life story.</div>
+  <button onclick="speak(\"This shows that even difficult seasons can become part of a meaningful life story.\", 'en-US')">영어 듣기</button>
+  <div class="ko">이는 어려운 시기조차 의미 있는 삶의 이야기 일부가 될 수 있음을 보여 준다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc774\\ub294 \\uc5b4\\ub824\\uc6b4 \\uc2dc\\uae30\\uc870\\ucc28 \\uc758\\ubbf8 \\uc788\\ub294 \\uc0b6\\uc758 \\uc774\\uc57c\\uae30 \\uc77c\\ubd80\\uac00 \\ub420 \\uc218 \\uc788\\uc74c\\uc744 \\ubcf4\\uc5ec \\uc900\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">17</div>
+  <div class="en">A meaningful life is not perfect, but it is honest, loving, and responsible.</div>
+  <button onclick="speak(\"A meaningful life is not perfect, but it is honest, loving, and responsible.\", 'en-US')">영어 듣기</button>
+  <div class="ko">의미 있는 삶은 완벽한 삶이 아니라 정직하고 사랑하며 책임지는 삶이다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc758\\ubbf8 \\uc788\\ub294 \\uc0b6\\uc740 \\uc644\\ubcbd\\ud55c \\uc0b6\\uc774 \\uc544\\ub2c8\\ub77c \\uc815\\uc9c1\\ud558\\uace0 \\uc0ac\\ub791\\ud558\\uba70 \\ucc45\\uc784\\uc9c0\\ub294 \\uc0b6\\uc774\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">18</div>
+  <div class="en">Ultimately, the meaning of life is to grow in wisdom, share love, and leave goodness behind.</div>
+  <button onclick="speak(\"Ultimately, the meaning of life is to grow in wisdom, share love, and leave goodness behind.\", 'en-US')">영어 듣기</button>
+  <div class="ko">궁극적으로 삶의 의미는 지혜 안에서 성장하고 사랑을 나누며 선함을 남기는 것이다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uad81\\uadf9\\uc801\\uc73c\\ub85c \\uc0b6\\uc758 \\uc758\\ubbf8\\ub294 \\uc9c0\\ud61c \\uc548\\uc5d0\\uc11c \\uc131\\uc7a5\\ud558\\uace0 \\uc0ac\\ub791\\uc744 \\ub098\\ub204\\uba70 \\uc120\\ud568\\uc744 \\ub0a8\\uae30\\ub294 \\uac83\\uc774\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+</div>
+
+<div class="section">
+<h2>Ⅱ. Meaning of Life(삶의 의미) — 오늘 하루 실천 10문장</h2>
+
+<div class="pair">
+  <div class="num">1</div>
+  <div class="en">Today, I will begin my day by asking what meaning I can create.</div>
+  <button onclick="speak(\"Today, I will begin my day by asking what meaning I can create.\", 'en-US')">영어 듣기</button>
+  <div class="ko">오늘 나는 내가 어떤 의미를 만들 수 있을지 물으며 하루를 시작하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc624\\ub298 \\ub098\\ub294 \\ub0b4\\uac00 \\uc5b4\\ub5a4 \\uc758\\ubbf8\\ub97c \\ub9cc\\ub4e4 \\uc218 \\uc788\\uc744\\uc9c0 \\ubb3c\\uc73c\\uba70 \\ud558\\ub8e8\\ub97c \\uc2dc\\uc791\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">2</div>
+  <div class="en">I will treat each person I meet as someone with dignity and value.</div>
+  <button onclick="speak(\"I will treat each person I meet as someone with dignity and value.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 만나는 모든 사람을 존엄과 가치를 지닌 존재로 대하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\ub9cc\\ub098\\ub294 \\ubaa8\\ub4e0 \\uc0ac\\ub78c\\uc744 \\uc874\\uc5c4\\uacfc \\uac00\\uce58\\ub97c \\uc9c0\\ub2cc \\uc874\\uc7ac\\ub85c \\ub300\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">3</div>
+  <div class="en">The meaning of life grows through small acts of love and responsibility.</div>
+  <button onclick="speak(\"The meaning of life grows through small acts of love and responsibility.\", 'en-US')">영어 듣기</button>
+  <div class="ko">삶의 의미는 작은 사랑과 책임의 행동을 통해 자라난다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc0b6\\uc758 \\uc758\\ubbf8\\ub294 \\uc791\\uc740 \\uc0ac\\ub791\\uacfc \\ucc45\\uc784\\uc758 \\ud589\\ub3d9\\uc744 \\ud1b5\\ud574 \\uc790\\ub77c\\ub09c\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">4</div>
+  <div class="en">I will do my work sincerely, even if no one notices it.</div>
+  <button onclick="speak(\"I will do my work sincerely, even if no one notices it.\", 'en-US')">영어 듣기</button>
+  <div class="ko">아무도 알아주지 않더라도 나는 내 일을 진심으로 하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc544\\ubb34\\ub3c4 \\uc54c\\uc544\\uc8fc\\uc9c0 \\uc54a\\ub354\\ub77c\\ub3c4 \\ub098\\ub294 \\ub0b4 \\uc77c\\uc744 \\uc9c4\\uc2ec\\uc73c\\ub85c \\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">5</div>
+  <div class="en">I will encourage my students and help them believe in their own lives.</div>
+  <button onclick="speak(\"I will encourage my students and help them believe in their own lives.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 학생들을 격려하고 그들이 자신의 삶을 믿도록 돕겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\ud559\\uc0dd\\ub4e4\\uc744 \\uaca9\\ub824\\ud558\\uace0 \\uadf8\\ub4e4\\uc774 \\uc790\\uc2e0\\uc758 \\uc0b6\\uc744 \\ubbff\\ub3c4\\ub85d \\ub3d5\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">6</div>
+  <div class="en">When I feel tired, I will remember the purpose behind my effort.</div>
+  <button onclick="speak(\"When I feel tired, I will remember the purpose behind my effort.\", 'en-US')">영어 듣기</button>
+  <div class="ko">피곤할 때 나는 나의 노력 뒤에 있는 목적을 기억하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ud53c\\uace4\\ud560 \\ub54c \\ub098\\ub294 \\ub098\\uc758 \\ub178\\ub825 \\ub4a4\\uc5d0 \\uc788\\ub294 \\ubaa9\\uc801\\uc744 \\uae30\\uc5b5\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">7</div>
+  <div class="en">I will choose gratitude instead of complaint and service instead of selfishness.</div>
+  <button onclick="speak(\"I will choose gratitude instead of complaint and service instead of selfishness.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 불평 대신 감사를, 이기심 대신 섬김을 선택하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\ubd88\\ud3c9 \\ub300\\uc2e0 \\uac10\\uc0ac\\ub97c, \\uc774\\uae30\\uc2ec \\ub300\\uc2e0 \\uc12c\\uae40\\uc744 \\uc120\\ud0dd\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">8</div>
+  <div class="en">I will make one small moment today warmer and more meaningful.</div>
+  <button onclick="speak(\"I will make one small moment today warmer and more meaningful.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 오늘의 작은 한 순간을 더 따뜻하고 의미 있게 만들겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\uc624\\ub298\\uc758 \\uc791\\uc740 \\ud55c \\uc21c\\uac04\\uc744 \\ub354 \\ub530\\ub73b\\ud558\\uace0 \\uc758\\ubbf8 \\uc788\\uac8c \\ub9cc\\ub4e4\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">9</div>
+  <div class="en">With reflection and love, even an ordinary day can become meaningful.</div>
+  <button onclick="speak(\"With reflection and love, even an ordinary day can become meaningful.\", 'en-US')">영어 듣기</button>
+  <div class="ko">성찰과 사랑이 있으면 평범한 하루도 의미 있는 하루가 될 수 있다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc131\\ucc30\\uacfc \\uc0ac\\ub791\\uc774 \\uc788\\uc73c\\uba74 \\ud3c9\\ubc94\\ud55c \\ud558\\ub8e8\\ub3c4 \\uc758\\ubbf8 \\uc788\\ub294 \\ud558\\ub8e8\\uac00 \\ub420 \\uc218 \\uc788\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">10</div>
+  <div class="en">Today, I will live with wisdom, kindness, and a grateful heart.</div>
+  <button onclick="speak(\"Today, I will live with wisdom, kindness, and a grateful heart.\", 'en-US')">영어 듣기</button>
+  <div class="ko">오늘 나는 지혜와 친절과 감사한 마음으로 살아가겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc624\\ub298 \\ub098\\ub294 \\uc9c0\\ud61c\\uc640 \\uce5c\\uc808\\uacfc \\uac10\\uc0ac\\ud55c \\ub9c8\\uc74c\\uc73c\\ub85c \\uc0b4\\uc544\\uac00\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+</div>
+
+<div class="section">
+<h2>전체 원문 Text</h2>
+<pre>삶의 의미 (Meaning of Life)를 인문 철학적으로 예시와 일화를 들어서
+영어18문장(한글 해석)으로 설명
+
+The meaning of life is not a single answer, but a lifelong question that guides our choices.
+삶의 의미는 하나의 정답이 아니라 우리의 선택을 이끄는 평생의 질문이다.
+In humanistic philosophy, meaning grows when a person connects freedom, responsibility, and love.
+인문 철학에서 의미는 자유와 책임과 사랑이 연결될 때 자라난다.
+Socrates taught that an unexamined life is not truly worth living.
+소크라테스는 성찰하지 않는 삶은 참으로 살 가치가 없다고 가르쳤다.
+His life reminds us that meaning begins when we honestly ask why and how we should live.
+그의 삶은 우리가 왜, 어떻게 살아야 하는지 정직하게 물을 때 의미가 시작됨을 일깨워 준다.
+Aristotle believed that a meaningful life is a life of virtue, reason, and flourishing.
+아리스토텔레스는 의미 있는 삶이 덕과 이성과 번영의 삶이라고 믿었다.
+This means that meaning is found not only in success, but in becoming a better person.
+이는 의미가 성공뿐 아니라 더 나은 사람이 되어 가는 과정에서 발견된다는 뜻이다.
+For example, a teacher who helps one discouraged student can find deep meaning in that moment.
+예를 들어 낙심한 학생 한 명을 돕는 교사는 그 순간 깊은 의미를 발견할 수 있다.
+A student who studies to serve others, not only to win, is also searching for meaning.
+이기기 위해서만이 아니라 다른 사람을 섬기기 위해 공부하는 학생도 의미를 찾고 있는 것이다.
+Viktor Frankl showed that human beings can find meaning even in suffering.
+빅터 프랭클은 인간이 고통 속에서도 의미를 발견할 수 있음을 보여 주었다.
+His story teaches us that meaning often comes from love, courage, and responsibility.
+그의 이야기는 의미가 종종 사랑과 용기와 책임에서 온다는 것을 가르쳐 준다.
+Meaning does not always appear in great achievements; it can live in small acts of kindness.
+의미는 언제나 위대한 성취 속에만 나타나는 것이 아니라 작은 친절 속에도 살아 있다.
+A warm word, a patient smile, or a sincere apology can make life more meaningful.
+따뜻한 말, 인내로운 미소, 진심 어린 사과도 삶을 더 의미 있게 만들 수 있다.
+However, life loses meaning when we live only for pride, comparison, or empty desire.
+그러나 자만과 비교와 공허한 욕망만을 위해 살 때 삶은 의미를 잃는다.
+Therefore, we should ask what kind of person our daily actions are creating.
+그러므로 우리는 우리의 일상적 행동이 어떤 사람을 만들어 가고 있는지 물어야 한다.
+In literature, many heroes discover meaning after loss, wandering, and self-reflection.
+문학에서 많은 주인공들은 상실과 방황과 자기 성찰 뒤에 의미를 발견한다.
+This shows that even difficult seasons can become part of a meaningful life story.
+이는 어려운 시기조차 의미 있는 삶의 이야기 일부가 될 수 있음을 보여 준다.
+A meaningful life is not perfect, but it is honest, loving, and responsible.
+의미 있는 삶은 완벽한 삶이 아니라 정직하고 사랑하며 책임지는 삶이다.
+Ultimately, the meaning of life is to grow in wisdom, share love, and leave goodness behind.
+궁극적으로 삶의 의미는 지혜 안에서 성장하고 사랑을 나누며 선함을 남기는 것이다.
+
+오늘 하루 삶의 의미 (Meaning of Life)를 생각하고 실천하며 살고 싶다.
+영어 10줄(한글 해석)로 오늘의 삶을 이야기 하기
+
+Today, I will begin my day by asking what meaning I can create.
+오늘 나는 내가 어떤 의미를 만들 수 있을지 물으며 하루를 시작하겠다.
+I will treat each person I meet as someone with dignity and value.
+나는 만나는 모든 사람을 존엄과 가치를 지닌 존재로 대하겠다.
+The meaning of life grows through small acts of love and responsibility.
+삶의 의미는 작은 사랑과 책임의 행동을 통해 자라난다.
+I will do my work sincerely, even if no one notices it.
+아무도 알아주지 않더라도 나는 내 일을 진심으로 하겠다.
+I will encourage my students and help them believe in their own lives.
+나는 학생들을 격려하고 그들이 자신의 삶을 믿도록 돕겠다.
+When I feel tired, I will remember the purpose behind my effort.
+피곤할 때 나는 나의 노력 뒤에 있는 목적을 기억하겠다.
+I will choose gratitude instead of complaint and service instead of selfishness.
+나는 불평 대신 감사를, 이기심 대신 섬김을 선택하겠다.
+I will make one small moment today warmer and more meaningful.
+나는 오늘의 작은 한 순간을 더 따뜻하고 의미 있게 만들겠다.
+With reflection and love, even an ordinary day can become meaningful.
+성찰과 사랑이 있으면 평범한 하루도 의미 있는 하루가 될 수 있다.
+Today, I will live with wisdom, kindness, and a grateful heart.
+오늘 나는 지혜와 친절과 감사한 마음으로 살아가겠다.</pre>
+</div>
+
+<script>
+const EN_TEXT = "The meaning of life is not a single answer, but a lifelong question that guides our choices.\nIn humanistic philosophy, meaning grows when a person connects freedom, responsibility, and love.\nSocrates taught that an unexamined life is not truly worth living.\nHis life reminds us that meaning begins when we honestly ask why and how we should live.\nAristotle believed that a meaningful life is a life of virtue, reason, and flourishing.\nThis means that meaning is found not only in success, but in becoming a better person.\nFor example, a teacher who helps one discouraged student can find deep meaning in that moment.\nA student who studies to serve others, not only to win, is also searching for meaning.\nViktor Frankl showed that human beings can find meaning even in suffering.\nHis story teaches us that meaning often comes from love, courage, and responsibility.\nMeaning does not always appear in great achievements; it can live in small acts of kindness.\nA warm word, a patient smile, or a sincere apology can make life more meaningful.\nHowever, life loses meaning when we live only for pride, comparison, or empty desire.\nTherefore, we should ask what kind of person our daily actions are creating.\nIn literature, many heroes discover meaning after loss, wandering, and self-reflection.\nThis shows that even difficult seasons can become part of a meaningful life story.\nA meaningful life is not perfect, but it is honest, loving, and responsible.\nUltimately, the meaning of life is to grow in wisdom, share love, and leave goodness behind.\nToday, I will begin my day by asking what meaning I can create.\nI will treat each person I meet as someone with dignity and value.\nThe meaning of life grows through small acts of love and responsibility.\nI will do my work sincerely, even if no one notices it.\nI will encourage my students and help them believe in their own lives.\nWhen I feel tired, I will remember the purpose behind my effort.\nI will choose gratitude instead of complaint and service instead of selfishness.\nI will make one small moment today warmer and more meaningful.\nWith reflection and love, even an ordinary day can become meaningful.\nToday, I will live with wisdom, kindness, and a grateful heart.";
+const KO_TEXT = "삶의 의미는 하나의 정답이 아니라 우리의 선택을 이끄는 평생의 질문이다.\n인문 철학에서 의미는 자유와 책임과 사랑이 연결될 때 자라난다.\n소크라테스는 성찰하지 않는 삶은 참으로 살 가치가 없다고 가르쳤다.\n그의 삶은 우리가 왜, 어떻게 살아야 하는지 정직하게 물을 때 의미가 시작됨을 일깨워 준다.\n아리스토텔레스는 의미 있는 삶이 덕과 이성과 번영의 삶이라고 믿었다.\n이는 의미가 성공뿐 아니라 더 나은 사람이 되어 가는 과정에서 발견된다는 뜻이다.\n예를 들어 낙심한 학생 한 명을 돕는 교사는 그 순간 깊은 의미를 발견할 수 있다.\n이기기 위해서만이 아니라 다른 사람을 섬기기 위해 공부하는 학생도 의미를 찾고 있는 것이다.\n빅터 프랭클은 인간이 고통 속에서도 의미를 발견할 수 있음을 보여 주었다.\n그의 이야기는 의미가 종종 사랑과 용기와 책임에서 온다는 것을 가르쳐 준다.\n의미는 언제나 위대한 성취 속에만 나타나는 것이 아니라 작은 친절 속에도 살아 있다.\n따뜻한 말, 인내로운 미소, 진심 어린 사과도 삶을 더 의미 있게 만들 수 있다.\n그러나 자만과 비교와 공허한 욕망만을 위해 살 때 삶은 의미를 잃는다.\n그러므로 우리는 우리의 일상적 행동이 어떤 사람을 만들어 가고 있는지 물어야 한다.\n문학에서 많은 주인공들은 상실과 방황과 자기 성찰 뒤에 의미를 발견한다.\n이는 어려운 시기조차 의미 있는 삶의 이야기 일부가 될 수 있음을 보여 준다.\n의미 있는 삶은 완벽한 삶이 아니라 정직하고 사랑하며 책임지는 삶이다.\n궁극적으로 삶의 의미는 지혜 안에서 성장하고 사랑을 나누며 선함을 남기는 것이다.\n오늘 나는 내가 어떤 의미를 만들 수 있을지 물으며 하루를 시작하겠다.\n나는 만나는 모든 사람을 존엄과 가치를 지닌 존재로 대하겠다.\n삶의 의미는 작은 사랑과 책임의 행동을 통해 자라난다.\n아무도 알아주지 않더라도 나는 내 일을 진심으로 하겠다.\n나는 학생들을 격려하고 그들이 자신의 삶을 믿도록 돕겠다.\n피곤할 때 나는 나의 노력 뒤에 있는 목적을 기억하겠다.\n나는 불평 대신 감사를, 이기심 대신 섬김을 선택하겠다.\n나는 오늘의 작은 한 순간을 더 따뜻하고 의미 있게 만들겠다.\n성찰과 사랑이 있으면 평범한 하루도 의미 있는 하루가 될 수 있다.\n오늘 나는 지혜와 친절과 감사한 마음으로 살아가겠다.";
+function speak(text, lang){
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = lang;
+  u.rate = lang === 'en-US' ? 0.88 : 0.95;
+  u.pitch = 1;
+  speechSynthesis.speak(u);
+}
+function speakAll(lang){
+  speechSynthesis.cancel();
+  const text = lang === 'en-US' ? EN_TEXT : KO_TEXT;
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = lang;
+  u.rate = lang === 'en-US' ? 0.88 : 0.95;
+  u.pitch = 1;
+  speechSynthesis.speak(u);
+}
+</script>
+</div></div>
+</body>
+</html>

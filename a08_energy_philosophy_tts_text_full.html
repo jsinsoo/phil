@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Energy 활력 TTS 학습</title>
+<style>
+body{font-family:'Malgun Gothic',Arial,sans-serif;margin:0;background:linear-gradient(135deg,#fff9e8,#eefaff);color:#222;}
+.wrap{max-width:1050px;margin:34px auto;padding:22px;}
+.card{background:#fff;border-radius:24px;padding:30px;box-shadow:0 12px 34px rgba(0,0,0,.12);}
+h1{text-align:center;color:#c06a00;font-size:36px;margin:6px 0 10px;}
+.subtitle{text-align:center;line-height:1.7;color:#555;font-size:17px;}
+.info{background:#fff9e8;border-left:7px solid #e59a24;padding:16px 20px;border-radius:16px;margin:20px 0;line-height:1.8;font-size:18px;}
+.controls{text-align:center;margin:20px 0;}
+button{border:none;border-radius:999px;padding:9px 15px;margin:4px;background:#b86400;color:white;cursor:pointer;font-weight:700;}
+button:hover{filter:brightness(1.08);}
+.btn-ko{background:#2f7895;}
+.stop{background:#555;}
+.section{margin-top:30px;padding-top:18px;border-top:2px dashed #ddd;}
+h2{color:#7a4b00;font-size:25px;}
+.pair{display:grid;grid-template-columns:44px 1fr auto;gap:8px 12px;align-items:center;margin:13px 0;padding:16px;border:1px solid #eee;border-radius:18px;background:#fffefb;}
+.num{grid-row:1 / span 2;font-size:22px;font-weight:800;color:#d6a052;text-align:center;}
+.en{font-size:18px;font-weight:700;color:#9b5200;line-height:1.55;}
+.ko{font-size:17px;color:#333;line-height:1.55;}
+pre{white-space:pre-wrap;word-break:keep-all;background:#fffdf7;border-radius:18px;padding:20px;line-height:1.85;font-size:16px;border:1px solid #f0e5c8;}
+@media(max-width:720px){.pair{grid-template-columns:34px 1fr;}.pair button{grid-column:2;justify-self:start;}}
+</style>
+</head>
+<body>
+<div class="wrap"><div class="card">
+<h1>Energy 활력 TTS 학습</h1>
+<div class="subtitle">Energy(활력)의 인문 철학적 설명 18문장 + 오늘 하루 실천 10문장</div>
+<div class="info">
+<strong>Energy:</strong> 활력은 몸의 힘을 넘어 마음과 정신이 삶을 밝게 움직이게 하는 생명력입니다.<br>
+<strong>Practice:</strong> 오늘의 작은 행동과 따뜻한 말로 나와 주변 사람에게 활력을 전합니다.
+</div>
+<div class="controls">
+<button onclick="speakAll('en-US')">영어 전체 듣기</button>
+<button class="btn-ko" onclick="speakAll('ko-KR')">한국어 전체 듣기</button>
+<button class="stop" onclick="speechSynthesis.cancel()">정지</button>
+</div>
+
+<div class="section">
+<h2>Ⅰ. Energy(활력) — 인문 철학적 설명 18문장</h2>
+
+<div class="pair">
+  <div class="num">1</div>
+  <div class="en">Energy is the living force that helps human beings move, create, and care.</div>
+  <button onclick="speak(\"Energy is the living force that helps human beings move, create, and care.\", 'en-US')">영어 듣기</button>
+  <div class="ko">활력은 인간이 움직이고, 창조하고, 돌볼 수 있게 하는 살아 있는 힘이다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ud65c\\ub825\\uc740 \\uc778\\uac04\\uc774 \\uc6c0\\uc9c1\\uc774\\uace0, \\ucc3d\\uc870\\ud558\\uace0, \\ub3cc\\ubcfc \\uc218 \\uc788\\uac8c \\ud558\\ub294 \\uc0b4\\uc544 \\uc788\\ub294 \\ud798\\uc774\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">2</div>
+  <div class="en">In humanistic philosophy, energy is not only physical strength, but also the vitality of the mind and spirit.</div>
+  <button onclick="speak(\"In humanistic philosophy, energy is not only physical strength, but also the vitality of the mind and spirit.\", 'en-US')">영어 듣기</button>
+  <div class="ko">인문 철학에서 활력은 단순한 신체적 힘이 아니라 마음과 정신의 생명력이다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc778\\ubb38 \\ucca0\\ud559\\uc5d0\\uc11c \\ud65c\\ub825\\uc740 \\ub2e8\\uc21c\\ud55c \\uc2e0\\uccb4\\uc801 \\ud798\\uc774 \\uc544\\ub2c8\\ub77c \\ub9c8\\uc74c\\uacfc \\uc815\\uc2e0\\uc758 \\uc0dd\\uba85\\ub825\\uc774\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">3</div>
+  <div class="en">Aristotle saw a good life as active living according to virtue and reason.</div>
+  <button onclick="speak(\"Aristotle saw a good life as active living according to virtue and reason.\", 'en-US')">영어 듣기</button>
+  <div class="ko">아리스토텔레스는 좋은 삶을 덕과 이성에 따른 능동적인 삶으로 보았다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc544\\ub9ac\\uc2a4\\ud1a0\\ud154\\ub808\\uc2a4\\ub294 \\uc88b\\uc740 \\uc0b6\\uc744 \\ub355\\uacfc \\uc774\\uc131\\uc5d0 \\ub530\\ub978 \\ub2a5\\ub3d9\\uc801\\uc778 \\uc0b6\\uc73c\\ub85c \\ubcf4\\uc558\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">4</div>
+  <div class="en">This means that energy becomes meaningful when it is directed toward good actions.</div>
+  <button onclick="speak(\"This means that energy becomes meaningful when it is directed toward good actions.\", 'en-US')">영어 듣기</button>
+  <div class="ko">이는 활력이 선한 행동을 향할 때 의미 있어진다는 뜻이다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc774\\ub294 \\ud65c\\ub825\\uc774 \\uc120\\ud55c \\ud589\\ub3d9\\uc744 \\ud5a5\\ud560 \\ub54c \\uc758\\ubbf8 \\uc788\\uc5b4\\uc9c4\\ub2e4\\ub294 \\ub73b\\uc774\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">5</div>
+  <div class="en">For example, a teacher who enters the classroom with a bright heart gives energy to students.</div>
+  <button onclick="speak(\"For example, a teacher who enters the classroom with a bright heart gives energy to students.\", 'en-US')">영어 듣기</button>
+  <div class="ko">예를 들어 밝은 마음으로 교실에 들어가는 교사는 학생들에게 활력을 준다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc608\\ub97c \\ub4e4\\uc5b4 \\ubc1d\\uc740 \\ub9c8\\uc74c\\uc73c\\ub85c \\uad50\\uc2e4\\uc5d0 \\ub4e4\\uc5b4\\uac00\\ub294 \\uad50\\uc0ac\\ub294 \\ud559\\uc0dd\\ub4e4\\uc5d0\\uac8c \\ud65c\\ub825\\uc744 \\uc900\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">6</div>
+  <div class="en">A student who studies with curiosity shows the energy of a growing soul.</div>
+  <button onclick="speak(\"A student who studies with curiosity shows the energy of a growing soul.\", 'en-US')">영어 듣기</button>
+  <div class="ko">호기심을 가지고 공부하는 학생은 성장하는 영혼의 활력을 보여 준다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ud638\\uae30\\uc2ec\\uc744 \\uac00\\uc9c0\\uace0 \\uacf5\\ubd80\\ud558\\ub294 \\ud559\\uc0dd\\uc740 \\uc131\\uc7a5\\ud558\\ub294 \\uc601\\ud63c\\uc758 \\ud65c\\ub825\\uc744 \\ubcf4\\uc5ec \\uc900\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">7</div>
+  <div class="en">Socrates had intellectual energy because he continued to ask questions until the end of his life.</div>
+  <button onclick="speak(\"Socrates had intellectual energy because he continued to ask questions until the end of his life.\", 'en-US')">영어 듣기</button>
+  <div class="ko">소크라테스는 삶의 마지막까지 질문을 계속했기 때문에 지적인 활력을 지녔다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc18c\\ud06c\\ub77c\\ud14c\\uc2a4\\ub294 \\uc0b6\\uc758 \\ub9c8\\uc9c0\\ub9c9\\uae4c\\uc9c0 \\uc9c8\\ubb38\\uc744 \\uacc4\\uc18d\\ud588\\uae30 \\ub54c\\ubb38\\uc5d0 \\uc9c0\\uc801\\uc778 \\ud65c\\ub825\\uc744 \\uc9c0\\ub154\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">8</div>
+  <div class="en">His example teaches us that energy can appear as curiosity and love for truth.</div>
+  <button onclick="speak(\"His example teaches us that energy can appear as curiosity and love for truth.\", 'en-US')">영어 듣기</button>
+  <div class="ko">그의 예는 활력이 호기심과 진리에 대한 사랑으로 나타날 수 있음을 가르쳐 준다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uadf8\\uc758 \\uc608\\ub294 \\ud65c\\ub825\\uc774 \\ud638\\uae30\\uc2ec\\uacfc \\uc9c4\\ub9ac\\uc5d0 \\ub300\\ud55c \\uc0ac\\ub791\\uc73c\\ub85c \\ub098\\ud0c0\\ub0a0 \\uc218 \\uc788\\uc74c\\uc744 \\uac00\\ub974\\uccd0 \\uc900\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">9</div>
+  <div class="en">Energy also appears in people who serve others with patience and kindness.</div>
+  <button onclick="speak(\"Energy also appears in people who serve others with patience and kindness.\", 'en-US')">영어 듣기</button>
+  <div class="ko">활력은 인내와 친절로 다른 사람을 섬기는 사람들에게서도 나타난다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ud65c\\ub825\\uc740 \\uc778\\ub0b4\\uc640 \\uce5c\\uc808\\ub85c \\ub2e4\\ub978 \\uc0ac\\ub78c\\uc744 \\uc12c\\uae30\\ub294 \\uc0ac\\ub78c\\ub4e4\\uc5d0\\uac8c\\uc11c\\ub3c4 \\ub098\\ud0c0\\ub09c\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">10</div>
+  <div class="en">Mother Teresa’s life shows that quiet service can contain deep spiritual energy.</div>
+  <button onclick="speak(\"Mother Teresa\\u2019s life shows that quiet service can contain deep spiritual energy.\", 'en-US')">영어 듣기</button>
+  <div class="ko">마더 테레사의 삶은 조용한 봉사 안에 깊은 정신적 활력이 담길 수 있음을 보여 준다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub9c8\\ub354 \\ud14c\\ub808\\uc0ac\\uc758 \\uc0b6\\uc740 \\uc870\\uc6a9\\ud55c \\ubd09\\uc0ac \\uc548\\uc5d0 \\uae4a\\uc740 \\uc815\\uc2e0\\uc801 \\ud65c\\ub825\\uc774 \\ub2f4\\uae38 \\uc218 \\uc788\\uc74c\\uc744 \\ubcf4\\uc5ec \\uc900\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">11</div>
+  <div class="en">However, energy without wisdom can become restlessness or exhaustion.</div>
+  <button onclick="speak(\"However, energy without wisdom can become restlessness or exhaustion.\", 'en-US')">영어 듣기</button>
+  <div class="ko">그러나 지혜 없는 활력은 불안정함이나 소진이 될 수 있다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uadf8\\ub7ec\\ub098 \\uc9c0\\ud61c \\uc5c6\\ub294 \\ud65c\\ub825\\uc740 \\ubd88\\uc548\\uc815\\ud568\\uc774\\ub098 \\uc18c\\uc9c4\\uc774 \\ub420 \\uc218 \\uc788\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">12</div>
+  <div class="en">Therefore, true energy needs rest, reflection, and a meaningful purpose.</div>
+  <button onclick="speak(\"Therefore, true energy needs rest, reflection, and a meaningful purpose.\", 'en-US')">영어 듣기</button>
+  <div class="ko">그러므로 참된 활력에는 휴식, 성찰, 그리고 의미 있는 목적이 필요하다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uadf8\\ub7ec\\ubbc0\\ub85c \\ucc38\\ub41c \\ud65c\\ub825\\uc5d0\\ub294 \\ud734\\uc2dd, \\uc131\\ucc30, \\uadf8\\ub9ac\\uace0 \\uc758\\ubbf8 \\uc788\\ub294 \\ubaa9\\uc801\\uc774 \\ud544\\uc694\\ud558\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">13</div>
+  <div class="en">In daily life, energy grows when we care for our body, mind, and relationships.</div>
+  <button onclick="speak(\"In daily life, energy grows when we care for our body, mind, and relationships.\", 'en-US')">영어 듣기</button>
+  <div class="ko">일상에서 활력은 몸과 마음과 관계를 돌볼 때 자라난다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc77c\\uc0c1\\uc5d0\\uc11c \\ud65c\\ub825\\uc740 \\ubab8\\uacfc \\ub9c8\\uc74c\\uacfc \\uad00\\uacc4\\ub97c \\ub3cc\\ubcfc \\ub54c \\uc790\\ub77c\\ub09c\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">14</div>
+  <div class="en">A kind word can give emotional energy to someone who feels tired.</div>
+  <button onclick="speak(\"A kind word can give emotional energy to someone who feels tired.\", 'en-US')">영어 듣기</button>
+  <div class="ko">친절한 말 한마디는 지친 사람에게 정서적 활력을 줄 수 있다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uce5c\\uc808\\ud55c \\ub9d0 \\ud55c\\ub9c8\\ub514\\ub294 \\uc9c0\\uce5c \\uc0ac\\ub78c\\uc5d0\\uac8c \\uc815\\uc11c\\uc801 \\ud65c\\ub825\\uc744 \\uc904 \\uc218 \\uc788\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">15</div>
+  <div class="en">A hopeful goal can turn ordinary work into a lively journey.</div>
+  <button onclick="speak(\"A hopeful goal can turn ordinary work into a lively journey.\", 'en-US')">영어 듣기</button>
+  <div class="ko">희망찬 목표는 평범한 일을 생동감 있는 여정으로 바꿀 수 있다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ud76c\\ub9dd\\ucc2c \\ubaa9\\ud45c\\ub294 \\ud3c9\\ubc94\\ud55c \\uc77c\\uc744 \\uc0dd\\ub3d9\\uac10 \\uc788\\ub294 \\uc5ec\\uc815\\uc73c\\ub85c \\ubc14\\uafc0 \\uc218 \\uc788\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">16</div>
+  <div class="en">Energy becomes beautiful when it warms others instead of overwhelming them.</div>
+  <button onclick="speak(\"Energy becomes beautiful when it warms others instead of overwhelming them.\", 'en-US')">영어 듣기</button>
+  <div class="ko">활력은 다른 사람을 압도하는 것이 아니라 따뜻하게 할 때 아름다워진다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ud65c\\ub825\\uc740 \\ub2e4\\ub978 \\uc0ac\\ub78c\\uc744 \\uc555\\ub3c4\\ud558\\ub294 \\uac83\\uc774 \\uc544\\ub2c8\\ub77c \\ub530\\ub73b\\ud558\\uac8c \\ud560 \\ub54c \\uc544\\ub984\\ub2e4\\uc6cc\\uc9c4\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">17</div>
+  <div class="en">A person with true energy does not merely rush, but lives with rhythm and meaning.</div>
+  <button onclick="speak(\"A person with true energy does not merely rush, but lives with rhythm and meaning.\", 'en-US')">영어 듣기</button>
+  <div class="ko">참된 활력을 가진 사람은 단지 서두르지 않고 리듬과 의미를 가지고 살아간다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ucc38\\ub41c \\ud65c\\ub825\\uc744 \\uac00\\uc9c4 \\uc0ac\\ub78c\\uc740 \\ub2e8\\uc9c0 \\uc11c\\ub450\\ub974\\uc9c0 \\uc54a\\uace0 \\ub9ac\\ub4ec\\uacfc \\uc758\\ubbf8\\ub97c \\uac00\\uc9c0\\uace0 \\uc0b4\\uc544\\uac04\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">18</div>
+  <div class="en">Ultimately, energy is the power to greet life with gratitude, courage, and creative love.</div>
+  <button onclick="speak(\"Ultimately, energy is the power to greet life with gratitude, courage, and creative love.\", 'en-US')">영어 듣기</button>
+  <div class="ko">궁극적으로 활력은 감사와 용기와 창조적인 사랑으로 삶을 맞이하는 힘이다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uad81\\uadf9\\uc801\\uc73c\\ub85c \\ud65c\\ub825\\uc740 \\uac10\\uc0ac\\uc640 \\uc6a9\\uae30\\uc640 \\ucc3d\\uc870\\uc801\\uc778 \\uc0ac\\ub791\\uc73c\\ub85c \\uc0b6\\uc744 \\ub9de\\uc774\\ud558\\ub294 \\ud798\\uc774\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+</div>
+
+<div class="section">
+<h2>Ⅱ. Energy(활력) — 오늘 하루 실천 10문장</h2>
+
+<div class="pair">
+  <div class="num">1</div>
+  <div class="en">Today, I will begin my day with fresh energy and a thankful heart.</div>
+  <button onclick="speak(\"Today, I will begin my day with fresh energy and a thankful heart.\", 'en-US')">영어 듣기</button>
+  <div class="ko">오늘 나는 신선한 활력과 감사한 마음으로 하루를 시작하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc624\\ub298 \\ub098\\ub294 \\uc2e0\\uc120\\ud55c \\ud65c\\ub825\\uacfc \\uac10\\uc0ac\\ud55c \\ub9c8\\uc74c\\uc73c\\ub85c \\ud558\\ub8e8\\ub97c \\uc2dc\\uc791\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">2</div>
+  <div class="en">I will move my body, clear my mind, and welcome this day brightly.</div>
+  <button onclick="speak(\"I will move my body, clear my mind, and welcome this day brightly.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 몸을 움직이고 마음을 맑게 하며 오늘을 밝게 맞이하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\ubab8\\uc744 \\uc6c0\\uc9c1\\uc774\\uace0 \\ub9c8\\uc74c\\uc744 \\ub9d1\\uac8c \\ud558\\uba70 \\uc624\\ub298\\uc744 \\ubc1d\\uac8c \\ub9de\\uc774\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">3</div>
+  <div class="en">Energy means using my strength for good and meaningful actions.</div>
+  <button onclick="speak(\"Energy means using my strength for good and meaningful actions.\", 'en-US')">영어 듣기</button>
+  <div class="ko">활력은 나의 힘을 선하고 의미 있는 행동에 사용하는 것이다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ud65c\\ub825\\uc740 \\ub098\\uc758 \\ud798\\uc744 \\uc120\\ud558\\uace0 \\uc758\\ubbf8 \\uc788\\ub294 \\ud589\\ub3d9\\uc5d0 \\uc0ac\\uc6a9\\ud558\\ub294 \\uac83\\uc774\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">4</div>
+  <div class="en">I will share positive words with my students and people around me.</div>
+  <button onclick="speak(\"I will share positive words with my students and people around me.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 학생들과 주변 사람들에게 긍정적인 말을 나누겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\ud559\\uc0dd\\ub4e4\\uacfc \\uc8fc\\ubcc0 \\uc0ac\\ub78c\\ub4e4\\uc5d0\\uac8c \\uae0d\\uc815\\uc801\\uc778 \\ub9d0\\uc744 \\ub098\\ub204\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">5</div>
+  <div class="en">When I feel tired, I will pause, breathe, and begin again.</div>
+  <button onclick="speak(\"When I feel tired, I will pause, breathe, and begin again.\", 'en-US')">영어 듣기</button>
+  <div class="ko">피곤할 때 나는 잠시 멈추고 숨을 고른 뒤 다시 시작하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ud53c\\uace4\\ud560 \\ub54c \\ub098\\ub294 \\uc7a0\\uc2dc \\uba48\\ucd94\\uace0 \\uc228\\uc744 \\uace0\\ub978 \\ub4a4 \\ub2e4\\uc2dc \\uc2dc\\uc791\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">6</div>
+  <div class="en">I will turn small tasks into chances to practice sincerity.</div>
+  <button onclick="speak(\"I will turn small tasks into chances to practice sincerity.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 작은 일들을 진심을 실천하는 기회로 바꾸겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\uc791\\uc740 \\uc77c\\ub4e4\\uc744 \\uc9c4\\uc2ec\\uc744 \\uc2e4\\ucc9c\\ud558\\ub294 \\uae30\\ud68c\\ub85c \\ubc14\\uafb8\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">7</div>
+  <div class="en">I will protect my energy by choosing balance, rest, and wisdom.</div>
+  <button onclick="speak(\"I will protect my energy by choosing balance, rest, and wisdom.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 균형과 휴식과 지혜를 선택함으로써 나의 활력을 지키겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\uade0\\ud615\\uacfc \\ud734\\uc2dd\\uacfc \\uc9c0\\ud61c\\ub97c \\uc120\\ud0dd\\ud568\\uc73c\\ub85c\\uc368 \\ub098\\uc758 \\ud65c\\ub825\\uc744 \\uc9c0\\ud0a4\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">8</div>
+  <div class="en">I will give warm encouragement to someone who needs strength.</div>
+  <button onclick="speak(\"I will give warm encouragement to someone who needs strength.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 힘이 필요한 누군가에게 따뜻한 격려를 전하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\ud798\\uc774 \\ud544\\uc694\\ud55c \\ub204\\uad70\\uac00\\uc5d0\\uac8c \\ub530\\ub73b\\ud55c \\uaca9\\ub824\\ub97c \\uc804\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">9</div>
+  <div class="en">With energy, I can make today active, bright, and meaningful.</div>
+  <button onclick="speak(\"With energy, I can make today active, bright, and meaningful.\", 'en-US')">영어 듣기</button>
+  <div class="ko">활력을 가지고 나는 오늘을 능동적이고 밝고 의미 있게 만들 수 있다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ud65c\\ub825\\uc744 \\uac00\\uc9c0\\uace0 \\ub098\\ub294 \\uc624\\ub298\\uc744 \\ub2a5\\ub3d9\\uc801\\uc774\\uace0 \\ubc1d\\uace0 \\uc758\\ubbf8 \\uc788\\uac8c \\ub9cc\\ub4e4 \\uc218 \\uc788\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">10</div>
+  <div class="en">Today, I will live with vitality, kindness, and joyful purpose.</div>
+  <button onclick="speak(\"Today, I will live with vitality, kindness, and joyful purpose.\", 'en-US')">영어 듣기</button>
+  <div class="ko">오늘 나는 생기와 친절과 기쁜 목적을 가지고 살아가겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc624\\ub298 \\ub098\\ub294 \\uc0dd\\uae30\\uc640 \\uce5c\\uc808\\uacfc \\uae30\\uc05c \\ubaa9\\uc801\\uc744 \\uac00\\uc9c0\\uace0 \\uc0b4\\uc544\\uac00\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+</div>
+
+<div class="section">
+<h2>전체 원문 Text</h2>
+<pre>Energy (활력)을 인문 철학적으로 예시와 일화를 들어서
+영어18문장(한글 해석)으로 설명
+
+Energy is the living force that helps human beings move, create, and care.
+활력은 인간이 움직이고, 창조하고, 돌볼 수 있게 하는 살아 있는 힘이다.
+In humanistic philosophy, energy is not only physical strength, but also the vitality of the mind and spirit.
+인문 철학에서 활력은 단순한 신체적 힘이 아니라 마음과 정신의 생명력이다.
+Aristotle saw a good life as active living according to virtue and reason.
+아리스토텔레스는 좋은 삶을 덕과 이성에 따른 능동적인 삶으로 보았다.
+This means that energy becomes meaningful when it is directed toward good actions.
+이는 활력이 선한 행동을 향할 때 의미 있어진다는 뜻이다.
+For example, a teacher who enters the classroom with a bright heart gives energy to students.
+예를 들어 밝은 마음으로 교실에 들어가는 교사는 학생들에게 활력을 준다.
+A student who studies with curiosity shows the energy of a growing soul.
+호기심을 가지고 공부하는 학생은 성장하는 영혼의 활력을 보여 준다.
+Socrates had intellectual energy because he continued to ask questions until the end of his life.
+소크라테스는 삶의 마지막까지 질문을 계속했기 때문에 지적인 활력을 지녔다.
+His example teaches us that energy can appear as curiosity and love for truth.
+그의 예는 활력이 호기심과 진리에 대한 사랑으로 나타날 수 있음을 가르쳐 준다.
+Energy also appears in people who serve others with patience and kindness.
+활력은 인내와 친절로 다른 사람을 섬기는 사람들에게서도 나타난다.
+Mother Teresa’s life shows that quiet service can contain deep spiritual energy.
+마더 테레사의 삶은 조용한 봉사 안에 깊은 정신적 활력이 담길 수 있음을 보여 준다.
+However, energy without wisdom can become restlessness or exhaustion.
+그러나 지혜 없는 활력은 불안정함이나 소진이 될 수 있다.
+Therefore, true energy needs rest, reflection, and a meaningful purpose.
+그러므로 참된 활력에는 휴식, 성찰, 그리고 의미 있는 목적이 필요하다.
+In daily life, energy grows when we care for our body, mind, and relationships.
+일상에서 활력은 몸과 마음과 관계를 돌볼 때 자라난다.
+A kind word can give emotional energy to someone who feels tired.
+친절한 말 한마디는 지친 사람에게 정서적 활력을 줄 수 있다.
+A hopeful goal can turn ordinary work into a lively journey.
+희망찬 목표는 평범한 일을 생동감 있는 여정으로 바꿀 수 있다.
+Energy becomes beautiful when it warms others instead of overwhelming them.
+활력은 다른 사람을 압도하는 것이 아니라 따뜻하게 할 때 아름다워진다.
+A person with true energy does not merely rush, but lives with rhythm and meaning.
+참된 활력을 가진 사람은 단지 서두르지 않고 리듬과 의미를 가지고 살아간다.
+Ultimately, energy is the power to greet life with gratitude, courage, and creative love.
+궁극적으로 활력은 감사와 용기와 창조적인 사랑으로 삶을 맞이하는 힘이다.
+
+오늘 하루 Energy (활력)을 생각하고 실천하며 살고 싶다.
+영어 10줄(한글 해석)로 오늘의 삶을 이야기 하기
+
+Today, I will begin my day with fresh energy and a thankful heart.
+오늘 나는 신선한 활력과 감사한 마음으로 하루를 시작하겠다.
+I will move my body, clear my mind, and welcome this day brightly.
+나는 몸을 움직이고 마음을 맑게 하며 오늘을 밝게 맞이하겠다.
+Energy means using my strength for good and meaningful actions.
+활력은 나의 힘을 선하고 의미 있는 행동에 사용하는 것이다.
+I will share positive words with my students and people around me.
+나는 학생들과 주변 사람들에게 긍정적인 말을 나누겠다.
+When I feel tired, I will pause, breathe, and begin again.
+피곤할 때 나는 잠시 멈추고 숨을 고른 뒤 다시 시작하겠다.
+I will turn small tasks into chances to practice sincerity.
+나는 작은 일들을 진심을 실천하는 기회로 바꾸겠다.
+I will protect my energy by choosing balance, rest, and wisdom.
+나는 균형과 휴식과 지혜를 선택함으로써 나의 활력을 지키겠다.
+I will give warm encouragement to someone who needs strength.
+나는 힘이 필요한 누군가에게 따뜻한 격려를 전하겠다.
+With energy, I can make today active, bright, and meaningful.
+활력을 가지고 나는 오늘을 능동적이고 밝고 의미 있게 만들 수 있다.
+Today, I will live with vitality, kindness, and joyful purpose.
+오늘 나는 생기와 친절과 기쁜 목적을 가지고 살아가겠다.</pre>
+</div>
+
+<script>
+const EN_TEXT = "Energy is the living force that helps human beings move, create, and care.\nIn humanistic philosophy, energy is not only physical strength, but also the vitality of the mind and spirit.\nAristotle saw a good life as active living according to virtue and reason.\nThis means that energy becomes meaningful when it is directed toward good actions.\nFor example, a teacher who enters the classroom with a bright heart gives energy to students.\nA student who studies with curiosity shows the energy of a growing soul.\nSocrates had intellectual energy because he continued to ask questions until the end of his life.\nHis example teaches us that energy can appear as curiosity and love for truth.\nEnergy also appears in people who serve others with patience and kindness.\nMother Teresa’s life shows that quiet service can contain deep spiritual energy.\nHowever, energy without wisdom can become restlessness or exhaustion.\nTherefore, true energy needs rest, reflection, and a meaningful purpose.\nIn daily life, energy grows when we care for our body, mind, and relationships.\nA kind word can give emotional energy to someone who feels tired.\nA hopeful goal can turn ordinary work into a lively journey.\nEnergy becomes beautiful when it warms others instead of overwhelming them.\nA person with true energy does not merely rush, but lives with rhythm and meaning.\nUltimately, energy is the power to greet life with gratitude, courage, and creative love.\nToday, I will begin my day with fresh energy and a thankful heart.\nI will move my body, clear my mind, and welcome this day brightly.\nEnergy means using my strength for good and meaningful actions.\nI will share positive words with my students and people around me.\nWhen I feel tired, I will pause, breathe, and begin again.\nI will turn small tasks into chances to practice sincerity.\nI will protect my energy by choosing balance, rest, and wisdom.\nI will give warm encouragement to someone who needs strength.\nWith energy, I can make today active, bright, and meaningful.\nToday, I will live with vitality, kindness, and joyful purpose.";
+const KO_TEXT = "활력은 인간이 움직이고, 창조하고, 돌볼 수 있게 하는 살아 있는 힘이다.\n인문 철학에서 활력은 단순한 신체적 힘이 아니라 마음과 정신의 생명력이다.\n아리스토텔레스는 좋은 삶을 덕과 이성에 따른 능동적인 삶으로 보았다.\n이는 활력이 선한 행동을 향할 때 의미 있어진다는 뜻이다.\n예를 들어 밝은 마음으로 교실에 들어가는 교사는 학생들에게 활력을 준다.\n호기심을 가지고 공부하는 학생은 성장하는 영혼의 활력을 보여 준다.\n소크라테스는 삶의 마지막까지 질문을 계속했기 때문에 지적인 활력을 지녔다.\n그의 예는 활력이 호기심과 진리에 대한 사랑으로 나타날 수 있음을 가르쳐 준다.\n활력은 인내와 친절로 다른 사람을 섬기는 사람들에게서도 나타난다.\n마더 테레사의 삶은 조용한 봉사 안에 깊은 정신적 활력이 담길 수 있음을 보여 준다.\n그러나 지혜 없는 활력은 불안정함이나 소진이 될 수 있다.\n그러므로 참된 활력에는 휴식, 성찰, 그리고 의미 있는 목적이 필요하다.\n일상에서 활력은 몸과 마음과 관계를 돌볼 때 자라난다.\n친절한 말 한마디는 지친 사람에게 정서적 활력을 줄 수 있다.\n희망찬 목표는 평범한 일을 생동감 있는 여정으로 바꿀 수 있다.\n활력은 다른 사람을 압도하는 것이 아니라 따뜻하게 할 때 아름다워진다.\n참된 활력을 가진 사람은 단지 서두르지 않고 리듬과 의미를 가지고 살아간다.\n궁극적으로 활력은 감사와 용기와 창조적인 사랑으로 삶을 맞이하는 힘이다.\n오늘 나는 신선한 활력과 감사한 마음으로 하루를 시작하겠다.\n나는 몸을 움직이고 마음을 맑게 하며 오늘을 밝게 맞이하겠다.\n활력은 나의 힘을 선하고 의미 있는 행동에 사용하는 것이다.\n나는 학생들과 주변 사람들에게 긍정적인 말을 나누겠다.\n피곤할 때 나는 잠시 멈추고 숨을 고른 뒤 다시 시작하겠다.\n나는 작은 일들을 진심을 실천하는 기회로 바꾸겠다.\n나는 균형과 휴식과 지혜를 선택함으로써 나의 활력을 지키겠다.\n나는 힘이 필요한 누군가에게 따뜻한 격려를 전하겠다.\n활력을 가지고 나는 오늘을 능동적이고 밝고 의미 있게 만들 수 있다.\n오늘 나는 생기와 친절과 기쁜 목적을 가지고 살아가겠다.";
+function speak(text, lang){
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = lang;
+  u.rate = lang === 'en-US' ? 0.88 : 0.95;
+  u.pitch = 1;
+  speechSynthesis.speak(u);
+}
+function speakAll(lang){
+  speechSynthesis.cancel();
+  const text = lang === 'en-US' ? EN_TEXT : KO_TEXT;
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = lang;
+  u.rate = lang === 'en-US' ? 0.88 : 0.95;
+  u.pitch = 1;
+  speechSynthesis.speak(u);
+}
+</script>
+</div></div>
+</body>
+</html>

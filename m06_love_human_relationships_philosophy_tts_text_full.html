@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Love and Human Relationships 사랑과 인간관계 TTS 학습</title>
+<style>
+body{font-family:'Malgun Gothic',Arial,sans-serif;margin:0;background:linear-gradient(135deg,#fff0f5,#eef6ff);color:#222;}
+.wrap{max-width:1050px;margin:34px auto;padding:22px;}
+.card{background:#fff;border-radius:24px;padding:30px;box-shadow:0 12px 34px rgba(0,0,0,.12);}
+h1{text-align:center;color:#8a3152;font-size:36px;margin:6px 0 10px;}
+.subtitle{text-align:center;line-height:1.7;color:#555;font-size:17px;}
+.info{background:#fff2f7;border-left:7px solid #d15a87;padding:16px 20px;border-radius:16px;margin:20px 0;line-height:1.8;font-size:18px;}
+.controls{text-align:center;margin:20px 0;}
+button{border:none;border-radius:999px;padding:9px 15px;margin:4px;background:#9a3f61;color:white;cursor:pointer;font-weight:700;}
+button:hover{filter:brightness(1.08);}
+.btn-ko{background:#2f6f9f;}
+.stop{background:#555;}
+.section{margin-top:30px;padding-top:18px;border-top:2px dashed #ddd;}
+h2{color:#7a3150;font-size:25px;}
+.pair{display:grid;grid-template-columns:44px 1fr auto;gap:8px 12px;align-items:center;margin:13px 0;padding:16px;border:1px solid #eee;border-radius:18px;background:#fffcfd;}
+.num{grid-row:1 / span 2;font-size:22px;font-weight:800;color:#c48aa0;text-align:center;}
+.en{font-size:18px;font-weight:700;color:#7a2c4a;line-height:1.55;}
+.ko{font-size:17px;color:#333;line-height:1.55;}
+pre{white-space:pre-wrap;word-break:keep-all;background:#fffdf7;border-radius:18px;padding:20px;line-height:1.85;font-size:16px;border:1px solid #f0e5c8;}
+@media(max-width:720px){.pair{grid-template-columns:34px 1fr;}.pair button{grid-column:2;justify-self:start;}h1{font-size:28px;}}
+</style>
+</head>
+<body>
+<div class="wrap"><div class="card">
+<h1>Love and Human Relationships<br>사랑과 인간관계 TTS 학습</h1>
+<div class="subtitle">사랑과 인간관계의 인문 철학적 설명 18문장 + 오늘 하루 의미 있는 삶 실천 10문장</div>
+<div class="info">
+<strong>Love and Human Relationships:</strong> 사랑은 인간을 더 깊이 이해하고, 존중하며, 함께 성장하도록 변화시키는 힘입니다.<br>
+<strong>Eros to Modern Thought:</strong> 고대의 에로스 개념부터 현대 심리학과 문학까지 폭넓게 이어지는 주제입니다.
+</div>
+<div class="controls">
+<button onclick="speakAll('en-US')">영어 전체 듣기</button>
+<button class="btn-ko" onclick="speakAll('ko-KR')">한국어 전체 듣기</button>
+<button class="stop" onclick="speechSynthesis.cancel()">정지</button>
+</div>
+
+<div class="section">
+<h2>Ⅰ. Love and Human Relationships(사랑과 인간관계) — 인문 철학적 설명 18문장</h2>
+
+<div class="pair">
+  <div class="num">1</div>
+  <div class="en">Love and human relationships ask how one person can truly meet another person.</div>
+  <button onclick="speak(\"Love and human relationships ask how one person can truly meet another person.\", 'en-US')">영어 듣기</button>
+  <div class="ko">사랑과 인간관계는 한 사람이 어떻게 다른 사람을 참으로 만날 수 있는지를 묻는다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc0ac\\ub791\\uacfc \\uc778\\uac04\\uad00\\uacc4\\ub294 \\ud55c \\uc0ac\\ub78c\\uc774 \\uc5b4\\ub5bb\\uac8c \\ub2e4\\ub978 \\uc0ac\\ub78c\\uc744 \\ucc38\\uc73c\\ub85c \\ub9cc\\ub0a0 \\uc218 \\uc788\\ub294\\uc9c0\\ub97c \\ubb3b\\ub294\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">2</div>
+  <div class="en">In humanistic philosophy, love is not only emotion, but also care, responsibility, and respect.</div>
+  <button onclick="speak(\"In humanistic philosophy, love is not only emotion, but also care, responsibility, and respect.\", 'en-US')">영어 듣기</button>
+  <div class="ko">인문 철학에서 사랑은 단순한 감정이 아니라 돌봄, 책임, 존중이기도 하다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc778\\ubb38 \\ucca0\\ud559\\uc5d0\\uc11c \\uc0ac\\ub791\\uc740 \\ub2e8\\uc21c\\ud55c \\uac10\\uc815\\uc774 \\uc544\\ub2c8\\ub77c \\ub3cc\\ubd04, \\ucc45\\uc784, \\uc874\\uc911\\uc774\\uae30\\ub3c4 \\ud558\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">3</div>
+  <div class="en">Ancient Greek philosophy spoke of eros as a desire that lifts the soul toward beauty and truth.</div>
+  <button onclick="speak(\"Ancient Greek philosophy spoke of eros as a desire that lifts the soul toward beauty and truth.\", 'en-US')">영어 듣기</button>
+  <div class="ko">고대 그리스 철학은 에로스를 영혼을 아름다움과 진리로 끌어올리는 갈망으로 보았다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uace0\\ub300 \\uadf8\\ub9ac\\uc2a4 \\ucca0\\ud559\\uc740 \\uc5d0\\ub85c\\uc2a4\\ub97c \\uc601\\ud63c\\uc744 \\uc544\\ub984\\ub2e4\\uc6c0\\uacfc \\uc9c4\\ub9ac\\ub85c \\ub04c\\uc5b4\\uc62c\\ub9ac\\ub294 \\uac08\\ub9dd\\uc73c\\ub85c \\ubcf4\\uc558\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">4</div>
+  <div class="en">Plato suggested that love can begin with beauty of the body and rise toward beauty of the soul.</div>
+  <button onclick="speak(\"Plato suggested that love can begin with beauty of the body and rise toward beauty of the soul.\", 'en-US')">영어 듣기</button>
+  <div class="ko">플라톤은 사랑이 육체의 아름다움에서 시작하여 영혼의 아름다움으로 올라갈 수 있다고 보았다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ud50c\\ub77c\\ud1a4\\uc740 \\uc0ac\\ub791\\uc774 \\uc721\\uccb4\\uc758 \\uc544\\ub984\\ub2e4\\uc6c0\\uc5d0\\uc11c \\uc2dc\\uc791\\ud558\\uc5ec \\uc601\\ud63c\\uc758 \\uc544\\ub984\\ub2e4\\uc6c0\\uc73c\\ub85c \\uc62c\\ub77c\\uac08 \\uc218 \\uc788\\ub2e4\\uace0 \\ubcf4\\uc558\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">5</div>
+  <div class="en">This means that love can change desire into a search for deeper meaning.</div>
+  <button onclick="speak(\"This means that love can change desire into a search for deeper meaning.\", 'en-US')">영어 듣기</button>
+  <div class="ko">이는 사랑이 욕망을 더 깊은 의미를 찾는 과정으로 변화시킬 수 있음을 뜻한다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc774\\ub294 \\uc0ac\\ub791\\uc774 \\uc695\\ub9dd\\uc744 \\ub354 \\uae4a\\uc740 \\uc758\\ubbf8\\ub97c \\ucc3e\\ub294 \\uacfc\\uc815\\uc73c\\ub85c \\ubcc0\\ud654\\uc2dc\\ud0ac \\uc218 \\uc788\\uc74c\\uc744 \\ub73b\\ud55c\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">6</div>
+  <div class="en">Aristotle valued friendship as an important part of the good life.</div>
+  <button onclick="speak(\"Aristotle valued friendship as an important part of the good life.\", 'en-US')">영어 듣기</button>
+  <div class="ko">아리스토텔레스는 우정을 좋은 삶의 중요한 부분으로 여겼다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc544\\ub9ac\\uc2a4\\ud1a0\\ud154\\ub808\\uc2a4\\ub294 \\uc6b0\\uc815\\uc744 \\uc88b\\uc740 \\uc0b6\\uc758 \\uc911\\uc694\\ud55c \\ubd80\\ubd84\\uc73c\\ub85c \\uc5ec\\uacbc\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">7</div>
+  <div class="en">For him, the best friendship is based on virtue, not only pleasure or usefulness.</div>
+  <button onclick="speak(\"For him, the best friendship is based on virtue, not only pleasure or usefulness.\", 'en-US')">영어 듣기</button>
+  <div class="ko">그에게 최고의 우정은 쾌락이나 유용성만이 아니라 덕에 바탕을 둔다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uadf8\\uc5d0\\uac8c \\ucd5c\\uace0\\uc758 \\uc6b0\\uc815\\uc740 \\ucf8c\\ub77d\\uc774\\ub098 \\uc720\\uc6a9\\uc131\\ub9cc\\uc774 \\uc544\\ub2c8\\ub77c \\ub355\\uc5d0 \\ubc14\\ud0d5\\uc744 \\ub454\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">8</div>
+  <div class="en">For example, a true friend helps us become better, not merely more comfortable.</div>
+  <button onclick="speak(\"For example, a true friend helps us become better, not merely more comfortable.\", 'en-US')">영어 듣기</button>
+  <div class="ko">예를 들어 참된 친구는 우리를 단지 편하게 해 주는 것이 아니라 더 나은 사람이 되게 돕는다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc608\\ub97c \\ub4e4\\uc5b4 \\ucc38\\ub41c \\uce5c\\uad6c\\ub294 \\uc6b0\\ub9ac\\ub97c \\ub2e8\\uc9c0 \\ud3b8\\ud558\\uac8c \\ud574 \\uc8fc\\ub294 \\uac83\\uc774 \\uc544\\ub2c8\\ub77c \\ub354 \\ub098\\uc740 \\uc0ac\\ub78c\\uc774 \\ub418\\uac8c \\ub3d5\\ub294\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">9</div>
+  <div class="en">In daily life, love appears when a parent waits patiently for a child to grow.</div>
+  <button onclick="speak(\"In daily life, love appears when a parent waits patiently for a child to grow.\", 'en-US')">영어 듣기</button>
+  <div class="ko">일상에서 사랑은 부모가 아이의 성장을 인내롭게 기다릴 때 나타난다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc77c\\uc0c1\\uc5d0\\uc11c \\uc0ac\\ub791\\uc740 \\ubd80\\ubaa8\\uac00 \\uc544\\uc774\\uc758 \\uc131\\uc7a5\\uc744 \\uc778\\ub0b4\\ub86d\\uac8c \\uae30\\ub2e4\\ub9b4 \\ub54c \\ub098\\ud0c0\\ub09c\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">10</div>
+  <div class="en">Love also appears when a teacher believes in a student who has lost confidence.</div>
+  <button onclick="speak(\"Love also appears when a teacher believes in a student who has lost confidence.\", 'en-US')">영어 듣기</button>
+  <div class="ko">사랑은 자신감을 잃은 학생을 교사가 믿어 줄 때에도 나타난다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc0ac\\ub791\\uc740 \\uc790\\uc2e0\\uac10\\uc744 \\uc783\\uc740 \\ud559\\uc0dd\\uc744 \\uad50\\uc0ac\\uac00 \\ubbff\\uc5b4 \\uc904 \\ub54c\\uc5d0\\ub3c4 \\ub098\\ud0c0\\ub09c\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">11</div>
+  <div class="en">Modern psychology reminds us that healthy relationships need listening, trust, and emotional safety.</div>
+  <button onclick="speak(\"Modern psychology reminds us that healthy relationships need listening, trust, and emotional safety.\", 'en-US')">영어 듣기</button>
+  <div class="ko">현대 심리학은 건강한 관계에 경청, 신뢰, 정서적 안전이 필요하다고 일깨워 준다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ud604\\ub300 \\uc2ec\\ub9ac\\ud559\\uc740 \\uac74\\uac15\\ud55c \\uad00\\uacc4\\uc5d0 \\uacbd\\uccad, \\uc2e0\\ub8b0, \\uc815\\uc11c\\uc801 \\uc548\\uc804\\uc774 \\ud544\\uc694\\ud558\\ub2e4\\uace0 \\uc77c\\uae68\\uc6cc \\uc900\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">12</div>
+  <div class="en">A relationship becomes deeper when people feel safe enough to speak honestly.</div>
+  <button onclick="speak(\"A relationship becomes deeper when people feel safe enough to speak honestly.\", 'en-US')">영어 듣기</button>
+  <div class="ko">사람들이 솔직하게 말해도 안전하다고 느낄 때 관계는 더 깊어진다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc0ac\\ub78c\\ub4e4\\uc774 \\uc194\\uc9c1\\ud558\\uac8c \\ub9d0\\ud574\\ub3c4 \\uc548\\uc804\\ud558\\ub2e4\\uace0 \\ub290\\ub084 \\ub54c \\uad00\\uacc4\\ub294 \\ub354 \\uae4a\\uc5b4\\uc9c4\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">13</div>
+  <div class="en">Literature often shows that love can heal loneliness and reveal hidden parts of the self.</div>
+  <button onclick="speak(\"Literature often shows that love can heal loneliness and reveal hidden parts of the self.\", 'en-US')">영어 듣기</button>
+  <div class="ko">문학은 사랑이 외로움을 치유하고 자아의 숨겨진 부분을 드러낼 수 있음을 자주 보여 준다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ubb38\\ud559\\uc740 \\uc0ac\\ub791\\uc774 \\uc678\\ub85c\\uc6c0\\uc744 \\uce58\\uc720\\ud558\\uace0 \\uc790\\uc544\\uc758 \\uc228\\uaca8\\uc9c4 \\ubd80\\ubd84\\uc744 \\ub4dc\\ub7ec\\ub0bc \\uc218 \\uc788\\uc74c\\uc744 \\uc790\\uc8fc \\ubcf4\\uc5ec \\uc900\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">14</div>
+  <div class="en">However, love without respect can become possession or control.</div>
+  <button onclick="speak(\"However, love without respect can become possession or control.\", 'en-US')">영어 듣기</button>
+  <div class="ko">그러나 존중 없는 사랑은 소유나 통제가 될 수 있다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uadf8\\ub7ec\\ub098 \\uc874\\uc911 \\uc5c6\\ub294 \\uc0ac\\ub791\\uc740 \\uc18c\\uc720\\ub098 \\ud1b5\\uc81c\\uac00 \\ub420 \\uc218 \\uc788\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">15</div>
+  <div class="en">Therefore, true love gives freedom as well as closeness.</div>
+  <button onclick="speak(\"Therefore, true love gives freedom as well as closeness.\", 'en-US')">영어 듣기</button>
+  <div class="ko">그러므로 참된 사랑은 친밀함뿐 아니라 자유도 준다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uadf8\\ub7ec\\ubbc0\\ub85c \\ucc38\\ub41c \\uc0ac\\ub791\\uc740 \\uce5c\\ubc00\\ud568\\ubfd0 \\uc544\\ub2c8\\ub77c \\uc790\\uc720\\ub3c4 \\uc900\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">16</div>
+  <div class="en">Human relationships become meaningful when we listen before judging and forgive before turning away.</div>
+  <button onclick="speak(\"Human relationships become meaningful when we listen before judging and forgive before turning away.\", 'en-US')">영어 듣기</button>
+  <div class="ko">인간관계는 판단하기 전에 듣고, 돌아서기 전에 용서할 때 의미 있어진다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc778\\uac04\\uad00\\uacc4\\ub294 \\ud310\\ub2e8\\ud558\\uae30 \\uc804\\uc5d0 \\ub4e3\\uace0, \\ub3cc\\uc544\\uc11c\\uae30 \\uc804\\uc5d0 \\uc6a9\\uc11c\\ud560 \\ub54c \\uc758\\ubbf8 \\uc788\\uc5b4\\uc9c4\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">17</div>
+  <div class="en">Love becomes beautiful when it helps both people grow in dignity and kindness.</div>
+  <button onclick="speak(\"Love becomes beautiful when it helps both people grow in dignity and kindness.\", 'en-US')">영어 듣기</button>
+  <div class="ko">사랑은 두 사람이 존엄과 친절 안에서 함께 성장하도록 도울 때 아름다워진다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc0ac\\ub791\\uc740 \\ub450 \\uc0ac\\ub78c\\uc774 \\uc874\\uc5c4\\uacfc \\uce5c\\uc808 \\uc548\\uc5d0\\uc11c \\ud568\\uaed8 \\uc131\\uc7a5\\ud558\\ub3c4\\ub85d \\ub3c4\\uc6b8 \\ub54c \\uc544\\ub984\\ub2e4\\uc6cc\\uc9c4\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">18</div>
+  <div class="en">Ultimately, love and human relationships teach us that a meaningful life is shared, not lived alone.</div>
+  <button onclick="speak(\"Ultimately, love and human relationships teach us that a meaningful life is shared, not lived alone.\", 'en-US')">영어 듣기</button>
+  <div class="ko">궁극적으로 사랑과 인간관계는 의미 있는 삶이 혼자 사는 것이 아니라 함께 나누는 것임을 가르쳐 준다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uad81\\uadf9\\uc801\\uc73c\\ub85c \\uc0ac\\ub791\\uacfc \\uc778\\uac04\\uad00\\uacc4\\ub294 \\uc758\\ubbf8 \\uc788\\ub294 \\uc0b6\\uc774 \\ud63c\\uc790 \\uc0ac\\ub294 \\uac83\\uc774 \\uc544\\ub2c8\\ub77c \\ud568\\uaed8 \\ub098\\ub204\\ub294 \\uac83\\uc784\\uc744 \\uac00\\ub974\\uccd0 \\uc900\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+</div>
+
+<div class="section">
+<h2>Ⅱ. Love and Human Relationships(사랑과 인간관계) — 오늘 하루 실천 10문장</h2>
+
+<div class="pair">
+  <div class="num">1</div>
+  <div class="en">Today, I will begin my day with love, respect, and a warm heart.</div>
+  <button onclick="speak(\"Today, I will begin my day with love, respect, and a warm heart.\", 'en-US')">영어 듣기</button>
+  <div class="ko">오늘 나는 사랑과 존중과 따뜻한 마음으로 하루를 시작하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc624\\ub298 \\ub098\\ub294 \\uc0ac\\ub791\\uacfc \\uc874\\uc911\\uacfc \\ub530\\ub73b\\ud55c \\ub9c8\\uc74c\\uc73c\\ub85c \\ud558\\ub8e8\\ub97c \\uc2dc\\uc791\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">2</div>
+  <div class="en">I will listen carefully before I judge another person.</div>
+  <button onclick="speak(\"I will listen carefully before I judge another person.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 다른 사람을 판단하기 전에 주의 깊게 듣겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\ub2e4\\ub978 \\uc0ac\\ub78c\\uc744 \\ud310\\ub2e8\\ud558\\uae30 \\uc804\\uc5d0 \\uc8fc\\uc758 \\uae4a\\uac8c \\ub4e3\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">3</div>
+  <div class="en">Love means caring for others with responsibility, not only with emotion.</div>
+  <button onclick="speak(\"Love means caring for others with responsibility, not only with emotion.\", 'en-US')">영어 듣기</button>
+  <div class="ko">사랑은 감정만이 아니라 책임으로 다른 사람을 돌보는 것이다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc0ac\\ub791\\uc740 \\uac10\\uc815\\ub9cc\\uc774 \\uc544\\ub2c8\\ub77c \\ucc45\\uc784\\uc73c\\ub85c \\ub2e4\\ub978 \\uc0ac\\ub78c\\uc744 \\ub3cc\\ubcf4\\ub294 \\uac83\\uc774\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">4</div>
+  <div class="en">I will speak kindly to my students and people around me.</div>
+  <button onclick="speak(\"I will speak kindly to my students and people around me.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 학생들과 주변 사람들에게 친절하게 말하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\ud559\\uc0dd\\ub4e4\\uacfc \\uc8fc\\ubcc0 \\uc0ac\\ub78c\\ub4e4\\uc5d0\\uac8c \\uce5c\\uc808\\ud558\\uac8c \\ub9d0\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">5</div>
+  <div class="en">I will remember that every person needs understanding and dignity.</div>
+  <button onclick="speak(\"I will remember that every person needs understanding and dignity.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 모든 사람이 이해와 존엄을 필요로 한다는 것을 기억하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\ubaa8\\ub4e0 \\uc0ac\\ub78c\\uc774 \\uc774\\ud574\\uc640 \\uc874\\uc5c4\\uc744 \\ud544\\uc694\\ub85c \\ud55c\\ub2e4\\ub294 \\uac83\\uc744 \\uae30\\uc5b5\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">6</div>
+  <div class="en">When a relationship becomes difficult, I will choose patience and honest conversation.</div>
+  <button onclick="speak(\"When a relationship becomes difficult, I will choose patience and honest conversation.\", 'en-US')">영어 듣기</button>
+  <div class="ko">관계가 어려워질 때 나는 인내와 정직한 대화를 선택하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uad00\\uacc4\\uac00 \\uc5b4\\ub824\\uc6cc\\uc9c8 \\ub54c \\ub098\\ub294 \\uc778\\ub0b4\\uc640 \\uc815\\uc9c1\\ud55c \\ub300\\ud654\\ub97c \\uc120\\ud0dd\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">7</div>
+  <div class="en">I will express gratitude to someone who has supported me.</div>
+  <button onclick="speak(\"I will express gratitude to someone who has supported me.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 나를 지지해 준 누군가에게 감사의 마음을 표현하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\ub098\\ub97c \\uc9c0\\uc9c0\\ud574 \\uc900 \\ub204\\uad70\\uac00\\uc5d0\\uac8c \\uac10\\uc0ac\\uc758 \\ub9c8\\uc74c\\uc744 \\ud45c\\ud604\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">8</div>
+  <div class="en">I will not try to control others, but respect their freedom and feelings.</div>
+  <button onclick="speak(\"I will not try to control others, but respect their freedom and feelings.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 다른 사람을 통제하려 하지 않고 그들의 자유와 감정을 존중하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\ub2e4\\ub978 \\uc0ac\\ub78c\\uc744 \\ud1b5\\uc81c\\ud558\\ub824 \\ud558\\uc9c0 \\uc54a\\uace0 \\uadf8\\ub4e4\\uc758 \\uc790\\uc720\\uc640 \\uac10\\uc815\\uc744 \\uc874\\uc911\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">9</div>
+  <div class="en">With love and listening, I can make today more meaningful.</div>
+  <button onclick="speak(\"With love and listening, I can make today more meaningful.\", 'en-US')">영어 듣기</button>
+  <div class="ko">사랑과 경청으로 나는 오늘을 더 의미 있게 만들 수 있다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc0ac\\ub791\\uacfc \\uacbd\\uccad\\uc73c\\ub85c \\ub098\\ub294 \\uc624\\ub298\\uc744 \\ub354 \\uc758\\ubbf8 \\uc788\\uac8c \\ub9cc\\ub4e4 \\uc218 \\uc788\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">10</div>
+  <div class="en">Today, I will live as a person who builds warm and trustworthy relationships.</div>
+  <button onclick="speak(\"Today, I will live as a person who builds warm and trustworthy relationships.\", 'en-US')">영어 듣기</button>
+  <div class="ko">오늘 나는 따뜻하고 신뢰로운 관계를 만들어 가는 사람으로 살아가겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc624\\ub298 \\ub098\\ub294 \\ub530\\ub73b\\ud558\\uace0 \\uc2e0\\ub8b0\\ub85c\\uc6b4 \\uad00\\uacc4\\ub97c \\ub9cc\\ub4e4\\uc5b4 \\uac00\\ub294 \\uc0ac\\ub78c\\uc73c\\ub85c \\uc0b4\\uc544\\uac00\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+</div>
+
+<div class="section">
+<h2>전체 원문 Text</h2>
+<pre>사랑과 인간관계 (Love and Human Relationships)
+사랑은 인간 존재를 어떻게 변화시키는가에 대한 탐구이다.
+고대 철학의 에로스 개념부터 현대 심리학·문학까지 폭넓게 논의된다.
+
+사랑과 인간관계 (Love and Human Relationships)을 인문 철학적으로 예시와 일화를 들어서
+영어18문장(한글 해석)으로 설명
+
+Love and human relationships ask how one person can truly meet another person.
+사랑과 인간관계는 한 사람이 어떻게 다른 사람을 참으로 만날 수 있는지를 묻는다.
+In humanistic philosophy, love is not only emotion, but also care, responsibility, and respect.
+인문 철학에서 사랑은 단순한 감정이 아니라 돌봄, 책임, 존중이기도 하다.
+Ancient Greek philosophy spoke of eros as a desire that lifts the soul toward beauty and truth.
+고대 그리스 철학은 에로스를 영혼을 아름다움과 진리로 끌어올리는 갈망으로 보았다.
+Plato suggested that love can begin with beauty of the body and rise toward beauty of the soul.
+플라톤은 사랑이 육체의 아름다움에서 시작하여 영혼의 아름다움으로 올라갈 수 있다고 보았다.
+This means that love can change desire into a search for deeper meaning.
+이는 사랑이 욕망을 더 깊은 의미를 찾는 과정으로 변화시킬 수 있음을 뜻한다.
+Aristotle valued friendship as an important part of the good life.
+아리스토텔레스는 우정을 좋은 삶의 중요한 부분으로 여겼다.
+For him, the best friendship is based on virtue, not only pleasure or usefulness.
+그에게 최고의 우정은 쾌락이나 유용성만이 아니라 덕에 바탕을 둔다.
+For example, a true friend helps us become better, not merely more comfortable.
+예를 들어 참된 친구는 우리를 단지 편하게 해 주는 것이 아니라 더 나은 사람이 되게 돕는다.
+In daily life, love appears when a parent waits patiently for a child to grow.
+일상에서 사랑은 부모가 아이의 성장을 인내롭게 기다릴 때 나타난다.
+Love also appears when a teacher believes in a student who has lost confidence.
+사랑은 자신감을 잃은 학생을 교사가 믿어 줄 때에도 나타난다.
+Modern psychology reminds us that healthy relationships need listening, trust, and emotional safety.
+현대 심리학은 건강한 관계에 경청, 신뢰, 정서적 안전이 필요하다고 일깨워 준다.
+A relationship becomes deeper when people feel safe enough to speak honestly.
+사람들이 솔직하게 말해도 안전하다고 느낄 때 관계는 더 깊어진다.
+Literature often shows that love can heal loneliness and reveal hidden parts of the self.
+문학은 사랑이 외로움을 치유하고 자아의 숨겨진 부분을 드러낼 수 있음을 자주 보여 준다.
+However, love without respect can become possession or control.
+그러나 존중 없는 사랑은 소유나 통제가 될 수 있다.
+Therefore, true love gives freedom as well as closeness.
+그러므로 참된 사랑은 친밀함뿐 아니라 자유도 준다.
+Human relationships become meaningful when we listen before judging and forgive before turning away.
+인간관계는 판단하기 전에 듣고, 돌아서기 전에 용서할 때 의미 있어진다.
+Love becomes beautiful when it helps both people grow in dignity and kindness.
+사랑은 두 사람이 존엄과 친절 안에서 함께 성장하도록 도울 때 아름다워진다.
+Ultimately, love and human relationships teach us that a meaningful life is shared, not lived alone.
+궁극적으로 사랑과 인간관계는 의미 있는 삶이 혼자 사는 것이 아니라 함께 나누는 것임을 가르쳐 준다.
+
+오늘 하루 사랑과 인간관계 (Love and Human Relationships)을 생각하고 의미있는 삶을 실천하며 살고 싶다.
+영어 10줄(한글 해석)로 오늘의 삶을 이야기 하기
+
+Today, I will begin my day with love, respect, and a warm heart.
+오늘 나는 사랑과 존중과 따뜻한 마음으로 하루를 시작하겠다.
+I will listen carefully before I judge another person.
+나는 다른 사람을 판단하기 전에 주의 깊게 듣겠다.
+Love means caring for others with responsibility, not only with emotion.
+사랑은 감정만이 아니라 책임으로 다른 사람을 돌보는 것이다.
+I will speak kindly to my students and people around me.
+나는 학생들과 주변 사람들에게 친절하게 말하겠다.
+I will remember that every person needs understanding and dignity.
+나는 모든 사람이 이해와 존엄을 필요로 한다는 것을 기억하겠다.
+When a relationship becomes difficult, I will choose patience and honest conversation.
+관계가 어려워질 때 나는 인내와 정직한 대화를 선택하겠다.
+I will express gratitude to someone who has supported me.
+나는 나를 지지해 준 누군가에게 감사의 마음을 표현하겠다.
+I will not try to control others, but respect their freedom and feelings.
+나는 다른 사람을 통제하려 하지 않고 그들의 자유와 감정을 존중하겠다.
+With love and listening, I can make today more meaningful.
+사랑과 경청으로 나는 오늘을 더 의미 있게 만들 수 있다.
+Today, I will live as a person who builds warm and trustworthy relationships.
+오늘 나는 따뜻하고 신뢰로운 관계를 만들어 가는 사람으로 살아가겠다.</pre>
+</div>
+
+<script>
+const EN_TEXT = "Love and human relationships ask how one person can truly meet another person.\nIn humanistic philosophy, love is not only emotion, but also care, responsibility, and respect.\nAncient Greek philosophy spoke of eros as a desire that lifts the soul toward beauty and truth.\nPlato suggested that love can begin with beauty of the body and rise toward beauty of the soul.\nThis means that love can change desire into a search for deeper meaning.\nAristotle valued friendship as an important part of the good life.\nFor him, the best friendship is based on virtue, not only pleasure or usefulness.\nFor example, a true friend helps us become better, not merely more comfortable.\nIn daily life, love appears when a parent waits patiently for a child to grow.\nLove also appears when a teacher believes in a student who has lost confidence.\nModern psychology reminds us that healthy relationships need listening, trust, and emotional safety.\nA relationship becomes deeper when people feel safe enough to speak honestly.\nLiterature often shows that love can heal loneliness and reveal hidden parts of the self.\nHowever, love without respect can become possession or control.\nTherefore, true love gives freedom as well as closeness.\nHuman relationships become meaningful when we listen before judging and forgive before turning away.\nLove becomes beautiful when it helps both people grow in dignity and kindness.\nUltimately, love and human relationships teach us that a meaningful life is shared, not lived alone.\nToday, I will begin my day with love, respect, and a warm heart.\nI will listen carefully before I judge another person.\nLove means caring for others with responsibility, not only with emotion.\nI will speak kindly to my students and people around me.\nI will remember that every person needs understanding and dignity.\nWhen a relationship becomes difficult, I will choose patience and honest conversation.\nI will express gratitude to someone who has supported me.\nI will not try to control others, but respect their freedom and feelings.\nWith love and listening, I can make today more meaningful.\nToday, I will live as a person who builds warm and trustworthy relationships.";
+const KO_TEXT = "사랑과 인간관계는 한 사람이 어떻게 다른 사람을 참으로 만날 수 있는지를 묻는다.\n인문 철학에서 사랑은 단순한 감정이 아니라 돌봄, 책임, 존중이기도 하다.\n고대 그리스 철학은 에로스를 영혼을 아름다움과 진리로 끌어올리는 갈망으로 보았다.\n플라톤은 사랑이 육체의 아름다움에서 시작하여 영혼의 아름다움으로 올라갈 수 있다고 보았다.\n이는 사랑이 욕망을 더 깊은 의미를 찾는 과정으로 변화시킬 수 있음을 뜻한다.\n아리스토텔레스는 우정을 좋은 삶의 중요한 부분으로 여겼다.\n그에게 최고의 우정은 쾌락이나 유용성만이 아니라 덕에 바탕을 둔다.\n예를 들어 참된 친구는 우리를 단지 편하게 해 주는 것이 아니라 더 나은 사람이 되게 돕는다.\n일상에서 사랑은 부모가 아이의 성장을 인내롭게 기다릴 때 나타난다.\n사랑은 자신감을 잃은 학생을 교사가 믿어 줄 때에도 나타난다.\n현대 심리학은 건강한 관계에 경청, 신뢰, 정서적 안전이 필요하다고 일깨워 준다.\n사람들이 솔직하게 말해도 안전하다고 느낄 때 관계는 더 깊어진다.\n문학은 사랑이 외로움을 치유하고 자아의 숨겨진 부분을 드러낼 수 있음을 자주 보여 준다.\n그러나 존중 없는 사랑은 소유나 통제가 될 수 있다.\n그러므로 참된 사랑은 친밀함뿐 아니라 자유도 준다.\n인간관계는 판단하기 전에 듣고, 돌아서기 전에 용서할 때 의미 있어진다.\n사랑은 두 사람이 존엄과 친절 안에서 함께 성장하도록 도울 때 아름다워진다.\n궁극적으로 사랑과 인간관계는 의미 있는 삶이 혼자 사는 것이 아니라 함께 나누는 것임을 가르쳐 준다.\n오늘 나는 사랑과 존중과 따뜻한 마음으로 하루를 시작하겠다.\n나는 다른 사람을 판단하기 전에 주의 깊게 듣겠다.\n사랑은 감정만이 아니라 책임으로 다른 사람을 돌보는 것이다.\n나는 학생들과 주변 사람들에게 친절하게 말하겠다.\n나는 모든 사람이 이해와 존엄을 필요로 한다는 것을 기억하겠다.\n관계가 어려워질 때 나는 인내와 정직한 대화를 선택하겠다.\n나는 나를 지지해 준 누군가에게 감사의 마음을 표현하겠다.\n나는 다른 사람을 통제하려 하지 않고 그들의 자유와 감정을 존중하겠다.\n사랑과 경청으로 나는 오늘을 더 의미 있게 만들 수 있다.\n오늘 나는 따뜻하고 신뢰로운 관계를 만들어 가는 사람으로 살아가겠다.";
+function speak(text, lang){
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = lang;
+  u.rate = lang === 'en-US' ? 0.88 : 0.95;
+  u.pitch = 1;
+  speechSynthesis.speak(u);
+}
+function speakAll(lang){
+  speechSynthesis.cancel();
+  const text = lang === 'en-US' ? EN_TEXT : KO_TEXT;
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = lang;
+  u.rate = lang === 'en-US' ? 0.88 : 0.95;
+  u.pitch = 1;
+  speechSynthesis.speak(u);
+}
+</script>
+</div></div>
+</body>
+</html>

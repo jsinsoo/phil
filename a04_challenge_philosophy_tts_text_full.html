@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Challenge 도전 TTS 학습</title>
+<style>
+body{font-family:'Malgun Gothic',Arial,sans-serif;margin:0;background:linear-gradient(135deg,#eef8ff,#fff8ec);color:#222;}
+.wrap{max-width:1050px;margin:34px auto;padding:22px;}
+.card{background:#fff;border-radius:24px;padding:30px;box-shadow:0 12px 34px rgba(0,0,0,.12);}
+h1{text-align:center;color:#1f5d78;font-size:36px;margin:6px 0 10px;}
+.subtitle{text-align:center;line-height:1.7;color:#555;font-size:17px;}
+.info{background:#eefaff;border-left:7px solid #3c91b8;padding:16px 20px;border-radius:16px;margin:20px 0;line-height:1.8;font-size:18px;}
+.controls{text-align:center;margin:20px 0;}
+button{border:none;border-radius:999px;padding:9px 15px;margin:4px;background:#246b8a;color:white;cursor:pointer;font-weight:700;}
+button:hover{filter:brightness(1.08);}
+.btn-ko{background:#b46b1d;}
+.stop{background:#555;}
+.section{margin-top:30px;padding-top:18px;border-top:2px dashed #ddd;}
+h2{color:#6f4a00;font-size:25px;}
+.pair{display:grid;grid-template-columns:44px 1fr auto;gap:8px 12px;align-items:center;margin:13px 0;padding:16px;border:1px solid #eee;border-radius:18px;background:#fbfeff;}
+.num{grid-row:1 / span 2;font-size:22px;font-weight:800;color:#6f9ab0;text-align:center;}
+.en{font-size:18px;font-weight:700;color:#215d78;line-height:1.55;}
+.ko{font-size:17px;color:#333;line-height:1.55;}
+pre{white-space:pre-wrap;word-break:keep-all;background:#fffdf7;border-radius:18px;padding:20px;line-height:1.85;font-size:16px;border:1px solid #f0e5c8;}
+@media(max-width:720px){.pair{grid-template-columns:34px 1fr;}.pair button{grid-column:2;justify-self:start;}}
+</style>
+</head>
+<body>
+<div class="wrap"><div class="card">
+<h1>Challenge 도전 TTS 학습</h1>
+<div class="subtitle">Challenge(도전)의 인문 철학적 설명 18문장 + 오늘 하루 실천 10문장</div>
+<div class="info">
+<strong>Challenge:</strong> 도전은 두려움 속에서도 성장과 의미를 향해 한 걸음 내딛는 인간의 용기입니다.<br>
+<strong>Practice:</strong> 오늘의 어려움을 피하지 않고 배움과 성장의 기회로 삼습니다.
+</div>
+<div class="controls">
+<button onclick="speakAll('en-US')">영어 전체 듣기</button>
+<button class="btn-ko" onclick="speakAll('ko-KR')">한국어 전체 듣기</button>
+<button class="stop" onclick="speechSynthesis.cancel()">정지</button>
+</div>
+
+<div class="section">
+<h2>Ⅰ. Challenge(도전) — 인문 철학적 설명 18문장</h2>
+
+<div class="pair">
+  <div class="num">1</div>
+  <div class="en">Challenge is the human decision to step beyond comfort and meet the unknown.</div>
+  <button onclick="speak(\"Challenge is the human decision to step beyond comfort and meet the unknown.\", 'en-US')">영어 듣기</button>
+  <div class="ko">도전은 편안함을 넘어 미지의 세계를 마주하려는 인간의 결심이다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub3c4\\uc804\\uc740 \\ud3b8\\uc548\\ud568\\uc744 \\ub118\\uc5b4 \\ubbf8\\uc9c0\\uc758 \\uc138\\uacc4\\ub97c \\ub9c8\\uc8fc\\ud558\\ub824\\ub294 \\uc778\\uac04\\uc758 \\uacb0\\uc2ec\\uc774\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">2</div>
+  <div class="en">In humanistic philosophy, challenge is not only competition, but a search for growth and meaning.</div>
+  <button onclick="speak(\"In humanistic philosophy, challenge is not only competition, but a search for growth and meaning.\", 'en-US')">영어 듣기</button>
+  <div class="ko">인문 철학에서 도전은 단순한 경쟁이 아니라 성장과 의미를 찾는 과정이다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc778\\ubb38 \\ucca0\\ud559\\uc5d0\\uc11c \\ub3c4\\uc804\\uc740 \\ub2e8\\uc21c\\ud55c \\uacbd\\uc7c1\\uc774 \\uc544\\ub2c8\\ub77c \\uc131\\uc7a5\\uacfc \\uc758\\ubbf8\\ub97c \\ucc3e\\ub294 \\uacfc\\uc815\\uc774\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">3</div>
+  <div class="en">Socrates challenged the people of Athens by asking difficult questions about truth and justice.</div>
+  <button onclick="speak(\"Socrates challenged the people of Athens by asking difficult questions about truth and justice.\", 'en-US')">영어 듣기</button>
+  <div class="ko">소크라테스는 진리와 정의에 대한 어려운 질문을 던지며 아테네 사람들에게 도전했다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc18c\\ud06c\\ub77c\\ud14c\\uc2a4\\ub294 \\uc9c4\\ub9ac\\uc640 \\uc815\\uc758\\uc5d0 \\ub300\\ud55c \\uc5b4\\ub824\\uc6b4 \\uc9c8\\ubb38\\uc744 \\ub358\\uc9c0\\uba70 \\uc544\\ud14c\\ub124 \\uc0ac\\ub78c\\ub4e4\\uc5d0\\uac8c \\ub3c4\\uc804\\ud588\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">4</div>
+  <div class="en">His life shows that challenge can begin with honest questioning.</div>
+  <button onclick="speak(\"His life shows that challenge can begin with honest questioning.\", 'en-US')">영어 듣기</button>
+  <div class="ko">그의 삶은 도전이 정직한 질문에서 시작될 수 있음을 보여 준다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uadf8\\uc758 \\uc0b6\\uc740 \\ub3c4\\uc804\\uc774 \\uc815\\uc9c1\\ud55c \\uc9c8\\ubb38\\uc5d0\\uc11c \\uc2dc\\uc791\\ub420 \\uc218 \\uc788\\uc74c\\uc744 \\ubcf4\\uc5ec \\uc900\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">5</div>
+  <div class="en">Aristotle believed that virtue grows through repeated practice, not through easy wishes.</div>
+  <button onclick="speak(\"Aristotle believed that virtue grows through repeated practice, not through easy wishes.\", 'en-US')">영어 듣기</button>
+  <div class="ko">아리스토텔레스는 덕이 쉬운 바람이 아니라 반복된 실천을 통해 자란다고 믿었다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc544\\ub9ac\\uc2a4\\ud1a0\\ud154\\ub808\\uc2a4\\ub294 \\ub355\\uc774 \\uc26c\\uc6b4 \\ubc14\\ub78c\\uc774 \\uc544\\ub2c8\\ub77c \\ubc18\\ubcf5\\ub41c \\uc2e4\\ucc9c\\uc744 \\ud1b5\\ud574 \\uc790\\ub780\\ub2e4\\uace0 \\ubbff\\uc5c8\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">6</div>
+  <div class="en">This means that every challenge can become training for a better character.</div>
+  <button onclick="speak(\"This means that every challenge can become training for a better character.\", 'en-US')">영어 듣기</button>
+  <div class="ko">이는 모든 도전이 더 나은 인격을 위한 훈련이 될 수 있음을 뜻한다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc774\\ub294 \\ubaa8\\ub4e0 \\ub3c4\\uc804\\uc774 \\ub354 \\ub098\\uc740 \\uc778\\uaca9\\uc744 \\uc704\\ud55c \\ud6c8\\ub828\\uc774 \\ub420 \\uc218 \\uc788\\uc74c\\uc744 \\ub73b\\ud55c\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">7</div>
+  <div class="en">For example, a student who tries a difficult problem is not only learning knowledge, but also building courage.</div>
+  <button onclick="speak(\"For example, a student who tries a difficult problem is not only learning knowledge, but also building courage.\", 'en-US')">영어 듣기</button>
+  <div class="ko">예를 들어 어려운 문제에 도전하는 학생은 지식뿐 아니라 용기도 기르고 있는 것이다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc608\\ub97c \\ub4e4\\uc5b4 \\uc5b4\\ub824\\uc6b4 \\ubb38\\uc81c\\uc5d0 \\ub3c4\\uc804\\ud558\\ub294 \\ud559\\uc0dd\\uc740 \\uc9c0\\uc2dd\\ubfd0 \\uc544\\ub2c8\\ub77c \\uc6a9\\uae30\\ub3c4 \\uae30\\ub974\\uace0 \\uc788\\ub294 \\uac83\\uc774\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">8</div>
+  <div class="en">A teacher who changes a lesson for students’ growth is also accepting a meaningful challenge.</div>
+  <button onclick="speak(\"A teacher who changes a lesson for students\\u2019 growth is also accepting a meaningful challenge.\", 'en-US')">영어 듣기</button>
+  <div class="ko">학생들의 성장을 위해 수업을 바꾸는 교사도 의미 있는 도전을 받아들이는 것이다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ud559\\uc0dd\\ub4e4\\uc758 \\uc131\\uc7a5\\uc744 \\uc704\\ud574 \\uc218\\uc5c5\\uc744 \\ubc14\\uafb8\\ub294 \\uad50\\uc0ac\\ub3c4 \\uc758\\ubbf8 \\uc788\\ub294 \\ub3c4\\uc804\\uc744 \\ubc1b\\uc544\\ub4e4\\uc774\\ub294 \\uac83\\uc774\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">9</div>
+  <div class="en">Helen Keller’s life teaches us that challenge can turn limitation into possibility.</div>
+  <button onclick="speak(\"Helen Keller\\u2019s life teaches us that challenge can turn limitation into possibility.\", 'en-US')">영어 듣기</button>
+  <div class="ko">헬렌 켈러의 삶은 도전이 한계를 가능성으로 바꿀 수 있음을 가르쳐 준다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ud5ec\\ub80c \\ucf08\\ub7ec\\uc758 \\uc0b6\\uc740 \\ub3c4\\uc804\\uc774 \\ud55c\\uacc4\\ub97c \\uac00\\ub2a5\\uc131\\uc73c\\ub85c \\ubc14\\uafc0 \\uc218 \\uc788\\uc74c\\uc744 \\uac00\\ub974\\uccd0 \\uc900\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">10</div>
+  <div class="en">She faced darkness and silence, yet she opened a path of learning and hope.</div>
+  <button onclick="speak(\"She faced darkness and silence, yet she opened a path of learning and hope.\", 'en-US')">영어 듣기</button>
+  <div class="ko">그녀는 어둠과 침묵을 마주했지만 배움과 희망의 길을 열었다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uadf8\\ub140\\ub294 \\uc5b4\\ub460\\uacfc \\uce68\\ubb35\\uc744 \\ub9c8\\uc8fc\\ud588\\uc9c0\\ub9cc \\ubc30\\uc6c0\\uacfc \\ud76c\\ub9dd\\uc758 \\uae38\\uc744 \\uc5f4\\uc5c8\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">11</div>
+  <div class="en">Challenge often begins when we say, “I may fail, but I will still try.”</div>
+  <button onclick="speak(\"Challenge often begins when we say, \\u201cI may fail, but I will still try.\\u201d\", 'en-US')">영어 듣기</button>
+  <div class="ko">도전은 종종 ‘실패할 수도 있지만 그래도 해 보겠다’고 말할 때 시작된다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub3c4\\uc804\\uc740 \\uc885\\uc885 \\u2018\\uc2e4\\ud328\\ud560 \\uc218\\ub3c4 \\uc788\\uc9c0\\ub9cc \\uadf8\\ub798\\ub3c4 \\ud574 \\ubcf4\\uaca0\\ub2e4\\u2019\\uace0 \\ub9d0\\ud560 \\ub54c \\uc2dc\\uc791\\ub41c\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">12</div>
+  <div class="en">Failure is not the opposite of challenge; it is often the teacher inside challenge.</div>
+  <button onclick="speak(\"Failure is not the opposite of challenge; it is often the teacher inside challenge.\", 'en-US')">영어 듣기</button>
+  <div class="ko">실패는 도전의 반대가 아니라, 도전 속에 있는 스승인 경우가 많다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc2e4\\ud328\\ub294 \\ub3c4\\uc804\\uc758 \\ubc18\\ub300\\uac00 \\uc544\\ub2c8\\ub77c, \\ub3c4\\uc804 \\uc18d\\uc5d0 \\uc788\\ub294 \\uc2a4\\uc2b9\\uc778 \\uacbd\\uc6b0\\uac00 \\ub9ce\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">13</div>
+  <div class="en">However, challenge without reflection can become reckless pride.</div>
+  <button onclick="speak(\"However, challenge without reflection can become reckless pride.\", 'en-US')">영어 듣기</button>
+  <div class="ko">그러나 성찰 없는 도전은 무모한 자만이 될 수 있다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uadf8\\ub7ec\\ub098 \\uc131\\ucc30 \\uc5c6\\ub294 \\ub3c4\\uc804\\uc740 \\ubb34\\ubaa8\\ud55c \\uc790\\ub9cc\\uc774 \\ub420 \\uc218 \\uc788\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">14</div>
+  <div class="en">Therefore, a wise challenger asks both what is possible and what is right.</div>
+  <button onclick="speak(\"Therefore, a wise challenger asks both what is possible and what is right.\", 'en-US')">영어 듣기</button>
+  <div class="ko">그러므로 지혜로운 도전자는 무엇이 가능한지와 무엇이 옳은지를 함께 묻는다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uadf8\\ub7ec\\ubbc0\\ub85c \\uc9c0\\ud61c\\ub85c\\uc6b4 \\ub3c4\\uc804\\uc790\\ub294 \\ubb34\\uc5c7\\uc774 \\uac00\\ub2a5\\ud55c\\uc9c0\\uc640 \\ubb34\\uc5c7\\uc774 \\uc633\\uc740\\uc9c0\\ub97c \\ud568\\uaed8 \\ubb3b\\ub294\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">15</div>
+  <div class="en">In daily life, challenge appears when we choose effort instead of excuse.</div>
+  <button onclick="speak(\"In daily life, challenge appears when we choose effort instead of excuse.\", 'en-US')">영어 듣기</button>
+  <div class="ko">일상에서 도전은 변명 대신 노력을 선택할 때 나타난다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc77c\\uc0c1\\uc5d0\\uc11c \\ub3c4\\uc804\\uc740 \\ubcc0\\uba85 \\ub300\\uc2e0 \\ub178\\ub825\\uc744 \\uc120\\ud0dd\\ud560 \\ub54c \\ub098\\ud0c0\\ub09c\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">16</div>
+  <div class="en">A small challenge, repeated every day, can change the direction of a whole life.</div>
+  <button onclick="speak(\"A small challenge, repeated every day, can change the direction of a whole life.\", 'en-US')">영어 듣기</button>
+  <div class="ko">매일 반복되는 작은 도전은 한 사람의 삶 전체의 방향을 바꿀 수 있다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub9e4\\uc77c \\ubc18\\ubcf5\\ub418\\ub294 \\uc791\\uc740 \\ub3c4\\uc804\\uc740 \\ud55c \\uc0ac\\ub78c\\uc758 \\uc0b6 \\uc804\\uccb4\\uc758 \\ubc29\\ud5a5\\uc744 \\ubc14\\uafc0 \\uc218 \\uc788\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">17</div>
+  <div class="en">Challenge becomes beautiful when it helps not only myself but also others.</div>
+  <button onclick="speak(\"Challenge becomes beautiful when it helps not only myself but also others.\", 'en-US')">영어 듣기</button>
+  <div class="ko">도전은 나 자신뿐 아니라 다른 사람에게도 도움이 될 때 아름다워진다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub3c4\\uc804\\uc740 \\ub098 \\uc790\\uc2e0\\ubfd0 \\uc544\\ub2c8\\ub77c \\ub2e4\\ub978 \\uc0ac\\ub78c\\uc5d0\\uac8c\\ub3c4 \\ub3c4\\uc6c0\\uc774 \\ub420 \\ub54c \\uc544\\ub984\\ub2e4\\uc6cc\\uc9c4\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">18</div>
+  <div class="en">Ultimately, challenge is the promise that human beings can grow through courage, patience, and hope.</div>
+  <button onclick="speak(\"Ultimately, challenge is the promise that human beings can grow through courage, patience, and hope.\", 'en-US')">영어 듣기</button>
+  <div class="ko">궁극적으로 도전은 인간이 용기와 인내와 희망을 통해 성장할 수 있다는 약속이다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uad81\\uadf9\\uc801\\uc73c\\ub85c \\ub3c4\\uc804\\uc740 \\uc778\\uac04\\uc774 \\uc6a9\\uae30\\uc640 \\uc778\\ub0b4\\uc640 \\ud76c\\ub9dd\\uc744 \\ud1b5\\ud574 \\uc131\\uc7a5\\ud560 \\uc218 \\uc788\\ub2e4\\ub294 \\uc57d\\uc18d\\uc774\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+</div>
+
+<div class="section">
+<h2>Ⅱ. Challenge(도전) — 오늘 하루 실천 10문장</h2>
+
+<div class="pair">
+  <div class="num">1</div>
+  <div class="en">Today, I will begin my day with the spirit of challenge.</div>
+  <button onclick="speak(\"Today, I will begin my day with the spirit of challenge.\", 'en-US')">영어 듣기</button>
+  <div class="ko">오늘 나는 도전의 정신으로 하루를 시작하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc624\\ub298 \\ub098\\ub294 \\ub3c4\\uc804\\uc758 \\uc815\\uc2e0\\uc73c\\ub85c \\ud558\\ub8e8\\ub97c \\uc2dc\\uc791\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">2</div>
+  <div class="en">I will face difficult tasks with patience instead of fear.</div>
+  <button onclick="speak(\"I will face difficult tasks with patience instead of fear.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 어려운 일을 두려움 대신 인내로 마주하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\uc5b4\\ub824\\uc6b4 \\uc77c\\uc744 \\ub450\\ub824\\uc6c0 \\ub300\\uc2e0 \\uc778\\ub0b4\\ub85c \\ub9c8\\uc8fc\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">3</div>
+  <div class="en">Challenge means taking one brave step, even when the road is uncertain.</div>
+  <button onclick="speak(\"Challenge means taking one brave step, even when the road is uncertain.\", 'en-US')">영어 듣기</button>
+  <div class="ko">도전은 길이 불확실할 때에도 용기 있는 한 걸음을 내딛는 것이다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub3c4\\uc804\\uc740 \\uae38\\uc774 \\ubd88\\ud655\\uc2e4\\ud560 \\ub54c\\uc5d0\\ub3c4 \\uc6a9\\uae30 \\uc788\\ub294 \\ud55c \\uac78\\uc74c\\uc744 \\ub0b4\\ub51b\\ub294 \\uac83\\uc774\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">4</div>
+  <div class="en">I will try to solve problems instead of avoiding them.</div>
+  <button onclick="speak(\"I will try to solve problems instead of avoiding them.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 문제를 피하지 않고 해결하려고 노력하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\ubb38\\uc81c\\ub97c \\ud53c\\ud558\\uc9c0 \\uc54a\\uace0 \\ud574\\uacb0\\ud558\\ub824\\uace0 \\ub178\\ub825\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">5</div>
+  <div class="en">When I make a mistake, I will use it as a lesson for growth.</div>
+  <button onclick="speak(\"When I make a mistake, I will use it as a lesson for growth.\", 'en-US')">영어 듣기</button>
+  <div class="ko">실수했을 때 나는 그것을 성장의 배움으로 삼겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc2e4\\uc218\\ud588\\uc744 \\ub54c \\ub098\\ub294 \\uadf8\\uac83\\uc744 \\uc131\\uc7a5\\uc758 \\ubc30\\uc6c0\\uc73c\\ub85c \\uc0bc\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">6</div>
+  <div class="en">I will encourage my students to believe that effort can change them.</div>
+  <button onclick="speak(\"I will encourage my students to believe that effort can change them.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 학생들이 노력이 자신을 변화시킬 수 있음을 믿도록 격려하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\ud559\\uc0dd\\ub4e4\\uc774 \\ub178\\ub825\\uc774 \\uc790\\uc2e0\\uc744 \\ubcc0\\ud654\\uc2dc\\ud0ac \\uc218 \\uc788\\uc74c\\uc744 \\ubbff\\ub3c4\\ub85d \\uaca9\\ub824\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">7</div>
+  <div class="en">I will choose action over hesitation and hope over worry.</div>
+  <button onclick="speak(\"I will choose action over hesitation and hope over worry.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 망설임보다 행동을, 걱정보다 희망을 선택하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\ub9dd\\uc124\\uc784\\ubcf4\\ub2e4 \\ud589\\ub3d9\\uc744, \\uac71\\uc815\\ubcf4\\ub2e4 \\ud76c\\ub9dd\\uc744 \\uc120\\ud0dd\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">8</div>
+  <div class="en">I will challenge myself to speak kindly and work sincerely.</div>
+  <button onclick="speak(\"I will challenge myself to speak kindly and work sincerely.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 친절하게 말하고 성실하게 일하는 데 스스로 도전하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\uce5c\\uc808\\ud558\\uac8c \\ub9d0\\ud558\\uace0 \\uc131\\uc2e4\\ud558\\uac8c \\uc77c\\ud558\\ub294 \\ub370 \\uc2a4\\uc2a4\\ub85c \\ub3c4\\uc804\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">9</div>
+  <div class="en">With challenge, today’s difficulty can become tomorrow’s strength.</div>
+  <button onclick="speak(\"With challenge, today\\u2019s difficulty can become tomorrow\\u2019s strength.\", 'en-US')">영어 듣기</button>
+  <div class="ko">도전을 통해 오늘의 어려움은 내일의 힘이 될 수 있다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub3c4\\uc804\\uc744 \\ud1b5\\ud574 \\uc624\\ub298\\uc758 \\uc5b4\\ub824\\uc6c0\\uc740 \\ub0b4\\uc77c\\uc758 \\ud798\\uc774 \\ub420 \\uc218 \\uc788\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">10</div>
+  <div class="en">Today, I will live boldly, wisely, and meaningfully.</div>
+  <button onclick="speak(\"Today, I will live boldly, wisely, and meaningfully.\", 'en-US')">영어 듣기</button>
+  <div class="ko">오늘 나는 담대하고 지혜롭고 의미 있게 살아가겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc624\\ub298 \\ub098\\ub294 \\ub2f4\\ub300\\ud558\\uace0 \\uc9c0\\ud61c\\ub86d\\uace0 \\uc758\\ubbf8 \\uc788\\uac8c \\uc0b4\\uc544\\uac00\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+</div>
+
+<div class="section">
+<h2>전체 원문 Text</h2>
+<pre>Challenge (도전)을 인문 철학적으로 예시와 일화를 들어서
+영어18문장(한글 해석)으로 설명
+
+Challenge is the human decision to step beyond comfort and meet the unknown.
+도전은 편안함을 넘어 미지의 세계를 마주하려는 인간의 결심이다.
+In humanistic philosophy, challenge is not only competition, but a search for growth and meaning.
+인문 철학에서 도전은 단순한 경쟁이 아니라 성장과 의미를 찾는 과정이다.
+Socrates challenged the people of Athens by asking difficult questions about truth and justice.
+소크라테스는 진리와 정의에 대한 어려운 질문을 던지며 아테네 사람들에게 도전했다.
+His life shows that challenge can begin with honest questioning.
+그의 삶은 도전이 정직한 질문에서 시작될 수 있음을 보여 준다.
+Aristotle believed that virtue grows through repeated practice, not through easy wishes.
+아리스토텔레스는 덕이 쉬운 바람이 아니라 반복된 실천을 통해 자란다고 믿었다.
+This means that every challenge can become training for a better character.
+이는 모든 도전이 더 나은 인격을 위한 훈련이 될 수 있음을 뜻한다.
+For example, a student who tries a difficult problem is not only learning knowledge, but also building courage.
+예를 들어 어려운 문제에 도전하는 학생은 지식뿐 아니라 용기도 기르고 있는 것이다.
+A teacher who changes a lesson for students’ growth is also accepting a meaningful challenge.
+학생들의 성장을 위해 수업을 바꾸는 교사도 의미 있는 도전을 받아들이는 것이다.
+Helen Keller’s life teaches us that challenge can turn limitation into possibility.
+헬렌 켈러의 삶은 도전이 한계를 가능성으로 바꿀 수 있음을 가르쳐 준다.
+She faced darkness and silence, yet she opened a path of learning and hope.
+그녀는 어둠과 침묵을 마주했지만 배움과 희망의 길을 열었다.
+Challenge often begins when we say, “I may fail, but I will still try.”
+도전은 종종 ‘실패할 수도 있지만 그래도 해 보겠다’고 말할 때 시작된다.
+Failure is not the opposite of challenge; it is often the teacher inside challenge.
+실패는 도전의 반대가 아니라, 도전 속에 있는 스승인 경우가 많다.
+However, challenge without reflection can become reckless pride.
+그러나 성찰 없는 도전은 무모한 자만이 될 수 있다.
+Therefore, a wise challenger asks both what is possible and what is right.
+그러므로 지혜로운 도전자는 무엇이 가능한지와 무엇이 옳은지를 함께 묻는다.
+In daily life, challenge appears when we choose effort instead of excuse.
+일상에서 도전은 변명 대신 노력을 선택할 때 나타난다.
+A small challenge, repeated every day, can change the direction of a whole life.
+매일 반복되는 작은 도전은 한 사람의 삶 전체의 방향을 바꿀 수 있다.
+Challenge becomes beautiful when it helps not only myself but also others.
+도전은 나 자신뿐 아니라 다른 사람에게도 도움이 될 때 아름다워진다.
+Ultimately, challenge is the promise that human beings can grow through courage, patience, and hope.
+궁극적으로 도전은 인간이 용기와 인내와 희망을 통해 성장할 수 있다는 약속이다.
+
+오늘 하루 Challenge (도전)을 생각하고 실천하며 살고 싶다.
+영어 10줄(한글 해석)로 오늘의 삶을 이야기 하기
+
+Today, I will begin my day with the spirit of challenge.
+오늘 나는 도전의 정신으로 하루를 시작하겠다.
+I will face difficult tasks with patience instead of fear.
+나는 어려운 일을 두려움 대신 인내로 마주하겠다.
+Challenge means taking one brave step, even when the road is uncertain.
+도전은 길이 불확실할 때에도 용기 있는 한 걸음을 내딛는 것이다.
+I will try to solve problems instead of avoiding them.
+나는 문제를 피하지 않고 해결하려고 노력하겠다.
+When I make a mistake, I will use it as a lesson for growth.
+실수했을 때 나는 그것을 성장의 배움으로 삼겠다.
+I will encourage my students to believe that effort can change them.
+나는 학생들이 노력이 자신을 변화시킬 수 있음을 믿도록 격려하겠다.
+I will choose action over hesitation and hope over worry.
+나는 망설임보다 행동을, 걱정보다 희망을 선택하겠다.
+I will challenge myself to speak kindly and work sincerely.
+나는 친절하게 말하고 성실하게 일하는 데 스스로 도전하겠다.
+With challenge, today’s difficulty can become tomorrow’s strength.
+도전을 통해 오늘의 어려움은 내일의 힘이 될 수 있다.
+Today, I will live boldly, wisely, and meaningfully.
+오늘 나는 담대하고 지혜롭고 의미 있게 살아가겠다.</pre>
+</div>
+
+<script>
+const EN_TEXT = "Challenge is the human decision to step beyond comfort and meet the unknown.\nIn humanistic philosophy, challenge is not only competition, but a search for growth and meaning.\nSocrates challenged the people of Athens by asking difficult questions about truth and justice.\nHis life shows that challenge can begin with honest questioning.\nAristotle believed that virtue grows through repeated practice, not through easy wishes.\nThis means that every challenge can become training for a better character.\nFor example, a student who tries a difficult problem is not only learning knowledge, but also building courage.\nA teacher who changes a lesson for students’ growth is also accepting a meaningful challenge.\nHelen Keller’s life teaches us that challenge can turn limitation into possibility.\nShe faced darkness and silence, yet she opened a path of learning and hope.\nChallenge often begins when we say, “I may fail, but I will still try.”\nFailure is not the opposite of challenge; it is often the teacher inside challenge.\nHowever, challenge without reflection can become reckless pride.\nTherefore, a wise challenger asks both what is possible and what is right.\nIn daily life, challenge appears when we choose effort instead of excuse.\nA small challenge, repeated every day, can change the direction of a whole life.\nChallenge becomes beautiful when it helps not only myself but also others.\nUltimately, challenge is the promise that human beings can grow through courage, patience, and hope.\nToday, I will begin my day with the spirit of challenge.\nI will face difficult tasks with patience instead of fear.\nChallenge means taking one brave step, even when the road is uncertain.\nI will try to solve problems instead of avoiding them.\nWhen I make a mistake, I will use it as a lesson for growth.\nI will encourage my students to believe that effort can change them.\nI will choose action over hesitation and hope over worry.\nI will challenge myself to speak kindly and work sincerely.\nWith challenge, today’s difficulty can become tomorrow’s strength.\nToday, I will live boldly, wisely, and meaningfully.";
+const KO_TEXT = "도전은 편안함을 넘어 미지의 세계를 마주하려는 인간의 결심이다.\n인문 철학에서 도전은 단순한 경쟁이 아니라 성장과 의미를 찾는 과정이다.\n소크라테스는 진리와 정의에 대한 어려운 질문을 던지며 아테네 사람들에게 도전했다.\n그의 삶은 도전이 정직한 질문에서 시작될 수 있음을 보여 준다.\n아리스토텔레스는 덕이 쉬운 바람이 아니라 반복된 실천을 통해 자란다고 믿었다.\n이는 모든 도전이 더 나은 인격을 위한 훈련이 될 수 있음을 뜻한다.\n예를 들어 어려운 문제에 도전하는 학생은 지식뿐 아니라 용기도 기르고 있는 것이다.\n학생들의 성장을 위해 수업을 바꾸는 교사도 의미 있는 도전을 받아들이는 것이다.\n헬렌 켈러의 삶은 도전이 한계를 가능성으로 바꿀 수 있음을 가르쳐 준다.\n그녀는 어둠과 침묵을 마주했지만 배움과 희망의 길을 열었다.\n도전은 종종 ‘실패할 수도 있지만 그래도 해 보겠다’고 말할 때 시작된다.\n실패는 도전의 반대가 아니라, 도전 속에 있는 스승인 경우가 많다.\n그러나 성찰 없는 도전은 무모한 자만이 될 수 있다.\n그러므로 지혜로운 도전자는 무엇이 가능한지와 무엇이 옳은지를 함께 묻는다.\n일상에서 도전은 변명 대신 노력을 선택할 때 나타난다.\n매일 반복되는 작은 도전은 한 사람의 삶 전체의 방향을 바꿀 수 있다.\n도전은 나 자신뿐 아니라 다른 사람에게도 도움이 될 때 아름다워진다.\n궁극적으로 도전은 인간이 용기와 인내와 희망을 통해 성장할 수 있다는 약속이다.\n오늘 나는 도전의 정신으로 하루를 시작하겠다.\n나는 어려운 일을 두려움 대신 인내로 마주하겠다.\n도전은 길이 불확실할 때에도 용기 있는 한 걸음을 내딛는 것이다.\n나는 문제를 피하지 않고 해결하려고 노력하겠다.\n실수했을 때 나는 그것을 성장의 배움으로 삼겠다.\n나는 학생들이 노력이 자신을 변화시킬 수 있음을 믿도록 격려하겠다.\n나는 망설임보다 행동을, 걱정보다 희망을 선택하겠다.\n나는 친절하게 말하고 성실하게 일하는 데 스스로 도전하겠다.\n도전을 통해 오늘의 어려움은 내일의 힘이 될 수 있다.\n오늘 나는 담대하고 지혜롭고 의미 있게 살아가겠다.";
+function speak(text, lang){
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = lang;
+  u.rate = lang === 'en-US' ? 0.88 : 0.95;
+  u.pitch = 1;
+  speechSynthesis.speak(u);
+}
+function speakAll(lang){
+  speechSynthesis.cancel();
+  const text = lang === 'en-US' ? EN_TEXT : KO_TEXT;
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = lang;
+  u.rate = lang === 'en-US' ? 0.88 : 0.95;
+  u.pitch = 1;
+  speechSynthesis.speak(u);
+}
+</script>
+</div></div>
+</body>
+</html>

@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Freedom and Responsibility 자유와 책임 TTS 학습</title>
+<style>
+body{font-family:'Malgun Gothic',Arial,sans-serif;margin:0;background:linear-gradient(135deg,#eef5ff,#fff8ec);color:#222;}
+.wrap{max-width:1050px;margin:34px auto;padding:22px;}
+.card{background:#fff;border-radius:24px;padding:30px;box-shadow:0 12px 34px rgba(0,0,0,.12);}
+h1{text-align:center;color:#274b87;font-size:36px;margin:6px 0 10px;}
+.subtitle{text-align:center;line-height:1.7;color:#555;font-size:17px;}
+.info{background:#f0f6ff;border-left:7px solid #5276c8;padding:16px 20px;border-radius:16px;margin:20px 0;line-height:1.8;font-size:18px;}
+.controls{text-align:center;margin:20px 0;}
+button{border:none;border-radius:999px;padding:9px 15px;margin:4px;background:#315795;color:white;cursor:pointer;font-weight:700;}
+button:hover{filter:brightness(1.08);}
+.btn-ko{background:#a76625;}
+.stop{background:#555;}
+.section{margin-top:30px;padding-top:18px;border-top:2px dashed #ddd;}
+h2{color:#6f4a00;font-size:25px;}
+.pair{display:grid;grid-template-columns:44px 1fr auto;gap:8px 12px;align-items:center;margin:13px 0;padding:16px;border:1px solid #eee;border-radius:18px;background:#fbfcff;}
+.num{grid-row:1 / span 2;font-size:22px;font-weight:800;color:#7894c3;text-align:center;}
+.en{font-size:18px;font-weight:700;color:#274b87;line-height:1.55;}
+.ko{font-size:17px;color:#333;line-height:1.55;}
+pre{white-space:pre-wrap;word-break:keep-all;background:#fffdf7;border-radius:18px;padding:20px;line-height:1.85;font-size:16px;border:1px solid #f0e5c8;}
+@media(max-width:720px){.pair{grid-template-columns:34px 1fr;}.pair button{grid-column:2;justify-self:start;}h1{font-size:28px;}}
+</style>
+</head>
+<body>
+<div class="wrap"><div class="card">
+<h1>Freedom and Responsibility<br>자유와 책임 TTS 학습</h1>
+<div class="subtitle">자유와 책임의 인문 철학적 설명 18문장 + 오늘 하루 실천 10문장</div>
+<div class="info">
+<strong>Freedom and Responsibility:</strong> 자유는 책임과 함께할 때 존엄해지고, 책임은 자유로운 선택과 함께할 때 인간다워집니다.<br>
+<strong>Practice:</strong> 오늘의 말과 행동 속에서 자유로운 선택과 책임 있는 태도를 함께 실천합니다.
+</div>
+<div class="controls">
+<button onclick="speakAll('en-US')">영어 전체 듣기</button>
+<button class="btn-ko" onclick="speakAll('ko-KR')">한국어 전체 듣기</button>
+<button class="stop" onclick="speechSynthesis.cancel()">정지</button>
+</div>
+
+<div class="section">
+<h2>Ⅰ. Freedom and Responsibility(자유와 책임) — 인문 철학적 설명 18문장</h2>
+
+<div class="pair">
+  <div class="num">1</div>
+  <div class="en">Freedom and responsibility are two sides of a truly human life.</div>
+  <button onclick="speak(\"Freedom and responsibility are two sides of a truly human life.\", 'en-US')">영어 듣기</button>
+  <div class="ko">자유와 책임은 참으로 인간다운 삶의 두 측면이다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc790\\uc720\\uc640 \\ucc45\\uc784\\uc740 \\ucc38\\uc73c\\ub85c \\uc778\\uac04\\ub2e4\\uc6b4 \\uc0b6\\uc758 \\ub450 \\uce21\\uba74\\uc774\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">2</div>
+  <div class="en">In humanistic philosophy, freedom does not mean doing anything without limits.</div>
+  <button onclick="speak(\"In humanistic philosophy, freedom does not mean doing anything without limits.\", 'en-US')">영어 듣기</button>
+  <div class="ko">인문 철학에서 자유는 아무 제한 없이 무엇이든 하는 것을 의미하지 않는다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc778\\ubb38 \\ucca0\\ud559\\uc5d0\\uc11c \\uc790\\uc720\\ub294 \\uc544\\ubb34 \\uc81c\\ud55c \\uc5c6\\uc774 \\ubb34\\uc5c7\\uc774\\ub4e0 \\ud558\\ub294 \\uac83\\uc744 \\uc758\\ubbf8\\ud558\\uc9c0 \\uc54a\\ub294\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">3</div>
+  <div class="en">True freedom means choosing with conscience, wisdom, and care for others.</div>
+  <button onclick="speak(\"True freedom means choosing with conscience, wisdom, and care for others.\", 'en-US')">영어 듣기</button>
+  <div class="ko">참된 자유는 양심과 지혜, 그리고 타인에 대한 배려로 선택하는 것을 뜻한다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ucc38\\ub41c \\uc790\\uc720\\ub294 \\uc591\\uc2ec\\uacfc \\uc9c0\\ud61c, \\uadf8\\ub9ac\\uace0 \\ud0c0\\uc778\\uc5d0 \\ub300\\ud55c \\ubc30\\ub824\\ub85c \\uc120\\ud0dd\\ud558\\ub294 \\uac83\\uc744 \\ub73b\\ud55c\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">4</div>
+  <div class="en">Socrates showed this freedom when he followed truth even in the face of death.</div>
+  <button onclick="speak(\"Socrates showed this freedom when he followed truth even in the face of death.\", 'en-US')">영어 듣기</button>
+  <div class="ko">소크라테스는 죽음 앞에서도 진리를 따름으로써 이러한 자유를 보여 주었다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc18c\\ud06c\\ub77c\\ud14c\\uc2a4\\ub294 \\uc8fd\\uc74c \\uc55e\\uc5d0\\uc11c\\ub3c4 \\uc9c4\\ub9ac\\ub97c \\ub530\\ub984\\uc73c\\ub85c\\uc368 \\uc774\\ub7ec\\ud55c \\uc790\\uc720\\ub97c \\ubcf4\\uc5ec \\uc8fc\\uc5c8\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">5</div>
+  <div class="en">He accepted responsibility for his words and actions before the city of Athens.</div>
+  <button onclick="speak(\"He accepted responsibility for his words and actions before the city of Athens.\", 'en-US')">영어 듣기</button>
+  <div class="ko">그는 아테네 도시 앞에서 자신의 말과 행동에 대한 책임을 받아들였다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uadf8\\ub294 \\uc544\\ud14c\\ub124 \\ub3c4\\uc2dc \\uc55e\\uc5d0\\uc11c \\uc790\\uc2e0\\uc758 \\ub9d0\\uacfc \\ud589\\ub3d9\\uc5d0 \\ub300\\ud55c \\ucc45\\uc784\\uc744 \\ubc1b\\uc544\\ub4e4\\uc600\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">6</div>
+  <div class="en">Aristotle taught that a good person forms character through repeated choices.</div>
+  <button onclick="speak(\"Aristotle taught that a good person forms character through repeated choices.\", 'en-US')">영어 듣기</button>
+  <div class="ko">아리스토텔레스는 좋은 사람이 반복되는 선택을 통해 인격을 형성한다고 가르쳤다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc544\\ub9ac\\uc2a4\\ud1a0\\ud154\\ub808\\uc2a4\\ub294 \\uc88b\\uc740 \\uc0ac\\ub78c\\uc774 \\ubc18\\ubcf5\\ub418\\ub294 \\uc120\\ud0dd\\uc744 \\ud1b5\\ud574 \\uc778\\uaca9\\uc744 \\ud615\\uc131\\ud55c\\ub2e4\\uace0 \\uac00\\ub974\\ucce4\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">7</div>
+  <div class="en">This means that responsibility is not a burden only, but a path to becoming better.</div>
+  <button onclick="speak(\"This means that responsibility is not a burden only, but a path to becoming better.\", 'en-US')">영어 듣기</button>
+  <div class="ko">이는 책임이 단순한 짐이 아니라 더 나은 사람이 되는 길이라는 뜻이다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc774\\ub294 \\ucc45\\uc784\\uc774 \\ub2e8\\uc21c\\ud55c \\uc9d0\\uc774 \\uc544\\ub2c8\\ub77c \\ub354 \\ub098\\uc740 \\uc0ac\\ub78c\\uc774 \\ub418\\ub294 \\uae38\\uc774\\ub77c\\ub294 \\ub73b\\uc774\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">8</div>
+  <div class="en">For example, a student is free to study or waste time, but each choice shapes the future.</div>
+  <button onclick="speak(\"For example, a student is free to study or waste time, but each choice shapes the future.\", 'en-US')">영어 듣기</button>
+  <div class="ko">예를 들어 학생은 공부하거나 시간을 낭비할 자유가 있지만, 각각의 선택은 미래를 형성한다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc608\\ub97c \\ub4e4\\uc5b4 \\ud559\\uc0dd\\uc740 \\uacf5\\ubd80\\ud558\\uac70\\ub098 \\uc2dc\\uac04\\uc744 \\ub0ad\\ube44\\ud560 \\uc790\\uc720\\uac00 \\uc788\\uc9c0\\ub9cc, \\uac01\\uac01\\uc758 \\uc120\\ud0dd\\uc740 \\ubbf8\\ub798\\ub97c \\ud615\\uc131\\ud55c\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">9</div>
+  <div class="en">A teacher is free to speak, but responsible for whether those words hurt or encourage students.</div>
+  <button onclick="speak(\"A teacher is free to speak, but responsible for whether those words hurt or encourage students.\", 'en-US')">영어 듣기</button>
+  <div class="ko">교사는 말할 자유가 있지만, 그 말이 학생에게 상처를 주는지 격려가 되는지에 대한 책임이 있다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uad50\\uc0ac\\ub294 \\ub9d0\\ud560 \\uc790\\uc720\\uac00 \\uc788\\uc9c0\\ub9cc, \\uadf8 \\ub9d0\\uc774 \\ud559\\uc0dd\\uc5d0\\uac8c \\uc0c1\\ucc98\\ub97c \\uc8fc\\ub294\\uc9c0 \\uaca9\\ub824\\uac00 \\ub418\\ub294\\uc9c0\\uc5d0 \\ub300\\ud55c \\ucc45\\uc784\\uc774 \\uc788\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">10</div>
+  <div class="en">Jean-Paul Sartre said that human beings are condemned to be free.</div>
+  <button onclick="speak(\"Jean-Paul Sartre said that human beings are condemned to be free.\", 'en-US')">영어 듣기</button>
+  <div class="ko">장 폴 사르트르는 인간은 자유롭도록 선고받은 존재라고 말했다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc7a5 \\ud3f4 \\uc0ac\\ub974\\ud2b8\\ub974\\ub294 \\uc778\\uac04\\uc740 \\uc790\\uc720\\ub86d\\ub3c4\\ub85d \\uc120\\uace0\\ubc1b\\uc740 \\uc874\\uc7ac\\ub77c\\uace0 \\ub9d0\\ud588\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">11</div>
+  <div class="en">His idea means that we cannot escape the responsibility of choosing who we become.</div>
+  <button onclick="speak(\"His idea means that we cannot escape the responsibility of choosing who we become.\", 'en-US')">영어 듣기</button>
+  <div class="ko">그의 생각은 우리가 어떤 사람이 될지 선택하는 책임에서 벗어날 수 없다는 뜻이다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uadf8\\uc758 \\uc0dd\\uac01\\uc740 \\uc6b0\\ub9ac\\uac00 \\uc5b4\\ub5a4 \\uc0ac\\ub78c\\uc774 \\ub420\\uc9c0 \\uc120\\ud0dd\\ud558\\ub294 \\ucc45\\uc784\\uc5d0\\uc11c \\ubc97\\uc5b4\\ub0a0 \\uc218 \\uc5c6\\ub2e4\\ub294 \\ub73b\\uc774\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">12</div>
+  <div class="en">Freedom without responsibility can become selfishness and disorder.</div>
+  <button onclick="speak(\"Freedom without responsibility can become selfishness and disorder.\", 'en-US')">영어 듣기</button>
+  <div class="ko">책임 없는 자유는 이기심과 혼란이 될 수 있다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ucc45\\uc784 \\uc5c6\\ub294 \\uc790\\uc720\\ub294 \\uc774\\uae30\\uc2ec\\uacfc \\ud63c\\ub780\\uc774 \\ub420 \\uc218 \\uc788\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">13</div>
+  <div class="en">Responsibility without freedom can become oppression and fear.</div>
+  <button onclick="speak(\"Responsibility without freedom can become oppression and fear.\", 'en-US')">영어 듣기</button>
+  <div class="ko">자유 없는 책임은 억압과 두려움이 될 수 있다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc790\\uc720 \\uc5c6\\ub294 \\ucc45\\uc784\\uc740 \\uc5b5\\uc555\\uacfc \\ub450\\ub824\\uc6c0\\uc774 \\ub420 \\uc218 \\uc788\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">14</div>
+  <div class="en">Therefore, a mature life needs both free choice and responsible action.</div>
+  <button onclick="speak(\"Therefore, a mature life needs both free choice and responsible action.\", 'en-US')">영어 듣기</button>
+  <div class="ko">그러므로 성숙한 삶에는 자유로운 선택과 책임 있는 행동이 모두 필요하다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uadf8\\ub7ec\\ubbc0\\ub85c \\uc131\\uc219\\ud55c \\uc0b6\\uc5d0\\ub294 \\uc790\\uc720\\ub85c\\uc6b4 \\uc120\\ud0dd\\uacfc \\ucc45\\uc784 \\uc788\\ub294 \\ud589\\ub3d9\\uc774 \\ubaa8\\ub450 \\ud544\\uc694\\ud558\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">15</div>
+  <div class="en">In daily life, freedom and responsibility appear when we choose honesty instead of excuse.</div>
+  <button onclick="speak(\"In daily life, freedom and responsibility appear when we choose honesty instead of excuse.\", 'en-US')">영어 듣기</button>
+  <div class="ko">일상에서 자유와 책임은 변명 대신 정직을 선택할 때 나타난다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc77c\\uc0c1\\uc5d0\\uc11c \\uc790\\uc720\\uc640 \\ucc45\\uc784\\uc740 \\ubcc0\\uba85 \\ub300\\uc2e0 \\uc815\\uc9c1\\uc744 \\uc120\\ud0dd\\ud560 \\ub54c \\ub098\\ud0c0\\ub09c\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">16</div>
+  <div class="en">They also appear when we respect another person’s dignity as much as our own.</div>
+  <button onclick="speak(\"They also appear when we respect another person\\u2019s dignity as much as our own.\", 'en-US')">영어 듣기</button>
+  <div class="ko">또한 타인의 존엄을 나 자신의 존엄만큼 존중할 때 나타난다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub610\\ud55c \\ud0c0\\uc778\\uc758 \\uc874\\uc5c4\\uc744 \\ub098 \\uc790\\uc2e0\\uc758 \\uc874\\uc5c4\\ub9cc\\ud07c \\uc874\\uc911\\ud560 \\ub54c \\ub098\\ud0c0\\ub09c\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">17</div>
+  <div class="en">A free and responsible person does not ask only, “What can I do?” but also, “What should I do?”</div>
+  <button onclick="speak(\"A free and responsible person does not ask only, \\u201cWhat can I do?\\u201d but also, \\u201cWhat should I do?\\u201d\", 'en-US')">영어 듣기</button>
+  <div class="ko">자유롭고 책임 있는 사람은 ‘내가 무엇을 할 수 있는가?’뿐 아니라 ‘내가 무엇을 해야 하는가?’도 묻는다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc790\\uc720\\ub86d\\uace0 \\ucc45\\uc784 \\uc788\\ub294 \\uc0ac\\ub78c\\uc740 \\u2018\\ub0b4\\uac00 \\ubb34\\uc5c7\\uc744 \\ud560 \\uc218 \\uc788\\ub294\\uac00?\\u2019\\ubfd0 \\uc544\\ub2c8\\ub77c \\u2018\\ub0b4\\uac00 \\ubb34\\uc5c7\\uc744 \\ud574\\uc57c \\ud558\\ub294\\uac00?\\u2019\\ub3c4 \\ubb3b\\ub294\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">18</div>
+  <div class="en">Ultimately, freedom and responsibility help us live with dignity, wisdom, and love.</div>
+  <button onclick="speak(\"Ultimately, freedom and responsibility help us live with dignity, wisdom, and love.\", 'en-US')">영어 듣기</button>
+  <div class="ko">궁극적으로 자유와 책임은 우리가 존엄과 지혜와 사랑으로 살아가도록 돕는다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uad81\\uadf9\\uc801\\uc73c\\ub85c \\uc790\\uc720\\uc640 \\ucc45\\uc784\\uc740 \\uc6b0\\ub9ac\\uac00 \\uc874\\uc5c4\\uacfc \\uc9c0\\ud61c\\uc640 \\uc0ac\\ub791\\uc73c\\ub85c \\uc0b4\\uc544\\uac00\\ub3c4\\ub85d \\ub3d5\\ub294\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+</div>
+
+<div class="section">
+<h2>Ⅱ. Freedom and Responsibility(자유와 책임) — 오늘 하루 실천 10문장</h2>
+
+<div class="pair">
+  <div class="num">1</div>
+  <div class="en">Today, I will begin my day with freedom and responsibility in my heart.</div>
+  <button onclick="speak(\"Today, I will begin my day with freedom and responsibility in my heart.\", 'en-US')">영어 듣기</button>
+  <div class="ko">오늘 나는 마음속에 자유와 책임을 품고 하루를 시작하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc624\\ub298 \\ub098\\ub294 \\ub9c8\\uc74c\\uc18d\\uc5d0 \\uc790\\uc720\\uc640 \\ucc45\\uc784\\uc744 \\ud488\\uace0 \\ud558\\ub8e8\\ub97c \\uc2dc\\uc791\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">2</div>
+  <div class="en">I will choose my words carefully and use them to encourage others.</div>
+  <button onclick="speak(\"I will choose my words carefully and use them to encourage others.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 말을 신중히 선택하고 그것으로 다른 사람을 격려하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\ub9d0\\uc744 \\uc2e0\\uc911\\ud788 \\uc120\\ud0dd\\ud558\\uace0 \\uadf8\\uac83\\uc73c\\ub85c \\ub2e4\\ub978 \\uc0ac\\ub78c\\uc744 \\uaca9\\ub824\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">3</div>
+  <div class="en">Freedom means choosing what is right, not only what is comfortable.</div>
+  <button onclick="speak(\"Freedom means choosing what is right, not only what is comfortable.\", 'en-US')">영어 듣기</button>
+  <div class="ko">자유는 편한 것만이 아니라 옳은 것을 선택하는 것이다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc790\\uc720\\ub294 \\ud3b8\\ud55c \\uac83\\ub9cc\\uc774 \\uc544\\ub2c8\\ub77c \\uc633\\uc740 \\uac83\\uc744 \\uc120\\ud0dd\\ud558\\ub294 \\uac83\\uc774\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">4</div>
+  <div class="en">Responsibility means accepting the results of my choices with honesty.</div>
+  <button onclick="speak(\"Responsibility means accepting the results of my choices with honesty.\", 'en-US')">영어 듣기</button>
+  <div class="ko">책임은 나의 선택의 결과를 정직하게 받아들이는 것이다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ucc45\\uc784\\uc740 \\ub098\\uc758 \\uc120\\ud0dd\\uc758 \\uacb0\\uacfc\\ub97c \\uc815\\uc9c1\\ud558\\uac8c \\ubc1b\\uc544\\ub4e4\\uc774\\ub294 \\uac83\\uc774\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">5</div>
+  <div class="en">I will respect my students and people around me as free and valuable persons.</div>
+  <button onclick="speak(\"I will respect my students and people around me as free and valuable persons.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 학생들과 주변 사람들을 자유롭고 소중한 존재로 존중하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\ud559\\uc0dd\\ub4e4\\uacfc \\uc8fc\\ubcc0 \\uc0ac\\ub78c\\ub4e4\\uc744 \\uc790\\uc720\\ub86d\\uace0 \\uc18c\\uc911\\ud55c \\uc874\\uc7ac\\ub85c \\uc874\\uc911\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">6</div>
+  <div class="en">When I make a mistake, I will admit it and try to correct it.</div>
+  <button onclick="speak(\"When I make a mistake, I will admit it and try to correct it.\", 'en-US')">영어 듣기</button>
+  <div class="ko">실수했을 때 나는 그것을 인정하고 바로잡으려고 노력하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc2e4\\uc218\\ud588\\uc744 \\ub54c \\ub098\\ub294 \\uadf8\\uac83\\uc744 \\uc778\\uc815\\ud558\\uace0 \\ubc14\\ub85c\\uc7a1\\uc73c\\ub824\\uace0 \\ub178\\ub825\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">7</div>
+  <div class="en">I will not use my freedom to harm others or avoid my duties.</div>
+  <button onclick="speak(\"I will not use my freedom to harm others or avoid my duties.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 나의 자유를 다른 사람에게 해를 주거나 의무를 피하는 데 사용하지 않겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\ub098\\uc758 \\uc790\\uc720\\ub97c \\ub2e4\\ub978 \\uc0ac\\ub78c\\uc5d0\\uac8c \\ud574\\ub97c \\uc8fc\\uac70\\ub098 \\uc758\\ubb34\\ub97c \\ud53c\\ud558\\ub294 \\ub370 \\uc0ac\\uc6a9\\ud558\\uc9c0 \\uc54a\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">8</div>
+  <div class="en">I will make one responsible choice that helps today become better.</div>
+  <button onclick="speak(\"I will make one responsible choice that helps today become better.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 오늘을 더 좋게 만드는 책임 있는 선택 하나를 하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\uc624\\ub298\\uc744 \\ub354 \\uc88b\\uac8c \\ub9cc\\ub4dc\\ub294 \\ucc45\\uc784 \\uc788\\ub294 \\uc120\\ud0dd \\ud558\\ub098\\ub97c \\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">9</div>
+  <div class="en">With freedom and responsibility, I can live with dignity and trust.</div>
+  <button onclick="speak(\"With freedom and responsibility, I can live with dignity and trust.\", 'en-US')">영어 듣기</button>
+  <div class="ko">자유와 책임을 통해 나는 존엄과 신뢰를 가지고 살아갈 수 있다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc790\\uc720\\uc640 \\ucc45\\uc784\\uc744 \\ud1b5\\ud574 \\ub098\\ub294 \\uc874\\uc5c4\\uacfc \\uc2e0\\ub8b0\\ub97c \\uac00\\uc9c0\\uace0 \\uc0b4\\uc544\\uac08 \\uc218 \\uc788\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">10</div>
+  <div class="en">Today, I will live freely, wisely, and responsibly.</div>
+  <button onclick="speak(\"Today, I will live freely, wisely, and responsibly.\", 'en-US')">영어 듣기</button>
+  <div class="ko">오늘 나는 자유롭고 지혜롭고 책임 있게 살아가겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc624\\ub298 \\ub098\\ub294 \\uc790\\uc720\\ub86d\\uace0 \\uc9c0\\ud61c\\ub86d\\uace0 \\ucc45\\uc784 \\uc788\\uac8c \\uc0b4\\uc544\\uac00\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+</div>
+
+<div class="section">
+<h2>전체 원문 Text</h2>
+<pre>자유와 책임 (Freedom and Responsibility)를 인문 철학적으로 예시와 일화를 들어서
+영어18문장(한글 해석)으로 설명
+
+Freedom and responsibility are two sides of a truly human life.
+자유와 책임은 참으로 인간다운 삶의 두 측면이다.
+In humanistic philosophy, freedom does not mean doing anything without limits.
+인문 철학에서 자유는 아무 제한 없이 무엇이든 하는 것을 의미하지 않는다.
+True freedom means choosing with conscience, wisdom, and care for others.
+참된 자유는 양심과 지혜, 그리고 타인에 대한 배려로 선택하는 것을 뜻한다.
+Socrates showed this freedom when he followed truth even in the face of death.
+소크라테스는 죽음 앞에서도 진리를 따름으로써 이러한 자유를 보여 주었다.
+He accepted responsibility for his words and actions before the city of Athens.
+그는 아테네 도시 앞에서 자신의 말과 행동에 대한 책임을 받아들였다.
+Aristotle taught that a good person forms character through repeated choices.
+아리스토텔레스는 좋은 사람이 반복되는 선택을 통해 인격을 형성한다고 가르쳤다.
+This means that responsibility is not a burden only, but a path to becoming better.
+이는 책임이 단순한 짐이 아니라 더 나은 사람이 되는 길이라는 뜻이다.
+For example, a student is free to study or waste time, but each choice shapes the future.
+예를 들어 학생은 공부하거나 시간을 낭비할 자유가 있지만, 각각의 선택은 미래를 형성한다.
+A teacher is free to speak, but responsible for whether those words hurt or encourage students.
+교사는 말할 자유가 있지만, 그 말이 학생에게 상처를 주는지 격려가 되는지에 대한 책임이 있다.
+Jean-Paul Sartre said that human beings are condemned to be free.
+장 폴 사르트르는 인간은 자유롭도록 선고받은 존재라고 말했다.
+His idea means that we cannot escape the responsibility of choosing who we become.
+그의 생각은 우리가 어떤 사람이 될지 선택하는 책임에서 벗어날 수 없다는 뜻이다.
+Freedom without responsibility can become selfishness and disorder.
+책임 없는 자유는 이기심과 혼란이 될 수 있다.
+Responsibility without freedom can become oppression and fear.
+자유 없는 책임은 억압과 두려움이 될 수 있다.
+Therefore, a mature life needs both free choice and responsible action.
+그러므로 성숙한 삶에는 자유로운 선택과 책임 있는 행동이 모두 필요하다.
+In daily life, freedom and responsibility appear when we choose honesty instead of excuse.
+일상에서 자유와 책임은 변명 대신 정직을 선택할 때 나타난다.
+They also appear when we respect another person’s dignity as much as our own.
+또한 타인의 존엄을 나 자신의 존엄만큼 존중할 때 나타난다.
+A free and responsible person does not ask only, “What can I do?” but also, “What should I do?”
+자유롭고 책임 있는 사람은 ‘내가 무엇을 할 수 있는가?’뿐 아니라 ‘내가 무엇을 해야 하는가?’도 묻는다.
+Ultimately, freedom and responsibility help us live with dignity, wisdom, and love.
+궁극적으로 자유와 책임은 우리가 존엄과 지혜와 사랑으로 살아가도록 돕는다.
+
+오늘 하루 자유와 책임 (Freedom and Responsibility)를 생각하고 실천하며 살고 싶다.
+영어 10줄(한글 해석)로 오늘의 삶을 이야기 하기
+
+Today, I will begin my day with freedom and responsibility in my heart.
+오늘 나는 마음속에 자유와 책임을 품고 하루를 시작하겠다.
+I will choose my words carefully and use them to encourage others.
+나는 말을 신중히 선택하고 그것으로 다른 사람을 격려하겠다.
+Freedom means choosing what is right, not only what is comfortable.
+자유는 편한 것만이 아니라 옳은 것을 선택하는 것이다.
+Responsibility means accepting the results of my choices with honesty.
+책임은 나의 선택의 결과를 정직하게 받아들이는 것이다.
+I will respect my students and people around me as free and valuable persons.
+나는 학생들과 주변 사람들을 자유롭고 소중한 존재로 존중하겠다.
+When I make a mistake, I will admit it and try to correct it.
+실수했을 때 나는 그것을 인정하고 바로잡으려고 노력하겠다.
+I will not use my freedom to harm others or avoid my duties.
+나는 나의 자유를 다른 사람에게 해를 주거나 의무를 피하는 데 사용하지 않겠다.
+I will make one responsible choice that helps today become better.
+나는 오늘을 더 좋게 만드는 책임 있는 선택 하나를 하겠다.
+With freedom and responsibility, I can live with dignity and trust.
+자유와 책임을 통해 나는 존엄과 신뢰를 가지고 살아갈 수 있다.
+Today, I will live freely, wisely, and responsibly.
+오늘 나는 자유롭고 지혜롭고 책임 있게 살아가겠다.</pre>
+</div>
+
+<script>
+const EN_TEXT = "Freedom and responsibility are two sides of a truly human life.\nIn humanistic philosophy, freedom does not mean doing anything without limits.\nTrue freedom means choosing with conscience, wisdom, and care for others.\nSocrates showed this freedom when he followed truth even in the face of death.\nHe accepted responsibility for his words and actions before the city of Athens.\nAristotle taught that a good person forms character through repeated choices.\nThis means that responsibility is not a burden only, but a path to becoming better.\nFor example, a student is free to study or waste time, but each choice shapes the future.\nA teacher is free to speak, but responsible for whether those words hurt or encourage students.\nJean-Paul Sartre said that human beings are condemned to be free.\nHis idea means that we cannot escape the responsibility of choosing who we become.\nFreedom without responsibility can become selfishness and disorder.\nResponsibility without freedom can become oppression and fear.\nTherefore, a mature life needs both free choice and responsible action.\nIn daily life, freedom and responsibility appear when we choose honesty instead of excuse.\nThey also appear when we respect another person’s dignity as much as our own.\nA free and responsible person does not ask only, “What can I do?” but also, “What should I do?”\nUltimately, freedom and responsibility help us live with dignity, wisdom, and love.\nToday, I will begin my day with freedom and responsibility in my heart.\nI will choose my words carefully and use them to encourage others.\nFreedom means choosing what is right, not only what is comfortable.\nResponsibility means accepting the results of my choices with honesty.\nI will respect my students and people around me as free and valuable persons.\nWhen I make a mistake, I will admit it and try to correct it.\nI will not use my freedom to harm others or avoid my duties.\nI will make one responsible choice that helps today become better.\nWith freedom and responsibility, I can live with dignity and trust.\nToday, I will live freely, wisely, and responsibly.";
+const KO_TEXT = "자유와 책임은 참으로 인간다운 삶의 두 측면이다.\n인문 철학에서 자유는 아무 제한 없이 무엇이든 하는 것을 의미하지 않는다.\n참된 자유는 양심과 지혜, 그리고 타인에 대한 배려로 선택하는 것을 뜻한다.\n소크라테스는 죽음 앞에서도 진리를 따름으로써 이러한 자유를 보여 주었다.\n그는 아테네 도시 앞에서 자신의 말과 행동에 대한 책임을 받아들였다.\n아리스토텔레스는 좋은 사람이 반복되는 선택을 통해 인격을 형성한다고 가르쳤다.\n이는 책임이 단순한 짐이 아니라 더 나은 사람이 되는 길이라는 뜻이다.\n예를 들어 학생은 공부하거나 시간을 낭비할 자유가 있지만, 각각의 선택은 미래를 형성한다.\n교사는 말할 자유가 있지만, 그 말이 학생에게 상처를 주는지 격려가 되는지에 대한 책임이 있다.\n장 폴 사르트르는 인간은 자유롭도록 선고받은 존재라고 말했다.\n그의 생각은 우리가 어떤 사람이 될지 선택하는 책임에서 벗어날 수 없다는 뜻이다.\n책임 없는 자유는 이기심과 혼란이 될 수 있다.\n자유 없는 책임은 억압과 두려움이 될 수 있다.\n그러므로 성숙한 삶에는 자유로운 선택과 책임 있는 행동이 모두 필요하다.\n일상에서 자유와 책임은 변명 대신 정직을 선택할 때 나타난다.\n또한 타인의 존엄을 나 자신의 존엄만큼 존중할 때 나타난다.\n자유롭고 책임 있는 사람은 ‘내가 무엇을 할 수 있는가?’뿐 아니라 ‘내가 무엇을 해야 하는가?’도 묻는다.\n궁극적으로 자유와 책임은 우리가 존엄과 지혜와 사랑으로 살아가도록 돕는다.\n오늘 나는 마음속에 자유와 책임을 품고 하루를 시작하겠다.\n나는 말을 신중히 선택하고 그것으로 다른 사람을 격려하겠다.\n자유는 편한 것만이 아니라 옳은 것을 선택하는 것이다.\n책임은 나의 선택의 결과를 정직하게 받아들이는 것이다.\n나는 학생들과 주변 사람들을 자유롭고 소중한 존재로 존중하겠다.\n실수했을 때 나는 그것을 인정하고 바로잡으려고 노력하겠다.\n나는 나의 자유를 다른 사람에게 해를 주거나 의무를 피하는 데 사용하지 않겠다.\n나는 오늘을 더 좋게 만드는 책임 있는 선택 하나를 하겠다.\n자유와 책임을 통해 나는 존엄과 신뢰를 가지고 살아갈 수 있다.\n오늘 나는 자유롭고 지혜롭고 책임 있게 살아가겠다.";
+function speak(text, lang){
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = lang;
+  u.rate = lang === 'en-US' ? 0.88 : 0.95;
+  u.pitch = 1;
+  speechSynthesis.speak(u);
+}
+function speakAll(lang){
+  speechSynthesis.cancel();
+  const text = lang === 'en-US' ? EN_TEXT : KO_TEXT;
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = lang;
+  u.rate = lang === 'en-US' ? 0.88 : 0.95;
+  u.pitch = 1;
+  speechSynthesis.speak(u);
+}
+</script>
+</div></div>
+</body>
+</html>

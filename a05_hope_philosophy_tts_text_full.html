@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hope 희망 TTS 학습</title>
+<style>
+body{font-family:'Malgun Gothic',Arial,sans-serif;margin:0;background:linear-gradient(135deg,#f0f8ff,#fffbe8);color:#222;}
+.wrap{max-width:1050px;margin:34px auto;padding:22px;}
+.card{background:#fff;border-radius:24px;padding:30px;box-shadow:0 12px 34px rgba(0,0,0,.12);}
+h1{text-align:center;color:#2d5f8a;font-size:36px;margin:6px 0 10px;}
+.subtitle{text-align:center;line-height:1.7;color:#555;font-size:17px;}
+.info{background:#f2f9ff;border-left:7px solid #5da3d6;padding:16px 20px;border-radius:16px;margin:20px 0;line-height:1.8;font-size:18px;}
+.controls{text-align:center;margin:20px 0;}
+button{border:none;border-radius:999px;padding:9px 15px;margin:4px;background:#2d6f9f;color:white;cursor:pointer;font-weight:700;}
+button:hover{filter:brightness(1.08);}
+.btn-ko{background:#b46b1d;}
+.stop{background:#555;}
+.section{margin-top:30px;padding-top:18px;border-top:2px dashed #ddd;}
+h2{color:#7a5a00;font-size:25px;}
+.pair{display:grid;grid-template-columns:44px 1fr auto;gap:8px 12px;align-items:center;margin:13px 0;padding:16px;border:1px solid #eee;border-radius:18px;background:#fbfeff;}
+.num{grid-row:1 / span 2;font-size:22px;font-weight:800;color:#78a2bf;text-align:center;}
+.en{font-size:18px;font-weight:700;color:#2d5f8a;line-height:1.55;}
+.ko{font-size:17px;color:#333;line-height:1.55;}
+pre{white-space:pre-wrap;word-break:keep-all;background:#fffdf7;border-radius:18px;padding:20px;line-height:1.85;font-size:16px;border:1px solid #f0e5c8;}
+@media(max-width:720px){.pair{grid-template-columns:34px 1fr;}.pair button{grid-column:2;justify-self:start;}}
+</style>
+</head>
+<body>
+<div class="wrap"><div class="card">
+<h1>Hope 희망 TTS 학습</h1>
+<div class="subtitle">Hope(희망)의 인문 철학적 설명 18문장 + 오늘 하루 실천 10문장</div>
+<div class="info">
+<strong>Hope:</strong> 희망은 고통을 부정하지 않으면서도 내일의 가능성을 믿고 오늘 행동하게 하는 힘입니다.<br>
+<strong>Practice:</strong> 오늘의 작은 친절과 노력으로 나와 다른 사람의 마음에 희망을 심습니다.
+</div>
+<div class="controls">
+<button onclick="speakAll('en-US')">영어 전체 듣기</button>
+<button class="btn-ko" onclick="speakAll('ko-KR')">한국어 전체 듣기</button>
+<button class="stop" onclick="speechSynthesis.cancel()">정지</button>
+</div>
+
+<div class="section">
+<h2>Ⅰ. Hope(희망) — 인문 철학적 설명 18문장</h2>
+
+<div class="pair">
+  <div class="num">1</div>
+  <div class="en">Hope is the quiet strength that helps human beings continue when the road is dark.</div>
+  <button onclick="speak(\"Hope is the quiet strength that helps human beings continue when the road is dark.\", 'en-US')">영어 듣기</button>
+  <div class="ko">희망은 길이 어두울 때에도 인간이 계속 나아가게 하는 조용한 힘이다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ud76c\\ub9dd\\uc740 \\uae38\\uc774 \\uc5b4\\ub450\\uc6b8 \\ub54c\\uc5d0\\ub3c4 \\uc778\\uac04\\uc774 \\uacc4\\uc18d \\ub098\\uc544\\uac00\\uac8c \\ud558\\ub294 \\uc870\\uc6a9\\ud55c \\ud798\\uc774\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">2</div>
+  <div class="en">In humanistic philosophy, hope is not simple optimism, but a meaningful trust in the possibility of life.</div>
+  <button onclick="speak(\"In humanistic philosophy, hope is not simple optimism, but a meaningful trust in the possibility of life.\", 'en-US')">영어 듣기</button>
+  <div class="ko">인문 철학에서 희망은 단순한 낙관이 아니라 삶의 가능성을 믿는 의미 있는 신뢰이다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc778\\ubb38 \\ucca0\\ud559\\uc5d0\\uc11c \\ud76c\\ub9dd\\uc740 \\ub2e8\\uc21c\\ud55c \\ub099\\uad00\\uc774 \\uc544\\ub2c8\\ub77c \\uc0b6\\uc758 \\uac00\\ub2a5\\uc131\\uc744 \\ubbff\\ub294 \\uc758\\ubbf8 \\uc788\\ub294 \\uc2e0\\ub8b0\\uc774\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">3</div>
+  <div class="en">Socrates faced death with calm hope because he believed that the examined life had value.</div>
+  <button onclick="speak(\"Socrates faced death with calm hope because he believed that the examined life had value.\", 'en-US')">영어 듣기</button>
+  <div class="ko">소크라테스는 성찰하는 삶에 가치가 있다고 믿었기 때문에 죽음 앞에서도 차분한 희망을 지녔다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc18c\\ud06c\\ub77c\\ud14c\\uc2a4\\ub294 \\uc131\\ucc30\\ud558\\ub294 \\uc0b6\\uc5d0 \\uac00\\uce58\\uac00 \\uc788\\ub2e4\\uace0 \\ubbff\\uc5c8\\uae30 \\ub54c\\ubb38\\uc5d0 \\uc8fd\\uc74c \\uc55e\\uc5d0\\uc11c\\ub3c4 \\ucc28\\ubd84\\ud55c \\ud76c\\ub9dd\\uc744 \\uc9c0\\ub154\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">4</div>
+  <div class="en">His attitude teaches us that hope can live even in the most difficult moment.</div>
+  <button onclick="speak(\"His attitude teaches us that hope can live even in the most difficult moment.\", 'en-US')">영어 듣기</button>
+  <div class="ko">그의 태도는 가장 어려운 순간에도 희망이 살아 있을 수 있음을 가르쳐 준다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uadf8\\uc758 \\ud0dc\\ub3c4\\ub294 \\uac00\\uc7a5 \\uc5b4\\ub824\\uc6b4 \\uc21c\\uac04\\uc5d0\\ub3c4 \\ud76c\\ub9dd\\uc774 \\uc0b4\\uc544 \\uc788\\uc744 \\uc218 \\uc788\\uc74c\\uc744 \\uac00\\ub974\\uccd0 \\uc900\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">5</div>
+  <div class="en">Aristotle saw human life as a journey toward flourishing through virtue and practice.</div>
+  <button onclick="speak(\"Aristotle saw human life as a journey toward flourishing through virtue and practice.\", 'en-US')">영어 듣기</button>
+  <div class="ko">아리스토텔레스는 인간의 삶을 덕과 실천을 통해 번영으로 나아가는 여정으로 보았다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc544\\ub9ac\\uc2a4\\ud1a0\\ud154\\ub808\\uc2a4\\ub294 \\uc778\\uac04\\uc758 \\uc0b6\\uc744 \\ub355\\uacfc \\uc2e4\\ucc9c\\uc744 \\ud1b5\\ud574 \\ubc88\\uc601\\uc73c\\ub85c \\ub098\\uc544\\uac00\\ub294 \\uc5ec\\uc815\\uc73c\\ub85c \\ubcf4\\uc558\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">6</div>
+  <div class="en">This means that hope grows when we practice good actions every day.</div>
+  <button onclick="speak(\"This means that hope grows when we practice good actions every day.\", 'en-US')">영어 듣기</button>
+  <div class="ko">이는 우리가 매일 선한 행동을 실천할 때 희망이 자란다는 뜻이다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc774\\ub294 \\uc6b0\\ub9ac\\uac00 \\ub9e4\\uc77c \\uc120\\ud55c \\ud589\\ub3d9\\uc744 \\uc2e4\\ucc9c\\ud560 \\ub54c \\ud76c\\ub9dd\\uc774 \\uc790\\ub780\\ub2e4\\ub294 \\ub73b\\uc774\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">7</div>
+  <div class="en">For example, a student who studies again after failure is living with hope.</div>
+  <button onclick="speak(\"For example, a student who studies again after failure is living with hope.\", 'en-US')">영어 듣기</button>
+  <div class="ko">예를 들어 실패 뒤에 다시 공부하는 학생은 희망을 가지고 살아가는 것이다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc608\\ub97c \\ub4e4\\uc5b4 \\uc2e4\\ud328 \\ub4a4\\uc5d0 \\ub2e4\\uc2dc \\uacf5\\ubd80\\ud558\\ub294 \\ud559\\uc0dd\\uc740 \\ud76c\\ub9dd\\uc744 \\uac00\\uc9c0\\uace0 \\uc0b4\\uc544\\uac00\\ub294 \\uac83\\uc774\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">8</div>
+  <div class="en">A teacher who believes in a struggling student is also planting hope in another life.</div>
+  <button onclick="speak(\"A teacher who believes in a struggling student is also planting hope in another life.\", 'en-US')">영어 듣기</button>
+  <div class="ko">어려움을 겪는 학생을 믿어 주는 교사는 다른 삶에 희망을 심고 있는 것이다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc5b4\\ub824\\uc6c0\\uc744 \\uacaa\\ub294 \\ud559\\uc0dd\\uc744 \\ubbff\\uc5b4 \\uc8fc\\ub294 \\uad50\\uc0ac\\ub294 \\ub2e4\\ub978 \\uc0b6\\uc5d0 \\ud76c\\ub9dd\\uc744 \\uc2ec\\uace0 \\uc788\\ub294 \\uac83\\uc774\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">9</div>
+  <div class="en">The story of Helen Keller shows that hope can open a door even through silence and darkness.</div>
+  <button onclick="speak(\"The story of Helen Keller shows that hope can open a door even through silence and darkness.\", 'en-US')">영어 듣기</button>
+  <div class="ko">헬렌 켈러의 이야기는 희망이 침묵과 어둠 속에서도 문을 열 수 있음을 보여 준다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ud5ec\\ub80c \\ucf08\\ub7ec\\uc758 \\uc774\\uc57c\\uae30\\ub294 \\ud76c\\ub9dd\\uc774 \\uce68\\ubb35\\uacfc \\uc5b4\\ub460 \\uc18d\\uc5d0\\uc11c\\ub3c4 \\ubb38\\uc744 \\uc5f4 \\uc218 \\uc788\\uc74c\\uc744 \\ubcf4\\uc5ec \\uc900\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">10</div>
+  <div class="en">With the help of Anne Sullivan, she changed limitation into learning and courage.</div>
+  <button onclick="speak(\"With the help of Anne Sullivan, she changed limitation into learning and courage.\", 'en-US')">영어 듣기</button>
+  <div class="ko">앤 설리번의 도움으로 그녀는 한계를 배움과 용기로 바꾸었다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc564 \\uc124\\ub9ac\\ubc88\\uc758 \\ub3c4\\uc6c0\\uc73c\\ub85c \\uadf8\\ub140\\ub294 \\ud55c\\uacc4\\ub97c \\ubc30\\uc6c0\\uacfc \\uc6a9\\uae30\\ub85c \\ubc14\\uafb8\\uc5c8\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">11</div>
+  <div class="en">Hope becomes stronger when it is shared with another person.</div>
+  <button onclick="speak(\"Hope becomes stronger when it is shared with another person.\", 'en-US')">영어 듣기</button>
+  <div class="ko">희망은 다른 사람과 나눌 때 더 강해진다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ud76c\\ub9dd\\uc740 \\ub2e4\\ub978 \\uc0ac\\ub78c\\uacfc \\ub098\\ub20c \\ub54c \\ub354 \\uac15\\ud574\\uc9c4\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">12</div>
+  <div class="en">A small word of encouragement can become a lamp in someone’s heart.</div>
+  <button onclick="speak(\"A small word of encouragement can become a lamp in someone\\u2019s heart.\", 'en-US')">영어 듣기</button>
+  <div class="ko">작은 격려의 말 한마디가 누군가의 마음속 등불이 될 수 있다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc791\\uc740 \\uaca9\\ub824\\uc758 \\ub9d0 \\ud55c\\ub9c8\\ub514\\uac00 \\ub204\\uad70\\uac00\\uc758 \\ub9c8\\uc74c\\uc18d \\ub4f1\\ubd88\\uc774 \\ub420 \\uc218 \\uc788\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">13</div>
+  <div class="en">However, hope without action can remain only a dream.</div>
+  <button onclick="speak(\"However, hope without action can remain only a dream.\", 'en-US')">영어 듣기</button>
+  <div class="ko">그러나 행동 없는 희망은 단지 꿈으로만 남을 수 있다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uadf8\\ub7ec\\ub098 \\ud589\\ub3d9 \\uc5c6\\ub294 \\ud76c\\ub9dd\\uc740 \\ub2e8\\uc9c0 \\uafc8\\uc73c\\ub85c\\ub9cc \\ub0a8\\uc744 \\uc218 \\uc788\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">14</div>
+  <div class="en">Therefore, true hope asks us to stand up, work, and care for others.</div>
+  <button onclick="speak(\"Therefore, true hope asks us to stand up, work, and care for others.\", 'en-US')">영어 듣기</button>
+  <div class="ko">그러므로 참된 희망은 우리가 일어서고, 노력하고, 다른 사람을 돌보도록 요구한다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uadf8\\ub7ec\\ubbc0\\ub85c \\ucc38\\ub41c \\ud76c\\ub9dd\\uc740 \\uc6b0\\ub9ac\\uac00 \\uc77c\\uc5b4\\uc11c\\uace0, \\ub178\\ub825\\ud558\\uace0, \\ub2e4\\ub978 \\uc0ac\\ub78c\\uc744 \\ub3cc\\ubcf4\\ub3c4\\ub85d \\uc694\\uad6c\\ud55c\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">15</div>
+  <div class="en">In daily life, hope appears when we choose kindness instead of despair.</div>
+  <button onclick="speak(\"In daily life, hope appears when we choose kindness instead of despair.\", 'en-US')">영어 듣기</button>
+  <div class="ko">일상에서 희망은 절망 대신 친절을 선택할 때 나타난다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc77c\\uc0c1\\uc5d0\\uc11c \\ud76c\\ub9dd\\uc740 \\uc808\\ub9dd \\ub300\\uc2e0 \\uce5c\\uc808\\uc744 \\uc120\\ud0dd\\ud560 \\ub54c \\ub098\\ud0c0\\ub09c\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">16</div>
+  <div class="en">A hopeful person does not deny pain, but believes that pain is not the end.</div>
+  <button onclick="speak(\"A hopeful person does not deny pain, but believes that pain is not the end.\", 'en-US')">영어 듣기</button>
+  <div class="ko">희망을 가진 사람은 고통을 부정하지 않지만 고통이 끝이 아니라고 믿는다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ud76c\\ub9dd\\uc744 \\uac00\\uc9c4 \\uc0ac\\ub78c\\uc740 \\uace0\\ud1b5\\uc744 \\ubd80\\uc815\\ud558\\uc9c0 \\uc54a\\uc9c0\\ub9cc \\uace0\\ud1b5\\uc774 \\ub05d\\uc774 \\uc544\\ub2c8\\ub77c\\uace0 \\ubbff\\ub294\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">17</div>
+  <div class="en">Hope becomes beautiful when it gives courage to both oneself and others.</div>
+  <button onclick="speak(\"Hope becomes beautiful when it gives courage to both oneself and others.\", 'en-US')">영어 듣기</button>
+  <div class="ko">희망은 자신과 다른 사람 모두에게 용기를 줄 때 아름다워진다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ud76c\\ub9dd\\uc740 \\uc790\\uc2e0\\uacfc \\ub2e4\\ub978 \\uc0ac\\ub78c \\ubaa8\\ub450\\uc5d0\\uac8c \\uc6a9\\uae30\\ub97c \\uc904 \\ub54c \\uc544\\ub984\\ub2e4\\uc6cc\\uc9c4\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">18</div>
+  <div class="en">Ultimately, hope is the human promise that tomorrow can be wiser, warmer, and more meaningful than today.</div>
+  <button onclick="speak(\"Ultimately, hope is the human promise that tomorrow can be wiser, warmer, and more meaningful than today.\", 'en-US')">영어 듣기</button>
+  <div class="ko">궁극적으로 희망은 내일이 오늘보다 더 지혜롭고 따뜻하며 의미 있을 수 있다는 인간의 약속이다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uad81\\uadf9\\uc801\\uc73c\\ub85c \\ud76c\\ub9dd\\uc740 \\ub0b4\\uc77c\\uc774 \\uc624\\ub298\\ubcf4\\ub2e4 \\ub354 \\uc9c0\\ud61c\\ub86d\\uace0 \\ub530\\ub73b\\ud558\\uba70 \\uc758\\ubbf8 \\uc788\\uc744 \\uc218 \\uc788\\ub2e4\\ub294 \\uc778\\uac04\\uc758 \\uc57d\\uc18d\\uc774\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+</div>
+
+<div class="section">
+<h2>Ⅱ. Hope(희망) — 오늘 하루 실천 10문장</h2>
+
+<div class="pair">
+  <div class="num">1</div>
+  <div class="en">Today, I will begin my day with hope and a peaceful heart.</div>
+  <button onclick="speak(\"Today, I will begin my day with hope and a peaceful heart.\", 'en-US')">영어 듣기</button>
+  <div class="ko">오늘 나는 희망과 평온한 마음으로 하루를 시작하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc624\\ub298 \\ub098\\ub294 \\ud76c\\ub9dd\\uacfc \\ud3c9\\uc628\\ud55c \\ub9c8\\uc74c\\uc73c\\ub85c \\ud558\\ub8e8\\ub97c \\uc2dc\\uc791\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">2</div>
+  <div class="en">I will look for one bright possibility in every difficult situation.</div>
+  <button onclick="speak(\"I will look for one bright possibility in every difficult situation.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 모든 어려운 상황 속에서 하나의 밝은 가능성을 찾겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\ubaa8\\ub4e0 \\uc5b4\\ub824\\uc6b4 \\uc0c1\\ud669 \\uc18d\\uc5d0\\uc11c \\ud558\\ub098\\uc758 \\ubc1d\\uc740 \\uac00\\ub2a5\\uc131\\uc744 \\ucc3e\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">3</div>
+  <div class="en">Hope means believing that today’s effort can open tomorrow’s door.</div>
+  <button onclick="speak(\"Hope means believing that today\\u2019s effort can open tomorrow\\u2019s door.\", 'en-US')">영어 듣기</button>
+  <div class="ko">희망은 오늘의 노력이 내일의 문을 열 수 있다고 믿는 것이다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ud76c\\ub9dd\\uc740 \\uc624\\ub298\\uc758 \\ub178\\ub825\\uc774 \\ub0b4\\uc77c\\uc758 \\ubb38\\uc744 \\uc5f4 \\uc218 \\uc788\\ub2e4\\uace0 \\ubbff\\ub294 \\uac83\\uc774\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">4</div>
+  <div class="en">I will speak words that give courage to my students and people around me.</div>
+  <button onclick="speak(\"I will speak words that give courage to my students and people around me.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 학생들과 주변 사람들에게 용기를 주는 말을 하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\ud559\\uc0dd\\ub4e4\\uacfc \\uc8fc\\ubcc0 \\uc0ac\\ub78c\\ub4e4\\uc5d0\\uac8c \\uc6a9\\uae30\\ub97c \\uc8fc\\ub294 \\ub9d0\\uc744 \\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">5</div>
+  <div class="en">When I feel tired, I will remember that small steps still matter.</div>
+  <button onclick="speak(\"When I feel tired, I will remember that small steps still matter.\", 'en-US')">영어 듣기</button>
+  <div class="ko">피곤할 때에도 작은 걸음이 여전히 중요하다는 것을 기억하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ud53c\\uace4\\ud560 \\ub54c\\uc5d0\\ub3c4 \\uc791\\uc740 \\uac78\\uc74c\\uc774 \\uc5ec\\uc804\\ud788 \\uc911\\uc694\\ud558\\ub2e4\\ub294 \\uac83\\uc744 \\uae30\\uc5b5\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">6</div>
+  <div class="en">I will not let fear take away my trust in the future.</div>
+  <button onclick="speak(\"I will not let fear take away my trust in the future.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 두려움이 미래에 대한 나의 믿음을 빼앗지 못하게 하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\ub450\\ub824\\uc6c0\\uc774 \\ubbf8\\ub798\\uc5d0 \\ub300\\ud55c \\ub098\\uc758 \\ubbff\\uc74c\\uc744 \\ube7c\\uc557\\uc9c0 \\ubabb\\ud558\\uac8c \\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">7</div>
+  <div class="en">I will turn worry into prayer, reflection, and action.</div>
+  <button onclick="speak(\"I will turn worry into prayer, reflection, and action.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 걱정을 기도와 성찰과 행동으로 바꾸겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\uac71\\uc815\\uc744 \\uae30\\ub3c4\\uc640 \\uc131\\ucc30\\uacfc \\ud589\\ub3d9\\uc73c\\ub85c \\ubc14\\uafb8\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">8</div>
+  <div class="en">I will share kindness, because kindness often becomes hope for others.</div>
+  <button onclick="speak(\"I will share kindness, because kindness often becomes hope for others.\", 'en-US')">영어 듣기</button>
+  <div class="ko">친절은 종종 다른 사람에게 희망이 되므로 나는 친절을 나누겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uce5c\\uc808\\uc740 \\uc885\\uc885 \\ub2e4\\ub978 \\uc0ac\\ub78c\\uc5d0\\uac8c \\ud76c\\ub9dd\\uc774 \\ub418\\ubbc0\\ub85c \\ub098\\ub294 \\uce5c\\uc808\\uc744 \\ub098\\ub204\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">9</div>
+  <div class="en">With hope, I can make today warmer and more meaningful.</div>
+  <button onclick="speak(\"With hope, I can make today warmer and more meaningful.\", 'en-US')">영어 듣기</button>
+  <div class="ko">희망을 가지고 나는 오늘을 더 따뜻하고 의미 있게 만들 수 있다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ud76c\\ub9dd\\uc744 \\uac00\\uc9c0\\uace0 \\ub098\\ub294 \\uc624\\ub298\\uc744 \\ub354 \\ub530\\ub73b\\ud558\\uace0 \\uc758\\ubbf8 \\uc788\\uac8c \\ub9cc\\ub4e4 \\uc218 \\uc788\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">10</div>
+  <div class="en">Today, I will live with a hopeful mind and a loving heart.</div>
+  <button onclick="speak(\"Today, I will live with a hopeful mind and a loving heart.\", 'en-US')">영어 듣기</button>
+  <div class="ko">오늘 나는 희망찬 마음과 사랑하는 마음으로 살아가겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc624\\ub298 \\ub098\\ub294 \\ud76c\\ub9dd\\ucc2c \\ub9c8\\uc74c\\uacfc \\uc0ac\\ub791\\ud558\\ub294 \\ub9c8\\uc74c\\uc73c\\ub85c \\uc0b4\\uc544\\uac00\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+</div>
+
+<div class="section">
+<h2>전체 원문 Text</h2>
+<pre>Hope (희망)을 인문 철학적으로 예시와 일화를 들어서
+영어18문장(한글 해석)으로 설명
+
+Hope is the quiet strength that helps human beings continue when the road is dark.
+희망은 길이 어두울 때에도 인간이 계속 나아가게 하는 조용한 힘이다.
+In humanistic philosophy, hope is not simple optimism, but a meaningful trust in the possibility of life.
+인문 철학에서 희망은 단순한 낙관이 아니라 삶의 가능성을 믿는 의미 있는 신뢰이다.
+Socrates faced death with calm hope because he believed that the examined life had value.
+소크라테스는 성찰하는 삶에 가치가 있다고 믿었기 때문에 죽음 앞에서도 차분한 희망을 지녔다.
+His attitude teaches us that hope can live even in the most difficult moment.
+그의 태도는 가장 어려운 순간에도 희망이 살아 있을 수 있음을 가르쳐 준다.
+Aristotle saw human life as a journey toward flourishing through virtue and practice.
+아리스토텔레스는 인간의 삶을 덕과 실천을 통해 번영으로 나아가는 여정으로 보았다.
+This means that hope grows when we practice good actions every day.
+이는 우리가 매일 선한 행동을 실천할 때 희망이 자란다는 뜻이다.
+For example, a student who studies again after failure is living with hope.
+예를 들어 실패 뒤에 다시 공부하는 학생은 희망을 가지고 살아가는 것이다.
+A teacher who believes in a struggling student is also planting hope in another life.
+어려움을 겪는 학생을 믿어 주는 교사는 다른 삶에 희망을 심고 있는 것이다.
+The story of Helen Keller shows that hope can open a door even through silence and darkness.
+헬렌 켈러의 이야기는 희망이 침묵과 어둠 속에서도 문을 열 수 있음을 보여 준다.
+With the help of Anne Sullivan, she changed limitation into learning and courage.
+앤 설리번의 도움으로 그녀는 한계를 배움과 용기로 바꾸었다.
+Hope becomes stronger when it is shared with another person.
+희망은 다른 사람과 나눌 때 더 강해진다.
+A small word of encouragement can become a lamp in someone’s heart.
+작은 격려의 말 한마디가 누군가의 마음속 등불이 될 수 있다.
+However, hope without action can remain only a dream.
+그러나 행동 없는 희망은 단지 꿈으로만 남을 수 있다.
+Therefore, true hope asks us to stand up, work, and care for others.
+그러므로 참된 희망은 우리가 일어서고, 노력하고, 다른 사람을 돌보도록 요구한다.
+In daily life, hope appears when we choose kindness instead of despair.
+일상에서 희망은 절망 대신 친절을 선택할 때 나타난다.
+A hopeful person does not deny pain, but believes that pain is not the end.
+희망을 가진 사람은 고통을 부정하지 않지만 고통이 끝이 아니라고 믿는다.
+Hope becomes beautiful when it gives courage to both oneself and others.
+희망은 자신과 다른 사람 모두에게 용기를 줄 때 아름다워진다.
+Ultimately, hope is the human promise that tomorrow can be wiser, warmer, and more meaningful than today.
+궁극적으로 희망은 내일이 오늘보다 더 지혜롭고 따뜻하며 의미 있을 수 있다는 인간의 약속이다.
+
+오늘 하루 Hope (희망)을 생각하고 실천하며 살고 싶다.
+영어 10줄(한글 해석)로 오늘의 삶을 이야기 하기
+
+Today, I will begin my day with hope and a peaceful heart.
+오늘 나는 희망과 평온한 마음으로 하루를 시작하겠다.
+I will look for one bright possibility in every difficult situation.
+나는 모든 어려운 상황 속에서 하나의 밝은 가능성을 찾겠다.
+Hope means believing that today’s effort can open tomorrow’s door.
+희망은 오늘의 노력이 내일의 문을 열 수 있다고 믿는 것이다.
+I will speak words that give courage to my students and people around me.
+나는 학생들과 주변 사람들에게 용기를 주는 말을 하겠다.
+When I feel tired, I will remember that small steps still matter.
+피곤할 때에도 작은 걸음이 여전히 중요하다는 것을 기억하겠다.
+I will not let fear take away my trust in the future.
+나는 두려움이 미래에 대한 나의 믿음을 빼앗지 못하게 하겠다.
+I will turn worry into prayer, reflection, and action.
+나는 걱정을 기도와 성찰과 행동으로 바꾸겠다.
+I will share kindness, because kindness often becomes hope for others.
+친절은 종종 다른 사람에게 희망이 되므로 나는 친절을 나누겠다.
+With hope, I can make today warmer and more meaningful.
+희망을 가지고 나는 오늘을 더 따뜻하고 의미 있게 만들 수 있다.
+Today, I will live with a hopeful mind and a loving heart.
+오늘 나는 희망찬 마음과 사랑하는 마음으로 살아가겠다.</pre>
+</div>
+
+<script>
+const EN_TEXT = "Hope is the quiet strength that helps human beings continue when the road is dark.\nIn humanistic philosophy, hope is not simple optimism, but a meaningful trust in the possibility of life.\nSocrates faced death with calm hope because he believed that the examined life had value.\nHis attitude teaches us that hope can live even in the most difficult moment.\nAristotle saw human life as a journey toward flourishing through virtue and practice.\nThis means that hope grows when we practice good actions every day.\nFor example, a student who studies again after failure is living with hope.\nA teacher who believes in a struggling student is also planting hope in another life.\nThe story of Helen Keller shows that hope can open a door even through silence and darkness.\nWith the help of Anne Sullivan, she changed limitation into learning and courage.\nHope becomes stronger when it is shared with another person.\nA small word of encouragement can become a lamp in someone’s heart.\nHowever, hope without action can remain only a dream.\nTherefore, true hope asks us to stand up, work, and care for others.\nIn daily life, hope appears when we choose kindness instead of despair.\nA hopeful person does not deny pain, but believes that pain is not the end.\nHope becomes beautiful when it gives courage to both oneself and others.\nUltimately, hope is the human promise that tomorrow can be wiser, warmer, and more meaningful than today.\nToday, I will begin my day with hope and a peaceful heart.\nI will look for one bright possibility in every difficult situation.\nHope means believing that today’s effort can open tomorrow’s door.\nI will speak words that give courage to my students and people around me.\nWhen I feel tired, I will remember that small steps still matter.\nI will not let fear take away my trust in the future.\nI will turn worry into prayer, reflection, and action.\nI will share kindness, because kindness often becomes hope for others.\nWith hope, I can make today warmer and more meaningful.\nToday, I will live with a hopeful mind and a loving heart.";
+const KO_TEXT = "희망은 길이 어두울 때에도 인간이 계속 나아가게 하는 조용한 힘이다.\n인문 철학에서 희망은 단순한 낙관이 아니라 삶의 가능성을 믿는 의미 있는 신뢰이다.\n소크라테스는 성찰하는 삶에 가치가 있다고 믿었기 때문에 죽음 앞에서도 차분한 희망을 지녔다.\n그의 태도는 가장 어려운 순간에도 희망이 살아 있을 수 있음을 가르쳐 준다.\n아리스토텔레스는 인간의 삶을 덕과 실천을 통해 번영으로 나아가는 여정으로 보았다.\n이는 우리가 매일 선한 행동을 실천할 때 희망이 자란다는 뜻이다.\n예를 들어 실패 뒤에 다시 공부하는 학생은 희망을 가지고 살아가는 것이다.\n어려움을 겪는 학생을 믿어 주는 교사는 다른 삶에 희망을 심고 있는 것이다.\n헬렌 켈러의 이야기는 희망이 침묵과 어둠 속에서도 문을 열 수 있음을 보여 준다.\n앤 설리번의 도움으로 그녀는 한계를 배움과 용기로 바꾸었다.\n희망은 다른 사람과 나눌 때 더 강해진다.\n작은 격려의 말 한마디가 누군가의 마음속 등불이 될 수 있다.\n그러나 행동 없는 희망은 단지 꿈으로만 남을 수 있다.\n그러므로 참된 희망은 우리가 일어서고, 노력하고, 다른 사람을 돌보도록 요구한다.\n일상에서 희망은 절망 대신 친절을 선택할 때 나타난다.\n희망을 가진 사람은 고통을 부정하지 않지만 고통이 끝이 아니라고 믿는다.\n희망은 자신과 다른 사람 모두에게 용기를 줄 때 아름다워진다.\n궁극적으로 희망은 내일이 오늘보다 더 지혜롭고 따뜻하며 의미 있을 수 있다는 인간의 약속이다.\n오늘 나는 희망과 평온한 마음으로 하루를 시작하겠다.\n나는 모든 어려운 상황 속에서 하나의 밝은 가능성을 찾겠다.\n희망은 오늘의 노력이 내일의 문을 열 수 있다고 믿는 것이다.\n나는 학생들과 주변 사람들에게 용기를 주는 말을 하겠다.\n피곤할 때에도 작은 걸음이 여전히 중요하다는 것을 기억하겠다.\n나는 두려움이 미래에 대한 나의 믿음을 빼앗지 못하게 하겠다.\n나는 걱정을 기도와 성찰과 행동으로 바꾸겠다.\n친절은 종종 다른 사람에게 희망이 되므로 나는 친절을 나누겠다.\n희망을 가지고 나는 오늘을 더 따뜻하고 의미 있게 만들 수 있다.\n오늘 나는 희망찬 마음과 사랑하는 마음으로 살아가겠다.";
+function speak(text, lang){
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = lang;
+  u.rate = lang === 'en-US' ? 0.88 : 0.95;
+  u.pitch = 1;
+  speechSynthesis.speak(u);
+}
+function speakAll(lang){
+  speechSynthesis.cancel();
+  const text = lang === 'en-US' ? EN_TEXT : KO_TEXT;
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = lang;
+  u.rate = lang === 'en-US' ? 0.88 : 0.95;
+  u.pitch = 1;
+  speechSynthesis.speak(u);
+}
+</script>
+</div></div>
+</body>
+</html>

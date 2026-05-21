@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Passion 열정 TTS 학습</title>
+<style>
+body{font-family:'Malgun Gothic',Arial,sans-serif;margin:0;background:linear-gradient(135deg,#fff1e8,#fffdf4);color:#222;}
+.wrap{max-width:1050px;margin:34px auto;padding:22px;}
+.card{background:#fff;border-radius:24px;padding:30px;box-shadow:0 12px 34px rgba(0,0,0,.12);}
+h1{text-align:center;color:#8a2f18;font-size:36px;margin:6px 0 10px;}
+.subtitle{text-align:center;line-height:1.7;color:#555;font-size:17px;}
+.info{background:#fff6ed;border-left:7px solid #d66a2b;padding:16px 20px;border-radius:16px;margin:20px 0;line-height:1.8;font-size:18px;}
+.controls{text-align:center;margin:20px 0;}
+button{border:none;border-radius:999px;padding:9px 15px;margin:4px;background:#9a3d21;color:white;cursor:pointer;font-weight:700;}
+button:hover{filter:brightness(1.08);}
+.btn-ko{background:#b46b1d;}
+.stop{background:#555;}
+.section{margin-top:30px;padding-top:18px;border-top:2px dashed #ddd;}
+h2{color:#7a4b00;font-size:25px;}
+.pair{display:grid;grid-template-columns:44px 1fr auto;gap:8px 12px;align-items:center;margin:13px 0;padding:16px;border:1px solid #eee;border-radius:18px;background:#fffdfb;}
+.num{grid-row:1 / span 2;font-size:22px;font-weight:800;color:#b17b62;text-align:center;}
+.en{font-size:18px;font-weight:700;color:#763018;line-height:1.55;}
+.ko{font-size:17px;color:#333;line-height:1.55;}
+pre{white-space:pre-wrap;word-break:keep-all;background:#fffdf7;border-radius:18px;padding:20px;line-height:1.85;font-size:16px;border:1px solid #f0e5c8;}
+@media(max-width:720px){.pair{grid-template-columns:34px 1fr;}.pair button{grid-column:2;justify-self:start;}}
+</style>
+</head>
+<body>
+<div class="wrap"><div class="card">
+<h1>Passion 열정 TTS 학습</h1>
+<div class="subtitle">Passion(열정)의 인문 철학적 설명 18문장 + 오늘 하루 실천 10문장</div>
+<div class="info">
+<strong>Passion:</strong> 열정은 삶을 깊이 사랑하고, 의미 있는 목표를 향해 자신을 바치는 내면의 힘입니다.<br>
+<strong>Practice:</strong> 오늘의 작은 일에도 진심과 따뜻한 에너지를 담아 실천합니다.
+</div>
+<div class="controls">
+<button onclick="speakAll('en-US')">영어 전체 듣기</button>
+<button class="btn-ko" onclick="speakAll('ko-KR')">한국어 전체 듣기</button>
+<button class="stop" onclick="speechSynthesis.cancel()">정지</button>
+</div>
+
+<div class="section">
+<h2>Ⅰ. Passion(열정) — 인문 철학적 설명 18문장</h2>
+
+<div class="pair">
+  <div class="num">1</div>
+  <div class="en">Passion is the inner fire that moves human beings beyond comfort and habit.</div>
+  <button onclick="speak(\"Passion is the inner fire that moves human beings beyond comfort and habit.\", 'en-US')">영어 듣기</button>
+  <div class="ko">열정은 인간을 편안함과 습관 너머로 움직이게 하는 내면의 불꽃이다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc5f4\\uc815\\uc740 \\uc778\\uac04\\uc744 \\ud3b8\\uc548\\ud568\\uacfc \\uc2b5\\uad00 \\ub108\\uba38\\ub85c \\uc6c0\\uc9c1\\uc774\\uac8c \\ud558\\ub294 \\ub0b4\\uba74\\uc758 \\ubd88\\uaf43\\uc774\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">2</div>
+  <div class="en">In humanistic philosophy, passion is not blind emotion, but a meaningful energy directed toward value.</div>
+  <button onclick="speak(\"In humanistic philosophy, passion is not blind emotion, but a meaningful energy directed toward value.\", 'en-US')">영어 듣기</button>
+  <div class="ko">인문 철학에서 열정은 맹목적인 감정이 아니라, 가치를 향해 나아가는 의미 있는 에너지이다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc778\\ubb38 \\ucca0\\ud559\\uc5d0\\uc11c \\uc5f4\\uc815\\uc740 \\ub9f9\\ubaa9\\uc801\\uc778 \\uac10\\uc815\\uc774 \\uc544\\ub2c8\\ub77c, \\uac00\\uce58\\ub97c \\ud5a5\\ud574 \\ub098\\uc544\\uac00\\ub294 \\uc758\\ubbf8 \\uc788\\ub294 \\uc5d0\\ub108\\uc9c0\\uc774\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">3</div>
+  <div class="en">Aristotle taught that a good life requires both reason and desire working in harmony.</div>
+  <button onclick="speak(\"Aristotle taught that a good life requires both reason and desire working in harmony.\", 'en-US')">영어 듣기</button>
+  <div class="ko">아리스토텔레스는 좋은 삶을 위해 이성과 욕망이 조화롭게 작용해야 한다고 가르쳤다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc544\\ub9ac\\uc2a4\\ud1a0\\ud154\\ub808\\uc2a4\\ub294 \\uc88b\\uc740 \\uc0b6\\uc744 \\uc704\\ud574 \\uc774\\uc131\\uacfc \\uc695\\ub9dd\\uc774 \\uc870\\ud654\\ub86d\\uac8c \\uc791\\uc6a9\\ud574\\uc57c \\ud55c\\ub2e4\\uace0 \\uac00\\ub974\\ucce4\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">4</div>
+  <div class="en">This means that passion becomes noble when it is guided by wisdom.</div>
+  <button onclick="speak(\"This means that passion becomes noble when it is guided by wisdom.\", 'en-US')">영어 듣기</button>
+  <div class="ko">이는 열정이 지혜의 인도를 받을 때 고귀해진다는 뜻이다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc774\\ub294 \\uc5f4\\uc815\\uc774 \\uc9c0\\ud61c\\uc758 \\uc778\\ub3c4\\ub97c \\ubc1b\\uc744 \\ub54c \\uace0\\uadc0\\ud574\\uc9c4\\ub2e4\\ub294 \\ub73b\\uc774\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">5</div>
+  <div class="en">For example, a teacher who prepares lessons late at night shows passion for students’ growth.</div>
+  <button onclick="speak(\"For example, a teacher who prepares lessons late at night shows passion for students\\u2019 growth.\", 'en-US')">영어 듣기</button>
+  <div class="ko">예를 들어 밤늦게까지 수업을 준비하는 교사는 학생들의 성장을 향한 열정을 보여 준다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc608\\ub97c \\ub4e4\\uc5b4 \\ubc24\\ub2a6\\uac8c\\uae4c\\uc9c0 \\uc218\\uc5c5\\uc744 \\uc900\\ube44\\ud558\\ub294 \\uad50\\uc0ac\\ub294 \\ud559\\uc0dd\\ub4e4\\uc758 \\uc131\\uc7a5\\uc744 \\ud5a5\\ud55c \\uc5f4\\uc815\\uc744 \\ubcf4\\uc5ec \\uc900\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">6</div>
+  <div class="en">Such passion is not only hard work, but also love expressed through responsibility.</div>
+  <button onclick="speak(\"Such passion is not only hard work, but also love expressed through responsibility.\", 'en-US')">영어 듣기</button>
+  <div class="ko">그러한 열정은 단순한 노력이 아니라 책임을 통해 표현되는 사랑이기도 하다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uadf8\\ub7ec\\ud55c \\uc5f4\\uc815\\uc740 \\ub2e8\\uc21c\\ud55c \\ub178\\ub825\\uc774 \\uc544\\ub2c8\\ub77c \\ucc45\\uc784\\uc744 \\ud1b5\\ud574 \\ud45c\\ud604\\ub418\\ub294 \\uc0ac\\ub791\\uc774\\uae30\\ub3c4 \\ud558\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">7</div>
+  <div class="en">Socrates lived with passion for truth, asking questions even when people criticized him.</div>
+  <button onclick="speak(\"Socrates lived with passion for truth, asking questions even when people criticized him.\", 'en-US')">영어 듣기</button>
+  <div class="ko">소크라테스는 사람들이 비판해도 계속 질문하며 진리를 향한 열정으로 살았다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc18c\\ud06c\\ub77c\\ud14c\\uc2a4\\ub294 \\uc0ac\\ub78c\\ub4e4\\uc774 \\ube44\\ud310\\ud574\\ub3c4 \\uacc4\\uc18d \\uc9c8\\ubb38\\ud558\\uba70 \\uc9c4\\ub9ac\\ub97c \\ud5a5\\ud55c \\uc5f4\\uc815\\uc73c\\ub85c \\uc0b4\\uc558\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">8</div>
+  <div class="en">His story reminds us that passion often requires courage and patience.</div>
+  <button onclick="speak(\"His story reminds us that passion often requires courage and patience.\", 'en-US')">영어 듣기</button>
+  <div class="ko">그의 이야기는 열정이 때로 용기와 인내를 필요로 한다는 것을 일깨워 준다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uadf8\\uc758 \\uc774\\uc57c\\uae30\\ub294 \\uc5f4\\uc815\\uc774 \\ub54c\\ub85c \\uc6a9\\uae30\\uc640 \\uc778\\ub0b4\\ub97c \\ud544\\uc694\\ub85c \\ud55c\\ub2e4\\ub294 \\uac83\\uc744 \\uc77c\\uae68\\uc6cc \\uc900\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">9</div>
+  <div class="en">Passion can also be seen in artists who continue creating even after many failures.</div>
+  <button onclick="speak(\"Passion can also be seen in artists who continue creating even after many failures.\", 'en-US')">영어 듣기</button>
+  <div class="ko">열정은 수많은 실패 뒤에도 계속 창작하는 예술가들에게서도 볼 수 있다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc5f4\\uc815\\uc740 \\uc218\\ub9ce\\uc740 \\uc2e4\\ud328 \\ub4a4\\uc5d0\\ub3c4 \\uacc4\\uc18d \\ucc3d\\uc791\\ud558\\ub294 \\uc608\\uc220\\uac00\\ub4e4\\uc5d0\\uac8c\\uc11c\\ub3c4 \\ubcfc \\uc218 \\uc788\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">10</div>
+  <div class="en">Vincent van Gogh was not fully recognized in his lifetime, but he kept painting with a burning heart.</div>
+  <button onclick="speak(\"Vincent van Gogh was not fully recognized in his lifetime, but he kept painting with a burning heart.\", 'en-US')">영어 듣기</button>
+  <div class="ko">빈센트 반 고흐는 생전에 충분히 인정받지 못했지만, 불타는 마음으로 계속 그림을 그렸다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ube48\\uc13c\\ud2b8 \\ubc18 \\uace0\\ud750\\ub294 \\uc0dd\\uc804\\uc5d0 \\ucda9\\ubd84\\ud788 \\uc778\\uc815\\ubc1b\\uc9c0 \\ubabb\\ud588\\uc9c0\\ub9cc, \\ubd88\\ud0c0\\ub294 \\ub9c8\\uc74c\\uc73c\\ub85c \\uacc4\\uc18d \\uadf8\\ub9bc\\uc744 \\uadf8\\ub838\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">11</div>
+  <div class="en">His life shows that passion may not receive immediate applause, but it can leave lasting beauty.</div>
+  <button onclick="speak(\"His life shows that passion may not receive immediate applause, but it can leave lasting beauty.\", 'en-US')">영어 듣기</button>
+  <div class="ko">그의 삶은 열정이 즉각적인 박수를 받지 못하더라도 오래 남는 아름다움을 남길 수 있음을 보여 준다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uadf8\\uc758 \\uc0b6\\uc740 \\uc5f4\\uc815\\uc774 \\uc989\\uac01\\uc801\\uc778 \\ubc15\\uc218\\ub97c \\ubc1b\\uc9c0 \\ubabb\\ud558\\ub354\\ub77c\\ub3c4 \\uc624\\ub798 \\ub0a8\\ub294 \\uc544\\ub984\\ub2e4\\uc6c0\\uc744 \\ub0a8\\uae38 \\uc218 \\uc788\\uc74c\\uc744 \\ubcf4\\uc5ec \\uc900\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">12</div>
+  <div class="en">However, passion without reflection can become selfish ambition or exhaustion.</div>
+  <button onclick="speak(\"However, passion without reflection can become selfish ambition or exhaustion.\", 'en-US')">영어 듣기</button>
+  <div class="ko">그러나 성찰 없는 열정은 이기적인 야망이나 소진이 될 수 있다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uadf8\\ub7ec\\ub098 \\uc131\\ucc30 \\uc5c6\\ub294 \\uc5f4\\uc815\\uc740 \\uc774\\uae30\\uc801\\uc778 \\uc57c\\ub9dd\\uc774\\ub098 \\uc18c\\uc9c4\\uc774 \\ub420 \\uc218 \\uc788\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">13</div>
+  <div class="en">Therefore, true passion must ask, “For whom and for what am I working?”</div>
+  <button onclick="speak(\"Therefore, true passion must ask, \\u201cFor whom and for what am I working?\\u201d\", 'en-US')">영어 듣기</button>
+  <div class="ko">그러므로 참된 열정은 ‘나는 누구를 위해, 무엇을 위해 일하고 있는가?’를 물어야 한다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uadf8\\ub7ec\\ubbc0\\ub85c \\ucc38\\ub41c \\uc5f4\\uc815\\uc740 \\u2018\\ub098\\ub294 \\ub204\\uad6c\\ub97c \\uc704\\ud574, \\ubb34\\uc5c7\\uc744 \\uc704\\ud574 \\uc77c\\ud558\\uace0 \\uc788\\ub294\\uac00?\\u2019\\ub97c \\ubb3c\\uc5b4\\uc57c \\ud55c\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">14</div>
+  <div class="en">A passionate person does not merely chase success, but seeks meaning in the process.</div>
+  <button onclick="speak(\"A passionate person does not merely chase success, but seeks meaning in the process.\", 'en-US')">영어 듣기</button>
+  <div class="ko">열정적인 사람은 단지 성공만을 좇지 않고 과정 속에서 의미를 찾는다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc5f4\\uc815\\uc801\\uc778 \\uc0ac\\ub78c\\uc740 \\ub2e8\\uc9c0 \\uc131\\uacf5\\ub9cc\\uc744 \\uc887\\uc9c0 \\uc54a\\uace0 \\uacfc\\uc815 \\uc18d\\uc5d0\\uc11c \\uc758\\ubbf8\\ub97c \\ucc3e\\ub294\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">15</div>
+  <div class="en">In daily life, passion appears when we do ordinary work with extraordinary sincerity.</div>
+  <button onclick="speak(\"In daily life, passion appears when we do ordinary work with extraordinary sincerity.\", 'en-US')">영어 듣기</button>
+  <div class="ko">일상에서 열정은 평범한 일을 특별한 정성으로 할 때 나타난다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc77c\\uc0c1\\uc5d0\\uc11c \\uc5f4\\uc815\\uc740 \\ud3c9\\ubc94\\ud55c \\uc77c\\uc744 \\ud2b9\\ubcc4\\ud55c \\uc815\\uc131\\uc73c\\ub85c \\ud560 \\ub54c \\ub098\\ud0c0\\ub09c\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">16</div>
+  <div class="en">A student who studies one more page with hope is practicing quiet passion.</div>
+  <button onclick="speak(\"A student who studies one more page with hope is practicing quiet passion.\", 'en-US')">영어 듣기</button>
+  <div class="ko">희망을 품고 한 쪽을 더 공부하는 학생은 조용한 열정을 실천하고 있는 것이다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ud76c\\ub9dd\\uc744 \\ud488\\uace0 \\ud55c \\ucabd\\uc744 \\ub354 \\uacf5\\ubd80\\ud558\\ub294 \\ud559\\uc0dd\\uc740 \\uc870\\uc6a9\\ud55c \\uc5f4\\uc815\\uc744 \\uc2e4\\ucc9c\\ud558\\uace0 \\uc788\\ub294 \\uac83\\uc774\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">17</div>
+  <div class="en">Passion becomes beautiful when it warms others instead of burning them.</div>
+  <button onclick="speak(\"Passion becomes beautiful when it warms others instead of burning them.\", 'en-US')">영어 듣기</button>
+  <div class="ko">열정은 다른 사람을 태우는 것이 아니라 따뜻하게 할 때 아름다워진다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc5f4\\uc815\\uc740 \\ub2e4\\ub978 \\uc0ac\\ub78c\\uc744 \\ud0dc\\uc6b0\\ub294 \\uac83\\uc774 \\uc544\\ub2c8\\ub77c \\ub530\\ub73b\\ud558\\uac8c \\ud560 \\ub54c \\uc544\\ub984\\ub2e4\\uc6cc\\uc9c4\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">18</div>
+  <div class="en">Ultimately, passion is the power to love life deeply and to give oneself to a meaningful purpose.</div>
+  <button onclick="speak(\"Ultimately, passion is the power to love life deeply and to give oneself to a meaningful purpose.\", 'en-US')">영어 듣기</button>
+  <div class="ko">궁극적으로 열정은 삶을 깊이 사랑하고 의미 있는 목적에 자신을 바치는 힘이다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uad81\\uadf9\\uc801\\uc73c\\ub85c \\uc5f4\\uc815\\uc740 \\uc0b6\\uc744 \\uae4a\\uc774 \\uc0ac\\ub791\\ud558\\uace0 \\uc758\\ubbf8 \\uc788\\ub294 \\ubaa9\\uc801\\uc5d0 \\uc790\\uc2e0\\uc744 \\ubc14\\uce58\\ub294 \\ud798\\uc774\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+</div>
+
+<div class="section">
+<h2>Ⅱ. Passion(열정) — 오늘 하루 실천 10문장</h2>
+
+<div class="pair">
+  <div class="num">1</div>
+  <div class="en">Today, I will begin my day with passion and a grateful heart.</div>
+  <button onclick="speak(\"Today, I will begin my day with passion and a grateful heart.\", 'en-US')">영어 듣기</button>
+  <div class="ko">오늘 나는 열정과 감사한 마음으로 하루를 시작하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc624\\ub298 \\ub098\\ub294 \\uc5f4\\uc815\\uacfc \\uac10\\uc0ac\\ud55c \\ub9c8\\uc74c\\uc73c\\ub85c \\ud558\\ub8e8\\ub97c \\uc2dc\\uc791\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">2</div>
+  <div class="en">I will put sincere effort into even the smallest task.</div>
+  <button onclick="speak(\"I will put sincere effort into even the smallest task.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 가장 작은 일에도 진심 어린 노력을 담겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\uac00\\uc7a5 \\uc791\\uc740 \\uc77c\\uc5d0\\ub3c4 \\uc9c4\\uc2ec \\uc5b4\\ub9b0 \\ub178\\ub825\\uc744 \\ub2f4\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">3</div>
+  <div class="en">Passion means doing my best with love, not just with speed.</div>
+  <button onclick="speak(\"Passion means doing my best with love, not just with speed.\", 'en-US')">영어 듣기</button>
+  <div class="ko">열정은 단지 빠르게 하는 것이 아니라 사랑으로 최선을 다하는 것이다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc5f4\\uc815\\uc740 \\ub2e8\\uc9c0 \\ube60\\ub974\\uac8c \\ud558\\ub294 \\uac83\\uc774 \\uc544\\ub2c8\\ub77c \\uc0ac\\ub791\\uc73c\\ub85c \\ucd5c\\uc120\\uc744 \\ub2e4\\ud558\\ub294 \\uac83\\uc774\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">4</div>
+  <div class="en">I will encourage my students and people around me with warm energy.</div>
+  <button onclick="speak(\"I will encourage my students and people around me with warm energy.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 따뜻한 에너지로 학생들과 주변 사람들을 격려하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\ub530\\ub73b\\ud55c \\uc5d0\\ub108\\uc9c0\\ub85c \\ud559\\uc0dd\\ub4e4\\uacfc \\uc8fc\\ubcc0 \\uc0ac\\ub78c\\ub4e4\\uc744 \\uaca9\\ub824\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">5</div>
+  <div class="en">When I feel tired, I will remember the meaning behind my work.</div>
+  <button onclick="speak(\"When I feel tired, I will remember the meaning behind my work.\", 'en-US')">영어 듣기</button>
+  <div class="ko">피곤할 때 나는 내가 하는 일의 의미를 기억하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ud53c\\uace4\\ud560 \\ub54c \\ub098\\ub294 \\ub0b4\\uac00 \\ud558\\ub294 \\uc77c\\uc758 \\uc758\\ubbf8\\ub97c \\uae30\\uc5b5\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">6</div>
+  <div class="en">I will not compare my passion with others, but grow at my own pace.</div>
+  <button onclick="speak(\"I will not compare my passion with others, but grow at my own pace.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 나의 열정을 다른 사람과 비교하지 않고 나만의 속도로 성장하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\ub098\\uc758 \\uc5f4\\uc815\\uc744 \\ub2e4\\ub978 \\uc0ac\\ub78c\\uacfc \\ube44\\uad50\\ud558\\uc9c0 \\uc54a\\uace0 \\ub098\\ub9cc\\uc758 \\uc18d\\ub3c4\\ub85c \\uc131\\uc7a5\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">7</div>
+  <div class="en">I will turn today’s difficulties into chances to become stronger.</div>
+  <button onclick="speak(\"I will turn today\\u2019s difficulties into chances to become stronger.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 오늘의 어려움을 더 강해지는 기회로 바꾸겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\uc624\\ub298\\uc758 \\uc5b4\\ub824\\uc6c0\\uc744 \\ub354 \\uac15\\ud574\\uc9c0\\ub294 \\uae30\\ud68c\\ub85c \\ubc14\\uafb8\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">8</div>
+  <div class="en">I will speak with enthusiasm and listen with sincerity.</div>
+  <button onclick="speak(\"I will speak with enthusiasm and listen with sincerity.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 열정적으로 말하고 진심으로 들을 것이다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\uc5f4\\uc815\\uc801\\uc73c\\ub85c \\ub9d0\\ud558\\uace0 \\uc9c4\\uc2ec\\uc73c\\ub85c \\ub4e4\\uc744 \\uac83\\uc774\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">9</div>
+  <div class="en">With passion, I can make an ordinary day bright and meaningful.</div>
+  <button onclick="speak(\"With passion, I can make an ordinary day bright and meaningful.\", 'en-US')">영어 듣기</button>
+  <div class="ko">열정을 가지고 나는 평범한 하루를 밝고 의미 있게 만들 수 있다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc5f4\\uc815\\uc744 \\uac00\\uc9c0\\uace0 \\ub098\\ub294 \\ud3c9\\ubc94\\ud55c \\ud558\\ub8e8\\ub97c \\ubc1d\\uace0 \\uc758\\ubbf8 \\uc788\\uac8c \\ub9cc\\ub4e4 \\uc218 \\uc788\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">10</div>
+  <div class="en">Today, I will live with a burning heart and a kind spirit.</div>
+  <button onclick="speak(\"Today, I will live with a burning heart and a kind spirit.\", 'en-US')">영어 듣기</button>
+  <div class="ko">오늘 나는 뜨거운 마음과 친절한 정신으로 살아가겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc624\\ub298 \\ub098\\ub294 \\ub728\\uac70\\uc6b4 \\ub9c8\\uc74c\\uacfc \\uce5c\\uc808\\ud55c \\uc815\\uc2e0\\uc73c\\ub85c \\uc0b4\\uc544\\uac00\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+</div>
+
+<div class="section">
+<h2>전체 원문 Text</h2>
+<pre>Passion (열정)을 인문 철학적으로 예시와 일화를 들어서
+영어18문장(한글 해석)으로 설명
+
+Passion is the inner fire that moves human beings beyond comfort and habit.
+열정은 인간을 편안함과 습관 너머로 움직이게 하는 내면의 불꽃이다.
+In humanistic philosophy, passion is not blind emotion, but a meaningful energy directed toward value.
+인문 철학에서 열정은 맹목적인 감정이 아니라, 가치를 향해 나아가는 의미 있는 에너지이다.
+Aristotle taught that a good life requires both reason and desire working in harmony.
+아리스토텔레스는 좋은 삶을 위해 이성과 욕망이 조화롭게 작용해야 한다고 가르쳤다.
+This means that passion becomes noble when it is guided by wisdom.
+이는 열정이 지혜의 인도를 받을 때 고귀해진다는 뜻이다.
+For example, a teacher who prepares lessons late at night shows passion for students’ growth.
+예를 들어 밤늦게까지 수업을 준비하는 교사는 학생들의 성장을 향한 열정을 보여 준다.
+Such passion is not only hard work, but also love expressed through responsibility.
+그러한 열정은 단순한 노력이 아니라 책임을 통해 표현되는 사랑이기도 하다.
+Socrates lived with passion for truth, asking questions even when people criticized him.
+소크라테스는 사람들이 비판해도 계속 질문하며 진리를 향한 열정으로 살았다.
+His story reminds us that passion often requires courage and patience.
+그의 이야기는 열정이 때로 용기와 인내를 필요로 한다는 것을 일깨워 준다.
+Passion can also be seen in artists who continue creating even after many failures.
+열정은 수많은 실패 뒤에도 계속 창작하는 예술가들에게서도 볼 수 있다.
+Vincent van Gogh was not fully recognized in his lifetime, but he kept painting with a burning heart.
+빈센트 반 고흐는 생전에 충분히 인정받지 못했지만, 불타는 마음으로 계속 그림을 그렸다.
+His life shows that passion may not receive immediate applause, but it can leave lasting beauty.
+그의 삶은 열정이 즉각적인 박수를 받지 못하더라도 오래 남는 아름다움을 남길 수 있음을 보여 준다.
+However, passion without reflection can become selfish ambition or exhaustion.
+그러나 성찰 없는 열정은 이기적인 야망이나 소진이 될 수 있다.
+Therefore, true passion must ask, “For whom and for what am I working?”
+그러므로 참된 열정은 ‘나는 누구를 위해, 무엇을 위해 일하고 있는가?’를 물어야 한다.
+A passionate person does not merely chase success, but seeks meaning in the process.
+열정적인 사람은 단지 성공만을 좇지 않고 과정 속에서 의미를 찾는다.
+In daily life, passion appears when we do ordinary work with extraordinary sincerity.
+일상에서 열정은 평범한 일을 특별한 정성으로 할 때 나타난다.
+A student who studies one more page with hope is practicing quiet passion.
+희망을 품고 한 쪽을 더 공부하는 학생은 조용한 열정을 실천하고 있는 것이다.
+Passion becomes beautiful when it warms others instead of burning them.
+열정은 다른 사람을 태우는 것이 아니라 따뜻하게 할 때 아름다워진다.
+Ultimately, passion is the power to love life deeply and to give oneself to a meaningful purpose.
+궁극적으로 열정은 삶을 깊이 사랑하고 의미 있는 목적에 자신을 바치는 힘이다.
+
+오늘 하루 Passion (열정)을 생각하고 실천하며 살고 싶다.
+영어 10줄(한글 해석)로 오늘의 삶을 이야기 하기
+
+Today, I will begin my day with passion and a grateful heart.
+오늘 나는 열정과 감사한 마음으로 하루를 시작하겠다.
+I will put sincere effort into even the smallest task.
+나는 가장 작은 일에도 진심 어린 노력을 담겠다.
+Passion means doing my best with love, not just with speed.
+열정은 단지 빠르게 하는 것이 아니라 사랑으로 최선을 다하는 것이다.
+I will encourage my students and people around me with warm energy.
+나는 따뜻한 에너지로 학생들과 주변 사람들을 격려하겠다.
+When I feel tired, I will remember the meaning behind my work.
+피곤할 때 나는 내가 하는 일의 의미를 기억하겠다.
+I will not compare my passion with others, but grow at my own pace.
+나는 나의 열정을 다른 사람과 비교하지 않고 나만의 속도로 성장하겠다.
+I will turn today’s difficulties into chances to become stronger.
+나는 오늘의 어려움을 더 강해지는 기회로 바꾸겠다.
+I will speak with enthusiasm and listen with sincerity.
+나는 열정적으로 말하고 진심으로 들을 것이다.
+With passion, I can make an ordinary day bright and meaningful.
+열정을 가지고 나는 평범한 하루를 밝고 의미 있게 만들 수 있다.
+Today, I will live with a burning heart and a kind spirit.
+오늘 나는 뜨거운 마음과 친절한 정신으로 살아가겠다.</pre>
+</div>
+
+<script>
+const EN_TEXT = "Passion is the inner fire that moves human beings beyond comfort and habit.\nIn humanistic philosophy, passion is not blind emotion, but a meaningful energy directed toward value.\nAristotle taught that a good life requires both reason and desire working in harmony.\nThis means that passion becomes noble when it is guided by wisdom.\nFor example, a teacher who prepares lessons late at night shows passion for students’ growth.\nSuch passion is not only hard work, but also love expressed through responsibility.\nSocrates lived with passion for truth, asking questions even when people criticized him.\nHis story reminds us that passion often requires courage and patience.\nPassion can also be seen in artists who continue creating even after many failures.\nVincent van Gogh was not fully recognized in his lifetime, but he kept painting with a burning heart.\nHis life shows that passion may not receive immediate applause, but it can leave lasting beauty.\nHowever, passion without reflection can become selfish ambition or exhaustion.\nTherefore, true passion must ask, “For whom and for what am I working?”\nA passionate person does not merely chase success, but seeks meaning in the process.\nIn daily life, passion appears when we do ordinary work with extraordinary sincerity.\nA student who studies one more page with hope is practicing quiet passion.\nPassion becomes beautiful when it warms others instead of burning them.\nUltimately, passion is the power to love life deeply and to give oneself to a meaningful purpose.\nToday, I will begin my day with passion and a grateful heart.\nI will put sincere effort into even the smallest task.\nPassion means doing my best with love, not just with speed.\nI will encourage my students and people around me with warm energy.\nWhen I feel tired, I will remember the meaning behind my work.\nI will not compare my passion with others, but grow at my own pace.\nI will turn today’s difficulties into chances to become stronger.\nI will speak with enthusiasm and listen with sincerity.\nWith passion, I can make an ordinary day bright and meaningful.\nToday, I will live with a burning heart and a kind spirit.";
+const KO_TEXT = "열정은 인간을 편안함과 습관 너머로 움직이게 하는 내면의 불꽃이다.\n인문 철학에서 열정은 맹목적인 감정이 아니라, 가치를 향해 나아가는 의미 있는 에너지이다.\n아리스토텔레스는 좋은 삶을 위해 이성과 욕망이 조화롭게 작용해야 한다고 가르쳤다.\n이는 열정이 지혜의 인도를 받을 때 고귀해진다는 뜻이다.\n예를 들어 밤늦게까지 수업을 준비하는 교사는 학생들의 성장을 향한 열정을 보여 준다.\n그러한 열정은 단순한 노력이 아니라 책임을 통해 표현되는 사랑이기도 하다.\n소크라테스는 사람들이 비판해도 계속 질문하며 진리를 향한 열정으로 살았다.\n그의 이야기는 열정이 때로 용기와 인내를 필요로 한다는 것을 일깨워 준다.\n열정은 수많은 실패 뒤에도 계속 창작하는 예술가들에게서도 볼 수 있다.\n빈센트 반 고흐는 생전에 충분히 인정받지 못했지만, 불타는 마음으로 계속 그림을 그렸다.\n그의 삶은 열정이 즉각적인 박수를 받지 못하더라도 오래 남는 아름다움을 남길 수 있음을 보여 준다.\n그러나 성찰 없는 열정은 이기적인 야망이나 소진이 될 수 있다.\n그러므로 참된 열정은 ‘나는 누구를 위해, 무엇을 위해 일하고 있는가?’를 물어야 한다.\n열정적인 사람은 단지 성공만을 좇지 않고 과정 속에서 의미를 찾는다.\n일상에서 열정은 평범한 일을 특별한 정성으로 할 때 나타난다.\n희망을 품고 한 쪽을 더 공부하는 학생은 조용한 열정을 실천하고 있는 것이다.\n열정은 다른 사람을 태우는 것이 아니라 따뜻하게 할 때 아름다워진다.\n궁극적으로 열정은 삶을 깊이 사랑하고 의미 있는 목적에 자신을 바치는 힘이다.\n오늘 나는 열정과 감사한 마음으로 하루를 시작하겠다.\n나는 가장 작은 일에도 진심 어린 노력을 담겠다.\n열정은 단지 빠르게 하는 것이 아니라 사랑으로 최선을 다하는 것이다.\n나는 따뜻한 에너지로 학생들과 주변 사람들을 격려하겠다.\n피곤할 때 나는 내가 하는 일의 의미를 기억하겠다.\n나는 나의 열정을 다른 사람과 비교하지 않고 나만의 속도로 성장하겠다.\n나는 오늘의 어려움을 더 강해지는 기회로 바꾸겠다.\n나는 열정적으로 말하고 진심으로 들을 것이다.\n열정을 가지고 나는 평범한 하루를 밝고 의미 있게 만들 수 있다.\n오늘 나는 뜨거운 마음과 친절한 정신으로 살아가겠다.";
+function speak(text, lang){
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = lang;
+  u.rate = lang === 'en-US' ? 0.88 : 0.95;
+  u.pitch = 1;
+  speechSynthesis.speak(u);
+}
+function speakAll(lang){
+  speechSynthesis.cancel();
+  const text = lang === 'en-US' ? EN_TEXT : KO_TEXT;
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = lang;
+  u.rate = lang === 'en-US' ? 0.88 : 0.95;
+  u.pitch = 1;
+  speechSynthesis.speak(u);
+}
+</script>
+</div></div>
+</body>
+</html>

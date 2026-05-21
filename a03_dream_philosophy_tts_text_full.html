@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dream 꿈 TTS 학습</title>
+<style>
+body{font-family:'Malgun Gothic',Arial,sans-serif;margin:0;background:linear-gradient(135deg,#eef3ff,#fff7f0);color:#222;}
+.wrap{max-width:1050px;margin:34px auto;padding:22px;}
+.card{background:#fff;border-radius:24px;padding:30px;box-shadow:0 12px 34px rgba(0,0,0,.12);}
+h1{text-align:center;color:#293f88;font-size:36px;margin:6px 0 10px;}
+.subtitle{text-align:center;line-height:1.7;color:#555;font-size:17px;}
+.info{background:#f1f5ff;border-left:7px solid #5d75d6;padding:16px 20px;border-radius:16px;margin:20px 0;line-height:1.8;font-size:18px;}
+.controls{text-align:center;margin:20px 0;}
+button{border:none;border-radius:999px;padding:9px 15px;margin:4px;background:#334fa3;color:white;cursor:pointer;font-weight:700;}
+button:hover{filter:brightness(1.08);}
+.btn-ko{background:#b46b1d;}
+.stop{background:#555;}
+.section{margin-top:30px;padding-top:18px;border-top:2px dashed #ddd;}
+h2{color:#6a4b00;font-size:25px;}
+.pair{display:grid;grid-template-columns:44px 1fr auto;gap:8px 12px;align-items:center;margin:13px 0;padding:16px;border:1px solid #eee;border-radius:18px;background:#fbfcff;}
+.num{grid-row:1 / span 2;font-size:22px;font-weight:800;color:#7080bd;text-align:center;}
+.en{font-size:18px;font-weight:700;color:#253f91;line-height:1.55;}
+.ko{font-size:17px;color:#333;line-height:1.55;}
+pre{white-space:pre-wrap;word-break:keep-all;background:#fffdf7;border-radius:18px;padding:20px;line-height:1.85;font-size:16px;border:1px solid #f0e5c8;}
+@media(max-width:720px){.pair{grid-template-columns:34px 1fr;}.pair button{grid-column:2;justify-self:start;}}
+</style>
+</head>
+<body>
+<div class="wrap"><div class="card">
+<h1>Dream 꿈 TTS 학습</h1>
+<div class="subtitle">Dream(꿈)의 인문 철학적 설명 18문장 + 오늘 하루 실천 10문장</div>
+<div class="info">
+<strong>Dream:</strong> 꿈은 미래를 향한 상상일 뿐 아니라, 삶의 의미와 방향을 묻는 인간의 약속입니다.<br>
+<strong>Practice:</strong> 오늘의 작은 실천을 통해 꿈을 현실로 가까이 가져갑니다.
+</div>
+<div class="controls">
+<button onclick="speakAll('en-US')">영어 전체 듣기</button>
+<button class="btn-ko" onclick="speakAll('ko-KR')">한국어 전체 듣기</button>
+<button class="stop" onclick="speechSynthesis.cancel()">정지</button>
+</div>
+
+<div class="section">
+<h2>Ⅰ. Dream(꿈) — 인문 철학적 설명 18문장</h2>
+
+<div class="pair">
+  <div class="num">1</div>
+  <div class="en">A dream is not only a picture of the future, but also a question about what kind of life we want to live.</div>
+  <button onclick="speak(\"A dream is not only a picture of the future, but also a question about what kind of life we want to live.\", 'en-US')">영어 듣기</button>
+  <div class="ko">꿈은 단지 미래의 그림이 아니라, 우리가 어떤 삶을 살고 싶은지에 대한 질문이다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uafc8\\uc740 \\ub2e8\\uc9c0 \\ubbf8\\ub798\\uc758 \\uadf8\\ub9bc\\uc774 \\uc544\\ub2c8\\ub77c, \\uc6b0\\ub9ac\\uac00 \\uc5b4\\ub5a4 \\uc0b6\\uc744 \\uc0b4\\uace0 \\uc2f6\\uc740\\uc9c0\\uc5d0 \\ub300\\ud55c \\uc9c8\\ubb38\\uc774\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">2</div>
+  <div class="en">In humanistic philosophy, dreams reveal human freedom, hope, and the desire for meaning.</div>
+  <button onclick="speak(\"In humanistic philosophy, dreams reveal human freedom, hope, and the desire for meaning.\", 'en-US')">영어 듣기</button>
+  <div class="ko">인문 철학에서 꿈은 인간의 자유, 희망, 그리고 의미를 향한 갈망을 드러낸다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc778\\ubb38 \\ucca0\\ud559\\uc5d0\\uc11c \\uafc8\\uc740 \\uc778\\uac04\\uc758 \\uc790\\uc720, \\ud76c\\ub9dd, \\uadf8\\ub9ac\\uace0 \\uc758\\ubbf8\\ub97c \\ud5a5\\ud55c \\uac08\\ub9dd\\uc744 \\ub4dc\\ub7ec\\ub0b8\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">3</div>
+  <div class="en">Plato compared the human soul to something that longs for truth beyond the visible world.</div>
+  <button onclick="speak(\"Plato compared the human soul to something that longs for truth beyond the visible world.\", 'en-US')">영어 듣기</button>
+  <div class="ko">플라톤은 인간의 영혼을 보이는 세계 너머의 진리를 갈망하는 존재로 비유했다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ud50c\\ub77c\\ud1a4\\uc740 \\uc778\\uac04\\uc758 \\uc601\\ud63c\\uc744 \\ubcf4\\uc774\\ub294 \\uc138\\uacc4 \\ub108\\uba38\\uc758 \\uc9c4\\ub9ac\\ub97c \\uac08\\ub9dd\\ud558\\ub294 \\uc874\\uc7ac\\ub85c \\ube44\\uc720\\ud588\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">4</div>
+  <div class="en">In this sense, a dream can lift our eyes from daily routine to higher values.</div>
+  <button onclick="speak(\"In this sense, a dream can lift our eyes from daily routine to higher values.\", 'en-US')">영어 듣기</button>
+  <div class="ko">이런 의미에서 꿈은 우리의 시선을 일상의 반복에서 더 높은 가치로 들어 올린다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc774\\ub7f0 \\uc758\\ubbf8\\uc5d0\\uc11c \\uafc8\\uc740 \\uc6b0\\ub9ac\\uc758 \\uc2dc\\uc120\\uc744 \\uc77c\\uc0c1\\uc758 \\ubc18\\ubcf5\\uc5d0\\uc11c \\ub354 \\ub192\\uc740 \\uac00\\uce58\\ub85c \\ub4e4\\uc5b4 \\uc62c\\ub9b0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">5</div>
+  <div class="en">For example, a student who dreams of becoming a scientist is also dreaming of understanding nature more deeply.</div>
+  <button onclick="speak(\"For example, a student who dreams of becoming a scientist is also dreaming of understanding nature more deeply.\", 'en-US')">영어 듣기</button>
+  <div class="ko">예를 들어 과학자를 꿈꾸는 학생은 자연을 더 깊이 이해하려는 꿈도 꾸고 있는 것이다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc608\\ub97c \\ub4e4\\uc5b4 \\uacfc\\ud559\\uc790\\ub97c \\uafc8\\uafb8\\ub294 \\ud559\\uc0dd\\uc740 \\uc790\\uc5f0\\uc744 \\ub354 \\uae4a\\uc774 \\uc774\\ud574\\ud558\\ub824\\ub294 \\uafc8\\ub3c4 \\uafb8\\uace0 \\uc788\\ub294 \\uac83\\uc774\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">6</div>
+  <div class="en">A teacher who dreams of helping students grow is practicing love through education.</div>
+  <button onclick="speak(\"A teacher who dreams of helping students grow is practicing love through education.\", 'en-US')">영어 듣기</button>
+  <div class="ko">학생들의 성장을 돕고자 꿈꾸는 교사는 교육을 통해 사랑을 실천하고 있는 것이다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ud559\\uc0dd\\ub4e4\\uc758 \\uc131\\uc7a5\\uc744 \\ub3d5\\uace0\\uc790 \\uafc8\\uafb8\\ub294 \\uad50\\uc0ac\\ub294 \\uad50\\uc721\\uc744 \\ud1b5\\ud574 \\uc0ac\\ub791\\uc744 \\uc2e4\\ucc9c\\ud558\\uace0 \\uc788\\ub294 \\uac83\\uc774\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">7</div>
+  <div class="en">Martin Luther King Jr. showed that a dream can become a moral voice for justice.</div>
+  <button onclick="speak(\"Martin Luther King Jr. showed that a dream can become a moral voice for justice.\", 'en-US')">영어 듣기</button>
+  <div class="ko">마틴 루터 킹 주니어는 꿈이 정의를 향한 도덕적 목소리가 될 수 있음을 보여 주었다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub9c8\\ud2f4 \\ub8e8\\ud130 \\ud0b9 \\uc8fc\\ub2c8\\uc5b4\\ub294 \\uafc8\\uc774 \\uc815\\uc758\\ub97c \\ud5a5\\ud55c \\ub3c4\\ub355\\uc801 \\ubaa9\\uc18c\\ub9ac\\uac00 \\ub420 \\uc218 \\uc788\\uc74c\\uc744 \\ubcf4\\uc5ec \\uc8fc\\uc5c8\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">8</div>
+  <div class="en">His famous dream was not only personal, but also a hope for a more humane society.</div>
+  <button onclick="speak(\"His famous dream was not only personal, but also a hope for a more humane society.\", 'en-US')">영어 듣기</button>
+  <div class="ko">그의 유명한 꿈은 개인적인 것만이 아니라 더 인간다운 사회를 향한 희망이었다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uadf8\\uc758 \\uc720\\uba85\\ud55c \\uafc8\\uc740 \\uac1c\\uc778\\uc801\\uc778 \\uac83\\ub9cc\\uc774 \\uc544\\ub2c8\\ub77c \\ub354 \\uc778\\uac04\\ub2e4\\uc6b4 \\uc0ac\\ud68c\\ub97c \\ud5a5\\ud55c \\ud76c\\ub9dd\\uc774\\uc5c8\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">9</div>
+  <div class="en">A true dream does not close the heart; it opens the heart to others.</div>
+  <button onclick="speak(\"A true dream does not close the heart; it opens the heart to others.\", 'en-US')">영어 듣기</button>
+  <div class="ko">참된 꿈은 마음을 닫게 하지 않고 다른 사람을 향해 마음을 열게 한다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ucc38\\ub41c \\uafc8\\uc740 \\ub9c8\\uc74c\\uc744 \\ub2eb\\uac8c \\ud558\\uc9c0 \\uc54a\\uace0 \\ub2e4\\ub978 \\uc0ac\\ub78c\\uc744 \\ud5a5\\ud574 \\ub9c8\\uc74c\\uc744 \\uc5f4\\uac8c \\ud55c\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">10</div>
+  <div class="en">Dreams become dangerous when they are guided only by selfish success.</div>
+  <button onclick="speak(\"Dreams become dangerous when they are guided only by selfish success.\", 'en-US')">영어 듣기</button>
+  <div class="ko">꿈이 이기적인 성공만을 향할 때 그것은 위험해질 수 있다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uafc8\\uc774 \\uc774\\uae30\\uc801\\uc778 \\uc131\\uacf5\\ub9cc\\uc744 \\ud5a5\\ud560 \\ub54c \\uadf8\\uac83\\uc740 \\uc704\\ud5d8\\ud574\\uc9c8 \\uc218 \\uc788\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">11</div>
+  <div class="en">Therefore, we should ask whether our dreams make both ourselves and the world better.</div>
+  <button onclick="speak(\"Therefore, we should ask whether our dreams make both ourselves and the world better.\", 'en-US')">영어 듣기</button>
+  <div class="ko">그러므로 우리는 우리의 꿈이 자신과 세상을 함께 더 좋게 만드는지 물어야 한다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uadf8\\ub7ec\\ubbc0\\ub85c \\uc6b0\\ub9ac\\ub294 \\uc6b0\\ub9ac\\uc758 \\uafc8\\uc774 \\uc790\\uc2e0\\uacfc \\uc138\\uc0c1\\uc744 \\ud568\\uaed8 \\ub354 \\uc88b\\uac8c \\ub9cc\\ub4dc\\ub294\\uc9c0 \\ubb3c\\uc5b4\\uc57c \\ud55c\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">12</div>
+  <div class="en">The story of Helen Keller teaches us that dreams can survive even in silence and darkness.</div>
+  <button onclick="speak(\"The story of Helen Keller teaches us that dreams can survive even in silence and darkness.\", 'en-US')">영어 듣기</button>
+  <div class="ko">헬렌 켈러의 이야기는 꿈이 침묵과 어둠 속에서도 살아남을 수 있음을 가르쳐 준다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ud5ec\\ub80c \\ucf08\\ub7ec\\uc758 \\uc774\\uc57c\\uae30\\ub294 \\uafc8\\uc774 \\uce68\\ubb35\\uacfc \\uc5b4\\ub460 \\uc18d\\uc5d0\\uc11c\\ub3c4 \\uc0b4\\uc544\\ub0a8\\uc744 \\uc218 \\uc788\\uc74c\\uc744 \\uac00\\ub974\\uccd0 \\uc900\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">13</div>
+  <div class="en">Her life shows that a dream grows stronger when it is connected with effort and courage.</div>
+  <button onclick="speak(\"Her life shows that a dream grows stronger when it is connected with effort and courage.\", 'en-US')">영어 듣기</button>
+  <div class="ko">그녀의 삶은 꿈이 노력과 용기와 연결될 때 더 강해진다는 것을 보여 준다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uadf8\\ub140\\uc758 \\uc0b6\\uc740 \\uafc8\\uc774 \\ub178\\ub825\\uacfc \\uc6a9\\uae30\\uc640 \\uc5f0\\uacb0\\ub420 \\ub54c \\ub354 \\uac15\\ud574\\uc9c4\\ub2e4\\ub294 \\uac83\\uc744 \\ubcf4\\uc5ec \\uc900\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">14</div>
+  <div class="en">In literature, dreams often guide characters through suffering toward wisdom.</div>
+  <button onclick="speak(\"In literature, dreams often guide characters through suffering toward wisdom.\", 'en-US')">영어 듣기</button>
+  <div class="ko">문학에서 꿈은 인물들을 고통 속에서 지혜로 이끄는 경우가 많다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ubb38\\ud559\\uc5d0\\uc11c \\uafc8\\uc740 \\uc778\\ubb3c\\ub4e4\\uc744 \\uace0\\ud1b5 \\uc18d\\uc5d0\\uc11c \\uc9c0\\ud61c\\ub85c \\uc774\\ub044\\ub294 \\uacbd\\uc6b0\\uac00 \\ub9ce\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">15</div>
+  <div class="en">A dream gives meaning to patience, because it helps us endure today for tomorrow.</div>
+  <button onclick="speak(\"A dream gives meaning to patience, because it helps us endure today for tomorrow.\", 'en-US')">영어 듣기</button>
+  <div class="ko">꿈은 오늘을 견디며 내일을 향하게 하므로 인내에 의미를 부여한다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uafc8\\uc740 \\uc624\\ub298\\uc744 \\uacac\\ub514\\uba70 \\ub0b4\\uc77c\\uc744 \\ud5a5\\ud558\\uac8c \\ud558\\ubbc0\\ub85c \\uc778\\ub0b4\\uc5d0 \\uc758\\ubbf8\\ub97c \\ubd80\\uc5ec\\ud55c\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">16</div>
+  <div class="en">However, dreaming must be joined with action, or it remains only a beautiful thought.</div>
+  <button onclick="speak(\"However, dreaming must be joined with action, or it remains only a beautiful thought.\", 'en-US')">영어 듣기</button>
+  <div class="ko">그러나 꿈은 행동과 결합되어야 하며, 그렇지 않으면 아름다운 생각으로만 남는다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uadf8\\ub7ec\\ub098 \\uafc8\\uc740 \\ud589\\ub3d9\\uacfc \\uacb0\\ud569\\ub418\\uc5b4\\uc57c \\ud558\\uba70, \\uadf8\\ub807\\uc9c0 \\uc54a\\uc73c\\uba74 \\uc544\\ub984\\ub2e4\\uc6b4 \\uc0dd\\uac01\\uc73c\\ub85c\\ub9cc \\ub0a8\\ub294\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">17</div>
+  <div class="en">A wise dreamer turns imagination into plans and plans into daily practice.</div>
+  <button onclick="speak(\"A wise dreamer turns imagination into plans and plans into daily practice.\", 'en-US')">영어 듣기</button>
+  <div class="ko">지혜로운 꿈꾸는 사람은 상상을 계획으로, 계획을 일상의 실천으로 바꾼다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc9c0\\ud61c\\ub85c\\uc6b4 \\uafc8\\uafb8\\ub294 \\uc0ac\\ub78c\\uc740 \\uc0c1\\uc0c1\\uc744 \\uacc4\\ud68d\\uc73c\\ub85c, \\uacc4\\ud68d\\uc744 \\uc77c\\uc0c1\\uc758 \\uc2e4\\ucc9c\\uc73c\\ub85c \\ubc14\\uafbc\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">18</div>
+  <div class="en">Ultimately, a dream is the human promise that life can become deeper, kinder, and more meaningful.</div>
+  <button onclick="speak(\"Ultimately, a dream is the human promise that life can become deeper, kinder, and more meaningful.\", 'en-US')">영어 듣기</button>
+  <div class="ko">궁극적으로 꿈은 삶이 더 깊고 친절하며 의미 있게 될 수 있다는 인간의 약속이다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uad81\\uadf9\\uc801\\uc73c\\ub85c \\uafc8\\uc740 \\uc0b6\\uc774 \\ub354 \\uae4a\\uace0 \\uce5c\\uc808\\ud558\\uba70 \\uc758\\ubbf8 \\uc788\\uac8c \\ub420 \\uc218 \\uc788\\ub2e4\\ub294 \\uc778\\uac04\\uc758 \\uc57d\\uc18d\\uc774\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+</div>
+
+<div class="section">
+<h2>Ⅱ. Dream(꿈) — 오늘 하루 실천 10문장</h2>
+
+<div class="pair">
+  <div class="num">1</div>
+  <div class="en">Today, I will begin my day by remembering my dream with a hopeful heart.</div>
+  <button onclick="speak(\"Today, I will begin my day by remembering my dream with a hopeful heart.\", 'en-US')">영어 듣기</button>
+  <div class="ko">오늘 나는 희망찬 마음으로 나의 꿈을 기억하며 하루를 시작하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc624\\ub298 \\ub098\\ub294 \\ud76c\\ub9dd\\ucc2c \\ub9c8\\uc74c\\uc73c\\ub85c \\ub098\\uc758 \\uafc8\\uc744 \\uae30\\uc5b5\\ud558\\uba70 \\ud558\\ub8e8\\ub97c \\uc2dc\\uc791\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">2</div>
+  <div class="en">I will take one small action that brings me closer to my dream.</div>
+  <button onclick="speak(\"I will take one small action that brings me closer to my dream.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 나의 꿈에 더 가까이 가는 작은 행동 하나를 실천하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\ub098\\uc758 \\uafc8\\uc5d0 \\ub354 \\uac00\\uae4c\\uc774 \\uac00\\ub294 \\uc791\\uc740 \\ud589\\ub3d9 \\ud558\\ub098\\ub97c \\uc2e4\\ucc9c\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">3</div>
+  <div class="en">Dreams become real when I connect them with effort and patience.</div>
+  <button onclick="speak(\"Dreams become real when I connect them with effort and patience.\", 'en-US')">영어 듣기</button>
+  <div class="ko">꿈은 노력과 인내와 연결될 때 현실이 된다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uafc8\\uc740 \\ub178\\ub825\\uacfc \\uc778\\ub0b4\\uc640 \\uc5f0\\uacb0\\ub420 \\ub54c \\ud604\\uc2e4\\uc774 \\ub41c\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">4</div>
+  <div class="en">I will encourage my students and people around me to believe in their possibilities.</div>
+  <button onclick="speak(\"I will encourage my students and people around me to believe in their possibilities.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 학생들과 주변 사람들이 자신의 가능성을 믿도록 격려하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\ud559\\uc0dd\\ub4e4\\uacfc \\uc8fc\\ubcc0 \\uc0ac\\ub78c\\ub4e4\\uc774 \\uc790\\uc2e0\\uc758 \\uac00\\ub2a5\\uc131\\uc744 \\ubbff\\ub3c4\\ub85d \\uaca9\\ub824\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">5</div>
+  <div class="en">When I feel tired, I will remember why my dream matters.</div>
+  <button onclick="speak(\"When I feel tired, I will remember why my dream matters.\", 'en-US')">영어 듣기</button>
+  <div class="ko">피곤할 때 나는 나의 꿈이 왜 중요한지 기억하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ud53c\\uace4\\ud560 \\ub54c \\ub098\\ub294 \\ub098\\uc758 \\uafc8\\uc774 \\uc65c \\uc911\\uc694\\ud55c\\uc9c0 \\uae30\\uc5b5\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">6</div>
+  <div class="en">I will not give up because of one mistake or one difficult moment.</div>
+  <button onclick="speak(\"I will not give up because of one mistake or one difficult moment.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 한 번의 실수나 어려운 순간 때문에 포기하지 않겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\ud55c \\ubc88\\uc758 \\uc2e4\\uc218\\ub098 \\uc5b4\\ub824\\uc6b4 \\uc21c\\uac04 \\ub54c\\ubb38\\uc5d0 \\ud3ec\\uae30\\ud558\\uc9c0 \\uc54a\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">7</div>
+  <div class="en">I will make my dream helpful not only to myself but also to others.</div>
+  <button onclick="speak(\"I will make my dream helpful not only to myself but also to others.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 나의 꿈이 나 자신뿐만 아니라 다른 사람에게도 도움이 되게 하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\ub098\\uc758 \\uafc8\\uc774 \\ub098 \\uc790\\uc2e0\\ubfd0\\ub9cc \\uc544\\ub2c8\\ub77c \\ub2e4\\ub978 \\uc0ac\\ub78c\\uc5d0\\uac8c\\ub3c4 \\ub3c4\\uc6c0\\uc774 \\ub418\\uac8c \\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">8</div>
+  <div class="en">I will turn today’s ordinary work into a step toward tomorrow.</div>
+  <button onclick="speak(\"I will turn today\\u2019s ordinary work into a step toward tomorrow.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 오늘의 평범한 일을 내일을 향한 한 걸음으로 바꾸겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\uc624\\ub298\\uc758 \\ud3c9\\ubc94\\ud55c \\uc77c\\uc744 \\ub0b4\\uc77c\\uc744 \\ud5a5\\ud55c \\ud55c \\uac78\\uc74c\\uc73c\\ub85c \\ubc14\\uafb8\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">9</div>
+  <div class="en">With a dream in my heart, I can live today with direction and strength.</div>
+  <button onclick="speak(\"With a dream in my heart, I can live today with direction and strength.\", 'en-US')">영어 듣기</button>
+  <div class="ko">마음속에 꿈이 있으면 나는 오늘을 방향과 힘을 가지고 살아갈 수 있다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub9c8\\uc74c\\uc18d\\uc5d0 \\uafc8\\uc774 \\uc788\\uc73c\\uba74 \\ub098\\ub294 \\uc624\\ub298\\uc744 \\ubc29\\ud5a5\\uacfc \\ud798\\uc744 \\uac00\\uc9c0\\uace0 \\uc0b4\\uc544\\uac08 \\uc218 \\uc788\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">10</div>
+  <div class="en">Today, I will live faithfully, brightly, and meaningfully for my dream.</div>
+  <button onclick="speak(\"Today, I will live faithfully, brightly, and meaningfully for my dream.\", 'en-US')">영어 듣기</button>
+  <div class="ko">오늘 나는 나의 꿈을 위해 성실하고 밝고 의미 있게 살아가겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc624\\ub298 \\ub098\\ub294 \\ub098\\uc758 \\uafc8\\uc744 \\uc704\\ud574 \\uc131\\uc2e4\\ud558\\uace0 \\ubc1d\\uace0 \\uc758\\ubbf8 \\uc788\\uac8c \\uc0b4\\uc544\\uac00\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+</div>
+
+<div class="section">
+<h2>전체 원문 Text</h2>
+<pre>Dream (꿈)을 인문 철학적으로 예시와 일화를 들어서
+영어18문장(한글 해석)으로 설명
+
+A dream is not only a picture of the future, but also a question about what kind of life we want to live.
+꿈은 단지 미래의 그림이 아니라, 우리가 어떤 삶을 살고 싶은지에 대한 질문이다.
+In humanistic philosophy, dreams reveal human freedom, hope, and the desire for meaning.
+인문 철학에서 꿈은 인간의 자유, 희망, 그리고 의미를 향한 갈망을 드러낸다.
+Plato compared the human soul to something that longs for truth beyond the visible world.
+플라톤은 인간의 영혼을 보이는 세계 너머의 진리를 갈망하는 존재로 비유했다.
+In this sense, a dream can lift our eyes from daily routine to higher values.
+이런 의미에서 꿈은 우리의 시선을 일상의 반복에서 더 높은 가치로 들어 올린다.
+For example, a student who dreams of becoming a scientist is also dreaming of understanding nature more deeply.
+예를 들어 과학자를 꿈꾸는 학생은 자연을 더 깊이 이해하려는 꿈도 꾸고 있는 것이다.
+A teacher who dreams of helping students grow is practicing love through education.
+학생들의 성장을 돕고자 꿈꾸는 교사는 교육을 통해 사랑을 실천하고 있는 것이다.
+Martin Luther King Jr. showed that a dream can become a moral voice for justice.
+마틴 루터 킹 주니어는 꿈이 정의를 향한 도덕적 목소리가 될 수 있음을 보여 주었다.
+His famous dream was not only personal, but also a hope for a more humane society.
+그의 유명한 꿈은 개인적인 것만이 아니라 더 인간다운 사회를 향한 희망이었다.
+A true dream does not close the heart; it opens the heart to others.
+참된 꿈은 마음을 닫게 하지 않고 다른 사람을 향해 마음을 열게 한다.
+Dreams become dangerous when they are guided only by selfish success.
+꿈이 이기적인 성공만을 향할 때 그것은 위험해질 수 있다.
+Therefore, we should ask whether our dreams make both ourselves and the world better.
+그러므로 우리는 우리의 꿈이 자신과 세상을 함께 더 좋게 만드는지 물어야 한다.
+The story of Helen Keller teaches us that dreams can survive even in silence and darkness.
+헬렌 켈러의 이야기는 꿈이 침묵과 어둠 속에서도 살아남을 수 있음을 가르쳐 준다.
+Her life shows that a dream grows stronger when it is connected with effort and courage.
+그녀의 삶은 꿈이 노력과 용기와 연결될 때 더 강해진다는 것을 보여 준다.
+In literature, dreams often guide characters through suffering toward wisdom.
+문학에서 꿈은 인물들을 고통 속에서 지혜로 이끄는 경우가 많다.
+A dream gives meaning to patience, because it helps us endure today for tomorrow.
+꿈은 오늘을 견디며 내일을 향하게 하므로 인내에 의미를 부여한다.
+However, dreaming must be joined with action, or it remains only a beautiful thought.
+그러나 꿈은 행동과 결합되어야 하며, 그렇지 않으면 아름다운 생각으로만 남는다.
+A wise dreamer turns imagination into plans and plans into daily practice.
+지혜로운 꿈꾸는 사람은 상상을 계획으로, 계획을 일상의 실천으로 바꾼다.
+Ultimately, a dream is the human promise that life can become deeper, kinder, and more meaningful.
+궁극적으로 꿈은 삶이 더 깊고 친절하며 의미 있게 될 수 있다는 인간의 약속이다.
+
+오늘 하루 Dream (꿈)을 생각하고 실천하며 살고 싶다.
+영어 10줄(한글 해석)로 오늘의 삶을 이야기 하기
+
+Today, I will begin my day by remembering my dream with a hopeful heart.
+오늘 나는 희망찬 마음으로 나의 꿈을 기억하며 하루를 시작하겠다.
+I will take one small action that brings me closer to my dream.
+나는 나의 꿈에 더 가까이 가는 작은 행동 하나를 실천하겠다.
+Dreams become real when I connect them with effort and patience.
+꿈은 노력과 인내와 연결될 때 현실이 된다.
+I will encourage my students and people around me to believe in their possibilities.
+나는 학생들과 주변 사람들이 자신의 가능성을 믿도록 격려하겠다.
+When I feel tired, I will remember why my dream matters.
+피곤할 때 나는 나의 꿈이 왜 중요한지 기억하겠다.
+I will not give up because of one mistake or one difficult moment.
+나는 한 번의 실수나 어려운 순간 때문에 포기하지 않겠다.
+I will make my dream helpful not only to myself but also to others.
+나는 나의 꿈이 나 자신뿐만 아니라 다른 사람에게도 도움이 되게 하겠다.
+I will turn today’s ordinary work into a step toward tomorrow.
+나는 오늘의 평범한 일을 내일을 향한 한 걸음으로 바꾸겠다.
+With a dream in my heart, I can live today with direction and strength.
+마음속에 꿈이 있으면 나는 오늘을 방향과 힘을 가지고 살아갈 수 있다.
+Today, I will live faithfully, brightly, and meaningfully for my dream.
+오늘 나는 나의 꿈을 위해 성실하고 밝고 의미 있게 살아가겠다.</pre>
+</div>
+
+<script>
+const EN_TEXT = "A dream is not only a picture of the future, but also a question about what kind of life we want to live.\nIn humanistic philosophy, dreams reveal human freedom, hope, and the desire for meaning.\nPlato compared the human soul to something that longs for truth beyond the visible world.\nIn this sense, a dream can lift our eyes from daily routine to higher values.\nFor example, a student who dreams of becoming a scientist is also dreaming of understanding nature more deeply.\nA teacher who dreams of helping students grow is practicing love through education.\nMartin Luther King Jr. showed that a dream can become a moral voice for justice.\nHis famous dream was not only personal, but also a hope for a more humane society.\nA true dream does not close the heart; it opens the heart to others.\nDreams become dangerous when they are guided only by selfish success.\nTherefore, we should ask whether our dreams make both ourselves and the world better.\nThe story of Helen Keller teaches us that dreams can survive even in silence and darkness.\nHer life shows that a dream grows stronger when it is connected with effort and courage.\nIn literature, dreams often guide characters through suffering toward wisdom.\nA dream gives meaning to patience, because it helps us endure today for tomorrow.\nHowever, dreaming must be joined with action, or it remains only a beautiful thought.\nA wise dreamer turns imagination into plans and plans into daily practice.\nUltimately, a dream is the human promise that life can become deeper, kinder, and more meaningful.\nToday, I will begin my day by remembering my dream with a hopeful heart.\nI will take one small action that brings me closer to my dream.\nDreams become real when I connect them with effort and patience.\nI will encourage my students and people around me to believe in their possibilities.\nWhen I feel tired, I will remember why my dream matters.\nI will not give up because of one mistake or one difficult moment.\nI will make my dream helpful not only to myself but also to others.\nI will turn today’s ordinary work into a step toward tomorrow.\nWith a dream in my heart, I can live today with direction and strength.\nToday, I will live faithfully, brightly, and meaningfully for my dream.";
+const KO_TEXT = "꿈은 단지 미래의 그림이 아니라, 우리가 어떤 삶을 살고 싶은지에 대한 질문이다.\n인문 철학에서 꿈은 인간의 자유, 희망, 그리고 의미를 향한 갈망을 드러낸다.\n플라톤은 인간의 영혼을 보이는 세계 너머의 진리를 갈망하는 존재로 비유했다.\n이런 의미에서 꿈은 우리의 시선을 일상의 반복에서 더 높은 가치로 들어 올린다.\n예를 들어 과학자를 꿈꾸는 학생은 자연을 더 깊이 이해하려는 꿈도 꾸고 있는 것이다.\n학생들의 성장을 돕고자 꿈꾸는 교사는 교육을 통해 사랑을 실천하고 있는 것이다.\n마틴 루터 킹 주니어는 꿈이 정의를 향한 도덕적 목소리가 될 수 있음을 보여 주었다.\n그의 유명한 꿈은 개인적인 것만이 아니라 더 인간다운 사회를 향한 희망이었다.\n참된 꿈은 마음을 닫게 하지 않고 다른 사람을 향해 마음을 열게 한다.\n꿈이 이기적인 성공만을 향할 때 그것은 위험해질 수 있다.\n그러므로 우리는 우리의 꿈이 자신과 세상을 함께 더 좋게 만드는지 물어야 한다.\n헬렌 켈러의 이야기는 꿈이 침묵과 어둠 속에서도 살아남을 수 있음을 가르쳐 준다.\n그녀의 삶은 꿈이 노력과 용기와 연결될 때 더 강해진다는 것을 보여 준다.\n문학에서 꿈은 인물들을 고통 속에서 지혜로 이끄는 경우가 많다.\n꿈은 오늘을 견디며 내일을 향하게 하므로 인내에 의미를 부여한다.\n그러나 꿈은 행동과 결합되어야 하며, 그렇지 않으면 아름다운 생각으로만 남는다.\n지혜로운 꿈꾸는 사람은 상상을 계획으로, 계획을 일상의 실천으로 바꾼다.\n궁극적으로 꿈은 삶이 더 깊고 친절하며 의미 있게 될 수 있다는 인간의 약속이다.\n오늘 나는 희망찬 마음으로 나의 꿈을 기억하며 하루를 시작하겠다.\n나는 나의 꿈에 더 가까이 가는 작은 행동 하나를 실천하겠다.\n꿈은 노력과 인내와 연결될 때 현실이 된다.\n나는 학생들과 주변 사람들이 자신의 가능성을 믿도록 격려하겠다.\n피곤할 때 나는 나의 꿈이 왜 중요한지 기억하겠다.\n나는 한 번의 실수나 어려운 순간 때문에 포기하지 않겠다.\n나는 나의 꿈이 나 자신뿐만 아니라 다른 사람에게도 도움이 되게 하겠다.\n나는 오늘의 평범한 일을 내일을 향한 한 걸음으로 바꾸겠다.\n마음속에 꿈이 있으면 나는 오늘을 방향과 힘을 가지고 살아갈 수 있다.\n오늘 나는 나의 꿈을 위해 성실하고 밝고 의미 있게 살아가겠다.";
+function speak(text, lang){
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = lang;
+  u.rate = lang === 'en-US' ? 0.88 : 0.95;
+  u.pitch = 1;
+  speechSynthesis.speak(u);
+}
+function speakAll(lang){
+  speechSynthesis.cancel();
+  const text = lang === 'en-US' ? EN_TEXT : KO_TEXT;
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = lang;
+  u.rate = lang === 'en-US' ? 0.88 : 0.95;
+  u.pitch = 1;
+  speechSynthesis.speak(u);
+}
+</script>
+</div></div>
+</body>
+</html>

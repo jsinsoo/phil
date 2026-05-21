@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Future 미래 TTS 학습</title>
+<style>
+body{font-family:'Malgun Gothic',Arial,sans-serif;margin:0;background:linear-gradient(135deg,#eef5ff,#f5fff3);color:#222;}
+.wrap{max-width:1050px;margin:34px auto;padding:22px;}
+.card{background:#fff;border-radius:24px;padding:30px;box-shadow:0 12px 34px rgba(0,0,0,.12);}
+h1{text-align:center;color:#25528a;font-size:36px;margin:6px 0 10px;}
+.subtitle{text-align:center;line-height:1.7;color:#555;font-size:17px;}
+.info{background:#f0f7ff;border-left:7px solid #4f82c8;padding:16px 20px;border-radius:16px;margin:20px 0;line-height:1.8;font-size:18px;}
+.controls{text-align:center;margin:20px 0;}
+button{border:none;border-radius:999px;padding:9px 15px;margin:4px;background:#2f5e9a;color:white;cursor:pointer;font-weight:700;}
+button:hover{filter:brightness(1.08);}
+.btn-ko{background:#5e8f31;}
+.stop{background:#555;}
+.section{margin-top:30px;padding-top:18px;border-top:2px dashed #ddd;}
+h2{color:#5f6700;font-size:25px;}
+.pair{display:grid;grid-template-columns:44px 1fr auto;gap:8px 12px;align-items:center;margin:13px 0;padding:16px;border:1px solid #eee;border-radius:18px;background:#fbfdff;}
+.num{grid-row:1 / span 2;font-size:22px;font-weight:800;color:#7d98c2;text-align:center;}
+.en{font-size:18px;font-weight:700;color:#25528a;line-height:1.55;}
+.ko{font-size:17px;color:#333;line-height:1.55;}
+pre{white-space:pre-wrap;word-break:keep-all;background:#fffdf7;border-radius:18px;padding:20px;line-height:1.85;font-size:16px;border:1px solid #f0e5c8;}
+@media(max-width:720px){.pair{grid-template-columns:34px 1fr;}.pair button{grid-column:2;justify-self:start;}}
+</style>
+</head>
+<body>
+<div class="wrap"><div class="card">
+<h1>Future 미래 TTS 학습</h1>
+<div class="subtitle">Future(미래)의 인문 철학적 설명 18문장 + 오늘 하루 실천 10문장</div>
+<div class="info">
+<strong>Future:</strong> 미래는 멀리 있는 시간이 아니라 오늘의 선택, 습관, 희망이 만들어 가는 삶의 방향입니다.<br>
+<strong>Practice:</strong> 오늘의 작은 배움과 친절을 내일의 더 좋은 삶을 위한 씨앗으로 삼습니다.
+</div>
+<div class="controls">
+<button onclick="speakAll('en-US')">영어 전체 듣기</button>
+<button class="btn-ko" onclick="speakAll('ko-KR')">한국어 전체 듣기</button>
+<button class="stop" onclick="speechSynthesis.cancel()">정지</button>
+</div>
+
+<div class="section">
+<h2>Ⅰ. Future(미래) — 인문 철학적 설명 18문장</h2>
+
+<div class="pair">
+  <div class="num">1</div>
+  <div class="en">The future is not only a time that comes later, but also a direction shaped by today’s choices.</div>
+  <button onclick="speak(\"The future is not only a time that comes later, but also a direction shaped by today\\u2019s choices.\", 'en-US')">영어 듣기</button>
+  <div class="ko">미래는 단지 나중에 오는 시간이 아니라 오늘의 선택이 만들어 가는 방향이다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ubbf8\\ub798\\ub294 \\ub2e8\\uc9c0 \\ub098\\uc911\\uc5d0 \\uc624\\ub294 \\uc2dc\\uac04\\uc774 \\uc544\\ub2c8\\ub77c \\uc624\\ub298\\uc758 \\uc120\\ud0dd\\uc774 \\ub9cc\\ub4e4\\uc5b4 \\uac00\\ub294 \\ubc29\\ud5a5\\uc774\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">2</div>
+  <div class="en">In humanistic philosophy, the future asks us what kind of person we want to become.</div>
+  <button onclick="speak(\"In humanistic philosophy, the future asks us what kind of person we want to become.\", 'en-US')">영어 듣기</button>
+  <div class="ko">인문 철학에서 미래는 우리가 어떤 사람이 되고 싶은지를 묻는다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc778\\ubb38 \\ucca0\\ud559\\uc5d0\\uc11c \\ubbf8\\ub798\\ub294 \\uc6b0\\ub9ac\\uac00 \\uc5b4\\ub5a4 \\uc0ac\\ub78c\\uc774 \\ub418\\uace0 \\uc2f6\\uc740\\uc9c0\\ub97c \\ubb3b\\ub294\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">3</div>
+  <div class="en">Socrates reminds us that an examined life prepares a wiser future.</div>
+  <button onclick="speak(\"Socrates reminds us that an examined life prepares a wiser future.\", 'en-US')">영어 듣기</button>
+  <div class="ko">소크라테스는 성찰하는 삶이 더 지혜로운 미래를 준비하게 한다는 것을 일깨워 준다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc18c\\ud06c\\ub77c\\ud14c\\uc2a4\\ub294 \\uc131\\ucc30\\ud558\\ub294 \\uc0b6\\uc774 \\ub354 \\uc9c0\\ud61c\\ub85c\\uc6b4 \\ubbf8\\ub798\\ub97c \\uc900\\ube44\\ud558\\uac8c \\ud55c\\ub2e4\\ub294 \\uac83\\uc744 \\uc77c\\uae68\\uc6cc \\uc900\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">4</div>
+  <div class="en">When we ask honest questions today, we open better possibilities for tomorrow.</div>
+  <button onclick="speak(\"When we ask honest questions today, we open better possibilities for tomorrow.\", 'en-US')">영어 듣기</button>
+  <div class="ko">오늘 정직한 질문을 던질 때 우리는 내일의 더 나은 가능성을 연다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc624\\ub298 \\uc815\\uc9c1\\ud55c \\uc9c8\\ubb38\\uc744 \\ub358\\uc9c8 \\ub54c \\uc6b0\\ub9ac\\ub294 \\ub0b4\\uc77c\\uc758 \\ub354 \\ub098\\uc740 \\uac00\\ub2a5\\uc131\\uc744 \\uc5f0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">5</div>
+  <div class="en">Aristotle believed that good habits form good character over time.</div>
+  <button onclick="speak(\"Aristotle believed that good habits form good character over time.\", 'en-US')">영어 듣기</button>
+  <div class="ko">아리스토텔레스는 좋은 습관이 시간이 지나 좋은 인격을 만든다고 믿었다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc544\\ub9ac\\uc2a4\\ud1a0\\ud154\\ub808\\uc2a4\\ub294 \\uc88b\\uc740 \\uc2b5\\uad00\\uc774 \\uc2dc\\uac04\\uc774 \\uc9c0\\ub098 \\uc88b\\uc740 \\uc778\\uaca9\\uc744 \\ub9cc\\ub4e0\\ub2e4\\uace0 \\ubbff\\uc5c8\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">6</div>
+  <div class="en">This means that the future is built through repeated small actions.</div>
+  <button onclick="speak(\"This means that the future is built through repeated small actions.\", 'en-US')">영어 듣기</button>
+  <div class="ko">이는 미래가 반복되는 작은 행동들을 통해 세워진다는 뜻이다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc774\\ub294 \\ubbf8\\ub798\\uac00 \\ubc18\\ubcf5\\ub418\\ub294 \\uc791\\uc740 \\ud589\\ub3d9\\ub4e4\\uc744 \\ud1b5\\ud574 \\uc138\\uc6cc\\uc9c4\\ub2e4\\ub294 \\ub73b\\uc774\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">7</div>
+  <div class="en">For example, a student who studies a little every day is quietly building a future of growth.</div>
+  <button onclick="speak(\"For example, a student who studies a little every day is quietly building a future of growth.\", 'en-US')">영어 듣기</button>
+  <div class="ko">예를 들어 매일 조금씩 공부하는 학생은 조용히 성장의 미래를 만들어 가고 있다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc608\\ub97c \\ub4e4\\uc5b4 \\ub9e4\\uc77c \\uc870\\uae08\\uc529 \\uacf5\\ubd80\\ud558\\ub294 \\ud559\\uc0dd\\uc740 \\uc870\\uc6a9\\ud788 \\uc131\\uc7a5\\uc758 \\ubbf8\\ub798\\ub97c \\ub9cc\\ub4e4\\uc5b4 \\uac00\\uace0 \\uc788\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">8</div>
+  <div class="en">A teacher who encourages students is planting seeds in the future of many lives.</div>
+  <button onclick="speak(\"A teacher who encourages students is planting seeds in the future of many lives.\", 'en-US')">영어 듣기</button>
+  <div class="ko">학생들을 격려하는 교사는 많은 삶의 미래에 씨앗을 심고 있는 것이다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ud559\\uc0dd\\ub4e4\\uc744 \\uaca9\\ub824\\ud558\\ub294 \\uad50\\uc0ac\\ub294 \\ub9ce\\uc740 \\uc0b6\\uc758 \\ubbf8\\ub798\\uc5d0 \\uc528\\uc557\\uc744 \\uc2ec\\uace0 \\uc788\\ub294 \\uac83\\uc774\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">9</div>
+  <div class="en">Martin Luther King Jr. dreamed of a future where justice and dignity would be shared by all.</div>
+  <button onclick="speak(\"Martin Luther King Jr. dreamed of a future where justice and dignity would be shared by all.\", 'en-US')">영어 듣기</button>
+  <div class="ko">마틴 루터 킹 주니어는 정의와 존엄이 모두에게 나누어지는 미래를 꿈꾸었다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub9c8\\ud2f4 \\ub8e8\\ud130 \\ud0b9 \\uc8fc\\ub2c8\\uc5b4\\ub294 \\uc815\\uc758\\uc640 \\uc874\\uc5c4\\uc774 \\ubaa8\\ub450\\uc5d0\\uac8c \\ub098\\ub204\\uc5b4\\uc9c0\\ub294 \\ubbf8\\ub798\\ub97c \\uafc8\\uafb8\\uc5c8\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">10</div>
+  <div class="en">His story shows that the future becomes brighter when hope is joined with action.</div>
+  <button onclick="speak(\"His story shows that the future becomes brighter when hope is joined with action.\", 'en-US')">영어 듣기</button>
+  <div class="ko">그의 이야기는 희망이 행동과 결합될 때 미래가 더 밝아진다는 것을 보여 준다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uadf8\\uc758 \\uc774\\uc57c\\uae30\\ub294 \\ud76c\\ub9dd\\uc774 \\ud589\\ub3d9\\uacfc \\uacb0\\ud569\\ub420 \\ub54c \\ubbf8\\ub798\\uac00 \\ub354 \\ubc1d\\uc544\\uc9c4\\ub2e4\\ub294 \\uac83\\uc744 \\ubcf4\\uc5ec \\uc900\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">11</div>
+  <div class="en">The future can also make us anxious because it is uncertain.</div>
+  <button onclick="speak(\"The future can also make us anxious because it is uncertain.\", 'en-US')">영어 듣기</button>
+  <div class="ko">미래는 불확실하기 때문에 우리를 불안하게 만들 수도 있다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ubbf8\\ub798\\ub294 \\ubd88\\ud655\\uc2e4\\ud558\\uae30 \\ub54c\\ubb38\\uc5d0 \\uc6b0\\ub9ac\\ub97c \\ubd88\\uc548\\ud558\\uac8c \\ub9cc\\ub4e4 \\uc218\\ub3c4 \\uc788\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">12</div>
+  <div class="en">However, uncertainty is not only danger; it is also possibility.</div>
+  <button onclick="speak(\"However, uncertainty is not only danger; it is also possibility.\", 'en-US')">영어 듣기</button>
+  <div class="ko">그러나 불확실성은 위험만이 아니라 가능성이기도 하다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uadf8\\ub7ec\\ub098 \\ubd88\\ud655\\uc2e4\\uc131\\uc740 \\uc704\\ud5d8\\ub9cc\\uc774 \\uc544\\ub2c8\\ub77c \\uac00\\ub2a5\\uc131\\uc774\\uae30\\ub3c4 \\ud558\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">13</div>
+  <div class="en">A wise person does not try to control every future event, but prepares the heart and mind.</div>
+  <button onclick="speak(\"A wise person does not try to control every future event, but prepares the heart and mind.\", 'en-US')">영어 듣기</button>
+  <div class="ko">지혜로운 사람은 미래의 모든 일을 통제하려 하지 않고 마음과 정신을 준비한다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc9c0\\ud61c\\ub85c\\uc6b4 \\uc0ac\\ub78c\\uc740 \\ubbf8\\ub798\\uc758 \\ubaa8\\ub4e0 \\uc77c\\uc744 \\ud1b5\\uc81c\\ud558\\ub824 \\ud558\\uc9c0 \\uc54a\\uace0 \\ub9c8\\uc74c\\uacfc \\uc815\\uc2e0\\uc744 \\uc900\\ube44\\ud55c\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">14</div>
+  <div class="en">In daily life, the future begins when we choose learning over laziness and kindness over indifference.</div>
+  <button onclick="speak(\"In daily life, the future begins when we choose learning over laziness and kindness over indifference.\", 'en-US')">영어 듣기</button>
+  <div class="ko">일상에서 미래는 게으름 대신 배움을, 무관심 대신 친절을 선택할 때 시작된다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc77c\\uc0c1\\uc5d0\\uc11c \\ubbf8\\ub798\\ub294 \\uac8c\\uc73c\\ub984 \\ub300\\uc2e0 \\ubc30\\uc6c0\\uc744, \\ubb34\\uad00\\uc2ec \\ub300\\uc2e0 \\uce5c\\uc808\\uc744 \\uc120\\ud0dd\\ud560 \\ub54c \\uc2dc\\uc791\\ub41c\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">15</div>
+  <div class="en">Technology may change the future, but human wisdom must guide its direction.</div>
+  <button onclick="speak(\"Technology may change the future, but human wisdom must guide its direction.\", 'en-US')">영어 듣기</button>
+  <div class="ko">기술은 미래를 바꿀 수 있지만 인간의 지혜가 그 방향을 이끌어야 한다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uae30\\uc220\\uc740 \\ubbf8\\ub798\\ub97c \\ubc14\\uafc0 \\uc218 \\uc788\\uc9c0\\ub9cc \\uc778\\uac04\\uc758 \\uc9c0\\ud61c\\uac00 \\uadf8 \\ubc29\\ud5a5\\uc744 \\uc774\\ub04c\\uc5b4\\uc57c \\ud55c\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">16</div>
+  <div class="en">A good future is not only faster and richer, but also more humane and meaningful.</div>
+  <button onclick="speak(\"A good future is not only faster and richer, but also more humane and meaningful.\", 'en-US')">영어 듣기</button>
+  <div class="ko">좋은 미래는 더 빠르고 부유한 것만이 아니라 더 인간답고 의미 있는 것이다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc88b\\uc740 \\ubbf8\\ub798\\ub294 \\ub354 \\ube60\\ub974\\uace0 \\ubd80\\uc720\\ud55c \\uac83\\ub9cc\\uc774 \\uc544\\ub2c8\\ub77c \\ub354 \\uc778\\uac04\\ub2f5\\uace0 \\uc758\\ubbf8 \\uc788\\ub294 \\uac83\\uc774\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">17</div>
+  <div class="en">The future becomes beautiful when we prepare it for both ourselves and others.</div>
+  <button onclick="speak(\"The future becomes beautiful when we prepare it for both ourselves and others.\", 'en-US')">영어 듣기</button>
+  <div class="ko">미래는 우리 자신뿐 아니라 다른 사람을 위해 준비할 때 아름다워진다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ubbf8\\ub798\\ub294 \\uc6b0\\ub9ac \\uc790\\uc2e0\\ubfd0 \\uc544\\ub2c8\\ub77c \\ub2e4\\ub978 \\uc0ac\\ub78c\\uc744 \\uc704\\ud574 \\uc900\\ube44\\ud560 \\ub54c \\uc544\\ub984\\ub2e4\\uc6cc\\uc9c4\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">18</div>
+  <div class="en">Ultimately, the future is the promise that today’s hope, effort, and love can become tomorrow’s light.</div>
+  <button onclick="speak(\"Ultimately, the future is the promise that today\\u2019s hope, effort, and love can become tomorrow\\u2019s light.\", 'en-US')">영어 듣기</button>
+  <div class="ko">궁극적으로 미래는 오늘의 희망과 노력과 사랑이 내일의 빛이 될 수 있다는 약속이다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uad81\\uadf9\\uc801\\uc73c\\ub85c \\ubbf8\\ub798\\ub294 \\uc624\\ub298\\uc758 \\ud76c\\ub9dd\\uacfc \\ub178\\ub825\\uacfc \\uc0ac\\ub791\\uc774 \\ub0b4\\uc77c\\uc758 \\ube5b\\uc774 \\ub420 \\uc218 \\uc788\\ub2e4\\ub294 \\uc57d\\uc18d\\uc774\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+</div>
+
+<div class="section">
+<h2>Ⅱ. Future(미래) — 오늘 하루 실천 10문장</h2>
+
+<div class="pair">
+  <div class="num">1</div>
+  <div class="en">Today, I will begin my day by thinking about the future with hope.</div>
+  <button onclick="speak(\"Today, I will begin my day by thinking about the future with hope.\", 'en-US')">영어 듣기</button>
+  <div class="ko">오늘 나는 희망을 가지고 미래를 생각하며 하루를 시작하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc624\\ub298 \\ub098\\ub294 \\ud76c\\ub9dd\\uc744 \\uac00\\uc9c0\\uace0 \\ubbf8\\ub798\\ub97c \\uc0dd\\uac01\\ud558\\uba70 \\ud558\\ub8e8\\ub97c \\uc2dc\\uc791\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">2</div>
+  <div class="en">I will make one small choice that helps tomorrow become better.</div>
+  <button onclick="speak(\"I will make one small choice that helps tomorrow become better.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 내일을 더 좋게 만드는 작은 선택 하나를 하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\ub0b4\\uc77c\\uc744 \\ub354 \\uc88b\\uac8c \\ub9cc\\ub4dc\\ub294 \\uc791\\uc740 \\uc120\\ud0dd \\ud558\\ub098\\ub97c \\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">3</div>
+  <div class="en">The future grows from the habits I practice today.</div>
+  <button onclick="speak(\"The future grows from the habits I practice today.\", 'en-US')">영어 듣기</button>
+  <div class="ko">미래는 내가 오늘 실천하는 습관에서 자라난다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ubbf8\\ub798\\ub294 \\ub0b4\\uac00 \\uc624\\ub298 \\uc2e4\\ucc9c\\ud558\\ub294 \\uc2b5\\uad00\\uc5d0\\uc11c \\uc790\\ub77c\\ub09c\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">4</div>
+  <div class="en">I will learn sincerely and use my knowledge for good purposes.</div>
+  <button onclick="speak(\"I will learn sincerely and use my knowledge for good purposes.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 성실히 배우고 나의 지식을 선한 목적을 위해 사용하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\uc131\\uc2e4\\ud788 \\ubc30\\uc6b0\\uace0 \\ub098\\uc758 \\uc9c0\\uc2dd\\uc744 \\uc120\\ud55c \\ubaa9\\uc801\\uc744 \\uc704\\ud574 \\uc0ac\\uc6a9\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">5</div>
+  <div class="en">I will encourage my students to dream wisely about their future.</div>
+  <button onclick="speak(\"I will encourage my students to dream wisely about their future.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 학생들이 자신의 미래를 지혜롭게 꿈꾸도록 격려하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\ud559\\uc0dd\\ub4e4\\uc774 \\uc790\\uc2e0\\uc758 \\ubbf8\\ub798\\ub97c \\uc9c0\\ud61c\\ub86d\\uac8c \\uafc8\\uafb8\\ub3c4\\ub85d \\uaca9\\ub824\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">6</div>
+  <div class="en">When I feel worried, I will turn anxiety into preparation.</div>
+  <button onclick="speak(\"When I feel worried, I will turn anxiety into preparation.\", 'en-US')">영어 듣기</button>
+  <div class="ko">걱정이 될 때 나는 불안을 준비로 바꾸겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uac71\\uc815\\uc774 \\ub420 \\ub54c \\ub098\\ub294 \\ubd88\\uc548\\uc744 \\uc900\\ube44\\ub85c \\ubc14\\uafb8\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">7</div>
+  <div class="en">I will treat today’s work as a seed for tomorrow’s growth.</div>
+  <button onclick="speak(\"I will treat today\\u2019s work as a seed for tomorrow\\u2019s growth.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 오늘의 일을 내일의 성장을 위한 씨앗으로 여기겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\uc624\\ub298\\uc758 \\uc77c\\uc744 \\ub0b4\\uc77c\\uc758 \\uc131\\uc7a5\\uc744 \\uc704\\ud55c \\uc528\\uc557\\uc73c\\ub85c \\uc5ec\\uae30\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">8</div>
+  <div class="en">I will choose kindness, because a good future needs warm relationships.</div>
+  <button onclick="speak(\"I will choose kindness, because a good future needs warm relationships.\", 'en-US')">영어 듣기</button>
+  <div class="ko">좋은 미래에는 따뜻한 관계가 필요하므로 나는 친절을 선택하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc88b\\uc740 \\ubbf8\\ub798\\uc5d0\\ub294 \\ub530\\ub73b\\ud55c \\uad00\\uacc4\\uac00 \\ud544\\uc694\\ud558\\ubbc0\\ub85c \\ub098\\ub294 \\uce5c\\uc808\\uc744 \\uc120\\ud0dd\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">9</div>
+  <div class="en">With hope and effort, I can help create a brighter future.</div>
+  <button onclick="speak(\"With hope and effort, I can help create a brighter future.\", 'en-US')">영어 듣기</button>
+  <div class="ko">희망과 노력으로 나는 더 밝은 미래를 만드는 데 도움을 줄 수 있다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ud76c\\ub9dd\\uacfc \\ub178\\ub825\\uc73c\\ub85c \\ub098\\ub294 \\ub354 \\ubc1d\\uc740 \\ubbf8\\ub798\\ub97c \\ub9cc\\ub4dc\\ub294 \\ub370 \\ub3c4\\uc6c0\\uc744 \\uc904 \\uc218 \\uc788\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">10</div>
+  <div class="en">Today, I will live faithfully, wisely, and hopefully for the future.</div>
+  <button onclick="speak(\"Today, I will live faithfully, wisely, and hopefully for the future.\", 'en-US')">영어 듣기</button>
+  <div class="ko">오늘 나는 미래를 위해 성실하고 지혜롭고 희망차게 살아가겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc624\\ub298 \\ub098\\ub294 \\ubbf8\\ub798\\ub97c \\uc704\\ud574 \\uc131\\uc2e4\\ud558\\uace0 \\uc9c0\\ud61c\\ub86d\\uace0 \\ud76c\\ub9dd\\ucc28\\uac8c \\uc0b4\\uc544\\uac00\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+</div>
+
+<div class="section">
+<h2>전체 원문 Text</h2>
+<pre>Future (미래)을 인문 철학적으로 예시와 일화를 들어서
+영어18문장(한글 해석)으로 설명
+
+The future is not only a time that comes later, but also a direction shaped by today’s choices.
+미래는 단지 나중에 오는 시간이 아니라 오늘의 선택이 만들어 가는 방향이다.
+In humanistic philosophy, the future asks us what kind of person we want to become.
+인문 철학에서 미래는 우리가 어떤 사람이 되고 싶은지를 묻는다.
+Socrates reminds us that an examined life prepares a wiser future.
+소크라테스는 성찰하는 삶이 더 지혜로운 미래를 준비하게 한다는 것을 일깨워 준다.
+When we ask honest questions today, we open better possibilities for tomorrow.
+오늘 정직한 질문을 던질 때 우리는 내일의 더 나은 가능성을 연다.
+Aristotle believed that good habits form good character over time.
+아리스토텔레스는 좋은 습관이 시간이 지나 좋은 인격을 만든다고 믿었다.
+This means that the future is built through repeated small actions.
+이는 미래가 반복되는 작은 행동들을 통해 세워진다는 뜻이다.
+For example, a student who studies a little every day is quietly building a future of growth.
+예를 들어 매일 조금씩 공부하는 학생은 조용히 성장의 미래를 만들어 가고 있다.
+A teacher who encourages students is planting seeds in the future of many lives.
+학생들을 격려하는 교사는 많은 삶의 미래에 씨앗을 심고 있는 것이다.
+Martin Luther King Jr. dreamed of a future where justice and dignity would be shared by all.
+마틴 루터 킹 주니어는 정의와 존엄이 모두에게 나누어지는 미래를 꿈꾸었다.
+His story shows that the future becomes brighter when hope is joined with action.
+그의 이야기는 희망이 행동과 결합될 때 미래가 더 밝아진다는 것을 보여 준다.
+The future can also make us anxious because it is uncertain.
+미래는 불확실하기 때문에 우리를 불안하게 만들 수도 있다.
+However, uncertainty is not only danger; it is also possibility.
+그러나 불확실성은 위험만이 아니라 가능성이기도 하다.
+A wise person does not try to control every future event, but prepares the heart and mind.
+지혜로운 사람은 미래의 모든 일을 통제하려 하지 않고 마음과 정신을 준비한다.
+In daily life, the future begins when we choose learning over laziness and kindness over indifference.
+일상에서 미래는 게으름 대신 배움을, 무관심 대신 친절을 선택할 때 시작된다.
+Technology may change the future, but human wisdom must guide its direction.
+기술은 미래를 바꿀 수 있지만 인간의 지혜가 그 방향을 이끌어야 한다.
+A good future is not only faster and richer, but also more humane and meaningful.
+좋은 미래는 더 빠르고 부유한 것만이 아니라 더 인간답고 의미 있는 것이다.
+The future becomes beautiful when we prepare it for both ourselves and others.
+미래는 우리 자신뿐 아니라 다른 사람을 위해 준비할 때 아름다워진다.
+Ultimately, the future is the promise that today’s hope, effort, and love can become tomorrow’s light.
+궁극적으로 미래는 오늘의 희망과 노력과 사랑이 내일의 빛이 될 수 있다는 약속이다.
+
+오늘 하루 Future (미래)을 생각하고 실천하며 살고 싶다.
+영어 10줄(한글 해석)로 오늘의 삶을 이야기 하기
+
+Today, I will begin my day by thinking about the future with hope.
+오늘 나는 희망을 가지고 미래를 생각하며 하루를 시작하겠다.
+I will make one small choice that helps tomorrow become better.
+나는 내일을 더 좋게 만드는 작은 선택 하나를 하겠다.
+The future grows from the habits I practice today.
+미래는 내가 오늘 실천하는 습관에서 자라난다.
+I will learn sincerely and use my knowledge for good purposes.
+나는 성실히 배우고 나의 지식을 선한 목적을 위해 사용하겠다.
+I will encourage my students to dream wisely about their future.
+나는 학생들이 자신의 미래를 지혜롭게 꿈꾸도록 격려하겠다.
+When I feel worried, I will turn anxiety into preparation.
+걱정이 될 때 나는 불안을 준비로 바꾸겠다.
+I will treat today’s work as a seed for tomorrow’s growth.
+나는 오늘의 일을 내일의 성장을 위한 씨앗으로 여기겠다.
+I will choose kindness, because a good future needs warm relationships.
+좋은 미래에는 따뜻한 관계가 필요하므로 나는 친절을 선택하겠다.
+With hope and effort, I can help create a brighter future.
+희망과 노력으로 나는 더 밝은 미래를 만드는 데 도움을 줄 수 있다.
+Today, I will live faithfully, wisely, and hopefully for the future.
+오늘 나는 미래를 위해 성실하고 지혜롭고 희망차게 살아가겠다.</pre>
+</div>
+
+<script>
+const EN_TEXT = "The future is not only a time that comes later, but also a direction shaped by today’s choices.\nIn humanistic philosophy, the future asks us what kind of person we want to become.\nSocrates reminds us that an examined life prepares a wiser future.\nWhen we ask honest questions today, we open better possibilities for tomorrow.\nAristotle believed that good habits form good character over time.\nThis means that the future is built through repeated small actions.\nFor example, a student who studies a little every day is quietly building a future of growth.\nA teacher who encourages students is planting seeds in the future of many lives.\nMartin Luther King Jr. dreamed of a future where justice and dignity would be shared by all.\nHis story shows that the future becomes brighter when hope is joined with action.\nThe future can also make us anxious because it is uncertain.\nHowever, uncertainty is not only danger; it is also possibility.\nA wise person does not try to control every future event, but prepares the heart and mind.\nIn daily life, the future begins when we choose learning over laziness and kindness over indifference.\nTechnology may change the future, but human wisdom must guide its direction.\nA good future is not only faster and richer, but also more humane and meaningful.\nThe future becomes beautiful when we prepare it for both ourselves and others.\nUltimately, the future is the promise that today’s hope, effort, and love can become tomorrow’s light.\nToday, I will begin my day by thinking about the future with hope.\nI will make one small choice that helps tomorrow become better.\nThe future grows from the habits I practice today.\nI will learn sincerely and use my knowledge for good purposes.\nI will encourage my students to dream wisely about their future.\nWhen I feel worried, I will turn anxiety into preparation.\nI will treat today’s work as a seed for tomorrow’s growth.\nI will choose kindness, because a good future needs warm relationships.\nWith hope and effort, I can help create a brighter future.\nToday, I will live faithfully, wisely, and hopefully for the future.";
+const KO_TEXT = "미래는 단지 나중에 오는 시간이 아니라 오늘의 선택이 만들어 가는 방향이다.\n인문 철학에서 미래는 우리가 어떤 사람이 되고 싶은지를 묻는다.\n소크라테스는 성찰하는 삶이 더 지혜로운 미래를 준비하게 한다는 것을 일깨워 준다.\n오늘 정직한 질문을 던질 때 우리는 내일의 더 나은 가능성을 연다.\n아리스토텔레스는 좋은 습관이 시간이 지나 좋은 인격을 만든다고 믿었다.\n이는 미래가 반복되는 작은 행동들을 통해 세워진다는 뜻이다.\n예를 들어 매일 조금씩 공부하는 학생은 조용히 성장의 미래를 만들어 가고 있다.\n학생들을 격려하는 교사는 많은 삶의 미래에 씨앗을 심고 있는 것이다.\n마틴 루터 킹 주니어는 정의와 존엄이 모두에게 나누어지는 미래를 꿈꾸었다.\n그의 이야기는 희망이 행동과 결합될 때 미래가 더 밝아진다는 것을 보여 준다.\n미래는 불확실하기 때문에 우리를 불안하게 만들 수도 있다.\n그러나 불확실성은 위험만이 아니라 가능성이기도 하다.\n지혜로운 사람은 미래의 모든 일을 통제하려 하지 않고 마음과 정신을 준비한다.\n일상에서 미래는 게으름 대신 배움을, 무관심 대신 친절을 선택할 때 시작된다.\n기술은 미래를 바꿀 수 있지만 인간의 지혜가 그 방향을 이끌어야 한다.\n좋은 미래는 더 빠르고 부유한 것만이 아니라 더 인간답고 의미 있는 것이다.\n미래는 우리 자신뿐 아니라 다른 사람을 위해 준비할 때 아름다워진다.\n궁극적으로 미래는 오늘의 희망과 노력과 사랑이 내일의 빛이 될 수 있다는 약속이다.\n오늘 나는 희망을 가지고 미래를 생각하며 하루를 시작하겠다.\n나는 내일을 더 좋게 만드는 작은 선택 하나를 하겠다.\n미래는 내가 오늘 실천하는 습관에서 자라난다.\n나는 성실히 배우고 나의 지식을 선한 목적을 위해 사용하겠다.\n나는 학생들이 자신의 미래를 지혜롭게 꿈꾸도록 격려하겠다.\n걱정이 될 때 나는 불안을 준비로 바꾸겠다.\n나는 오늘의 일을 내일의 성장을 위한 씨앗으로 여기겠다.\n좋은 미래에는 따뜻한 관계가 필요하므로 나는 친절을 선택하겠다.\n희망과 노력으로 나는 더 밝은 미래를 만드는 데 도움을 줄 수 있다.\n오늘 나는 미래를 위해 성실하고 지혜롭고 희망차게 살아가겠다.";
+function speak(text, lang){
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = lang;
+  u.rate = lang === 'en-US' ? 0.88 : 0.95;
+  u.pitch = 1;
+  speechSynthesis.speak(u);
+}
+function speakAll(lang){
+  speechSynthesis.cancel();
+  const text = lang === 'en-US' ? EN_TEXT : KO_TEXT;
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = lang;
+  u.rate = lang === 'en-US' ? 0.88 : 0.95;
+  u.pitch = 1;
+  speechSynthesis.speak(u);
+}
+</script>
+</div></div>
+</body>
+</html>

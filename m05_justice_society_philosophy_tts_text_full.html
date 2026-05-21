@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Justice and Society 정의와 사회 TTS 학습</title>
+<style>
+body{font-family:'Malgun Gothic',Arial,sans-serif;margin:0;background:linear-gradient(135deg,#eef5ff,#fff8ec);color:#222;}
+.wrap{max-width:1050px;margin:34px auto;padding:22px;}
+.card{background:#fff;border-radius:24px;padding:30px;box-shadow:0 12px 34px rgba(0,0,0,.12);}
+h1{text-align:center;color:#254a7b;font-size:36px;margin:6px 0 10px;}
+.subtitle{text-align:center;line-height:1.7;color:#555;font-size:17px;}
+.info{background:#f0f6ff;border-left:7px solid #4f79b7;padding:16px 20px;border-radius:16px;margin:20px 0;line-height:1.8;font-size:18px;}
+.controls{text-align:center;margin:20px 0;}
+button{border:none;border-radius:999px;padding:9px 15px;margin:4px;background:#315f93;color:white;cursor:pointer;font-weight:700;}
+button:hover{filter:brightness(1.08);}
+.btn-ko{background:#a76625;}
+.stop{background:#555;}
+.section{margin-top:30px;padding-top:18px;border-top:2px dashed #ddd;}
+h2{color:#6f4a00;font-size:25px;}
+.pair{display:grid;grid-template-columns:44px 1fr auto;gap:8px 12px;align-items:center;margin:13px 0;padding:16px;border:1px solid #eee;border-radius:18px;background:#fbfcff;}
+.num{grid-row:1 / span 2;font-size:22px;font-weight:800;color:#7894c3;text-align:center;}
+.en{font-size:18px;font-weight:700;color:#254a7b;line-height:1.55;}
+.ko{font-size:17px;color:#333;line-height:1.55;}
+pre{white-space:pre-wrap;word-break:keep-all;background:#fffdf7;border-radius:18px;padding:20px;line-height:1.85;font-size:16px;border:1px solid #f0e5c8;}
+@media(max-width:720px){.pair{grid-template-columns:34px 1fr;}.pair button{grid-column:2;justify-self:start;}h1{font-size:28px;}}
+</style>
+</head>
+<body>
+<div class="wrap"><div class="card">
+<h1>Justice and Society<br>정의와 사회 TTS 학습</h1>
+<div class="subtitle">정의와 사회의 인문 철학적 설명 18문장 + 오늘 하루 의미 있는 삶 실천 10문장</div>
+<div class="info">
+<strong>Justice and Society:</strong> 정의로운 사회는 개인의 존엄, 공정한 기회, 공동선, 약자 보호를 함께 고민하는 사회입니다.<br>
+<strong>Plato:</strong> 『국가』에서 정의로운 영혼과 정의로운 도시를 탐구했습니다.
+</div>
+<div class="controls">
+<button onclick="speakAll('en-US')">영어 전체 듣기</button>
+<button class="btn-ko" onclick="speakAll('ko-KR')">한국어 전체 듣기</button>
+<button class="stop" onclick="speechSynthesis.cancel()">정지</button>
+</div>
+
+<div class="section">
+<h2>Ⅰ. Justice and Society(정의와 사회) — 인문 철학적 설명 18문장</h2>
+
+<div class="pair">
+  <div class="num">1</div>
+  <div class="en">Justice and society ask how human beings can live together fairly and peacefully.</div>
+  <button onclick="speak(\"Justice and society ask how human beings can live together fairly and peacefully.\", 'en-US')">영어 듣기</button>
+  <div class="ko">정의와 사회는 인간이 어떻게 공정하고 평화롭게 함께 살아갈 수 있는지를 묻는다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc815\\uc758\\uc640 \\uc0ac\\ud68c\\ub294 \\uc778\\uac04\\uc774 \\uc5b4\\ub5bb\\uac8c \\uacf5\\uc815\\ud558\\uace0 \\ud3c9\\ud654\\ub86d\\uac8c \\ud568\\uaed8 \\uc0b4\\uc544\\uac08 \\uc218 \\uc788\\ub294\\uc9c0\\ub97c \\ubb3b\\ub294\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">2</div>
+  <div class="en">In humanistic philosophy, justice means respecting each person’s dignity and giving people what is due.</div>
+  <button onclick="speak(\"In humanistic philosophy, justice means respecting each person\\u2019s dignity and giving people what is due.\", 'en-US')">영어 듣기</button>
+  <div class="ko">인문 철학에서 정의는 각 사람의 존엄을 존중하고 마땅한 것을 주는 것을 의미한다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc778\\ubb38 \\ucca0\\ud559\\uc5d0\\uc11c \\uc815\\uc758\\ub294 \\uac01 \\uc0ac\\ub78c\\uc758 \\uc874\\uc5c4\\uc744 \\uc874\\uc911\\ud558\\uace0 \\ub9c8\\ub545\\ud55c \\uac83\\uc744 \\uc8fc\\ub294 \\uac83\\uc744 \\uc758\\ubbf8\\ud55c\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">3</div>
+  <div class="en">Plato explored justice in The Republic by asking what a just soul and a just city should be.</div>
+  <button onclick="speak(\"Plato explored justice in The Republic by asking what a just soul and a just city should be.\", 'en-US')">영어 듣기</button>
+  <div class="ko">플라톤은 『국가』에서 정의로운 영혼과 정의로운 도시는 무엇이어야 하는지를 물었다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ud50c\\ub77c\\ud1a4\\uc740 \\u300e\\uad6d\\uac00\\u300f\\uc5d0\\uc11c \\uc815\\uc758\\ub85c\\uc6b4 \\uc601\\ud63c\\uacfc \\uc815\\uc758\\ub85c\\uc6b4 \\ub3c4\\uc2dc\\ub294 \\ubb34\\uc5c7\\uc774\\uc5b4\\uc57c \\ud558\\ub294\\uc9c0\\ub97c \\ubb3c\\uc5c8\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">4</div>
+  <div class="en">For Plato, society becomes just when wisdom, courage, moderation, and harmony work together.</div>
+  <button onclick="speak(\"For Plato, society becomes just when wisdom, courage, moderation, and harmony work together.\", 'en-US')">영어 듣기</button>
+  <div class="ko">플라톤에게 사회는 지혜, 용기, 절제, 조화가 함께 작용할 때 정의로워진다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ud50c\\ub77c\\ud1a4\\uc5d0\\uac8c \\uc0ac\\ud68c\\ub294 \\uc9c0\\ud61c, \\uc6a9\\uae30, \\uc808\\uc81c, \\uc870\\ud654\\uac00 \\ud568\\uaed8 \\uc791\\uc6a9\\ud560 \\ub54c \\uc815\\uc758\\ub85c\\uc6cc\\uc9c4\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">5</div>
+  <div class="en">Aristotle believed that justice is connected with fairness, law, and the common good.</div>
+  <button onclick="speak(\"Aristotle believed that justice is connected with fairness, law, and the common good.\", 'en-US')">영어 듣기</button>
+  <div class="ko">아리스토텔레스는 정의가 공정함, 법, 공동선과 연결되어 있다고 보았다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc544\\ub9ac\\uc2a4\\ud1a0\\ud154\\ub808\\uc2a4\\ub294 \\uc815\\uc758\\uac00 \\uacf5\\uc815\\ud568, \\ubc95, \\uacf5\\ub3d9\\uc120\\uacfc \\uc5f0\\uacb0\\ub418\\uc5b4 \\uc788\\ub2e4\\uace0 \\ubcf4\\uc558\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">6</div>
+  <div class="en">This means that justice is not only personal kindness, but also a social structure.</div>
+  <button onclick="speak(\"This means that justice is not only personal kindness, but also a social structure.\", 'en-US')">영어 듣기</button>
+  <div class="ko">이는 정의가 개인의 친절만이 아니라 사회적 구조이기도 하다는 뜻이다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc774\\ub294 \\uc815\\uc758\\uac00 \\uac1c\\uc778\\uc758 \\uce5c\\uc808\\ub9cc\\uc774 \\uc544\\ub2c8\\ub77c \\uc0ac\\ud68c\\uc801 \\uad6c\\uc870\\uc774\\uae30\\ub3c4 \\ud558\\ub2e4\\ub294 \\ub73b\\uc774\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">7</div>
+  <div class="en">For example, a classroom becomes more just when every student has a fair chance to speak and learn.</div>
+  <button onclick="speak(\"For example, a classroom becomes more just when every student has a fair chance to speak and learn.\", 'en-US')">영어 듣기</button>
+  <div class="ko">예를 들어 모든 학생에게 말하고 배울 공정한 기회가 주어질 때 교실은 더 정의로워진다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc608\\ub97c \\ub4e4\\uc5b4 \\ubaa8\\ub4e0 \\ud559\\uc0dd\\uc5d0\\uac8c \\ub9d0\\ud558\\uace0 \\ubc30\\uc6b8 \\uacf5\\uc815\\ud55c \\uae30\\ud68c\\uac00 \\uc8fc\\uc5b4\\uc9c8 \\ub54c \\uad50\\uc2e4\\uc740 \\ub354 \\uc815\\uc758\\ub85c\\uc6cc\\uc9c4\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">8</div>
+  <div class="en">A teacher who listens to quiet students as well as confident students practices justice in daily life.</div>
+  <button onclick="speak(\"A teacher who listens to quiet students as well as confident students practices justice in daily life.\", 'en-US')">영어 듣기</button>
+  <div class="ko">자신감 있는 학생뿐 아니라 조용한 학생의 말도 듣는 교사는 일상에서 정의를 실천하는 것이다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc790\\uc2e0\\uac10 \\uc788\\ub294 \\ud559\\uc0dd\\ubfd0 \\uc544\\ub2c8\\ub77c \\uc870\\uc6a9\\ud55c \\ud559\\uc0dd\\uc758 \\ub9d0\\ub3c4 \\ub4e3\\ub294 \\uad50\\uc0ac\\ub294 \\uc77c\\uc0c1\\uc5d0\\uc11c \\uc815\\uc758\\ub97c \\uc2e4\\ucc9c\\ud558\\ub294 \\uac83\\uc774\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">9</div>
+  <div class="en">Modern political philosophy asks what role the state should play in protecting rights and reducing inequality.</div>
+  <button onclick="speak(\"Modern political philosophy asks what role the state should play in protecting rights and reducing inequality.\", 'en-US')">영어 듣기</button>
+  <div class="ko">현대 정치철학은 국가가 권리를 보호하고 불평등을 줄이는 데 어떤 역할을 해야 하는지 묻는다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ud604\\ub300 \\uc815\\uce58\\ucca0\\ud559\\uc740 \\uad6d\\uac00\\uac00 \\uad8c\\ub9ac\\ub97c \\ubcf4\\ud638\\ud558\\uace0 \\ubd88\\ud3c9\\ub4f1\\uc744 \\uc904\\uc774\\ub294 \\ub370 \\uc5b4\\ub5a4 \\uc5ed\\ud560\\uc744 \\ud574\\uc57c \\ud558\\ub294\\uc9c0 \\ubb3b\\ub294\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">10</div>
+  <div class="en">John Rawls argued that a just society should be designed as if we did not know our own social position.</div>
+  <button onclick="speak(\"John Rawls argued that a just society should be designed as if we did not know our own social position.\", 'en-US')">영어 듣기</button>
+  <div class="ko">존 롤스는 정의로운 사회가 자신의 사회적 위치를 모른다고 가정한 상태에서 설계되어야 한다고 주장했다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc874 \\ub864\\uc2a4\\ub294 \\uc815\\uc758\\ub85c\\uc6b4 \\uc0ac\\ud68c\\uac00 \\uc790\\uc2e0\\uc758 \\uc0ac\\ud68c\\uc801 \\uc704\\uce58\\ub97c \\ubaa8\\ub978\\ub2e4\\uace0 \\uac00\\uc815\\ud55c \\uc0c1\\ud0dc\\uc5d0\\uc11c \\uc124\\uacc4\\ub418\\uc5b4\\uc57c \\ud55c\\ub2e4\\uace0 \\uc8fc\\uc7a5\\ud588\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">11</div>
+  <div class="en">His idea helps us imagine rules that are fair to the weak as well as the strong.</div>
+  <button onclick="speak(\"His idea helps us imagine rules that are fair to the weak as well as the strong.\", 'en-US')">영어 듣기</button>
+  <div class="ko">그의 생각은 강한 사람뿐 아니라 약한 사람에게도 공정한 규칙을 상상하게 돕는다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uadf8\\uc758 \\uc0dd\\uac01\\uc740 \\uac15\\ud55c \\uc0ac\\ub78c\\ubfd0 \\uc544\\ub2c8\\ub77c \\uc57d\\ud55c \\uc0ac\\ub78c\\uc5d0\\uac8c\\ub3c4 \\uacf5\\uc815\\ud55c \\uaddc\\uce59\\uc744 \\uc0c1\\uc0c1\\ud558\\uac8c \\ub3d5\\ub294\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">12</div>
+  <div class="en">Justice becomes empty if laws protect only the powerful and ignore the vulnerable.</div>
+  <button onclick="speak(\"Justice becomes empty if laws protect only the powerful and ignore the vulnerable.\", 'en-US')">영어 듣기</button>
+  <div class="ko">법이 강한 사람만 보호하고 약한 사람을 외면한다면 정의는 공허해진다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ubc95\\uc774 \\uac15\\ud55c \\uc0ac\\ub78c\\ub9cc \\ubcf4\\ud638\\ud558\\uace0 \\uc57d\\ud55c \\uc0ac\\ub78c\\uc744 \\uc678\\uba74\\ud55c\\ub2e4\\uba74 \\uc815\\uc758\\ub294 \\uacf5\\ud5c8\\ud574\\uc9c4\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">13</div>
+  <div class="en">A society needs laws, but it also needs conscience, compassion, and public responsibility.</div>
+  <button onclick="speak(\"A society needs laws, but it also needs conscience, compassion, and public responsibility.\", 'en-US')">영어 듣기</button>
+  <div class="ko">사회에는 법이 필요하지만 양심, 연민, 공적 책임도 필요하다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc0ac\\ud68c\\uc5d0\\ub294 \\ubc95\\uc774 \\ud544\\uc694\\ud558\\uc9c0\\ub9cc \\uc591\\uc2ec, \\uc5f0\\ubbfc, \\uacf5\\uc801 \\ucc45\\uc784\\ub3c4 \\ud544\\uc694\\ud558\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">14</div>
+  <div class="en">In history, people have fought for justice when they resisted slavery, discrimination, and oppression.</div>
+  <button onclick="speak(\"In history, people have fought for justice when they resisted slavery, discrimination, and oppression.\", 'en-US')">영어 듣기</button>
+  <div class="ko">역사 속에서 사람들은 노예제, 차별, 억압에 저항하며 정의를 위해 싸워 왔다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc5ed\\uc0ac \\uc18d\\uc5d0\\uc11c \\uc0ac\\ub78c\\ub4e4\\uc740 \\ub178\\uc608\\uc81c, \\ucc28\\ubcc4, \\uc5b5\\uc555\\uc5d0 \\uc800\\ud56d\\ud558\\uba70 \\uc815\\uc758\\ub97c \\uc704\\ud574 \\uc2f8\\uc6cc \\uc654\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">15</div>
+  <div class="en">Their stories show that justice often requires courage and sacrifice.</div>
+  <button onclick="speak(\"Their stories show that justice often requires courage and sacrifice.\", 'en-US')">영어 듣기</button>
+  <div class="ko">그들의 이야기는 정의가 종종 용기와 희생을 필요로 한다는 것을 보여 준다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uadf8\\ub4e4\\uc758 \\uc774\\uc57c\\uae30\\ub294 \\uc815\\uc758\\uac00 \\uc885\\uc885 \\uc6a9\\uae30\\uc640 \\ud76c\\uc0dd\\uc744 \\ud544\\uc694\\ub85c \\ud55c\\ub2e4\\ub294 \\uac83\\uc744 \\ubcf4\\uc5ec \\uc900\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">16</div>
+  <div class="en">In daily life, justice appears when we refuse bullying, speak truthfully, and share opportunities.</div>
+  <button onclick="speak(\"In daily life, justice appears when we refuse bullying, speak truthfully, and share opportunities.\", 'en-US')">영어 듣기</button>
+  <div class="ko">일상에서 정의는 괴롭힘을 거부하고 진실하게 말하며 기회를 나눌 때 나타난다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc77c\\uc0c1\\uc5d0\\uc11c \\uc815\\uc758\\ub294 \\uad34\\ub86d\\ud798\\uc744 \\uac70\\ubd80\\ud558\\uace0 \\uc9c4\\uc2e4\\ud558\\uac8c \\ub9d0\\ud558\\uba70 \\uae30\\ud68c\\ub97c \\ub098\\ub20c \\ub54c \\ub098\\ud0c0\\ub09c\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">17</div>
+  <div class="en">A just society is not perfect, but it keeps trying to protect human dignity for all.</div>
+  <button onclick="speak(\"A just society is not perfect, but it keeps trying to protect human dignity for all.\", 'en-US')">영어 듣기</button>
+  <div class="ko">정의로운 사회는 완벽하지 않지만 모든 사람의 인간 존엄을 지키기 위해 계속 노력한다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc815\\uc758\\ub85c\\uc6b4 \\uc0ac\\ud68c\\ub294 \\uc644\\ubcbd\\ud558\\uc9c0 \\uc54a\\uc9c0\\ub9cc \\ubaa8\\ub4e0 \\uc0ac\\ub78c\\uc758 \\uc778\\uac04 \\uc874\\uc5c4\\uc744 \\uc9c0\\ud0a4\\uae30 \\uc704\\ud574 \\uacc4\\uc18d \\ub178\\ub825\\ud55c\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">18</div>
+  <div class="en">Ultimately, justice and society ask us to build a world where freedom, fairness, and care live together.</div>
+  <button onclick="speak(\"Ultimately, justice and society ask us to build a world where freedom, fairness, and care live together.\", 'en-US')">영어 듣기</button>
+  <div class="ko">궁극적으로 정의와 사회는 자유, 공정, 돌봄이 함께 살아 있는 세상을 만들라고 우리에게 요청한다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uad81\\uadf9\\uc801\\uc73c\\ub85c \\uc815\\uc758\\uc640 \\uc0ac\\ud68c\\ub294 \\uc790\\uc720, \\uacf5\\uc815, \\ub3cc\\ubd04\\uc774 \\ud568\\uaed8 \\uc0b4\\uc544 \\uc788\\ub294 \\uc138\\uc0c1\\uc744 \\ub9cc\\ub4e4\\ub77c\\uace0 \\uc6b0\\ub9ac\\uc5d0\\uac8c \\uc694\\uccad\\ud55c\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+</div>
+
+<div class="section">
+<h2>Ⅱ. Justice and Society(정의와 사회) — 오늘 하루 실천 10문장</h2>
+
+<div class="pair">
+  <div class="num">1</div>
+  <div class="en">Today, I will begin my day by thinking about justice and fairness.</div>
+  <button onclick="speak(\"Today, I will begin my day by thinking about justice and fairness.\", 'en-US')">영어 듣기</button>
+  <div class="ko">오늘 나는 정의와 공정함을 생각하며 하루를 시작하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc624\\ub298 \\ub098\\ub294 \\uc815\\uc758\\uc640 \\uacf5\\uc815\\ud568\\uc744 \\uc0dd\\uac01\\ud558\\uba70 \\ud558\\ub8e8\\ub97c \\uc2dc\\uc791\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">2</div>
+  <div class="en">I will treat every person I meet with equal dignity and respect.</div>
+  <button onclick="speak(\"I will treat every person I meet with equal dignity and respect.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 만나는 모든 사람을 동등한 존엄과 존중으로 대하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\ub9cc\\ub098\\ub294 \\ubaa8\\ub4e0 \\uc0ac\\ub78c\\uc744 \\ub3d9\\ub4f1\\ud55c \\uc874\\uc5c4\\uacfc \\uc874\\uc911\\uc73c\\ub85c \\ub300\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">3</div>
+  <div class="en">Justice means listening to the quiet voice as well as the loud voice.</div>
+  <button onclick="speak(\"Justice means listening to the quiet voice as well as the loud voice.\", 'en-US')">영어 듣기</button>
+  <div class="ko">정의는 큰 목소리뿐 아니라 조용한 목소리에도 귀 기울이는 것이다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc815\\uc758\\ub294 \\ud070 \\ubaa9\\uc18c\\ub9ac\\ubfd0 \\uc544\\ub2c8\\ub77c \\uc870\\uc6a9\\ud55c \\ubaa9\\uc18c\\ub9ac\\uc5d0\\ub3c4 \\uadc0 \\uae30\\uc6b8\\uc774\\ub294 \\uac83\\uc774\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">4</div>
+  <div class="en">I will speak fairly and avoid judging people too quickly.</div>
+  <button onclick="speak(\"I will speak fairly and avoid judging people too quickly.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 공정하게 말하고 사람들을 너무 성급하게 판단하지 않겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\uacf5\\uc815\\ud558\\uac8c \\ub9d0\\ud558\\uace0 \\uc0ac\\ub78c\\ub4e4\\uc744 \\ub108\\ubb34 \\uc131\\uae09\\ud558\\uac8c \\ud310\\ub2e8\\ud558\\uc9c0 \\uc54a\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">5</div>
+  <div class="en">I will encourage my students to care about fairness and the common good.</div>
+  <button onclick="speak(\"I will encourage my students to care about fairness and the common good.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 학생들이 공정함과 공동선에 관심을 갖도록 격려하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\ud559\\uc0dd\\ub4e4\\uc774 \\uacf5\\uc815\\ud568\\uacfc \\uacf5\\ub3d9\\uc120\\uc5d0 \\uad00\\uc2ec\\uc744 \\uac16\\ub3c4\\ub85d \\uaca9\\ub824\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">6</div>
+  <div class="en">When I see unfairness, I will not ignore it silently.</div>
+  <button onclick="speak(\"When I see unfairness, I will not ignore it silently.\", 'en-US')">영어 듣기</button>
+  <div class="ko">불공정을 볼 때 나는 그것을 조용히 외면하지 않겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ubd88\\uacf5\\uc815\\uc744 \\ubcfc \\ub54c \\ub098\\ub294 \\uadf8\\uac83\\uc744 \\uc870\\uc6a9\\ud788 \\uc678\\uba74\\ud558\\uc9c0 \\uc54a\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">7</div>
+  <div class="en">I will share chances, kindness, and attention with those who need them.</div>
+  <button onclick="speak(\"I will share chances, kindness, and attention with those who need them.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 기회와 친절과 관심을 필요한 사람들과 나누겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\uae30\\ud68c\\uc640 \\uce5c\\uc808\\uacfc \\uad00\\uc2ec\\uc744 \\ud544\\uc694\\ud55c \\uc0ac\\ub78c\\ub4e4\\uacfc \\ub098\\ub204\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">8</div>
+  <div class="en">I will remember that a good society begins with responsible daily actions.</div>
+  <button onclick="speak(\"I will remember that a good society begins with responsible daily actions.\", 'en-US')">영어 듣기</button>
+  <div class="ko">좋은 사회는 책임 있는 일상의 행동에서 시작된다는 것을 기억하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc88b\\uc740 \\uc0ac\\ud68c\\ub294 \\ucc45\\uc784 \\uc788\\ub294 \\uc77c\\uc0c1\\uc758 \\ud589\\ub3d9\\uc5d0\\uc11c \\uc2dc\\uc791\\ub41c\\ub2e4\\ub294 \\uac83\\uc744 \\uae30\\uc5b5\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">9</div>
+  <div class="en">With justice and compassion, I can make today more meaningful.</div>
+  <button onclick="speak(\"With justice and compassion, I can make today more meaningful.\", 'en-US')">영어 듣기</button>
+  <div class="ko">정의와 연민으로 나는 오늘을 더 의미 있게 만들 수 있다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc815\\uc758\\uc640 \\uc5f0\\ubbfc\\uc73c\\ub85c \\ub098\\ub294 \\uc624\\ub298\\uc744 \\ub354 \\uc758\\ubbf8 \\uc788\\uac8c \\ub9cc\\ub4e4 \\uc218 \\uc788\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">10</div>
+  <div class="en">Today, I will live as a person who builds a fair and caring society.</div>
+  <button onclick="speak(\"Today, I will live as a person who builds a fair and caring society.\", 'en-US')">영어 듣기</button>
+  <div class="ko">오늘 나는 공정하고 따뜻한 사회를 만드는 사람으로 살아가겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc624\\ub298 \\ub098\\ub294 \\uacf5\\uc815\\ud558\\uace0 \\ub530\\ub73b\\ud55c \\uc0ac\\ud68c\\ub97c \\ub9cc\\ub4dc\\ub294 \\uc0ac\\ub78c\\uc73c\\ub85c \\uc0b4\\uc544\\uac00\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+</div>
+
+<div class="section">
+<h2>전체 원문 Text</h2>
+<pre>정의와 사회 (Justice and Society)
+정의로운 사회란 무엇인가? 국가는 어떤 역할을 해야 하는가?
+Plato의 『국가』부터 현대 정치철학까지 이어지는 거대한 주제이다.
+
+정의와 사회 (Justice and Society)을 인문 철학적으로 예시와 일화를 들어서
+영어18문장(한글 해석)으로 설명
+
+Justice and society ask how human beings can live together fairly and peacefully.
+정의와 사회는 인간이 어떻게 공정하고 평화롭게 함께 살아갈 수 있는지를 묻는다.
+In humanistic philosophy, justice means respecting each person’s dignity and giving people what is due.
+인문 철학에서 정의는 각 사람의 존엄을 존중하고 마땅한 것을 주는 것을 의미한다.
+Plato explored justice in The Republic by asking what a just soul and a just city should be.
+플라톤은 『국가』에서 정의로운 영혼과 정의로운 도시는 무엇이어야 하는지를 물었다.
+For Plato, society becomes just when wisdom, courage, moderation, and harmony work together.
+플라톤에게 사회는 지혜, 용기, 절제, 조화가 함께 작용할 때 정의로워진다.
+Aristotle believed that justice is connected with fairness, law, and the common good.
+아리스토텔레스는 정의가 공정함, 법, 공동선과 연결되어 있다고 보았다.
+This means that justice is not only personal kindness, but also a social structure.
+이는 정의가 개인의 친절만이 아니라 사회적 구조이기도 하다는 뜻이다.
+For example, a classroom becomes more just when every student has a fair chance to speak and learn.
+예를 들어 모든 학생에게 말하고 배울 공정한 기회가 주어질 때 교실은 더 정의로워진다.
+A teacher who listens to quiet students as well as confident students practices justice in daily life.
+자신감 있는 학생뿐 아니라 조용한 학생의 말도 듣는 교사는 일상에서 정의를 실천하는 것이다.
+Modern political philosophy asks what role the state should play in protecting rights and reducing inequality.
+현대 정치철학은 국가가 권리를 보호하고 불평등을 줄이는 데 어떤 역할을 해야 하는지 묻는다.
+John Rawls argued that a just society should be designed as if we did not know our own social position.
+존 롤스는 정의로운 사회가 자신의 사회적 위치를 모른다고 가정한 상태에서 설계되어야 한다고 주장했다.
+His idea helps us imagine rules that are fair to the weak as well as the strong.
+그의 생각은 강한 사람뿐 아니라 약한 사람에게도 공정한 규칙을 상상하게 돕는다.
+Justice becomes empty if laws protect only the powerful and ignore the vulnerable.
+법이 강한 사람만 보호하고 약한 사람을 외면한다면 정의는 공허해진다.
+A society needs laws, but it also needs conscience, compassion, and public responsibility.
+사회에는 법이 필요하지만 양심, 연민, 공적 책임도 필요하다.
+In history, people have fought for justice when they resisted slavery, discrimination, and oppression.
+역사 속에서 사람들은 노예제, 차별, 억압에 저항하며 정의를 위해 싸워 왔다.
+Their stories show that justice often requires courage and sacrifice.
+그들의 이야기는 정의가 종종 용기와 희생을 필요로 한다는 것을 보여 준다.
+In daily life, justice appears when we refuse bullying, speak truthfully, and share opportunities.
+일상에서 정의는 괴롭힘을 거부하고 진실하게 말하며 기회를 나눌 때 나타난다.
+A just society is not perfect, but it keeps trying to protect human dignity for all.
+정의로운 사회는 완벽하지 않지만 모든 사람의 인간 존엄을 지키기 위해 계속 노력한다.
+Ultimately, justice and society ask us to build a world where freedom, fairness, and care live together.
+궁극적으로 정의와 사회는 자유, 공정, 돌봄이 함께 살아 있는 세상을 만들라고 우리에게 요청한다.
+
+오늘 하루 정의와 사회 (Justice and Society)을 생각하고 의미있는 삶을 실천하며 살고 싶다.
+영어 10줄(한글 해석)로 오늘의 삶을 이야기 하기
+
+Today, I will begin my day by thinking about justice and fairness.
+오늘 나는 정의와 공정함을 생각하며 하루를 시작하겠다.
+I will treat every person I meet with equal dignity and respect.
+나는 만나는 모든 사람을 동등한 존엄과 존중으로 대하겠다.
+Justice means listening to the quiet voice as well as the loud voice.
+정의는 큰 목소리뿐 아니라 조용한 목소리에도 귀 기울이는 것이다.
+I will speak fairly and avoid judging people too quickly.
+나는 공정하게 말하고 사람들을 너무 성급하게 판단하지 않겠다.
+I will encourage my students to care about fairness and the common good.
+나는 학생들이 공정함과 공동선에 관심을 갖도록 격려하겠다.
+When I see unfairness, I will not ignore it silently.
+불공정을 볼 때 나는 그것을 조용히 외면하지 않겠다.
+I will share chances, kindness, and attention with those who need them.
+나는 기회와 친절과 관심을 필요한 사람들과 나누겠다.
+I will remember that a good society begins with responsible daily actions.
+좋은 사회는 책임 있는 일상의 행동에서 시작된다는 것을 기억하겠다.
+With justice and compassion, I can make today more meaningful.
+정의와 연민으로 나는 오늘을 더 의미 있게 만들 수 있다.
+Today, I will live as a person who builds a fair and caring society.
+오늘 나는 공정하고 따뜻한 사회를 만드는 사람으로 살아가겠다.</pre>
+</div>
+
+<script>
+const EN_TEXT = "Justice and society ask how human beings can live together fairly and peacefully.\nIn humanistic philosophy, justice means respecting each person’s dignity and giving people what is due.\nPlato explored justice in The Republic by asking what a just soul and a just city should be.\nFor Plato, society becomes just when wisdom, courage, moderation, and harmony work together.\nAristotle believed that justice is connected with fairness, law, and the common good.\nThis means that justice is not only personal kindness, but also a social structure.\nFor example, a classroom becomes more just when every student has a fair chance to speak and learn.\nA teacher who listens to quiet students as well as confident students practices justice in daily life.\nModern political philosophy asks what role the state should play in protecting rights and reducing inequality.\nJohn Rawls argued that a just society should be designed as if we did not know our own social position.\nHis idea helps us imagine rules that are fair to the weak as well as the strong.\nJustice becomes empty if laws protect only the powerful and ignore the vulnerable.\nA society needs laws, but it also needs conscience, compassion, and public responsibility.\nIn history, people have fought for justice when they resisted slavery, discrimination, and oppression.\nTheir stories show that justice often requires courage and sacrifice.\nIn daily life, justice appears when we refuse bullying, speak truthfully, and share opportunities.\nA just society is not perfect, but it keeps trying to protect human dignity for all.\nUltimately, justice and society ask us to build a world where freedom, fairness, and care live together.\nToday, I will begin my day by thinking about justice and fairness.\nI will treat every person I meet with equal dignity and respect.\nJustice means listening to the quiet voice as well as the loud voice.\nI will speak fairly and avoid judging people too quickly.\nI will encourage my students to care about fairness and the common good.\nWhen I see unfairness, I will not ignore it silently.\nI will share chances, kindness, and attention with those who need them.\nI will remember that a good society begins with responsible daily actions.\nWith justice and compassion, I can make today more meaningful.\nToday, I will live as a person who builds a fair and caring society.";
+const KO_TEXT = "정의와 사회는 인간이 어떻게 공정하고 평화롭게 함께 살아갈 수 있는지를 묻는다.\n인문 철학에서 정의는 각 사람의 존엄을 존중하고 마땅한 것을 주는 것을 의미한다.\n플라톤은 『국가』에서 정의로운 영혼과 정의로운 도시는 무엇이어야 하는지를 물었다.\n플라톤에게 사회는 지혜, 용기, 절제, 조화가 함께 작용할 때 정의로워진다.\n아리스토텔레스는 정의가 공정함, 법, 공동선과 연결되어 있다고 보았다.\n이는 정의가 개인의 친절만이 아니라 사회적 구조이기도 하다는 뜻이다.\n예를 들어 모든 학생에게 말하고 배울 공정한 기회가 주어질 때 교실은 더 정의로워진다.\n자신감 있는 학생뿐 아니라 조용한 학생의 말도 듣는 교사는 일상에서 정의를 실천하는 것이다.\n현대 정치철학은 국가가 권리를 보호하고 불평등을 줄이는 데 어떤 역할을 해야 하는지 묻는다.\n존 롤스는 정의로운 사회가 자신의 사회적 위치를 모른다고 가정한 상태에서 설계되어야 한다고 주장했다.\n그의 생각은 강한 사람뿐 아니라 약한 사람에게도 공정한 규칙을 상상하게 돕는다.\n법이 강한 사람만 보호하고 약한 사람을 외면한다면 정의는 공허해진다.\n사회에는 법이 필요하지만 양심, 연민, 공적 책임도 필요하다.\n역사 속에서 사람들은 노예제, 차별, 억압에 저항하며 정의를 위해 싸워 왔다.\n그들의 이야기는 정의가 종종 용기와 희생을 필요로 한다는 것을 보여 준다.\n일상에서 정의는 괴롭힘을 거부하고 진실하게 말하며 기회를 나눌 때 나타난다.\n정의로운 사회는 완벽하지 않지만 모든 사람의 인간 존엄을 지키기 위해 계속 노력한다.\n궁극적으로 정의와 사회는 자유, 공정, 돌봄이 함께 살아 있는 세상을 만들라고 우리에게 요청한다.\n오늘 나는 정의와 공정함을 생각하며 하루를 시작하겠다.\n나는 만나는 모든 사람을 동등한 존엄과 존중으로 대하겠다.\n정의는 큰 목소리뿐 아니라 조용한 목소리에도 귀 기울이는 것이다.\n나는 공정하게 말하고 사람들을 너무 성급하게 판단하지 않겠다.\n나는 학생들이 공정함과 공동선에 관심을 갖도록 격려하겠다.\n불공정을 볼 때 나는 그것을 조용히 외면하지 않겠다.\n나는 기회와 친절과 관심을 필요한 사람들과 나누겠다.\n좋은 사회는 책임 있는 일상의 행동에서 시작된다는 것을 기억하겠다.\n정의와 연민으로 나는 오늘을 더 의미 있게 만들 수 있다.\n오늘 나는 공정하고 따뜻한 사회를 만드는 사람으로 살아가겠다.";
+function speak(text, lang){
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = lang;
+  u.rate = lang === 'en-US' ? 0.88 : 0.95;
+  u.pitch = 1;
+  speechSynthesis.speak(u);
+}
+function speakAll(lang){
+  speechSynthesis.cancel();
+  const text = lang === 'en-US' ? EN_TEXT : KO_TEXT;
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = lang;
+  u.rate = lang === 'en-US' ? 0.88 : 0.95;
+  u.pitch = 1;
+  speechSynthesis.speak(u);
+}
+</script>
+</div></div>
+</body>
+</html>
