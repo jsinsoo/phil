@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Is Truth 무엇이 진실인가 TTS 학습</title>
+<style>
+body{font-family:'Malgun Gothic',Arial,sans-serif;margin:0;background:linear-gradient(135deg,#eef7ff,#fffdf0);color:#222;}
+.wrap{max-width:1050px;margin:34px auto;padding:22px;}
+.card{background:#fff;border-radius:24px;padding:30px;box-shadow:0 12px 34px rgba(0,0,0,.12);}
+h1{text-align:center;color:#24536d;font-size:36px;margin:6px 0 10px;}
+.subtitle{text-align:center;line-height:1.7;color:#555;font-size:17px;}
+.info{background:#f0f9ff;border-left:7px solid #4f9abd;padding:16px 20px;border-radius:16px;margin:20px 0;line-height:1.8;font-size:18px;}
+.controls{text-align:center;margin:20px 0;}
+button{border:none;border-radius:999px;padding:9px 15px;margin:4px;background:#2d6f91;color:white;cursor:pointer;font-weight:700;}
+button:hover{filter:brightness(1.08);}
+.btn-ko{background:#a76625;}
+.stop{background:#555;}
+.section{margin-top:30px;padding-top:18px;border-top:2px dashed #ddd;}
+h2{color:#6f4a00;font-size:25px;}
+.pair{display:grid;grid-template-columns:44px 1fr auto;gap:8px 12px;align-items:center;margin:13px 0;padding:16px;border:1px solid #eee;border-radius:18px;background:#fbfeff;}
+.num{grid-row:1 / span 2;font-size:22px;font-weight:800;color:#78a6ba;text-align:center;}
+.en{font-size:18px;font-weight:700;color:#24536d;line-height:1.55;}
+.ko{font-size:17px;color:#333;line-height:1.55;}
+pre{white-space:pre-wrap;word-break:keep-all;background:#fffdf7;border-radius:18px;padding:20px;line-height:1.85;font-size:16px;border:1px solid #f0e5c8;}
+@media(max-width:720px){.pair{grid-template-columns:34px 1fr;}.pair button{grid-column:2;justify-self:start;}h1{font-size:28px;}}
+</style>
+</head>
+<body>
+<div class="wrap"><div class="card">
+<h1>What Is Truth?<br>무엇이 진실인가 TTS 학습</h1>
+<div class="subtitle">“무엇이 진실인가?”의 인문 철학적 설명 18문장 + 오늘 하루 의미 있는 삶 실천 10문장</div>
+<div class="info">
+<strong>What Is Truth?</strong> 진실은 사실, 성찰, 증거, 정직한 마음을 통해 현실을 더 깊이 바라보게 하는 삶의 기준입니다.
+</div>
+<div class="controls">
+<button onclick="speakAll('en-US')">영어 전체 듣기</button>
+<button class="btn-ko" onclick="speakAll('ko-KR')">한국어 전체 듣기</button>
+<button class="stop" onclick="speechSynthesis.cancel()">정지</button>
+</div>
+
+<div class="section">
+<h2>Ⅰ. What Is Truth?(무엇이 진실인가) — 인문 철학적 설명 18문장</h2>
+
+<div class="pair">
+  <div class="num">1</div>
+  <div class="en">The question “What is truth?” is one of the starting points of philosophy.</div>
+  <button onclick="speak(\"The question \\u201cWhat is truth?\\u201d is one of the starting points of philosophy.\", 'en-US')">영어 듣기</button>
+  <div class="ko">“무엇이 진실인가?”라는 질문은 철학의 출발점 중 하나이다.</div>
+  <button class="btn-ko" onclick="speak(\"\\u201c\\ubb34\\uc5c7\\uc774 \\uc9c4\\uc2e4\\uc778\\uac00?\\u201d\\ub77c\\ub294 \\uc9c8\\ubb38\\uc740 \\ucca0\\ud559\\uc758 \\ucd9c\\ubc1c\\uc810 \\uc911 \\ud558\\ub098\\uc774\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">2</div>
+  <div class="en">In humanistic philosophy, truth is not only a correct fact, but also a sincere relation to reality.</div>
+  <button onclick="speak(\"In humanistic philosophy, truth is not only a correct fact, but also a sincere relation to reality.\", 'en-US')">영어 듣기</button>
+  <div class="ko">인문 철학에서 진실은 올바른 사실만이 아니라 현실에 대한 진실한 관계이기도 하다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc778\\ubb38 \\ucca0\\ud559\\uc5d0\\uc11c \\uc9c4\\uc2e4\\uc740 \\uc62c\\ubc14\\ub978 \\uc0ac\\uc2e4\\ub9cc\\uc774 \\uc544\\ub2c8\\ub77c \\ud604\\uc2e4\\uc5d0 \\ub300\\ud55c \\uc9c4\\uc2e4\\ud55c \\uad00\\uacc4\\uc774\\uae30\\ub3c4 \\ud558\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">3</div>
+  <div class="en">Socrates searched for truth by asking questions that revealed ignorance and confusion.</div>
+  <button onclick="speak(\"Socrates searched for truth by asking questions that revealed ignorance and confusion.\", 'en-US')">영어 듣기</button>
+  <div class="ko">소크라테스는 무지와 혼란을 드러내는 질문을 던지며 진실을 찾았다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc18c\\ud06c\\ub77c\\ud14c\\uc2a4\\ub294 \\ubb34\\uc9c0\\uc640 \\ud63c\\ub780\\uc744 \\ub4dc\\ub7ec\\ub0b4\\ub294 \\uc9c8\\ubb38\\uc744 \\ub358\\uc9c0\\uba70 \\uc9c4\\uc2e4\\uc744 \\ucc3e\\uc558\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">4</div>
+  <div class="en">His life shows that truth often begins with humility rather than certainty.</div>
+  <button onclick="speak(\"His life shows that truth often begins with humility rather than certainty.\", 'en-US')">영어 듣기</button>
+  <div class="ko">그의 삶은 진실이 확신보다 겸손에서 시작되는 경우가 많음을 보여 준다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uadf8\\uc758 \\uc0b6\\uc740 \\uc9c4\\uc2e4\\uc774 \\ud655\\uc2e0\\ubcf4\\ub2e4 \\uacb8\\uc190\\uc5d0\\uc11c \\uc2dc\\uc791\\ub418\\ub294 \\uacbd\\uc6b0\\uac00 \\ub9ce\\uc74c\\uc744 \\ubcf4\\uc5ec \\uc900\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">5</div>
+  <div class="en">Plato used the allegory of the cave to explain how people may mistake shadows for reality.</div>
+  <button onclick="speak(\"Plato used the allegory of the cave to explain how people may mistake shadows for reality.\", 'en-US')">영어 듣기</button>
+  <div class="ko">플라톤은 동굴의 비유를 통해 사람들이 그림자를 현실로 착각할 수 있음을 설명했다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ud50c\\ub77c\\ud1a4\\uc740 \\ub3d9\\uad74\\uc758 \\ube44\\uc720\\ub97c \\ud1b5\\ud574 \\uc0ac\\ub78c\\ub4e4\\uc774 \\uadf8\\ub9bc\\uc790\\ub97c \\ud604\\uc2e4\\ub85c \\ucc29\\uac01\\ud560 \\uc218 \\uc788\\uc74c\\uc744 \\uc124\\uba85\\ud588\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">6</div>
+  <div class="en">This story teaches us that truth may require turning away from comfortable illusions.</div>
+  <button onclick="speak(\"This story teaches us that truth may require turning away from comfortable illusions.\", 'en-US')">영어 듣기</button>
+  <div class="ko">이 이야기는 진실이 편안한 환상에서 돌아서는 일을 요구할 수 있음을 가르쳐 준다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc774 \\uc774\\uc57c\\uae30\\ub294 \\uc9c4\\uc2e4\\uc774 \\ud3b8\\uc548\\ud55c \\ud658\\uc0c1\\uc5d0\\uc11c \\ub3cc\\uc544\\uc11c\\ub294 \\uc77c\\uc744 \\uc694\\uad6c\\ud560 \\uc218 \\uc788\\uc74c\\uc744 \\uac00\\ub974\\uccd0 \\uc900\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">7</div>
+  <div class="en">Aristotle connected truth with careful observation, reason, and clear judgment.</div>
+  <button onclick="speak(\"Aristotle connected truth with careful observation, reason, and clear judgment.\", 'en-US')">영어 듣기</button>
+  <div class="ko">아리스토텔레스는 진실을 신중한 관찰, 이성, 분명한 판단과 연결했다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc544\\ub9ac\\uc2a4\\ud1a0\\ud154\\ub808\\uc2a4\\ub294 \\uc9c4\\uc2e4\\uc744 \\uc2e0\\uc911\\ud55c \\uad00\\ucc30, \\uc774\\uc131, \\ubd84\\uba85\\ud55c \\ud310\\ub2e8\\uacfc \\uc5f0\\uacb0\\ud588\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">8</div>
+  <div class="en">For example, a scientist seeks truth by testing evidence instead of trusting rumor.</div>
+  <button onclick="speak(\"For example, a scientist seeks truth by testing evidence instead of trusting rumor.\", 'en-US')">영어 듣기</button>
+  <div class="ko">예를 들어 과학자는 소문을 믿는 대신 증거를 검증하며 진실을 찾는다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc608\\ub97c \\ub4e4\\uc5b4 \\uacfc\\ud559\\uc790\\ub294 \\uc18c\\ubb38\\uc744 \\ubbff\\ub294 \\ub300\\uc2e0 \\uc99d\\uac70\\ub97c \\uac80\\uc99d\\ud558\\uba70 \\uc9c4\\uc2e4\\uc744 \\ucc3e\\ub294\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">9</div>
+  <div class="en">A judge seeks truth by listening to many sides before making a decision.</div>
+  <button onclick="speak(\"A judge seeks truth by listening to many sides before making a decision.\", 'en-US')">영어 듣기</button>
+  <div class="ko">판사는 결정을 내리기 전에 여러 입장을 들으며 진실을 찾는다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ud310\\uc0ac\\ub294 \\uacb0\\uc815\\uc744 \\ub0b4\\ub9ac\\uae30 \\uc804\\uc5d0 \\uc5ec\\ub7ec \\uc785\\uc7a5\\uc744 \\ub4e4\\uc73c\\uba70 \\uc9c4\\uc2e4\\uc744 \\ucc3e\\ub294\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">10</div>
+  <div class="en">A teacher seeks truth by admitting when new evidence corrects an old belief.</div>
+  <button onclick="speak(\"A teacher seeks truth by admitting when new evidence corrects an old belief.\", 'en-US')">영어 듣기</button>
+  <div class="ko">교사는 새로운 증거가 오래된 믿음을 바로잡을 때 그것을 인정함으로써 진실을 찾는다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uad50\\uc0ac\\ub294 \\uc0c8\\ub85c\\uc6b4 \\uc99d\\uac70\\uac00 \\uc624\\ub798\\ub41c \\ubbff\\uc74c\\uc744 \\ubc14\\ub85c\\uc7a1\\uc744 \\ub54c \\uadf8\\uac83\\uc744 \\uc778\\uc815\\ud568\\uc73c\\ub85c\\uc368 \\uc9c4\\uc2e4\\uc744 \\ucc3e\\ub294\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">11</div>
+  <div class="en">Immanuel Kant reminded us that human understanding has limits and structures.</div>
+  <button onclick="speak(\"Immanuel Kant reminded us that human understanding has limits and structures.\", 'en-US')">영어 듣기</button>
+  <div class="ko">임마누엘 칸트는 인간의 이해에는 한계와 구조가 있음을 일깨워 주었다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc784\\ub9c8\\ub204\\uc5d8 \\uce78\\ud2b8\\ub294 \\uc778\\uac04\\uc758 \\uc774\\ud574\\uc5d0\\ub294 \\ud55c\\uacc4\\uc640 \\uad6c\\uc870\\uac00 \\uc788\\uc74c\\uc744 \\uc77c\\uae68\\uc6cc \\uc8fc\\uc5c8\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">12</div>
+  <div class="en">This means that seeking truth also requires awareness of our own perspective.</div>
+  <button onclick="speak(\"This means that seeking truth also requires awareness of our own perspective.\", 'en-US')">영어 듣기</button>
+  <div class="ko">이는 진실을 찾는 일이 자신의 관점을 의식하는 것도 필요로 한다는 뜻이다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc774\\ub294 \\uc9c4\\uc2e4\\uc744 \\ucc3e\\ub294 \\uc77c\\uc774 \\uc790\\uc2e0\\uc758 \\uad00\\uc810\\uc744 \\uc758\\uc2dd\\ud558\\ub294 \\uac83\\ub3c4 \\ud544\\uc694\\ub85c \\ud55c\\ub2e4\\ub294 \\ub73b\\uc774\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">13</div>
+  <div class="en">In the modern information society, truth is threatened by speed, bias, and misinformation.</div>
+  <button onclick="speak(\"In the modern information society, truth is threatened by speed, bias, and misinformation.\", 'en-US')">영어 듣기</button>
+  <div class="ko">현대 정보사회에서 진실은 속도, 편향, 거짓 정보에 의해 위협받는다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ud604\\ub300 \\uc815\\ubcf4\\uc0ac\\ud68c\\uc5d0\\uc11c \\uc9c4\\uc2e4\\uc740 \\uc18d\\ub3c4, \\ud3b8\\ud5a5, \\uac70\\uc9d3 \\uc815\\ubcf4\\uc5d0 \\uc758\\ud574 \\uc704\\ud611\\ubc1b\\ub294\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">14</div>
+  <div class="en">Therefore, a responsible person checks sources and thinks before sharing information.</div>
+  <button onclick="speak(\"Therefore, a responsible person checks sources and thinks before sharing information.\", 'en-US')">영어 듣기</button>
+  <div class="ko">그러므로 책임 있는 사람은 정보를 공유하기 전에 출처를 확인하고 생각한다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uadf8\\ub7ec\\ubbc0\\ub85c \\ucc45\\uc784 \\uc788\\ub294 \\uc0ac\\ub78c\\uc740 \\uc815\\ubcf4\\ub97c \\uacf5\\uc720\\ud558\\uae30 \\uc804\\uc5d0 \\ucd9c\\ucc98\\ub97c \\ud655\\uc778\\ud558\\uace0 \\uc0dd\\uac01\\ud55c\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">15</div>
+  <div class="en">Truth is not always comfortable, but it can set the mind free from deception.</div>
+  <button onclick="speak(\"Truth is not always comfortable, but it can set the mind free from deception.\", 'en-US')">영어 듣기</button>
+  <div class="ko">진실은 항상 편안하지는 않지만 마음을 속임수에서 자유롭게 할 수 있다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc9c4\\uc2e4\\uc740 \\ud56d\\uc0c1 \\ud3b8\\uc548\\ud558\\uc9c0\\ub294 \\uc54a\\uc9c0\\ub9cc \\ub9c8\\uc74c\\uc744 \\uc18d\\uc784\\uc218\\uc5d0\\uc11c \\uc790\\uc720\\ub86d\\uac8c \\ud560 \\uc218 \\uc788\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">16</div>
+  <div class="en">In relationships, truth appears as honesty, trust, and the courage to speak sincerely.</div>
+  <button onclick="speak(\"In relationships, truth appears as honesty, trust, and the courage to speak sincerely.\", 'en-US')">영어 듣기</button>
+  <div class="ko">관계 속에서 진실은 정직, 신뢰, 진심으로 말하는 용기로 나타난다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uad00\\uacc4 \\uc18d\\uc5d0\\uc11c \\uc9c4\\uc2e4\\uc740 \\uc815\\uc9c1, \\uc2e0\\ub8b0, \\uc9c4\\uc2ec\\uc73c\\ub85c \\ub9d0\\ud558\\ub294 \\uc6a9\\uae30\\ub85c \\ub098\\ud0c0\\ub09c\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">17</div>
+  <div class="en">A truthful life requires both facts and integrity.</div>
+  <button onclick="speak(\"A truthful life requires both facts and integrity.\", 'en-US')">영어 듣기</button>
+  <div class="ko">진실한 삶에는 사실과 진실성이 모두 필요하다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc9c4\\uc2e4\\ud55c \\uc0b6\\uc5d0\\ub294 \\uc0ac\\uc2e4\\uacfc \\uc9c4\\uc2e4\\uc131\\uc774 \\ubaa8\\ub450 \\ud544\\uc694\\ud558\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">18</div>
+  <div class="en">Ultimately, truth asks us to live with open eyes, humble minds, and honest hearts.</div>
+  <button onclick="speak(\"Ultimately, truth asks us to live with open eyes, humble minds, and honest hearts.\", 'en-US')">영어 듣기</button>
+  <div class="ko">궁극적으로 진실은 열린 눈과 겸손한 마음과 정직한 가슴으로 살라고 우리에게 요청한다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uad81\\uadf9\\uc801\\uc73c\\ub85c \\uc9c4\\uc2e4\\uc740 \\uc5f4\\ub9b0 \\ub208\\uacfc \\uacb8\\uc190\\ud55c \\ub9c8\\uc74c\\uacfc \\uc815\\uc9c1\\ud55c \\uac00\\uc2b4\\uc73c\\ub85c \\uc0b4\\ub77c\\uace0 \\uc6b0\\ub9ac\\uc5d0\\uac8c \\uc694\\uccad\\ud55c\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+</div>
+
+<div class="section">
+<h2>Ⅱ. What Is Truth?(무엇이 진실인가) — 오늘 하루 실천 10문장</h2>
+
+<div class="pair">
+  <div class="num">1</div>
+  <div class="en">Today, I will begin my day by asking what is true and meaningful.</div>
+  <button onclick="speak(\"Today, I will begin my day by asking what is true and meaningful.\", 'en-US')">영어 듣기</button>
+  <div class="ko">오늘 나는 무엇이 진실하고 의미 있는지 물으며 하루를 시작하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc624\\ub298 \\ub098\\ub294 \\ubb34\\uc5c7\\uc774 \\uc9c4\\uc2e4\\ud558\\uace0 \\uc758\\ubbf8 \\uc788\\ub294\\uc9c0 \\ubb3c\\uc73c\\uba70 \\ud558\\ub8e8\\ub97c \\uc2dc\\uc791\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">2</div>
+  <div class="en">I will not believe every word too quickly, but think carefully.</div>
+  <button onclick="speak(\"I will not believe every word too quickly, but think carefully.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 모든 말을 너무 빨리 믿지 않고 신중하게 생각하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\ubaa8\\ub4e0 \\ub9d0\\uc744 \\ub108\\ubb34 \\ube68\\ub9ac \\ubbff\\uc9c0 \\uc54a\\uace0 \\uc2e0\\uc911\\ud558\\uac8c \\uc0dd\\uac01\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">3</div>
+  <div class="en">Truth means facing reality with honesty and courage.</div>
+  <button onclick="speak(\"Truth means facing reality with honesty and courage.\", 'en-US')">영어 듣기</button>
+  <div class="ko">진실은 정직과 용기로 현실을 마주하는 것이다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc9c4\\uc2e4\\uc740 \\uc815\\uc9c1\\uacfc \\uc6a9\\uae30\\ub85c \\ud604\\uc2e4\\uc744 \\ub9c8\\uc8fc\\ud558\\ub294 \\uac83\\uc774\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">4</div>
+  <div class="en">I will check information before I share it with others.</div>
+  <button onclick="speak(\"I will check information before I share it with others.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 정보를 다른 사람과 공유하기 전에 확인하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\uc815\\ubcf4\\ub97c \\ub2e4\\ub978 \\uc0ac\\ub78c\\uacfc \\uacf5\\uc720\\ud558\\uae30 \\uc804\\uc5d0 \\ud655\\uc778\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">5</div>
+  <div class="en">I will speak honestly, but also kindly and respectfully.</div>
+  <button onclick="speak(\"I will speak honestly, but also kindly and respectfully.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 정직하게 말하되 친절하고 존중하는 태도로 말하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\uc815\\uc9c1\\ud558\\uac8c \\ub9d0\\ud558\\ub418 \\uce5c\\uc808\\ud558\\uace0 \\uc874\\uc911\\ud558\\ub294 \\ud0dc\\ub3c4\\ub85c \\ub9d0\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">6</div>
+  <div class="en">I will encourage my students to ask questions and seek evidence.</div>
+  <button onclick="speak(\"I will encourage my students to ask questions and seek evidence.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 학생들이 질문하고 증거를 찾도록 격려하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\ud559\\uc0dd\\ub4e4\\uc774 \\uc9c8\\ubb38\\ud558\\uace0 \\uc99d\\uac70\\ub97c \\ucc3e\\ub3c4\\ub85d \\uaca9\\ub824\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">7</div>
+  <div class="en">When I am wrong, I will admit it and learn from the truth.</div>
+  <button onclick="speak(\"When I am wrong, I will admit it and learn from the truth.\", 'en-US')">영어 듣기</button>
+  <div class="ko">내가 틀렸을 때 나는 그것을 인정하고 진실에서 배우겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub0b4\\uac00 \\ud2c0\\ub838\\uc744 \\ub54c \\ub098\\ub294 \\uadf8\\uac83\\uc744 \\uc778\\uc815\\ud558\\uace0 \\uc9c4\\uc2e4\\uc5d0\\uc11c \\ubc30\\uc6b0\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">8</div>
+  <div class="en">I will avoid gossip, exaggeration, and careless judgment.</div>
+  <button onclick="speak(\"I will avoid gossip, exaggeration, and careless judgment.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 험담과 과장과 부주의한 판단을 피하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\ud5d8\\ub2f4\\uacfc \\uacfc\\uc7a5\\uacfc \\ubd80\\uc8fc\\uc758\\ud55c \\ud310\\ub2e8\\uc744 \\ud53c\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">9</div>
+  <div class="en">With truth and humility, I can make today more meaningful.</div>
+  <button onclick="speak(\"With truth and humility, I can make today more meaningful.\", 'en-US')">영어 듣기</button>
+  <div class="ko">진실과 겸손으로 나는 오늘을 더 의미 있게 만들 수 있다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc9c4\\uc2e4\\uacfc \\uacb8\\uc190\\uc73c\\ub85c \\ub098\\ub294 \\uc624\\ub298\\uc744 \\ub354 \\uc758\\ubbf8 \\uc788\\uac8c \\ub9cc\\ub4e4 \\uc218 \\uc788\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">10</div>
+  <div class="en">Today, I will live as a person who loves truth and practices honesty.</div>
+  <button onclick="speak(\"Today, I will live as a person who loves truth and practices honesty.\", 'en-US')">영어 듣기</button>
+  <div class="ko">오늘 나는 진실을 사랑하고 정직을 실천하는 사람으로 살아가겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc624\\ub298 \\ub098\\ub294 \\uc9c4\\uc2e4\\uc744 \\uc0ac\\ub791\\ud558\\uace0 \\uc815\\uc9c1\\uc744 \\uc2e4\\ucc9c\\ud558\\ub294 \\uc0ac\\ub78c\\uc73c\\ub85c \\uc0b4\\uc544\\uac00\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+</div>
+
+<div class="section">
+<h2>전체 원문 Text</h2>
+<pre>무엇이 진실인가?
+What is truth?
+
+인문 철학적으로 예시와 일화를 들어서
+영어18문장(한글 해석)으로 설명
+
+The question “What is truth?” is one of the starting points of philosophy.
+“무엇이 진실인가?”라는 질문은 철학의 출발점 중 하나이다.
+In humanistic philosophy, truth is not only a correct fact, but also a sincere relation to reality.
+인문 철학에서 진실은 올바른 사실만이 아니라 현실에 대한 진실한 관계이기도 하다.
+Socrates searched for truth by asking questions that revealed ignorance and confusion.
+소크라테스는 무지와 혼란을 드러내는 질문을 던지며 진실을 찾았다.
+His life shows that truth often begins with humility rather than certainty.
+그의 삶은 진실이 확신보다 겸손에서 시작되는 경우가 많음을 보여 준다.
+Plato used the allegory of the cave to explain how people may mistake shadows for reality.
+플라톤은 동굴의 비유를 통해 사람들이 그림자를 현실로 착각할 수 있음을 설명했다.
+This story teaches us that truth may require turning away from comfortable illusions.
+이 이야기는 진실이 편안한 환상에서 돌아서는 일을 요구할 수 있음을 가르쳐 준다.
+Aristotle connected truth with careful observation, reason, and clear judgment.
+아리스토텔레스는 진실을 신중한 관찰, 이성, 분명한 판단과 연결했다.
+For example, a scientist seeks truth by testing evidence instead of trusting rumor.
+예를 들어 과학자는 소문을 믿는 대신 증거를 검증하며 진실을 찾는다.
+A judge seeks truth by listening to many sides before making a decision.
+판사는 결정을 내리기 전에 여러 입장을 들으며 진실을 찾는다.
+A teacher seeks truth by admitting when new evidence corrects an old belief.
+교사는 새로운 증거가 오래된 믿음을 바로잡을 때 그것을 인정함으로써 진실을 찾는다.
+Immanuel Kant reminded us that human understanding has limits and structures.
+임마누엘 칸트는 인간의 이해에는 한계와 구조가 있음을 일깨워 주었다.
+This means that seeking truth also requires awareness of our own perspective.
+이는 진실을 찾는 일이 자신의 관점을 의식하는 것도 필요로 한다는 뜻이다.
+In the modern information society, truth is threatened by speed, bias, and misinformation.
+현대 정보사회에서 진실은 속도, 편향, 거짓 정보에 의해 위협받는다.
+Therefore, a responsible person checks sources and thinks before sharing information.
+그러므로 책임 있는 사람은 정보를 공유하기 전에 출처를 확인하고 생각한다.
+Truth is not always comfortable, but it can set the mind free from deception.
+진실은 항상 편안하지는 않지만 마음을 속임수에서 자유롭게 할 수 있다.
+In relationships, truth appears as honesty, trust, and the courage to speak sincerely.
+관계 속에서 진실은 정직, 신뢰, 진심으로 말하는 용기로 나타난다.
+A truthful life requires both facts and integrity.
+진실한 삶에는 사실과 진실성이 모두 필요하다.
+Ultimately, truth asks us to live with open eyes, humble minds, and honest hearts.
+궁극적으로 진실은 열린 눈과 겸손한 마음과 정직한 가슴으로 살라고 우리에게 요청한다.
+
+오늘 하루 무엇이 진실인가? What is truth?를 생각하고 의미있는 삶을 실천하며 살고 싶다.
+영어 10줄(한글 해석)로 오늘의 삶을 이야기 하기
+
+Today, I will begin my day by asking what is true and meaningful.
+오늘 나는 무엇이 진실하고 의미 있는지 물으며 하루를 시작하겠다.
+I will not believe every word too quickly, but think carefully.
+나는 모든 말을 너무 빨리 믿지 않고 신중하게 생각하겠다.
+Truth means facing reality with honesty and courage.
+진실은 정직과 용기로 현실을 마주하는 것이다.
+I will check information before I share it with others.
+나는 정보를 다른 사람과 공유하기 전에 확인하겠다.
+I will speak honestly, but also kindly and respectfully.
+나는 정직하게 말하되 친절하고 존중하는 태도로 말하겠다.
+I will encourage my students to ask questions and seek evidence.
+나는 학생들이 질문하고 증거를 찾도록 격려하겠다.
+When I am wrong, I will admit it and learn from the truth.
+내가 틀렸을 때 나는 그것을 인정하고 진실에서 배우겠다.
+I will avoid gossip, exaggeration, and careless judgment.
+나는 험담과 과장과 부주의한 판단을 피하겠다.
+With truth and humility, I can make today more meaningful.
+진실과 겸손으로 나는 오늘을 더 의미 있게 만들 수 있다.
+Today, I will live as a person who loves truth and practices honesty.
+오늘 나는 진실을 사랑하고 정직을 실천하는 사람으로 살아가겠다.</pre>
+</div>
+
+<script>
+const EN_TEXT = "The question “What is truth?” is one of the starting points of philosophy.\nIn humanistic philosophy, truth is not only a correct fact, but also a sincere relation to reality.\nSocrates searched for truth by asking questions that revealed ignorance and confusion.\nHis life shows that truth often begins with humility rather than certainty.\nPlato used the allegory of the cave to explain how people may mistake shadows for reality.\nThis story teaches us that truth may require turning away from comfortable illusions.\nAristotle connected truth with careful observation, reason, and clear judgment.\nFor example, a scientist seeks truth by testing evidence instead of trusting rumor.\nA judge seeks truth by listening to many sides before making a decision.\nA teacher seeks truth by admitting when new evidence corrects an old belief.\nImmanuel Kant reminded us that human understanding has limits and structures.\nThis means that seeking truth also requires awareness of our own perspective.\nIn the modern information society, truth is threatened by speed, bias, and misinformation.\nTherefore, a responsible person checks sources and thinks before sharing information.\nTruth is not always comfortable, but it can set the mind free from deception.\nIn relationships, truth appears as honesty, trust, and the courage to speak sincerely.\nA truthful life requires both facts and integrity.\nUltimately, truth asks us to live with open eyes, humble minds, and honest hearts.\nToday, I will begin my day by asking what is true and meaningful.\nI will not believe every word too quickly, but think carefully.\nTruth means facing reality with honesty and courage.\nI will check information before I share it with others.\nI will speak honestly, but also kindly and respectfully.\nI will encourage my students to ask questions and seek evidence.\nWhen I am wrong, I will admit it and learn from the truth.\nI will avoid gossip, exaggeration, and careless judgment.\nWith truth and humility, I can make today more meaningful.\nToday, I will live as a person who loves truth and practices honesty.";
+const KO_TEXT = "“무엇이 진실인가?”라는 질문은 철학의 출발점 중 하나이다.\n인문 철학에서 진실은 올바른 사실만이 아니라 현실에 대한 진실한 관계이기도 하다.\n소크라테스는 무지와 혼란을 드러내는 질문을 던지며 진실을 찾았다.\n그의 삶은 진실이 확신보다 겸손에서 시작되는 경우가 많음을 보여 준다.\n플라톤은 동굴의 비유를 통해 사람들이 그림자를 현실로 착각할 수 있음을 설명했다.\n이 이야기는 진실이 편안한 환상에서 돌아서는 일을 요구할 수 있음을 가르쳐 준다.\n아리스토텔레스는 진실을 신중한 관찰, 이성, 분명한 판단과 연결했다.\n예를 들어 과학자는 소문을 믿는 대신 증거를 검증하며 진실을 찾는다.\n판사는 결정을 내리기 전에 여러 입장을 들으며 진실을 찾는다.\n교사는 새로운 증거가 오래된 믿음을 바로잡을 때 그것을 인정함으로써 진실을 찾는다.\n임마누엘 칸트는 인간의 이해에는 한계와 구조가 있음을 일깨워 주었다.\n이는 진실을 찾는 일이 자신의 관점을 의식하는 것도 필요로 한다는 뜻이다.\n현대 정보사회에서 진실은 속도, 편향, 거짓 정보에 의해 위협받는다.\n그러므로 책임 있는 사람은 정보를 공유하기 전에 출처를 확인하고 생각한다.\n진실은 항상 편안하지는 않지만 마음을 속임수에서 자유롭게 할 수 있다.\n관계 속에서 진실은 정직, 신뢰, 진심으로 말하는 용기로 나타난다.\n진실한 삶에는 사실과 진실성이 모두 필요하다.\n궁극적으로 진실은 열린 눈과 겸손한 마음과 정직한 가슴으로 살라고 우리에게 요청한다.\n오늘 나는 무엇이 진실하고 의미 있는지 물으며 하루를 시작하겠다.\n나는 모든 말을 너무 빨리 믿지 않고 신중하게 생각하겠다.\n진실은 정직과 용기로 현실을 마주하는 것이다.\n나는 정보를 다른 사람과 공유하기 전에 확인하겠다.\n나는 정직하게 말하되 친절하고 존중하는 태도로 말하겠다.\n나는 학생들이 질문하고 증거를 찾도록 격려하겠다.\n내가 틀렸을 때 나는 그것을 인정하고 진실에서 배우겠다.\n나는 험담과 과장과 부주의한 판단을 피하겠다.\n진실과 겸손으로 나는 오늘을 더 의미 있게 만들 수 있다.\n오늘 나는 진실을 사랑하고 정직을 실천하는 사람으로 살아가겠다.";
+function speak(text, lang){
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = lang;
+  u.rate = lang === 'en-US' ? 0.88 : 0.95;
+  u.pitch = 1;
+  speechSynthesis.speak(u);
+}
+function speakAll(lang){
+  speechSynthesis.cancel();
+  const text = lang === 'en-US' ? EN_TEXT : KO_TEXT;
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = lang;
+  u.rate = lang === 'en-US' ? 0.88 : 0.95;
+  u.pitch = 1;
+  speechSynthesis.speak(u);
+}
+</script>
+</div></div>
+</body>
+</html>

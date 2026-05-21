@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Comes After Death 죽음 이후는 무엇인가 TTS 학습</title>
+<style>
+body{font-family:'Malgun Gothic',Arial,sans-serif;margin:0;background:linear-gradient(135deg,#f2f3f7,#fff8ec);color:#222;}
+.wrap{max-width:1050px;margin:34px auto;padding:22px;}
+.card{background:#fff;border-radius:24px;padding:30px;box-shadow:0 12px 34px rgba(0,0,0,.12);}
+h1{text-align:center;color:#3f4558;font-size:36px;margin:6px 0 10px;}
+.subtitle{text-align:center;line-height:1.7;color:#555;font-size:17px;}
+.info{background:#f5f6fa;border-left:7px solid #6c7285;padding:16px 20px;border-radius:16px;margin:20px 0;line-height:1.8;font-size:18px;}
+.controls{text-align:center;margin:20px 0;}
+button{border:none;border-radius:999px;padding:9px 15px;margin:4px;background:#434a60;color:white;cursor:pointer;font-weight:700;}
+button:hover{filter:brightness(1.08);}
+.btn-ko{background:#9a642d;}
+.stop{background:#666;}
+.section{margin-top:30px;padding-top:18px;border-top:2px dashed #ddd;}
+h2{color:#5f4a28;font-size:25px;}
+.pair{display:grid;grid-template-columns:44px 1fr auto;gap:8px 12px;align-items:center;margin:13px 0;padding:16px;border:1px solid #eee;border-radius:18px;background:#fcfcfd;}
+.num{grid-row:1 / span 2;font-size:22px;font-weight:800;color:#8b8f9c;text-align:center;}
+.en{font-size:18px;font-weight:700;color:#3f4558;line-height:1.55;}
+.ko{font-size:17px;color:#333;line-height:1.55;}
+pre{white-space:pre-wrap;word-break:keep-all;background:#fffdf7;border-radius:18px;padding:20px;line-height:1.85;font-size:16px;border:1px solid #f0e5c8;}
+@media(max-width:720px){.pair{grid-template-columns:34px 1fr;}.pair button{grid-column:2;justify-self:start;}h1{font-size:28px;}}
+</style>
+</head>
+<body>
+<div class="wrap"><div class="card">
+<h1>What Comes After Death?<br>죽음 이후는 무엇인가 TTS 학습</h1>
+<div class="subtitle">“죽음 이후는 무엇인가?”의 인문 철학적 설명 18문장 + 오늘 하루 의미 있는 삶 실천 10문장</div>
+<div class="info">
+<strong>What Comes After Death?</strong> 죽음 이후의 신비는 확실히 알기 어렵지만, 그 질문은 오늘의 사랑·감사·책임을 더 깊게 만듭니다.
+</div>
+<div class="controls">
+<button onclick="speakAll('en-US')">영어 전체 듣기</button>
+<button class="btn-ko" onclick="speakAll('ko-KR')">한국어 전체 듣기</button>
+<button class="stop" onclick="speechSynthesis.cancel()">정지</button>
+</div>
+
+<div class="section">
+<h2>Ⅰ. What Comes After Death?(죽음 이후는 무엇인가) — 인문 철학적 설명 18문장</h2>
+
+<div class="pair">
+  <div class="num">1</div>
+  <div class="en">The question “What comes after death?” has been asked by religions, philosophies, and ordinary people for thousands of years.</div>
+  <button onclick="speak(\"The question \\u201cWhat comes after death?\\u201d has been asked by religions, philosophies, and ordinary people for thousands of years.\", 'en-US')">영어 듣기</button>
+  <div class="ko">“죽음 이후는 무엇인가?”라는 질문은 수천 년 동안 종교와 철학, 그리고 평범한 사람들이 물어 온 질문이다.</div>
+  <button class="btn-ko" onclick="speak(\"\\u201c\\uc8fd\\uc74c \\uc774\\ud6c4\\ub294 \\ubb34\\uc5c7\\uc778\\uac00?\\u201d\\ub77c\\ub294 \\uc9c8\\ubb38\\uc740 \\uc218\\ucc9c \\ub144 \\ub3d9\\uc548 \\uc885\\uad50\\uc640 \\ucca0\\ud559, \\uadf8\\ub9ac\\uace0 \\ud3c9\\ubc94\\ud55c \\uc0ac\\ub78c\\ub4e4\\uc774 \\ubb3c\\uc5b4 \\uc628 \\uc9c8\\ubb38\\uc774\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">2</div>
+  <div class="en">In humanistic philosophy, this question is not only about another world, but also about how we should live in this world.</div>
+  <button onclick="speak(\"In humanistic philosophy, this question is not only about another world, but also about how we should live in this world.\", 'en-US')">영어 듣기</button>
+  <div class="ko">인문 철학에서 이 질문은 다른 세계에 대한 것만이 아니라 이 세계에서 어떻게 살아야 하는가에 대한 것이기도 하다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc778\\ubb38 \\ucca0\\ud559\\uc5d0\\uc11c \\uc774 \\uc9c8\\ubb38\\uc740 \\ub2e4\\ub978 \\uc138\\uacc4\\uc5d0 \\ub300\\ud55c \\uac83\\ub9cc\\uc774 \\uc544\\ub2c8\\ub77c \\uc774 \\uc138\\uacc4\\uc5d0\\uc11c \\uc5b4\\ub5bb\\uac8c \\uc0b4\\uc544\\uc57c \\ud558\\ub294\\uac00\\uc5d0 \\ub300\\ud55c \\uac83\\uc774\\uae30\\ub3c4 \\ud558\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">3</div>
+  <div class="en">Socrates faced death with calmness because he believed that the soul might continue beyond the body.</div>
+  <button onclick="speak(\"Socrates faced death with calmness because he believed that the soul might continue beyond the body.\", 'en-US')">영어 듣기</button>
+  <div class="ko">소크라테스는 영혼이 몸을 넘어 계속될 수 있다고 믿었기 때문에 죽음을 차분히 마주했다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc18c\\ud06c\\ub77c\\ud14c\\uc2a4\\ub294 \\uc601\\ud63c\\uc774 \\ubab8\\uc744 \\ub118\\uc5b4 \\uacc4\\uc18d\\ub420 \\uc218 \\uc788\\ub2e4\\uace0 \\ubbff\\uc5c8\\uae30 \\ub54c\\ubb38\\uc5d0 \\uc8fd\\uc74c\\uc744 \\ucc28\\ubd84\\ud788 \\ub9c8\\uc8fc\\ud588\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">4</div>
+  <div class="en">His final story teaches us that thinking about death can become a lesson in courage and truth.</div>
+  <button onclick="speak(\"His final story teaches us that thinking about death can become a lesson in courage and truth.\", 'en-US')">영어 듣기</button>
+  <div class="ko">그의 마지막 이야기는 죽음을 생각하는 일이 용기와 진실의 배움이 될 수 있음을 가르쳐 준다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uadf8\\uc758 \\ub9c8\\uc9c0\\ub9c9 \\uc774\\uc57c\\uae30\\ub294 \\uc8fd\\uc74c\\uc744 \\uc0dd\\uac01\\ud558\\ub294 \\uc77c\\uc774 \\uc6a9\\uae30\\uc640 \\uc9c4\\uc2e4\\uc758 \\ubc30\\uc6c0\\uc774 \\ub420 \\uc218 \\uc788\\uc74c\\uc744 \\uac00\\ub974\\uccd0 \\uc900\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">5</div>
+  <div class="en">Plato imagined the soul as something that seeks eternal truth and goodness.</div>
+  <button onclick="speak(\"Plato imagined the soul as something that seeks eternal truth and goodness.\", 'en-US')">영어 듣기</button>
+  <div class="ko">플라톤은 영혼을 영원한 진리와 선을 추구하는 존재로 상상했다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ud50c\\ub77c\\ud1a4\\uc740 \\uc601\\ud63c\\uc744 \\uc601\\uc6d0\\ud55c \\uc9c4\\ub9ac\\uc640 \\uc120\\uc744 \\ucd94\\uad6c\\ud558\\ub294 \\uc874\\uc7ac\\ub85c \\uc0c1\\uc0c1\\ud588\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">6</div>
+  <div class="en">For Plato, death was not simply disappearance, but a possible movement toward a deeper reality.</div>
+  <button onclick="speak(\"For Plato, death was not simply disappearance, but a possible movement toward a deeper reality.\", 'en-US')">영어 듣기</button>
+  <div class="ko">플라톤에게 죽음은 단순한 사라짐이 아니라 더 깊은 실재를 향한 가능성 있는 이동이었다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ud50c\\ub77c\\ud1a4\\uc5d0\\uac8c \\uc8fd\\uc74c\\uc740 \\ub2e8\\uc21c\\ud55c \\uc0ac\\ub77c\\uc9d0\\uc774 \\uc544\\ub2c8\\ub77c \\ub354 \\uae4a\\uc740 \\uc2e4\\uc7ac\\ub97c \\ud5a5\\ud55c \\uac00\\ub2a5\\uc131 \\uc788\\ub294 \\uc774\\ub3d9\\uc774\\uc5c8\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">7</div>
+  <div class="en">Epicurus argued that death should not terrify us, because when we exist death is not here, and when death comes we are not here.</div>
+  <button onclick="speak(\"Epicurus argued that death should not terrify us, because when we exist death is not here, and when death comes we are not here.\", 'en-US')">영어 듣기</button>
+  <div class="ko">에피쿠로스는 우리가 존재할 때 죽음은 없고 죽음이 올 때 우리는 없으므로 죽음을 두려워할 필요가 없다고 주장했다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc5d0\\ud53c\\ucfe0\\ub85c\\uc2a4\\ub294 \\uc6b0\\ub9ac\\uac00 \\uc874\\uc7ac\\ud560 \\ub54c \\uc8fd\\uc74c\\uc740 \\uc5c6\\uace0 \\uc8fd\\uc74c\\uc774 \\uc62c \\ub54c \\uc6b0\\ub9ac\\ub294 \\uc5c6\\uc73c\\ubbc0\\ub85c \\uc8fd\\uc74c\\uc744 \\ub450\\ub824\\uc6cc\\ud560 \\ud544\\uc694\\uac00 \\uc5c6\\ub2e4\\uace0 \\uc8fc\\uc7a5\\ud588\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">8</div>
+  <div class="en">His view invites us to reduce unnecessary fear and value the present moment.</div>
+  <button onclick="speak(\"His view invites us to reduce unnecessary fear and value the present moment.\", 'en-US')">영어 듣기</button>
+  <div class="ko">그의 관점은 불필요한 두려움을 줄이고 현재의 순간을 소중히 여기도록 초대한다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uadf8\\uc758 \\uad00\\uc810\\uc740 \\ubd88\\ud544\\uc694\\ud55c \\ub450\\ub824\\uc6c0\\uc744 \\uc904\\uc774\\uace0 \\ud604\\uc7ac\\uc758 \\uc21c\\uac04\\uc744 \\uc18c\\uc911\\ud788 \\uc5ec\\uae30\\ub3c4\\ub85d \\ucd08\\ub300\\ud55c\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">9</div>
+  <div class="en">Martin Heidegger saw death as the limit that makes each life personal and urgent.</div>
+  <button onclick="speak(\"Martin Heidegger saw death as the limit that makes each life personal and urgent.\", 'en-US')">영어 듣기</button>
+  <div class="ko">마르틴 하이데거는 죽음을 각자의 삶을 개인적이고 절실하게 만드는 한계로 보았다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub9c8\\ub974\\ud2f4 \\ud558\\uc774\\ub370\\uac70\\ub294 \\uc8fd\\uc74c\\uc744 \\uac01\\uc790\\uc758 \\uc0b6\\uc744 \\uac1c\\uc778\\uc801\\uc774\\uace0 \\uc808\\uc2e4\\ud558\\uac8c \\ub9cc\\ub4dc\\ub294 \\ud55c\\uacc4\\ub85c \\ubcf4\\uc558\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">10</div>
+  <div class="en">For Heidegger, remembering death can awaken us from empty routine into authentic living.</div>
+  <button onclick="speak(\"For Heidegger, remembering death can awaken us from empty routine into authentic living.\", 'en-US')">영어 듣기</button>
+  <div class="ko">하이데거에게 죽음을 기억하는 일은 우리를 공허한 반복에서 깨어나 진정한 삶으로 이끌 수 있다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ud558\\uc774\\ub370\\uac70\\uc5d0\\uac8c \\uc8fd\\uc74c\\uc744 \\uae30\\uc5b5\\ud558\\ub294 \\uc77c\\uc740 \\uc6b0\\ub9ac\\ub97c \\uacf5\\ud5c8\\ud55c \\ubc18\\ubcf5\\uc5d0\\uc11c \\uae68\\uc5b4\\ub098 \\uc9c4\\uc815\\ud55c \\uc0b6\\uc73c\\ub85c \\uc774\\ub04c \\uc218 \\uc788\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">11</div>
+  <div class="en">Some traditions believe in heaven, rebirth, or the immortality of the soul.</div>
+  <button onclick="speak(\"Some traditions believe in heaven, rebirth, or the immortality of the soul.\", 'en-US')">영어 듣기</button>
+  <div class="ko">어떤 전통들은 천국, 환생, 혹은 영혼의 불멸을 믿는다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc5b4\\ub5a4 \\uc804\\ud1b5\\ub4e4\\uc740 \\ucc9c\\uad6d, \\ud658\\uc0dd, \\ud639\\uc740 \\uc601\\ud63c\\uc758 \\ubd88\\uba78\\uc744 \\ubbff\\ub294\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">12</div>
+  <div class="en">Other philosophies say that what remains after death is memory, influence, and the goodness we leave behind.</div>
+  <button onclick="speak(\"Other philosophies say that what remains after death is memory, influence, and the goodness we leave behind.\", 'en-US')">영어 듣기</button>
+  <div class="ko">다른 철학들은 죽음 이후에 남는 것이 기억, 영향, 그리고 우리가 남긴 선함이라고 말한다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub2e4\\ub978 \\ucca0\\ud559\\ub4e4\\uc740 \\uc8fd\\uc74c \\uc774\\ud6c4\\uc5d0 \\ub0a8\\ub294 \\uac83\\uc774 \\uae30\\uc5b5, \\uc601\\ud5a5, \\uadf8\\ub9ac\\uace0 \\uc6b0\\ub9ac\\uac00 \\ub0a8\\uae34 \\uc120\\ud568\\uc774\\ub77c\\uace0 \\ub9d0\\ud55c\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">13</div>
+  <div class="en">For example, a teacher may live on through the students whose lives were changed by kindness.</div>
+  <button onclick="speak(\"For example, a teacher may live on through the students whose lives were changed by kindness.\", 'en-US')">영어 듣기</button>
+  <div class="ko">예를 들어 교사는 친절로 삶이 변화된 학생들 속에서 계속 살아갈 수 있다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc608\\ub97c \\ub4e4\\uc5b4 \\uad50\\uc0ac\\ub294 \\uce5c\\uc808\\ub85c \\uc0b6\\uc774 \\ubcc0\\ud654\\ub41c \\ud559\\uc0dd\\ub4e4 \\uc18d\\uc5d0\\uc11c \\uacc4\\uc18d \\uc0b4\\uc544\\uac08 \\uc218 \\uc788\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">14</div>
+  <div class="en">A parent may live on through love, stories, habits, and values passed to children.</div>
+  <button onclick="speak(\"A parent may live on through love, stories, habits, and values passed to children.\", 'en-US')">영어 듣기</button>
+  <div class="ko">부모는 자녀에게 전해진 사랑, 이야기, 습관, 가치 속에서 계속 살아갈 수 있다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ubd80\\ubaa8\\ub294 \\uc790\\ub140\\uc5d0\\uac8c \\uc804\\ud574\\uc9c4 \\uc0ac\\ub791, \\uc774\\uc57c\\uae30, \\uc2b5\\uad00, \\uac00\\uce58 \\uc18d\\uc5d0\\uc11c \\uacc4\\uc18d \\uc0b4\\uc544\\uac08 \\uc218 \\uc788\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">15</div>
+  <div class="en">No one can answer the mystery of death with complete certainty.</div>
+  <button onclick="speak(\"No one can answer the mystery of death with complete certainty.\", 'en-US')">영어 듣기</button>
+  <div class="ko">죽음의 신비에 대해 누구도 완전한 확실성으로 답할 수는 없다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc8fd\\uc74c\\uc758 \\uc2e0\\ube44\\uc5d0 \\ub300\\ud574 \\ub204\\uad6c\\ub3c4 \\uc644\\uc804\\ud55c \\ud655\\uc2e4\\uc131\\uc73c\\ub85c \\ub2f5\\ud560 \\uc218\\ub294 \\uc5c6\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">16</div>
+  <div class="en">Yet this uncertainty can make us more humble, grateful, and compassionate.</div>
+  <button onclick="speak(\"Yet this uncertainty can make us more humble, grateful, and compassionate.\", 'en-US')">영어 듣기</button>
+  <div class="ko">그러나 이러한 불확실성은 우리를 더 겸손하고 감사하며 연민 있는 사람으로 만들 수 있다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uadf8\\ub7ec\\ub098 \\uc774\\ub7ec\\ud55c \\ubd88\\ud655\\uc2e4\\uc131\\uc740 \\uc6b0\\ub9ac\\ub97c \\ub354 \\uacb8\\uc190\\ud558\\uace0 \\uac10\\uc0ac\\ud558\\uba70 \\uc5f0\\ubbfc \\uc788\\ub294 \\uc0ac\\ub78c\\uc73c\\ub85c \\ub9cc\\ub4e4 \\uc218 \\uc788\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">17</div>
+  <div class="en">The question of what comes after death asks us what should remain because of our life.</div>
+  <button onclick="speak(\"The question of what comes after death asks us what should remain because of our life.\", 'en-US')">영어 듣기</button>
+  <div class="ko">죽음 이후 무엇이 오는가라는 질문은 우리의 삶 때문에 무엇이 남아야 하는지를 묻는다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc8fd\\uc74c \\uc774\\ud6c4 \\ubb34\\uc5c7\\uc774 \\uc624\\ub294\\uac00\\ub77c\\ub294 \\uc9c8\\ubb38\\uc740 \\uc6b0\\ub9ac\\uc758 \\uc0b6 \\ub54c\\ubb38\\uc5d0 \\ubb34\\uc5c7\\uc774 \\ub0a8\\uc544\\uc57c \\ud558\\ub294\\uc9c0\\ub97c \\ubb3b\\ub294\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">18</div>
+  <div class="en">Ultimately, death after life invites us to live today with love that may outlast our time.</div>
+  <button onclick="speak(\"Ultimately, death after life invites us to live today with love that may outlast our time.\", 'en-US')">영어 듣기</button>
+  <div class="ko">궁극적으로 죽음 이후에 대한 질문은 우리의 시간을 넘어 남을 수 있는 사랑으로 오늘을 살라고 초대한다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uad81\\uadf9\\uc801\\uc73c\\ub85c \\uc8fd\\uc74c \\uc774\\ud6c4\\uc5d0 \\ub300\\ud55c \\uc9c8\\ubb38\\uc740 \\uc6b0\\ub9ac\\uc758 \\uc2dc\\uac04\\uc744 \\ub118\\uc5b4 \\ub0a8\\uc744 \\uc218 \\uc788\\ub294 \\uc0ac\\ub791\\uc73c\\ub85c \\uc624\\ub298\\uc744 \\uc0b4\\ub77c\\uace0 \\ucd08\\ub300\\ud55c\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+</div>
+
+<div class="section">
+<h2>Ⅱ. What Comes After Death?(죽음 이후는 무엇인가) — 오늘 하루 실천 10문장</h2>
+
+<div class="pair">
+  <div class="num">1</div>
+  <div class="en">Today, I will begin my day by remembering that life is limited and precious.</div>
+  <button onclick="speak(\"Today, I will begin my day by remembering that life is limited and precious.\", 'en-US')">영어 듣기</button>
+  <div class="ko">오늘 나는 삶이 유한하고 소중하다는 것을 기억하며 하루를 시작하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc624\\ub298 \\ub098\\ub294 \\uc0b6\\uc774 \\uc720\\ud55c\\ud558\\uace0 \\uc18c\\uc911\\ud558\\ub2e4\\ub294 \\uac83\\uc744 \\uae30\\uc5b5\\ud558\\uba70 \\ud558\\ub8e8\\ub97c \\uc2dc\\uc791\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">2</div>
+  <div class="en">I will not waste this day in meaningless anger or selfishness.</div>
+  <button onclick="speak(\"I will not waste this day in meaningless anger or selfishness.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 오늘을 의미 없는 분노나 이기심으로 낭비하지 않겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\uc624\\ub298\\uc744 \\uc758\\ubbf8 \\uc5c6\\ub294 \\ubd84\\ub178\\ub098 \\uc774\\uae30\\uc2ec\\uc73c\\ub85c \\ub0ad\\ube44\\ud558\\uc9c0 \\uc54a\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">3</div>
+  <div class="en">Thinking about death can help me love life more deeply.</div>
+  <button onclick="speak(\"Thinking about death can help me love life more deeply.\", 'en-US')">영어 듣기</button>
+  <div class="ko">죽음을 생각하는 일은 내가 삶을 더 깊이 사랑하도록 도울 수 있다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc8fd\\uc74c\\uc744 \\uc0dd\\uac01\\ud558\\ub294 \\uc77c\\uc740 \\ub0b4\\uac00 \\uc0b6\\uc744 \\ub354 \\uae4a\\uc774 \\uc0ac\\ub791\\ud558\\ub3c4\\ub85d \\ub3c4\\uc6b8 \\uc218 \\uc788\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">4</div>
+  <div class="en">I will speak kind words before the chance passes away.</div>
+  <button onclick="speak(\"I will speak kind words before the chance passes away.\", 'en-US')">영어 듣기</button>
+  <div class="ko">기회가 지나가기 전에 나는 친절한 말을 하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uae30\\ud68c\\uac00 \\uc9c0\\ub098\\uac00\\uae30 \\uc804\\uc5d0 \\ub098\\ub294 \\uce5c\\uc808\\ud55c \\ub9d0\\uc744 \\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">5</div>
+  <div class="en">I will express gratitude to someone who has helped me.</div>
+  <button onclick="speak(\"I will express gratitude to someone who has helped me.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 나를 도와준 누군가에게 감사의 마음을 표현하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\ub098\\ub97c \\ub3c4\\uc640\\uc900 \\ub204\\uad70\\uac00\\uc5d0\\uac8c \\uac10\\uc0ac\\uc758 \\ub9c8\\uc74c\\uc744 \\ud45c\\ud604\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">6</div>
+  <div class="en">I will encourage my students to live with purpose and responsibility.</div>
+  <button onclick="speak(\"I will encourage my students to live with purpose and responsibility.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 학생들이 목적과 책임을 가지고 살아가도록 격려하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\ud559\\uc0dd\\ub4e4\\uc774 \\ubaa9\\uc801\\uacfc \\ucc45\\uc784\\uc744 \\uac00\\uc9c0\\uace0 \\uc0b4\\uc544\\uac00\\ub3c4\\ub85d \\uaca9\\ub824\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">7</div>
+  <div class="en">When I feel worried, I will return to what truly matters.</div>
+  <button onclick="speak(\"When I feel worried, I will return to what truly matters.\", 'en-US')">영어 듣기</button>
+  <div class="ko">걱정이 될 때 나는 진정으로 중요한 것으로 돌아가겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uac71\\uc815\\uc774 \\ub420 \\ub54c \\ub098\\ub294 \\uc9c4\\uc815\\uc73c\\ub85c \\uc911\\uc694\\ud55c \\uac83\\uc73c\\ub85c \\ub3cc\\uc544\\uac00\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">8</div>
+  <div class="en">I will leave behind goodness through small acts of care.</div>
+  <button onclick="speak(\"I will leave behind goodness through small acts of care.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 작은 돌봄의 행동을 통해 선함을 남기겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\uc791\\uc740 \\ub3cc\\ubd04\\uc758 \\ud589\\ub3d9\\uc744 \\ud1b5\\ud574 \\uc120\\ud568\\uc744 \\ub0a8\\uae30\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">9</div>
+  <div class="en">With love and reflection, I can make today meaningful.</div>
+  <button onclick="speak(\"With love and reflection, I can make today meaningful.\", 'en-US')">영어 듣기</button>
+  <div class="ko">사랑과 성찰로 나는 오늘을 의미 있게 만들 수 있다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc0ac\\ub791\\uacfc \\uc131\\ucc30\\ub85c \\ub098\\ub294 \\uc624\\ub298\\uc744 \\uc758\\ubbf8 \\uc788\\uac8c \\ub9cc\\ub4e4 \\uc218 \\uc788\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">10</div>
+  <div class="en">Today, I will live as a person whose kindness can remain after time passes.</div>
+  <button onclick="speak(\"Today, I will live as a person whose kindness can remain after time passes.\", 'en-US')">영어 듣기</button>
+  <div class="ko">오늘 나는 시간이 지나도 친절이 남는 사람으로 살아가겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc624\\ub298 \\ub098\\ub294 \\uc2dc\\uac04\\uc774 \\uc9c0\\ub098\\ub3c4 \\uce5c\\uc808\\uc774 \\ub0a8\\ub294 \\uc0ac\\ub78c\\uc73c\\ub85c \\uc0b4\\uc544\\uac00\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+</div>
+
+<div class="section">
+<h2>전체 원문 Text</h2>
+<pre>죽음 이후는 무엇인가?
+What comes after death?
+
+인문 철학적으로 예시와 일화를 들어서
+영어18문장(한글 해석)으로 설명
+
+The question “What comes after death?” has been asked by religions, philosophies, and ordinary people for thousands of years.
+“죽음 이후는 무엇인가?”라는 질문은 수천 년 동안 종교와 철학, 그리고 평범한 사람들이 물어 온 질문이다.
+In humanistic philosophy, this question is not only about another world, but also about how we should live in this world.
+인문 철학에서 이 질문은 다른 세계에 대한 것만이 아니라 이 세계에서 어떻게 살아야 하는가에 대한 것이기도 하다.
+Socrates faced death with calmness because he believed that the soul might continue beyond the body.
+소크라테스는 영혼이 몸을 넘어 계속될 수 있다고 믿었기 때문에 죽음을 차분히 마주했다.
+His final story teaches us that thinking about death can become a lesson in courage and truth.
+그의 마지막 이야기는 죽음을 생각하는 일이 용기와 진실의 배움이 될 수 있음을 가르쳐 준다.
+Plato imagined the soul as something that seeks eternal truth and goodness.
+플라톤은 영혼을 영원한 진리와 선을 추구하는 존재로 상상했다.
+For Plato, death was not simply disappearance, but a possible movement toward a deeper reality.
+플라톤에게 죽음은 단순한 사라짐이 아니라 더 깊은 실재를 향한 가능성 있는 이동이었다.
+Epicurus argued that death should not terrify us, because when we exist death is not here, and when death comes we are not here.
+에피쿠로스는 우리가 존재할 때 죽음은 없고 죽음이 올 때 우리는 없으므로 죽음을 두려워할 필요가 없다고 주장했다.
+His view invites us to reduce unnecessary fear and value the present moment.
+그의 관점은 불필요한 두려움을 줄이고 현재의 순간을 소중히 여기도록 초대한다.
+Martin Heidegger saw death as the limit that makes each life personal and urgent.
+마르틴 하이데거는 죽음을 각자의 삶을 개인적이고 절실하게 만드는 한계로 보았다.
+For Heidegger, remembering death can awaken us from empty routine into authentic living.
+하이데거에게 죽음을 기억하는 일은 우리를 공허한 반복에서 깨어나 진정한 삶으로 이끌 수 있다.
+Some traditions believe in heaven, rebirth, or the immortality of the soul.
+어떤 전통들은 천국, 환생, 혹은 영혼의 불멸을 믿는다.
+Other philosophies say that what remains after death is memory, influence, and the goodness we leave behind.
+다른 철학들은 죽음 이후에 남는 것이 기억, 영향, 그리고 우리가 남긴 선함이라고 말한다.
+For example, a teacher may live on through the students whose lives were changed by kindness.
+예를 들어 교사는 친절로 삶이 변화된 학생들 속에서 계속 살아갈 수 있다.
+A parent may live on through love, stories, habits, and values passed to children.
+부모는 자녀에게 전해진 사랑, 이야기, 습관, 가치 속에서 계속 살아갈 수 있다.
+No one can answer the mystery of death with complete certainty.
+죽음의 신비에 대해 누구도 완전한 확실성으로 답할 수는 없다.
+Yet this uncertainty can make us more humble, grateful, and compassionate.
+그러나 이러한 불확실성은 우리를 더 겸손하고 감사하며 연민 있는 사람으로 만들 수 있다.
+The question of what comes after death asks us what should remain because of our life.
+죽음 이후 무엇이 오는가라는 질문은 우리의 삶 때문에 무엇이 남아야 하는지를 묻는다.
+Ultimately, death after life invites us to live today with love that may outlast our time.
+궁극적으로 죽음 이후에 대한 질문은 우리의 시간을 넘어 남을 수 있는 사랑으로 오늘을 살라고 초대한다.
+
+오늘 하루 죽음 이후는 무엇인가? What comes after death?를 생각하고 의미있는 삶을 실천하며 살고 싶다.
+영어 10줄(한글 해석)로 오늘의 삶을 이야기 하기
+
+Today, I will begin my day by remembering that life is limited and precious.
+오늘 나는 삶이 유한하고 소중하다는 것을 기억하며 하루를 시작하겠다.
+I will not waste this day in meaningless anger or selfishness.
+나는 오늘을 의미 없는 분노나 이기심으로 낭비하지 않겠다.
+Thinking about death can help me love life more deeply.
+죽음을 생각하는 일은 내가 삶을 더 깊이 사랑하도록 도울 수 있다.
+I will speak kind words before the chance passes away.
+기회가 지나가기 전에 나는 친절한 말을 하겠다.
+I will express gratitude to someone who has helped me.
+나는 나를 도와준 누군가에게 감사의 마음을 표현하겠다.
+I will encourage my students to live with purpose and responsibility.
+나는 학생들이 목적과 책임을 가지고 살아가도록 격려하겠다.
+When I feel worried, I will return to what truly matters.
+걱정이 될 때 나는 진정으로 중요한 것으로 돌아가겠다.
+I will leave behind goodness through small acts of care.
+나는 작은 돌봄의 행동을 통해 선함을 남기겠다.
+With love and reflection, I can make today meaningful.
+사랑과 성찰로 나는 오늘을 의미 있게 만들 수 있다.
+Today, I will live as a person whose kindness can remain after time passes.
+오늘 나는 시간이 지나도 친절이 남는 사람으로 살아가겠다.</pre>
+</div>
+
+<script>
+const EN_TEXT = "The question “What comes after death?” has been asked by religions, philosophies, and ordinary people for thousands of years.\nIn humanistic philosophy, this question is not only about another world, but also about how we should live in this world.\nSocrates faced death with calmness because he believed that the soul might continue beyond the body.\nHis final story teaches us that thinking about death can become a lesson in courage and truth.\nPlato imagined the soul as something that seeks eternal truth and goodness.\nFor Plato, death was not simply disappearance, but a possible movement toward a deeper reality.\nEpicurus argued that death should not terrify us, because when we exist death is not here, and when death comes we are not here.\nHis view invites us to reduce unnecessary fear and value the present moment.\nMartin Heidegger saw death as the limit that makes each life personal and urgent.\nFor Heidegger, remembering death can awaken us from empty routine into authentic living.\nSome traditions believe in heaven, rebirth, or the immortality of the soul.\nOther philosophies say that what remains after death is memory, influence, and the goodness we leave behind.\nFor example, a teacher may live on through the students whose lives were changed by kindness.\nA parent may live on through love, stories, habits, and values passed to children.\nNo one can answer the mystery of death with complete certainty.\nYet this uncertainty can make us more humble, grateful, and compassionate.\nThe question of what comes after death asks us what should remain because of our life.\nUltimately, death after life invites us to live today with love that may outlast our time.\nToday, I will begin my day by remembering that life is limited and precious.\nI will not waste this day in meaningless anger or selfishness.\nThinking about death can help me love life more deeply.\nI will speak kind words before the chance passes away.\nI will express gratitude to someone who has helped me.\nI will encourage my students to live with purpose and responsibility.\nWhen I feel worried, I will return to what truly matters.\nI will leave behind goodness through small acts of care.\nWith love and reflection, I can make today meaningful.\nToday, I will live as a person whose kindness can remain after time passes.";
+const KO_TEXT = "“죽음 이후는 무엇인가?”라는 질문은 수천 년 동안 종교와 철학, 그리고 평범한 사람들이 물어 온 질문이다.\n인문 철학에서 이 질문은 다른 세계에 대한 것만이 아니라 이 세계에서 어떻게 살아야 하는가에 대한 것이기도 하다.\n소크라테스는 영혼이 몸을 넘어 계속될 수 있다고 믿었기 때문에 죽음을 차분히 마주했다.\n그의 마지막 이야기는 죽음을 생각하는 일이 용기와 진실의 배움이 될 수 있음을 가르쳐 준다.\n플라톤은 영혼을 영원한 진리와 선을 추구하는 존재로 상상했다.\n플라톤에게 죽음은 단순한 사라짐이 아니라 더 깊은 실재를 향한 가능성 있는 이동이었다.\n에피쿠로스는 우리가 존재할 때 죽음은 없고 죽음이 올 때 우리는 없으므로 죽음을 두려워할 필요가 없다고 주장했다.\n그의 관점은 불필요한 두려움을 줄이고 현재의 순간을 소중히 여기도록 초대한다.\n마르틴 하이데거는 죽음을 각자의 삶을 개인적이고 절실하게 만드는 한계로 보았다.\n하이데거에게 죽음을 기억하는 일은 우리를 공허한 반복에서 깨어나 진정한 삶으로 이끌 수 있다.\n어떤 전통들은 천국, 환생, 혹은 영혼의 불멸을 믿는다.\n다른 철학들은 죽음 이후에 남는 것이 기억, 영향, 그리고 우리가 남긴 선함이라고 말한다.\n예를 들어 교사는 친절로 삶이 변화된 학생들 속에서 계속 살아갈 수 있다.\n부모는 자녀에게 전해진 사랑, 이야기, 습관, 가치 속에서 계속 살아갈 수 있다.\n죽음의 신비에 대해 누구도 완전한 확실성으로 답할 수는 없다.\n그러나 이러한 불확실성은 우리를 더 겸손하고 감사하며 연민 있는 사람으로 만들 수 있다.\n죽음 이후 무엇이 오는가라는 질문은 우리의 삶 때문에 무엇이 남아야 하는지를 묻는다.\n궁극적으로 죽음 이후에 대한 질문은 우리의 시간을 넘어 남을 수 있는 사랑으로 오늘을 살라고 초대한다.\n오늘 나는 삶이 유한하고 소중하다는 것을 기억하며 하루를 시작하겠다.\n나는 오늘을 의미 없는 분노나 이기심으로 낭비하지 않겠다.\n죽음을 생각하는 일은 내가 삶을 더 깊이 사랑하도록 도울 수 있다.\n기회가 지나가기 전에 나는 친절한 말을 하겠다.\n나는 나를 도와준 누군가에게 감사의 마음을 표현하겠다.\n나는 학생들이 목적과 책임을 가지고 살아가도록 격려하겠다.\n걱정이 될 때 나는 진정으로 중요한 것으로 돌아가겠다.\n나는 작은 돌봄의 행동을 통해 선함을 남기겠다.\n사랑과 성찰로 나는 오늘을 의미 있게 만들 수 있다.\n오늘 나는 시간이 지나도 친절이 남는 사람으로 살아가겠다.";
+function speak(text, lang){
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = lang;
+  u.rate = lang === 'en-US' ? 0.88 : 0.95;
+  u.pitch = 1;
+  speechSynthesis.speak(u);
+}
+function speakAll(lang){
+  speechSynthesis.cancel();
+  const text = lang === 'en-US' ? EN_TEXT : KO_TEXT;
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = lang;
+  u.rate = lang === 'en-US' ? 0.88 : 0.95;
+  u.pitch = 1;
+  speechSynthesis.speak(u);
+}
+</script>
+</div></div>
+</body>
+</html>

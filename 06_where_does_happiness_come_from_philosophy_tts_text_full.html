@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Where Does Happiness Come From 행복은 어디에서 오는가 TTS 학습</title>
+<style>
+body{font-family:'Malgun Gothic',Arial,sans-serif;margin:0;background:linear-gradient(135deg,#fff9e8,#eef8ff);color:#222;}
+.wrap{max-width:1050px;margin:34px auto;padding:22px;}
+.card{background:#fff;border-radius:24px;padding:30px;box-shadow:0 12px 34px rgba(0,0,0,.12);}
+h1{text-align:center;color:#8a5a00;font-size:36px;margin:6px 0 10px;}
+.subtitle{text-align:center;line-height:1.7;color:#555;font-size:17px;}
+.info{background:#fff8e8;border-left:7px solid #d9a529;padding:16px 20px;border-radius:16px;margin:20px 0;line-height:1.8;font-size:18px;}
+.controls{text-align:center;margin:20px 0;}
+button{border:none;border-radius:999px;padding:9px 15px;margin:4px;background:#9a6a00;color:white;cursor:pointer;font-weight:700;}
+button:hover{filter:brightness(1.08);}
+.btn-ko{background:#2f6f9f;}
+.stop{background:#555;}
+.section{margin-top:30px;padding-top:18px;border-top:2px dashed #ddd;}
+h2{color:#6f4a00;font-size:25px;}
+.pair{display:grid;grid-template-columns:44px 1fr auto;gap:8px 12px;align-items:center;margin:13px 0;padding:16px;border:1px solid #eee;border-radius:18px;background:#fffef9;}
+.num{grid-row:1 / span 2;font-size:22px;font-weight:800;color:#c0a05a;text-align:center;}
+.en{font-size:18px;font-weight:700;color:#7a5000;line-height:1.55;}
+.ko{font-size:17px;color:#333;line-height:1.55;}
+pre{white-space:pre-wrap;word-break:keep-all;background:#fffdf7;border-radius:18px;padding:20px;line-height:1.85;font-size:16px;border:1px solid #f0e5c8;}
+@media(max-width:720px){.pair{grid-template-columns:34px 1fr;}.pair button{grid-column:2;justify-self:start;}h1{font-size:28px;}}
+</style>
+</head>
+<body>
+<div class="wrap"><div class="card">
+<h1>Where Does Happiness Come From?<br>행복은 어디에서 오는가 TTS 학습</h1>
+<div class="subtitle">“행복은 어디에서 오는가?”의 인문 철학적 설명 18문장 + 오늘 하루 의미 있는 삶 실천 10문장</div>
+<div class="info">
+<strong>Where Does Happiness Come From?</strong> 행복은 소유와 비교보다 감사, 덕, 관계, 배움, 사랑, 의미 있는 목적에서 깊어집니다.
+</div>
+<div class="controls">
+<button onclick="speakAll('en-US')">영어 전체 듣기</button>
+<button class="btn-ko" onclick="speakAll('ko-KR')">한국어 전체 듣기</button>
+<button class="stop" onclick="speechSynthesis.cancel()">정지</button>
+</div>
+
+<div class="section">
+<h2>Ⅰ. Where Does Happiness Come From?(행복은 어디에서 오는가) — 인문 철학적 설명 18문장</h2>
+
+<div class="pair">
+  <div class="num">1</div>
+  <div class="en">The question “Where does happiness come from?” asks whether happiness comes from outside conditions or inner ways of living.</div>
+  <button onclick="speak(\"The question \\u201cWhere does happiness come from?\\u201d asks whether happiness comes from outside conditions or inner ways of living.\", 'en-US')">영어 듣기</button>
+  <div class="ko">“행복은 어디에서 오는가?”라는 질문은 행복이 외부 조건에서 오는지, 아니면 내면의 삶의 방식에서 오는지를 묻는다.</div>
+  <button class="btn-ko" onclick="speak(\"\\u201c\\ud589\\ubcf5\\uc740 \\uc5b4\\ub514\\uc5d0\\uc11c \\uc624\\ub294\\uac00?\\u201d\\ub77c\\ub294 \\uc9c8\\ubb38\\uc740 \\ud589\\ubcf5\\uc774 \\uc678\\ubd80 \\uc870\\uac74\\uc5d0\\uc11c \\uc624\\ub294\\uc9c0, \\uc544\\ub2c8\\uba74 \\ub0b4\\uba74\\uc758 \\uc0b6\\uc758 \\ubc29\\uc2dd\\uc5d0\\uc11c \\uc624\\ub294\\uc9c0\\ub97c \\ubb3b\\ub294\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">2</div>
+  <div class="en">In humanistic philosophy, happiness is not only pleasure, but a deep harmony of the soul, relationships, and purpose.</div>
+  <button onclick="speak(\"In humanistic philosophy, happiness is not only pleasure, but a deep harmony of the soul, relationships, and purpose.\", 'en-US')">영어 듣기</button>
+  <div class="ko">인문 철학에서 행복은 단순한 즐거움이 아니라 영혼과 관계와 목적의 깊은 조화이다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc778\\ubb38 \\ucca0\\ud559\\uc5d0\\uc11c \\ud589\\ubcf5\\uc740 \\ub2e8\\uc21c\\ud55c \\uc990\\uac70\\uc6c0\\uc774 \\uc544\\ub2c8\\ub77c \\uc601\\ud63c\\uacfc \\uad00\\uacc4\\uc640 \\ubaa9\\uc801\\uc758 \\uae4a\\uc740 \\uc870\\ud654\\uc774\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">3</div>
+  <div class="en">Aristotle called true happiness eudaimonia, meaning a flourishing life shaped by virtue.</div>
+  <button onclick="speak(\"Aristotle called true happiness eudaimonia, meaning a flourishing life shaped by virtue.\", 'en-US')">영어 듣기</button>
+  <div class="ko">아리스토텔레스는 참된 행복을 에우다이모니아라고 불렀는데, 이는 덕으로 형성된 번영하는 삶을 뜻한다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc544\\ub9ac\\uc2a4\\ud1a0\\ud154\\ub808\\uc2a4\\ub294 \\ucc38\\ub41c \\ud589\\ubcf5\\uc744 \\uc5d0\\uc6b0\\ub2e4\\uc774\\ubaa8\\ub2c8\\uc544\\ub77c\\uace0 \\ubd88\\ub800\\ub294\\ub370, \\uc774\\ub294 \\ub355\\uc73c\\ub85c \\ud615\\uc131\\ub41c \\ubc88\\uc601\\ud558\\ub294 \\uc0b6\\uc744 \\ub73b\\ud55c\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">4</div>
+  <div class="en">For Aristotle, happiness comes from becoming a good person through repeated good actions.</div>
+  <button onclick="speak(\"For Aristotle, happiness comes from becoming a good person through repeated good actions.\", 'en-US')">영어 듣기</button>
+  <div class="ko">아리스토텔레스에게 행복은 반복되는 선한 행동을 통해 좋은 사람이 되어 가는 데서 온다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc544\\ub9ac\\uc2a4\\ud1a0\\ud154\\ub808\\uc2a4\\uc5d0\\uac8c \\ud589\\ubcf5\\uc740 \\ubc18\\ubcf5\\ub418\\ub294 \\uc120\\ud55c \\ud589\\ub3d9\\uc744 \\ud1b5\\ud574 \\uc88b\\uc740 \\uc0ac\\ub78c\\uc774 \\ub418\\uc5b4 \\uac00\\ub294 \\ub370\\uc11c \\uc628\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">5</div>
+  <div class="en">Socrates believed that a healthy soul is more important for happiness than wealth or fame.</div>
+  <button onclick="speak(\"Socrates believed that a healthy soul is more important for happiness than wealth or fame.\", 'en-US')">영어 듣기</button>
+  <div class="ko">소크라테스는 행복을 위해 건강한 영혼이 부나 명예보다 더 중요하다고 믿었다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc18c\\ud06c\\ub77c\\ud14c\\uc2a4\\ub294 \\ud589\\ubcf5\\uc744 \\uc704\\ud574 \\uac74\\uac15\\ud55c \\uc601\\ud63c\\uc774 \\ubd80\\ub098 \\uba85\\uc608\\ubcf4\\ub2e4 \\ub354 \\uc911\\uc694\\ud558\\ub2e4\\uace0 \\ubbff\\uc5c8\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">6</div>
+  <div class="en">His life teaches us that happiness grows from self-examination and moral honesty.</div>
+  <button onclick="speak(\"His life teaches us that happiness grows from self-examination and moral honesty.\", 'en-US')">영어 듣기</button>
+  <div class="ko">그의 삶은 행복이 자기 성찰과 도덕적 정직에서 자란다는 것을 가르쳐 준다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uadf8\\uc758 \\uc0b6\\uc740 \\ud589\\ubcf5\\uc774 \\uc790\\uae30 \\uc131\\ucc30\\uacfc \\ub3c4\\ub355\\uc801 \\uc815\\uc9c1\\uc5d0\\uc11c \\uc790\\ub780\\ub2e4\\ub294 \\uac83\\uc744 \\uac00\\ub974\\uccd0 \\uc900\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">7</div>
+  <div class="en">Epicurus taught that simple pleasures, friendship, and peace of mind are enough for a happy life.</div>
+  <button onclick="speak(\"Epicurus taught that simple pleasures, friendship, and peace of mind are enough for a happy life.\", 'en-US')">영어 듣기</button>
+  <div class="ko">에피쿠로스는 단순한 즐거움, 우정, 마음의 평화가 행복한 삶에 충분하다고 가르쳤다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc5d0\\ud53c\\ucfe0\\ub85c\\uc2a4\\ub294 \\ub2e8\\uc21c\\ud55c \\uc990\\uac70\\uc6c0, \\uc6b0\\uc815, \\ub9c8\\uc74c\\uc758 \\ud3c9\\ud654\\uac00 \\ud589\\ubcf5\\ud55c \\uc0b6\\uc5d0 \\ucda9\\ubd84\\ud558\\ub2e4\\uace0 \\uac00\\ub974\\ucce4\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">8</div>
+  <div class="en">His idea reminds us that happiness does not always come from having more.</div>
+  <button onclick="speak(\"His idea reminds us that happiness does not always come from having more.\", 'en-US')">영어 듣기</button>
+  <div class="ko">그의 생각은 행복이 항상 더 많이 가지는 데서 오는 것은 아님을 일깨워 준다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uadf8\\uc758 \\uc0dd\\uac01\\uc740 \\ud589\\ubcf5\\uc774 \\ud56d\\uc0c1 \\ub354 \\ub9ce\\uc774 \\uac00\\uc9c0\\ub294 \\ub370\\uc11c \\uc624\\ub294 \\uac83\\uc740 \\uc544\\ub2d8\\uc744 \\uc77c\\uae68\\uc6cc \\uc900\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">9</div>
+  <div class="en">Confucius saw happiness in harmonious relationships and a life guided by respect.</div>
+  <button onclick="speak(\"Confucius saw happiness in harmonious relationships and a life guided by respect.\", 'en-US')">영어 듣기</button>
+  <div class="ko">공자는 조화로운 관계와 존중으로 이끌리는 삶 속에서 행복을 보았다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uacf5\\uc790\\ub294 \\uc870\\ud654\\ub85c\\uc6b4 \\uad00\\uacc4\\uc640 \\uc874\\uc911\\uc73c\\ub85c \\uc774\\ub04c\\ub9ac\\ub294 \\uc0b6 \\uc18d\\uc5d0\\uc11c \\ud589\\ubcf5\\uc744 \\ubcf4\\uc558\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">10</div>
+  <div class="en">For example, a warm conversation with family can give deeper happiness than expensive possessions.</div>
+  <button onclick="speak(\"For example, a warm conversation with family can give deeper happiness than expensive possessions.\", 'en-US')">영어 듣기</button>
+  <div class="ko">예를 들어 가족과의 따뜻한 대화는 값비싼 소유물보다 더 깊은 행복을 줄 수 있다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc608\\ub97c \\ub4e4\\uc5b4 \\uac00\\uc871\\uacfc\\uc758 \\ub530\\ub73b\\ud55c \\ub300\\ud654\\ub294 \\uac12\\ube44\\uc2fc \\uc18c\\uc720\\ubb3c\\ubcf4\\ub2e4 \\ub354 \\uae4a\\uc740 \\ud589\\ubcf5\\uc744 \\uc904 \\uc218 \\uc788\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">11</div>
+  <div class="en">A teacher may find happiness when a struggling student gains confidence.</div>
+  <button onclick="speak(\"A teacher may find happiness when a struggling student gains confidence.\", 'en-US')">영어 듣기</button>
+  <div class="ko">교사는 어려움을 겪던 학생이 자신감을 얻을 때 행복을 발견할 수 있다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uad50\\uc0ac\\ub294 \\uc5b4\\ub824\\uc6c0\\uc744 \\uacaa\\ub358 \\ud559\\uc0dd\\uc774 \\uc790\\uc2e0\\uac10\\uc744 \\uc5bb\\uc744 \\ub54c \\ud589\\ubcf5\\uc744 \\ubc1c\\uacac\\ud560 \\uc218 \\uc788\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">12</div>
+  <div class="en">A student may feel happiness when effort finally becomes understanding.</div>
+  <button onclick="speak(\"A student may feel happiness when effort finally becomes understanding.\", 'en-US')">영어 듣기</button>
+  <div class="ko">학생은 노력이 마침내 이해로 바뀔 때 행복을 느낄 수 있다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ud559\\uc0dd\\uc740 \\ub178\\ub825\\uc774 \\ub9c8\\uce68\\ub0b4 \\uc774\\ud574\\ub85c \\ubc14\\ub014 \\ub54c \\ud589\\ubcf5\\uc744 \\ub290\\ub084 \\uc218 \\uc788\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">13</div>
+  <div class="en">Modern psychology also suggests that gratitude, meaningful relationships, and purpose support happiness.</div>
+  <button onclick="speak(\"Modern psychology also suggests that gratitude, meaningful relationships, and purpose support happiness.\", 'en-US')">영어 듣기</button>
+  <div class="ko">현대 심리학도 감사, 의미 있는 관계, 목적이 행복을 지탱한다고 말한다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ud604\\ub300 \\uc2ec\\ub9ac\\ud559\\ub3c4 \\uac10\\uc0ac, \\uc758\\ubbf8 \\uc788\\ub294 \\uad00\\uacc4, \\ubaa9\\uc801\\uc774 \\ud589\\ubcf5\\uc744 \\uc9c0\\ud0f1\\ud55c\\ub2e4\\uace0 \\ub9d0\\ud55c\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">14</div>
+  <div class="en">However, happiness becomes fragile when it depends only on comparison or approval.</div>
+  <button onclick="speak(\"However, happiness becomes fragile when it depends only on comparison or approval.\", 'en-US')">영어 듣기</button>
+  <div class="ko">그러나 행복이 비교나 인정에만 의존할 때 그것은 쉽게 흔들린다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uadf8\\ub7ec\\ub098 \\ud589\\ubcf5\\uc774 \\ube44\\uad50\\ub098 \\uc778\\uc815\\uc5d0\\ub9cc \\uc758\\uc874\\ud560 \\ub54c \\uadf8\\uac83\\uc740 \\uc27d\\uac8c \\ud754\\ub4e4\\ub9b0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">15</div>
+  <div class="en">True happiness often comes quietly through gratitude, service, learning, and love.</div>
+  <button onclick="speak(\"True happiness often comes quietly through gratitude, service, learning, and love.\", 'en-US')">영어 듣기</button>
+  <div class="ko">참된 행복은 감사, 봉사, 배움, 사랑을 통해 조용히 오는 경우가 많다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ucc38\\ub41c \\ud589\\ubcf5\\uc740 \\uac10\\uc0ac, \\ubd09\\uc0ac, \\ubc30\\uc6c0, \\uc0ac\\ub791\\uc744 \\ud1b5\\ud574 \\uc870\\uc6a9\\ud788 \\uc624\\ub294 \\uacbd\\uc6b0\\uac00 \\ub9ce\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">16</div>
+  <div class="en">It also comes when our actions match our values.</div>
+  <button onclick="speak(\"It also comes when our actions match our values.\", 'en-US')">영어 듣기</button>
+  <div class="ko">행복은 우리의 행동이 우리의 가치와 일치할 때에도 온다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ud589\\ubcf5\\uc740 \\uc6b0\\ub9ac\\uc758 \\ud589\\ub3d9\\uc774 \\uc6b0\\ub9ac\\uc758 \\uac00\\uce58\\uc640 \\uc77c\\uce58\\ud560 \\ub54c\\uc5d0\\ub3c4 \\uc628\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">17</div>
+  <div class="en">A happy life is not free from pain, but it can find meaning even in difficulty.</div>
+  <button onclick="speak(\"A happy life is not free from pain, but it can find meaning even in difficulty.\", 'en-US')">영어 듣기</button>
+  <div class="ko">행복한 삶은 고통이 없는 삶이 아니지만 어려움 속에서도 의미를 찾을 수 있다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ud589\\ubcf5\\ud55c \\uc0b6\\uc740 \\uace0\\ud1b5\\uc774 \\uc5c6\\ub294 \\uc0b6\\uc774 \\uc544\\ub2c8\\uc9c0\\ub9cc \\uc5b4\\ub824\\uc6c0 \\uc18d\\uc5d0\\uc11c\\ub3c4 \\uc758\\ubbf8\\ub97c \\ucc3e\\uc744 \\uc218 \\uc788\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">18</div>
+  <div class="en">Ultimately, happiness comes from living wisely, loving sincerely, and sharing goodness with others.</div>
+  <button onclick="speak(\"Ultimately, happiness comes from living wisely, loving sincerely, and sharing goodness with others.\", 'en-US')">영어 듣기</button>
+  <div class="ko">궁극적으로 행복은 지혜롭게 살고 진심으로 사랑하며 선함을 다른 사람과 나누는 데서 온다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uad81\\uadf9\\uc801\\uc73c\\ub85c \\ud589\\ubcf5\\uc740 \\uc9c0\\ud61c\\ub86d\\uac8c \\uc0b4\\uace0 \\uc9c4\\uc2ec\\uc73c\\ub85c \\uc0ac\\ub791\\ud558\\uba70 \\uc120\\ud568\\uc744 \\ub2e4\\ub978 \\uc0ac\\ub78c\\uacfc \\ub098\\ub204\\ub294 \\ub370\\uc11c \\uc628\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+</div>
+
+<div class="section">
+<h2>Ⅱ. Where Does Happiness Come From?(행복은 어디에서 오는가) — 오늘 하루 실천 10문장</h2>
+
+<div class="pair">
+  <div class="num">1</div>
+  <div class="en">Today, I will begin my day by looking for happiness in gratitude.</div>
+  <button onclick="speak(\"Today, I will begin my day by looking for happiness in gratitude.\", 'en-US')">영어 듣기</button>
+  <div class="ko">오늘 나는 감사 속에서 행복을 찾으며 하루를 시작하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc624\\ub298 \\ub098\\ub294 \\uac10\\uc0ac \\uc18d\\uc5d0\\uc11c \\ud589\\ubcf5\\uc744 \\ucc3e\\uc73c\\uba70 \\ud558\\ub8e8\\ub97c \\uc2dc\\uc791\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">2</div>
+  <div class="en">I will not chase only big success, but value small peaceful moments.</div>
+  <button onclick="speak(\"I will not chase only big success, but value small peaceful moments.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 큰 성공만 좇지 않고 작고 평화로운 순간들을 소중히 여기겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\ud070 \\uc131\\uacf5\\ub9cc \\uc887\\uc9c0 \\uc54a\\uace0 \\uc791\\uace0 \\ud3c9\\ud654\\ub85c\\uc6b4 \\uc21c\\uac04\\ub4e4\\uc744 \\uc18c\\uc911\\ud788 \\uc5ec\\uae30\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">3</div>
+  <div class="en">Happiness comes from a heart that notices kindness and meaning.</div>
+  <button onclick="speak(\"Happiness comes from a heart that notices kindness and meaning.\", 'en-US')">영어 듣기</button>
+  <div class="ko">행복은 친절과 의미를 알아보는 마음에서 온다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ud589\\ubcf5\\uc740 \\uce5c\\uc808\\uacfc \\uc758\\ubbf8\\ub97c \\uc54c\\uc544\\ubcf4\\ub294 \\ub9c8\\uc74c\\uc5d0\\uc11c \\uc628\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">4</div>
+  <div class="en">I will speak warmly to my students and people around me.</div>
+  <button onclick="speak(\"I will speak warmly to my students and people around me.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 학생들과 주변 사람들에게 따뜻하게 말하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\ud559\\uc0dd\\ub4e4\\uacfc \\uc8fc\\ubcc0 \\uc0ac\\ub78c\\ub4e4\\uc5d0\\uac8c \\ub530\\ub73b\\ud558\\uac8c \\ub9d0\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">5</div>
+  <div class="en">I will enjoy simple things, such as light, food, conversation, and rest.</div>
+  <button onclick="speak(\"I will enjoy simple things, such as light, food, conversation, and rest.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 빛, 음식, 대화, 휴식 같은 단순한 것들을 누리겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\ube5b, \\uc74c\\uc2dd, \\ub300\\ud654, \\ud734\\uc2dd \\uac19\\uc740 \\ub2e8\\uc21c\\ud55c \\uac83\\ub4e4\\uc744 \\ub204\\ub9ac\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">6</div>
+  <div class="en">When I feel tired, I will remember what I am thankful for.</div>
+  <button onclick="speak(\"When I feel tired, I will remember what I am thankful for.\", 'en-US')">영어 듣기</button>
+  <div class="ko">피곤할 때 나는 내가 감사할 것을 기억하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ud53c\\uace4\\ud560 \\ub54c \\ub098\\ub294 \\ub0b4\\uac00 \\uac10\\uc0ac\\ud560 \\uac83\\uc744 \\uae30\\uc5b5\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">7</div>
+  <div class="en">I will help someone today, because shared goodness brings deep joy.</div>
+  <button onclick="speak(\"I will help someone today, because shared goodness brings deep joy.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나누어진 선함은 깊은 기쁨을 가져오므로 나는 오늘 누군가를 돕겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub204\\uc5b4\\uc9c4 \\uc120\\ud568\\uc740 \\uae4a\\uc740 \\uae30\\uc068\\uc744 \\uac00\\uc838\\uc624\\ubbc0\\ub85c \\ub098\\ub294 \\uc624\\ub298 \\ub204\\uad70\\uac00\\ub97c \\ub3d5\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">8</div>
+  <div class="en">I will avoid comparison and walk my own meaningful path.</div>
+  <button onclick="speak(\"I will avoid comparison and walk my own meaningful path.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 비교를 피하고 나의 의미 있는 길을 걸어가겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\ube44\\uad50\\ub97c \\ud53c\\ud558\\uace0 \\ub098\\uc758 \\uc758\\ubbf8 \\uc788\\ub294 \\uae38\\uc744 \\uac78\\uc5b4\\uac00\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">9</div>
+  <div class="en">With gratitude and love, I can make today happier and more meaningful.</div>
+  <button onclick="speak(\"With gratitude and love, I can make today happier and more meaningful.\", 'en-US')">영어 듣기</button>
+  <div class="ko">감사와 사랑으로 나는 오늘을 더 행복하고 의미 있게 만들 수 있다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uac10\\uc0ac\\uc640 \\uc0ac\\ub791\\uc73c\\ub85c \\ub098\\ub294 \\uc624\\ub298\\uc744 \\ub354 \\ud589\\ubcf5\\ud558\\uace0 \\uc758\\ubbf8 \\uc788\\uac8c \\ub9cc\\ub4e4 \\uc218 \\uc788\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">10</div>
+  <div class="en">Today, I will live as a person who finds happiness in wisdom, kindness, and purpose.</div>
+  <button onclick="speak(\"Today, I will live as a person who finds happiness in wisdom, kindness, and purpose.\", 'en-US')">영어 듣기</button>
+  <div class="ko">오늘 나는 지혜와 친절과 목적 속에서 행복을 찾는 사람으로 살아가겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc624\\ub298 \\ub098\\ub294 \\uc9c0\\ud61c\\uc640 \\uce5c\\uc808\\uacfc \\ubaa9\\uc801 \\uc18d\\uc5d0\\uc11c \\ud589\\ubcf5\\uc744 \\ucc3e\\ub294 \\uc0ac\\ub78c\\uc73c\\ub85c \\uc0b4\\uc544\\uac00\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+</div>
+
+<div class="section">
+<h2>전체 원문 Text</h2>
+<pre>행복은 어디에서 오는가?
+Where does happiness come from?
+
+인문 철학적으로 예시와 일화를 들어서
+영어18문장(한글 해석)으로 설명
+
+The question “Where does happiness come from?” asks whether happiness comes from outside conditions or inner ways of living.
+“행복은 어디에서 오는가?”라는 질문은 행복이 외부 조건에서 오는지, 아니면 내면의 삶의 방식에서 오는지를 묻는다.
+In humanistic philosophy, happiness is not only pleasure, but a deep harmony of the soul, relationships, and purpose.
+인문 철학에서 행복은 단순한 즐거움이 아니라 영혼과 관계와 목적의 깊은 조화이다.
+Aristotle called true happiness eudaimonia, meaning a flourishing life shaped by virtue.
+아리스토텔레스는 참된 행복을 에우다이모니아라고 불렀는데, 이는 덕으로 형성된 번영하는 삶을 뜻한다.
+For Aristotle, happiness comes from becoming a good person through repeated good actions.
+아리스토텔레스에게 행복은 반복되는 선한 행동을 통해 좋은 사람이 되어 가는 데서 온다.
+Socrates believed that a healthy soul is more important for happiness than wealth or fame.
+소크라테스는 행복을 위해 건강한 영혼이 부나 명예보다 더 중요하다고 믿었다.
+His life teaches us that happiness grows from self-examination and moral honesty.
+그의 삶은 행복이 자기 성찰과 도덕적 정직에서 자란다는 것을 가르쳐 준다.
+Epicurus taught that simple pleasures, friendship, and peace of mind are enough for a happy life.
+에피쿠로스는 단순한 즐거움, 우정, 마음의 평화가 행복한 삶에 충분하다고 가르쳤다.
+His idea reminds us that happiness does not always come from having more.
+그의 생각은 행복이 항상 더 많이 가지는 데서 오는 것은 아님을 일깨워 준다.
+Confucius saw happiness in harmonious relationships and a life guided by respect.
+공자는 조화로운 관계와 존중으로 이끌리는 삶 속에서 행복을 보았다.
+For example, a warm conversation with family can give deeper happiness than expensive possessions.
+예를 들어 가족과의 따뜻한 대화는 값비싼 소유물보다 더 깊은 행복을 줄 수 있다.
+A teacher may find happiness when a struggling student gains confidence.
+교사는 어려움을 겪던 학생이 자신감을 얻을 때 행복을 발견할 수 있다.
+A student may feel happiness when effort finally becomes understanding.
+학생은 노력이 마침내 이해로 바뀔 때 행복을 느낄 수 있다.
+Modern psychology also suggests that gratitude, meaningful relationships, and purpose support happiness.
+현대 심리학도 감사, 의미 있는 관계, 목적이 행복을 지탱한다고 말한다.
+However, happiness becomes fragile when it depends only on comparison or approval.
+그러나 행복이 비교나 인정에만 의존할 때 그것은 쉽게 흔들린다.
+True happiness often comes quietly through gratitude, service, learning, and love.
+참된 행복은 감사, 봉사, 배움, 사랑을 통해 조용히 오는 경우가 많다.
+It also comes when our actions match our values.
+행복은 우리의 행동이 우리의 가치와 일치할 때에도 온다.
+A happy life is not free from pain, but it can find meaning even in difficulty.
+행복한 삶은 고통이 없는 삶이 아니지만 어려움 속에서도 의미를 찾을 수 있다.
+Ultimately, happiness comes from living wisely, loving sincerely, and sharing goodness with others.
+궁극적으로 행복은 지혜롭게 살고 진심으로 사랑하며 선함을 다른 사람과 나누는 데서 온다.
+
+오늘 하루 행복은 어디에서 오는가? Where does happiness come from?를 생각하고 의미있는 삶을 실천하며 살고 싶다.
+영어 10줄(한글 해석)로 오늘의 삶을 이야기 하기
+
+Today, I will begin my day by looking for happiness in gratitude.
+오늘 나는 감사 속에서 행복을 찾으며 하루를 시작하겠다.
+I will not chase only big success, but value small peaceful moments.
+나는 큰 성공만 좇지 않고 작고 평화로운 순간들을 소중히 여기겠다.
+Happiness comes from a heart that notices kindness and meaning.
+행복은 친절과 의미를 알아보는 마음에서 온다.
+I will speak warmly to my students and people around me.
+나는 학생들과 주변 사람들에게 따뜻하게 말하겠다.
+I will enjoy simple things, such as light, food, conversation, and rest.
+나는 빛, 음식, 대화, 휴식 같은 단순한 것들을 누리겠다.
+When I feel tired, I will remember what I am thankful for.
+피곤할 때 나는 내가 감사할 것을 기억하겠다.
+I will help someone today, because shared goodness brings deep joy.
+나누어진 선함은 깊은 기쁨을 가져오므로 나는 오늘 누군가를 돕겠다.
+I will avoid comparison and walk my own meaningful path.
+나는 비교를 피하고 나의 의미 있는 길을 걸어가겠다.
+With gratitude and love, I can make today happier and more meaningful.
+감사와 사랑으로 나는 오늘을 더 행복하고 의미 있게 만들 수 있다.
+Today, I will live as a person who finds happiness in wisdom, kindness, and purpose.
+오늘 나는 지혜와 친절과 목적 속에서 행복을 찾는 사람으로 살아가겠다.</pre>
+</div>
+
+<script>
+const EN_TEXT = "The question “Where does happiness come from?” asks whether happiness comes from outside conditions or inner ways of living.\nIn humanistic philosophy, happiness is not only pleasure, but a deep harmony of the soul, relationships, and purpose.\nAristotle called true happiness eudaimonia, meaning a flourishing life shaped by virtue.\nFor Aristotle, happiness comes from becoming a good person through repeated good actions.\nSocrates believed that a healthy soul is more important for happiness than wealth or fame.\nHis life teaches us that happiness grows from self-examination and moral honesty.\nEpicurus taught that simple pleasures, friendship, and peace of mind are enough for a happy life.\nHis idea reminds us that happiness does not always come from having more.\nConfucius saw happiness in harmonious relationships and a life guided by respect.\nFor example, a warm conversation with family can give deeper happiness than expensive possessions.\nA teacher may find happiness when a struggling student gains confidence.\nA student may feel happiness when effort finally becomes understanding.\nModern psychology also suggests that gratitude, meaningful relationships, and purpose support happiness.\nHowever, happiness becomes fragile when it depends only on comparison or approval.\nTrue happiness often comes quietly through gratitude, service, learning, and love.\nIt also comes when our actions match our values.\nA happy life is not free from pain, but it can find meaning even in difficulty.\nUltimately, happiness comes from living wisely, loving sincerely, and sharing goodness with others.\nToday, I will begin my day by looking for happiness in gratitude.\nI will not chase only big success, but value small peaceful moments.\nHappiness comes from a heart that notices kindness and meaning.\nI will speak warmly to my students and people around me.\nI will enjoy simple things, such as light, food, conversation, and rest.\nWhen I feel tired, I will remember what I am thankful for.\nI will help someone today, because shared goodness brings deep joy.\nI will avoid comparison and walk my own meaningful path.\nWith gratitude and love, I can make today happier and more meaningful.\nToday, I will live as a person who finds happiness in wisdom, kindness, and purpose.";
+const KO_TEXT = "“행복은 어디에서 오는가?”라는 질문은 행복이 외부 조건에서 오는지, 아니면 내면의 삶의 방식에서 오는지를 묻는다.\n인문 철학에서 행복은 단순한 즐거움이 아니라 영혼과 관계와 목적의 깊은 조화이다.\n아리스토텔레스는 참된 행복을 에우다이모니아라고 불렀는데, 이는 덕으로 형성된 번영하는 삶을 뜻한다.\n아리스토텔레스에게 행복은 반복되는 선한 행동을 통해 좋은 사람이 되어 가는 데서 온다.\n소크라테스는 행복을 위해 건강한 영혼이 부나 명예보다 더 중요하다고 믿었다.\n그의 삶은 행복이 자기 성찰과 도덕적 정직에서 자란다는 것을 가르쳐 준다.\n에피쿠로스는 단순한 즐거움, 우정, 마음의 평화가 행복한 삶에 충분하다고 가르쳤다.\n그의 생각은 행복이 항상 더 많이 가지는 데서 오는 것은 아님을 일깨워 준다.\n공자는 조화로운 관계와 존중으로 이끌리는 삶 속에서 행복을 보았다.\n예를 들어 가족과의 따뜻한 대화는 값비싼 소유물보다 더 깊은 행복을 줄 수 있다.\n교사는 어려움을 겪던 학생이 자신감을 얻을 때 행복을 발견할 수 있다.\n학생은 노력이 마침내 이해로 바뀔 때 행복을 느낄 수 있다.\n현대 심리학도 감사, 의미 있는 관계, 목적이 행복을 지탱한다고 말한다.\n그러나 행복이 비교나 인정에만 의존할 때 그것은 쉽게 흔들린다.\n참된 행복은 감사, 봉사, 배움, 사랑을 통해 조용히 오는 경우가 많다.\n행복은 우리의 행동이 우리의 가치와 일치할 때에도 온다.\n행복한 삶은 고통이 없는 삶이 아니지만 어려움 속에서도 의미를 찾을 수 있다.\n궁극적으로 행복은 지혜롭게 살고 진심으로 사랑하며 선함을 다른 사람과 나누는 데서 온다.\n오늘 나는 감사 속에서 행복을 찾으며 하루를 시작하겠다.\n나는 큰 성공만 좇지 않고 작고 평화로운 순간들을 소중히 여기겠다.\n행복은 친절과 의미를 알아보는 마음에서 온다.\n나는 학생들과 주변 사람들에게 따뜻하게 말하겠다.\n나는 빛, 음식, 대화, 휴식 같은 단순한 것들을 누리겠다.\n피곤할 때 나는 내가 감사할 것을 기억하겠다.\n나누어진 선함은 깊은 기쁨을 가져오므로 나는 오늘 누군가를 돕겠다.\n나는 비교를 피하고 나의 의미 있는 길을 걸어가겠다.\n감사와 사랑으로 나는 오늘을 더 행복하고 의미 있게 만들 수 있다.\n오늘 나는 지혜와 친절과 목적 속에서 행복을 찾는 사람으로 살아가겠다.";
+function speak(text, lang){
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = lang;
+  u.rate = lang === 'en-US' ? 0.88 : 0.95;
+  u.pitch = 1;
+  speechSynthesis.speak(u);
+}
+function speakAll(lang){
+  speechSynthesis.cancel();
+  const text = lang === 'en-US' ? EN_TEXT : KO_TEXT;
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = lang;
+  u.rate = lang === 'en-US' ? 0.88 : 0.95;
+  u.pitch = 1;
+  speechSynthesis.speak(u);
+}
+</script>
+</div></div>
+</body>
+</html>

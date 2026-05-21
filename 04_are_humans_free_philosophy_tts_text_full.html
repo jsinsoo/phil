@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Are Human Beings Truly Free 인간은 자유로운가 TTS 학습</title>
+<style>
+body{font-family:'Malgun Gothic',Arial,sans-serif;margin:0;background:linear-gradient(135deg,#eef5ff,#fff8ec);color:#222;}
+.wrap{max-width:1050px;margin:34px auto;padding:22px;}
+.card{background:#fff;border-radius:24px;padding:30px;box-shadow:0 12px 34px rgba(0,0,0,.12);}
+h1{text-align:center;color:#274b87;font-size:36px;margin:6px 0 10px;}
+.subtitle{text-align:center;line-height:1.7;color:#555;font-size:17px;}
+.info{background:#f0f6ff;border-left:7px solid #5276c8;padding:16px 20px;border-radius:16px;margin:20px 0;line-height:1.8;font-size:18px;}
+.controls{text-align:center;margin:20px 0;}
+button{border:none;border-radius:999px;padding:9px 15px;margin:4px;background:#315795;color:white;cursor:pointer;font-weight:700;}
+button:hover{filter:brightness(1.08);}
+.btn-ko{background:#a76625;}
+.stop{background:#555;}
+.section{margin-top:30px;padding-top:18px;border-top:2px dashed #ddd;}
+h2{color:#6f4a00;font-size:25px;}
+.pair{display:grid;grid-template-columns:44px 1fr auto;gap:8px 12px;align-items:center;margin:13px 0;padding:16px;border:1px solid #eee;border-radius:18px;background:#fbfcff;}
+.num{grid-row:1 / span 2;font-size:22px;font-weight:800;color:#7894c3;text-align:center;}
+.en{font-size:18px;font-weight:700;color:#274b87;line-height:1.55;}
+.ko{font-size:17px;color:#333;line-height:1.55;}
+pre{white-space:pre-wrap;word-break:keep-all;background:#fffdf7;border-radius:18px;padding:20px;line-height:1.85;font-size:16px;border:1px solid #f0e5c8;}
+@media(max-width:720px){.pair{grid-template-columns:34px 1fr;}.pair button{grid-column:2;justify-self:start;}h1{font-size:28px;}}
+</style>
+</head>
+<body>
+<div class="wrap"><div class="card">
+<h1>Are Human Beings Truly Free?<br>인간은 자유로운가 TTS 학습</h1>
+<div class="subtitle">“인간은 자유로운가?”의 인문 철학적 설명 18문장 + 오늘 하루 의미 있는 삶 실천 10문장</div>
+<div class="info">
+<strong>Freedom:</strong> 자유는 하고 싶은 대로 하는 것이 아니라, 욕망·두려움·사회적 조건 속에서도 지혜와 책임으로 선택하는 힘입니다.
+</div>
+<div class="controls">
+<button onclick="speakAll('en-US')">영어 전체 듣기</button>
+<button class="btn-ko" onclick="speakAll('ko-KR')">한국어 전체 듣기</button>
+<button class="stop" onclick="speechSynthesis.cancel()">정지</button>
+</div>
+
+<div class="section">
+<h2>Ⅰ. Are Human Beings Truly Free?(인간은 자유로운가) — 인문 철학적 설명 18문장</h2>
+
+<div class="pair">
+  <div class="num">1</div>
+  <div class="en">The question “Are human beings truly free?” asks whether our choices are really our own.</div>
+  <button onclick="speak(\"The question \\u201cAre human beings truly free?\\u201d asks whether our choices are really our own.\", 'en-US')">영어 듣기</button>
+  <div class="ko">“인간은 자유로운가?”라는 질문은 우리의 선택이 정말 우리 자신의 것인지를 묻는다.</div>
+  <button class="btn-ko" onclick="speak(\"\\u201c\\uc778\\uac04\\uc740 \\uc790\\uc720\\ub85c\\uc6b4\\uac00?\\u201d\\ub77c\\ub294 \\uc9c8\\ubb38\\uc740 \\uc6b0\\ub9ac\\uc758 \\uc120\\ud0dd\\uc774 \\uc815\\ub9d0 \\uc6b0\\ub9ac \\uc790\\uc2e0\\uc758 \\uac83\\uc778\\uc9c0\\ub97c \\ubb3b\\ub294\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">2</div>
+  <div class="en">In humanistic philosophy, freedom is connected with responsibility, reason, desire, and social conditions.</div>
+  <button onclick="speak(\"In humanistic philosophy, freedom is connected with responsibility, reason, desire, and social conditions.\", 'en-US')">영어 듣기</button>
+  <div class="ko">인문 철학에서 자유는 책임, 이성, 욕망, 사회적 조건과 연결되어 있다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc778\\ubb38 \\ucca0\\ud559\\uc5d0\\uc11c \\uc790\\uc720\\ub294 \\ucc45\\uc784, \\uc774\\uc131, \\uc695\\ub9dd, \\uc0ac\\ud68c\\uc801 \\uc870\\uac74\\uacfc \\uc5f0\\uacb0\\ub418\\uc5b4 \\uc788\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">3</div>
+  <div class="en">Socrates showed inner freedom by following conscience rather than public fear.</div>
+  <button onclick="speak(\"Socrates showed inner freedom by following conscience rather than public fear.\", 'en-US')">영어 듣기</button>
+  <div class="ko">소크라테스는 대중의 두려움보다 양심을 따름으로써 내면의 자유를 보여 주었다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc18c\\ud06c\\ub77c\\ud14c\\uc2a4\\ub294 \\ub300\\uc911\\uc758 \\ub450\\ub824\\uc6c0\\ubcf4\\ub2e4 \\uc591\\uc2ec\\uc744 \\ub530\\ub984\\uc73c\\ub85c\\uc368 \\ub0b4\\uba74\\uc758 \\uc790\\uc720\\ub97c \\ubcf4\\uc5ec \\uc8fc\\uc5c8\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">4</div>
+  <div class="en">His life teaches us that a person can be physically constrained but spiritually free.</div>
+  <button onclick="speak(\"His life teaches us that a person can be physically constrained but spiritually free.\", 'en-US')">영어 듣기</button>
+  <div class="ko">그의 삶은 사람이 신체적으로 제한되어도 정신적으로는 자유로울 수 있음을 가르쳐 준다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uadf8\\uc758 \\uc0b6\\uc740 \\uc0ac\\ub78c\\uc774 \\uc2e0\\uccb4\\uc801\\uc73c\\ub85c \\uc81c\\ud55c\\ub418\\uc5b4\\ub3c4 \\uc815\\uc2e0\\uc801\\uc73c\\ub85c\\ub294 \\uc790\\uc720\\ub85c\\uc6b8 \\uc218 \\uc788\\uc74c\\uc744 \\uac00\\ub974\\uccd0 \\uc900\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">5</div>
+  <div class="en">Aristotle believed that freedom grows when reason guides desire toward virtue.</div>
+  <button onclick="speak(\"Aristotle believed that freedom grows when reason guides desire toward virtue.\", 'en-US')">영어 듣기</button>
+  <div class="ko">아리스토텔레스는 이성이 욕망을 덕으로 이끌 때 자유가 자란다고 믿었다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc544\\ub9ac\\uc2a4\\ud1a0\\ud154\\ub808\\uc2a4\\ub294 \\uc774\\uc131\\uc774 \\uc695\\ub9dd\\uc744 \\ub355\\uc73c\\ub85c \\uc774\\ub04c \\ub54c \\uc790\\uc720\\uac00 \\uc790\\ub780\\ub2e4\\uace0 \\ubbff\\uc5c8\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">6</div>
+  <div class="en">This means that doing whatever we want is not always true freedom.</div>
+  <button onclick="speak(\"This means that doing whatever we want is not always true freedom.\", 'en-US')">영어 듣기</button>
+  <div class="ko">이는 하고 싶은 대로 하는 것이 언제나 참된 자유는 아니라는 뜻이다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc774\\ub294 \\ud558\\uace0 \\uc2f6\\uc740 \\ub300\\ub85c \\ud558\\ub294 \\uac83\\uc774 \\uc5b8\\uc81c\\ub098 \\ucc38\\ub41c \\uc790\\uc720\\ub294 \\uc544\\ub2c8\\ub77c\\ub294 \\ub73b\\uc774\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">7</div>
+  <div class="en">For example, a student who resists distraction to study may be more free than one ruled by impulse.</div>
+  <button onclick="speak(\"For example, a student who resists distraction to study may be more free than one ruled by impulse.\", 'en-US')">영어 듣기</button>
+  <div class="ko">예를 들어 산만함을 이기고 공부하는 학생은 충동에 지배되는 학생보다 더 자유로울 수 있다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc608\\ub97c \\ub4e4\\uc5b4 \\uc0b0\\ub9cc\\ud568\\uc744 \\uc774\\uae30\\uace0 \\uacf5\\ubd80\\ud558\\ub294 \\ud559\\uc0dd\\uc740 \\ucda9\\ub3d9\\uc5d0 \\uc9c0\\ubc30\\ub418\\ub294 \\ud559\\uc0dd\\ubcf4\\ub2e4 \\ub354 \\uc790\\uc720\\ub85c\\uc6b8 \\uc218 \\uc788\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">8</div>
+  <div class="en">Immanuel Kant argued that true freedom is obeying the moral law we recognize through reason.</div>
+  <button onclick="speak(\"Immanuel Kant argued that true freedom is obeying the moral law we recognize through reason.\", 'en-US')">영어 듣기</button>
+  <div class="ko">임마누엘 칸트는 참된 자유가 이성을 통해 인식한 도덕 법칙을 따르는 것이라고 주장했다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc784\\ub9c8\\ub204\\uc5d8 \\uce78\\ud2b8\\ub294 \\ucc38\\ub41c \\uc790\\uc720\\uac00 \\uc774\\uc131\\uc744 \\ud1b5\\ud574 \\uc778\\uc2dd\\ud55c \\ub3c4\\ub355 \\ubc95\\uce59\\uc744 \\ub530\\ub974\\ub294 \\uac83\\uc774\\ub77c\\uace0 \\uc8fc\\uc7a5\\ud588\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">9</div>
+  <div class="en">For Kant, a free person acts from duty, not merely from appetite or pressure.</div>
+  <button onclick="speak(\"For Kant, a free person acts from duty, not merely from appetite or pressure.\", 'en-US')">영어 듣기</button>
+  <div class="ko">칸트에게 자유로운 사람은 단순한 욕구나 압력이 아니라 의무에 따라 행동한다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uce78\\ud2b8\\uc5d0\\uac8c \\uc790\\uc720\\ub85c\\uc6b4 \\uc0ac\\ub78c\\uc740 \\ub2e8\\uc21c\\ud55c \\uc695\\uad6c\\ub098 \\uc555\\ub825\\uc774 \\uc544\\ub2c8\\ub77c \\uc758\\ubb34\\uc5d0 \\ub530\\ub77c \\ud589\\ub3d9\\ud55c\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">10</div>
+  <div class="en">Jean-Paul Sartre insisted that human beings are radically free and responsible for their choices.</div>
+  <button onclick="speak(\"Jean-Paul Sartre insisted that human beings are radically free and responsible for their choices.\", 'en-US')">영어 듣기</button>
+  <div class="ko">장 폴 사르트르는 인간이 근본적으로 자유로우며 자신의 선택에 책임이 있다고 주장했다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc7a5 \\ud3f4 \\uc0ac\\ub974\\ud2b8\\ub974\\ub294 \\uc778\\uac04\\uc774 \\uadfc\\ubcf8\\uc801\\uc73c\\ub85c \\uc790\\uc720\\ub85c\\uc6b0\\uba70 \\uc790\\uc2e0\\uc758 \\uc120\\ud0dd\\uc5d0 \\ucc45\\uc784\\uc774 \\uc788\\ub2e4\\uace0 \\uc8fc\\uc7a5\\ud588\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">11</div>
+  <div class="en">His view reminds us that even not choosing is already a kind of choice.</div>
+  <button onclick="speak(\"His view reminds us that even not choosing is already a kind of choice.\", 'en-US')">영어 듣기</button>
+  <div class="ko">그의 관점은 선택하지 않는 것조차 이미 하나의 선택임을 일깨워 준다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uadf8\\uc758 \\uad00\\uc810\\uc740 \\uc120\\ud0dd\\ud558\\uc9c0 \\uc54a\\ub294 \\uac83\\uc870\\ucc28 \\uc774\\ubbf8 \\ud558\\ub098\\uc758 \\uc120\\ud0dd\\uc784\\uc744 \\uc77c\\uae68\\uc6cc \\uc900\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">12</div>
+  <div class="en">However, modern society shows that freedom is shaped by poverty, education, technology, and power.</div>
+  <button onclick="speak(\"However, modern society shows that freedom is shaped by poverty, education, technology, and power.\", 'en-US')">영어 듣기</button>
+  <div class="ko">그러나 현대 사회는 자유가 가난, 교육, 기술, 권력에 의해 형성된다는 것을 보여 준다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uadf8\\ub7ec\\ub098 \\ud604\\ub300 \\uc0ac\\ud68c\\ub294 \\uc790\\uc720\\uac00 \\uac00\\ub09c, \\uad50\\uc721, \\uae30\\uc220, \\uad8c\\ub825\\uc5d0 \\uc758\\ud574 \\ud615\\uc131\\ub41c\\ub2e4\\ub294 \\uac83\\uc744 \\ubcf4\\uc5ec \\uc900\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">13</div>
+  <div class="en">A person with no fair opportunity cannot exercise freedom in the same way as a privileged person.</div>
+  <button onclick="speak(\"A person with no fair opportunity cannot exercise freedom in the same way as a privileged person.\", 'en-US')">영어 듣기</button>
+  <div class="ko">공정한 기회가 없는 사람은 특권을 가진 사람과 같은 방식으로 자유를 행사할 수 없다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uacf5\\uc815\\ud55c \\uae30\\ud68c\\uac00 \\uc5c6\\ub294 \\uc0ac\\ub78c\\uc740 \\ud2b9\\uad8c\\uc744 \\uac00\\uc9c4 \\uc0ac\\ub78c\\uacfc \\uac19\\uc740 \\ubc29\\uc2dd\\uc73c\\ub85c \\uc790\\uc720\\ub97c \\ud589\\uc0ac\\ud560 \\uc218 \\uc5c6\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">14</div>
+  <div class="en">Therefore, freedom is both personal and social.</div>
+  <button onclick="speak(\"Therefore, freedom is both personal and social.\", 'en-US')">영어 듣기</button>
+  <div class="ko">그러므로 자유는 개인적인 것이면서 동시에 사회적인 것이다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uadf8\\ub7ec\\ubbc0\\ub85c \\uc790\\uc720\\ub294 \\uac1c\\uc778\\uc801\\uc778 \\uac83\\uc774\\uba74\\uc11c \\ub3d9\\uc2dc\\uc5d0 \\uc0ac\\ud68c\\uc801\\uc778 \\uac83\\uc774\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">15</div>
+  <div class="en">In daily life, freedom appears when we pause before reacting and choose wisely.</div>
+  <button onclick="speak(\"In daily life, freedom appears when we pause before reacting and choose wisely.\", 'en-US')">영어 듣기</button>
+  <div class="ko">일상에서 자유는 반응하기 전에 멈추고 지혜롭게 선택할 때 나타난다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc77c\\uc0c1\\uc5d0\\uc11c \\uc790\\uc720\\ub294 \\ubc18\\uc751\\ud558\\uae30 \\uc804\\uc5d0 \\uba48\\ucd94\\uace0 \\uc9c0\\ud61c\\ub86d\\uac8c \\uc120\\ud0dd\\ud560 \\ub54c \\ub098\\ud0c0\\ub09c\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">16</div>
+  <div class="en">Freedom also appears when we respect another person’s freedom and dignity.</div>
+  <button onclick="speak(\"Freedom also appears when we respect another person\\u2019s freedom and dignity.\", 'en-US')">영어 듣기</button>
+  <div class="ko">자유는 다른 사람의 자유와 존엄을 존중할 때에도 나타난다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc790\\uc720\\ub294 \\ub2e4\\ub978 \\uc0ac\\ub78c\\uc758 \\uc790\\uc720\\uc640 \\uc874\\uc5c4\\uc744 \\uc874\\uc911\\ud560 \\ub54c\\uc5d0\\ub3c4 \\ub098\\ud0c0\\ub09c\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">17</div>
+  <div class="en">A truly free person is not a slave to fear, anger, greed, or public opinion.</div>
+  <button onclick="speak(\"A truly free person is not a slave to fear, anger, greed, or public opinion.\", 'en-US')">영어 듣기</button>
+  <div class="ko">참으로 자유로운 사람은 두려움, 분노, 탐욕, 여론의 노예가 아니다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ucc38\\uc73c\\ub85c \\uc790\\uc720\\ub85c\\uc6b4 \\uc0ac\\ub78c\\uc740 \\ub450\\ub824\\uc6c0, \\ubd84\\ub178, \\ud0d0\\uc695, \\uc5ec\\ub860\\uc758 \\ub178\\uc608\\uac00 \\uc544\\ub2c8\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">18</div>
+  <div class="en">Ultimately, human freedom is the ongoing task of choosing truth, goodness, and responsibility.</div>
+  <button onclick="speak(\"Ultimately, human freedom is the ongoing task of choosing truth, goodness, and responsibility.\", 'en-US')">영어 듣기</button>
+  <div class="ko">궁극적으로 인간의 자유는 진리와 선과 책임을 선택해 가는 지속적인 과제이다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uad81\\uadf9\\uc801\\uc73c\\ub85c \\uc778\\uac04\\uc758 \\uc790\\uc720\\ub294 \\uc9c4\\ub9ac\\uc640 \\uc120\\uacfc \\ucc45\\uc784\\uc744 \\uc120\\ud0dd\\ud574 \\uac00\\ub294 \\uc9c0\\uc18d\\uc801\\uc778 \\uacfc\\uc81c\\uc774\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+</div>
+
+<div class="section">
+<h2>Ⅱ. Are Human Beings Truly Free?(인간은 자유로운가) — 오늘 하루 실천 10문장</h2>
+
+<div class="pair">
+  <div class="num">1</div>
+  <div class="en">Today, I will begin my day by asking how I can use my freedom wisely.</div>
+  <button onclick="speak(\"Today, I will begin my day by asking how I can use my freedom wisely.\", 'en-US')">영어 듣기</button>
+  <div class="ko">오늘 나는 나의 자유를 어떻게 지혜롭게 사용할 수 있을지 물으며 하루를 시작하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc624\\ub298 \\ub098\\ub294 \\ub098\\uc758 \\uc790\\uc720\\ub97c \\uc5b4\\ub5bb\\uac8c \\uc9c0\\ud61c\\ub86d\\uac8c \\uc0ac\\uc6a9\\ud560 \\uc218 \\uc788\\uc744\\uc9c0 \\ubb3c\\uc73c\\uba70 \\ud558\\ub8e8\\ub97c \\uc2dc\\uc791\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">2</div>
+  <div class="en">I will not let fear or anger control my words and actions.</div>
+  <button onclick="speak(\"I will not let fear or anger control my words and actions.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 두려움이나 분노가 나의 말과 행동을 지배하지 못하게 하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\ub450\\ub824\\uc6c0\\uc774\\ub098 \\ubd84\\ub178\\uac00 \\ub098\\uc758 \\ub9d0\\uacfc \\ud589\\ub3d9\\uc744 \\uc9c0\\ubc30\\ud558\\uc9c0 \\ubabb\\ud558\\uac8c \\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">3</div>
+  <div class="en">True freedom means choosing what is meaningful, not merely what is easy.</div>
+  <button onclick="speak(\"True freedom means choosing what is meaningful, not merely what is easy.\", 'en-US')">영어 듣기</button>
+  <div class="ko">참된 자유는 단지 쉬운 것이 아니라 의미 있는 것을 선택하는 것이다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ucc38\\ub41c \\uc790\\uc720\\ub294 \\ub2e8\\uc9c0 \\uc26c\\uc6b4 \\uac83\\uc774 \\uc544\\ub2c8\\ub77c \\uc758\\ubbf8 \\uc788\\ub294 \\uac83\\uc744 \\uc120\\ud0dd\\ud558\\ub294 \\uac83\\uc774\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">4</div>
+  <div class="en">I will respect the freedom and dignity of my students and people around me.</div>
+  <button onclick="speak(\"I will respect the freedom and dignity of my students and people around me.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 학생들과 주변 사람들의 자유와 존엄을 존중하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\ud559\\uc0dd\\ub4e4\\uacfc \\uc8fc\\ubcc0 \\uc0ac\\ub78c\\ub4e4\\uc758 \\uc790\\uc720\\uc640 \\uc874\\uc5c4\\uc744 \\uc874\\uc911\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">5</div>
+  <div class="en">I will pause before reacting and choose a thoughtful response.</div>
+  <button onclick="speak(\"I will pause before reacting and choose a thoughtful response.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 반응하기 전에 잠시 멈추고 사려 깊은 응답을 선택하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\ubc18\\uc751\\ud558\\uae30 \\uc804\\uc5d0 \\uc7a0\\uc2dc \\uba48\\ucd94\\uace0 \\uc0ac\\ub824 \\uae4a\\uc740 \\uc751\\ub2f5\\uc744 \\uc120\\ud0dd\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">6</div>
+  <div class="en">When I make a choice, I will accept responsibility for its results.</div>
+  <button onclick="speak(\"When I make a choice, I will accept responsibility for its results.\", 'en-US')">영어 듣기</button>
+  <div class="ko">선택을 할 때 나는 그 결과에 대한 책임을 받아들이겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc120\\ud0dd\\uc744 \\ud560 \\ub54c \\ub098\\ub294 \\uadf8 \\uacb0\\uacfc\\uc5d0 \\ub300\\ud55c \\ucc45\\uc784\\uc744 \\ubc1b\\uc544\\ub4e4\\uc774\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">7</div>
+  <div class="en">I will use my freedom to encourage, help, and protect others.</div>
+  <button onclick="speak(\"I will use my freedom to encourage, help, and protect others.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 나의 자유를 다른 사람을 격려하고 돕고 보호하는 데 사용하겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\ub098\\uc758 \\uc790\\uc720\\ub97c \\ub2e4\\ub978 \\uc0ac\\ub78c\\uc744 \\uaca9\\ub824\\ud558\\uace0 \\ub3d5\\uace0 \\ubcf4\\ud638\\ud558\\ub294 \\ub370 \\uc0ac\\uc6a9\\ud558\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">8</div>
+  <div class="en">I will avoid being ruled by habit, comparison, or empty desire.</div>
+  <button onclick="speak(\"I will avoid being ruled by habit, comparison, or empty desire.\", 'en-US')">영어 듣기</button>
+  <div class="ko">나는 습관과 비교와 공허한 욕망에 지배당하지 않겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\ub098\\ub294 \\uc2b5\\uad00\\uacfc \\ube44\\uad50\\uc640 \\uacf5\\ud5c8\\ud55c \\uc695\\ub9dd\\uc5d0 \\uc9c0\\ubc30\\ub2f9\\ud558\\uc9c0 \\uc54a\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">9</div>
+  <div class="en">With freedom and responsibility, I can make today more meaningful.</div>
+  <button onclick="speak(\"With freedom and responsibility, I can make today more meaningful.\", 'en-US')">영어 듣기</button>
+  <div class="ko">자유와 책임으로 나는 오늘을 더 의미 있게 만들 수 있다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc790\\uc720\\uc640 \\ucc45\\uc784\\uc73c\\ub85c \\ub098\\ub294 \\uc624\\ub298\\uc744 \\ub354 \\uc758\\ubbf8 \\uc788\\uac8c \\ub9cc\\ub4e4 \\uc218 \\uc788\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+
+<div class="pair">
+  <div class="num">10</div>
+  <div class="en">Today, I will live as a person who chooses wisely and loves sincerely.</div>
+  <button onclick="speak(\"Today, I will live as a person who chooses wisely and loves sincerely.\", 'en-US')">영어 듣기</button>
+  <div class="ko">오늘 나는 지혜롭게 선택하고 진심으로 사랑하는 사람으로 살아가겠다.</div>
+  <button class="btn-ko" onclick="speak(\"\\uc624\\ub298 \\ub098\\ub294 \\uc9c0\\ud61c\\ub86d\\uac8c \\uc120\\ud0dd\\ud558\\uace0 \\uc9c4\\uc2ec\\uc73c\\ub85c \\uc0ac\\ub791\\ud558\\ub294 \\uc0ac\\ub78c\\uc73c\\ub85c \\uc0b4\\uc544\\uac00\\uaca0\\ub2e4.\", 'ko-KR')">한국어 듣기</button>
+</div>
+</div>
+
+<div class="section">
+<h2>전체 원문 Text</h2>
+<pre>인간은 자유로운가?
+Are human beings truly free?
+
+인문 철학적으로 예시와 일화를 들어서
+영어18문장(한글 해석)으로 설명
+
+The question “Are human beings truly free?” asks whether our choices are really our own.
+“인간은 자유로운가?”라는 질문은 우리의 선택이 정말 우리 자신의 것인지를 묻는다.
+In humanistic philosophy, freedom is connected with responsibility, reason, desire, and social conditions.
+인문 철학에서 자유는 책임, 이성, 욕망, 사회적 조건과 연결되어 있다.
+Socrates showed inner freedom by following conscience rather than public fear.
+소크라테스는 대중의 두려움보다 양심을 따름으로써 내면의 자유를 보여 주었다.
+His life teaches us that a person can be physically constrained but spiritually free.
+그의 삶은 사람이 신체적으로 제한되어도 정신적으로는 자유로울 수 있음을 가르쳐 준다.
+Aristotle believed that freedom grows when reason guides desire toward virtue.
+아리스토텔레스는 이성이 욕망을 덕으로 이끌 때 자유가 자란다고 믿었다.
+This means that doing whatever we want is not always true freedom.
+이는 하고 싶은 대로 하는 것이 언제나 참된 자유는 아니라는 뜻이다.
+For example, a student who resists distraction to study may be more free than one ruled by impulse.
+예를 들어 산만함을 이기고 공부하는 학생은 충동에 지배되는 학생보다 더 자유로울 수 있다.
+Immanuel Kant argued that true freedom is obeying the moral law we recognize through reason.
+임마누엘 칸트는 참된 자유가 이성을 통해 인식한 도덕 법칙을 따르는 것이라고 주장했다.
+For Kant, a free person acts from duty, not merely from appetite or pressure.
+칸트에게 자유로운 사람은 단순한 욕구나 압력이 아니라 의무에 따라 행동한다.
+Jean-Paul Sartre insisted that human beings are radically free and responsible for their choices.
+장 폴 사르트르는 인간이 근본적으로 자유로우며 자신의 선택에 책임이 있다고 주장했다.
+His view reminds us that even not choosing is already a kind of choice.
+그의 관점은 선택하지 않는 것조차 이미 하나의 선택임을 일깨워 준다.
+However, modern society shows that freedom is shaped by poverty, education, technology, and power.
+그러나 현대 사회는 자유가 가난, 교육, 기술, 권력에 의해 형성된다는 것을 보여 준다.
+A person with no fair opportunity cannot exercise freedom in the same way as a privileged person.
+공정한 기회가 없는 사람은 특권을 가진 사람과 같은 방식으로 자유를 행사할 수 없다.
+Therefore, freedom is both personal and social.
+그러므로 자유는 개인적인 것이면서 동시에 사회적인 것이다.
+In daily life, freedom appears when we pause before reacting and choose wisely.
+일상에서 자유는 반응하기 전에 멈추고 지혜롭게 선택할 때 나타난다.
+Freedom also appears when we respect another person’s freedom and dignity.
+자유는 다른 사람의 자유와 존엄을 존중할 때에도 나타난다.
+A truly free person is not a slave to fear, anger, greed, or public opinion.
+참으로 자유로운 사람은 두려움, 분노, 탐욕, 여론의 노예가 아니다.
+Ultimately, human freedom is the ongoing task of choosing truth, goodness, and responsibility.
+궁극적으로 인간의 자유는 진리와 선과 책임을 선택해 가는 지속적인 과제이다.
+
+오늘 하루 인간은 자유로운가? Are human beings truly free?를 생각하고 의미있는 삶을 실천하며 살고 싶다.
+영어 10줄(한글 해석)로 오늘의 삶을 이야기 하기
+
+Today, I will begin my day by asking how I can use my freedom wisely.
+오늘 나는 나의 자유를 어떻게 지혜롭게 사용할 수 있을지 물으며 하루를 시작하겠다.
+I will not let fear or anger control my words and actions.
+나는 두려움이나 분노가 나의 말과 행동을 지배하지 못하게 하겠다.
+True freedom means choosing what is meaningful, not merely what is easy.
+참된 자유는 단지 쉬운 것이 아니라 의미 있는 것을 선택하는 것이다.
+I will respect the freedom and dignity of my students and people around me.
+나는 학생들과 주변 사람들의 자유와 존엄을 존중하겠다.
+I will pause before reacting and choose a thoughtful response.
+나는 반응하기 전에 잠시 멈추고 사려 깊은 응답을 선택하겠다.
+When I make a choice, I will accept responsibility for its results.
+선택을 할 때 나는 그 결과에 대한 책임을 받아들이겠다.
+I will use my freedom to encourage, help, and protect others.
+나는 나의 자유를 다른 사람을 격려하고 돕고 보호하는 데 사용하겠다.
+I will avoid being ruled by habit, comparison, or empty desire.
+나는 습관과 비교와 공허한 욕망에 지배당하지 않겠다.
+With freedom and responsibility, I can make today more meaningful.
+자유와 책임으로 나는 오늘을 더 의미 있게 만들 수 있다.
+Today, I will live as a person who chooses wisely and loves sincerely.
+오늘 나는 지혜롭게 선택하고 진심으로 사랑하는 사람으로 살아가겠다.</pre>
+</div>
+
+<script>
+const EN_TEXT = "The question “Are human beings truly free?” asks whether our choices are really our own.\nIn humanistic philosophy, freedom is connected with responsibility, reason, desire, and social conditions.\nSocrates showed inner freedom by following conscience rather than public fear.\nHis life teaches us that a person can be physically constrained but spiritually free.\nAristotle believed that freedom grows when reason guides desire toward virtue.\nThis means that doing whatever we want is not always true freedom.\nFor example, a student who resists distraction to study may be more free than one ruled by impulse.\nImmanuel Kant argued that true freedom is obeying the moral law we recognize through reason.\nFor Kant, a free person acts from duty, not merely from appetite or pressure.\nJean-Paul Sartre insisted that human beings are radically free and responsible for their choices.\nHis view reminds us that even not choosing is already a kind of choice.\nHowever, modern society shows that freedom is shaped by poverty, education, technology, and power.\nA person with no fair opportunity cannot exercise freedom in the same way as a privileged person.\nTherefore, freedom is both personal and social.\nIn daily life, freedom appears when we pause before reacting and choose wisely.\nFreedom also appears when we respect another person’s freedom and dignity.\nA truly free person is not a slave to fear, anger, greed, or public opinion.\nUltimately, human freedom is the ongoing task of choosing truth, goodness, and responsibility.\nToday, I will begin my day by asking how I can use my freedom wisely.\nI will not let fear or anger control my words and actions.\nTrue freedom means choosing what is meaningful, not merely what is easy.\nI will respect the freedom and dignity of my students and people around me.\nI will pause before reacting and choose a thoughtful response.\nWhen I make a choice, I will accept responsibility for its results.\nI will use my freedom to encourage, help, and protect others.\nI will avoid being ruled by habit, comparison, or empty desire.\nWith freedom and responsibility, I can make today more meaningful.\nToday, I will live as a person who chooses wisely and loves sincerely.";
+const KO_TEXT = "“인간은 자유로운가?”라는 질문은 우리의 선택이 정말 우리 자신의 것인지를 묻는다.\n인문 철학에서 자유는 책임, 이성, 욕망, 사회적 조건과 연결되어 있다.\n소크라테스는 대중의 두려움보다 양심을 따름으로써 내면의 자유를 보여 주었다.\n그의 삶은 사람이 신체적으로 제한되어도 정신적으로는 자유로울 수 있음을 가르쳐 준다.\n아리스토텔레스는 이성이 욕망을 덕으로 이끌 때 자유가 자란다고 믿었다.\n이는 하고 싶은 대로 하는 것이 언제나 참된 자유는 아니라는 뜻이다.\n예를 들어 산만함을 이기고 공부하는 학생은 충동에 지배되는 학생보다 더 자유로울 수 있다.\n임마누엘 칸트는 참된 자유가 이성을 통해 인식한 도덕 법칙을 따르는 것이라고 주장했다.\n칸트에게 자유로운 사람은 단순한 욕구나 압력이 아니라 의무에 따라 행동한다.\n장 폴 사르트르는 인간이 근본적으로 자유로우며 자신의 선택에 책임이 있다고 주장했다.\n그의 관점은 선택하지 않는 것조차 이미 하나의 선택임을 일깨워 준다.\n그러나 현대 사회는 자유가 가난, 교육, 기술, 권력에 의해 형성된다는 것을 보여 준다.\n공정한 기회가 없는 사람은 특권을 가진 사람과 같은 방식으로 자유를 행사할 수 없다.\n그러므로 자유는 개인적인 것이면서 동시에 사회적인 것이다.\n일상에서 자유는 반응하기 전에 멈추고 지혜롭게 선택할 때 나타난다.\n자유는 다른 사람의 자유와 존엄을 존중할 때에도 나타난다.\n참으로 자유로운 사람은 두려움, 분노, 탐욕, 여론의 노예가 아니다.\n궁극적으로 인간의 자유는 진리와 선과 책임을 선택해 가는 지속적인 과제이다.\n오늘 나는 나의 자유를 어떻게 지혜롭게 사용할 수 있을지 물으며 하루를 시작하겠다.\n나는 두려움이나 분노가 나의 말과 행동을 지배하지 못하게 하겠다.\n참된 자유는 단지 쉬운 것이 아니라 의미 있는 것을 선택하는 것이다.\n나는 학생들과 주변 사람들의 자유와 존엄을 존중하겠다.\n나는 반응하기 전에 잠시 멈추고 사려 깊은 응답을 선택하겠다.\n선택을 할 때 나는 그 결과에 대한 책임을 받아들이겠다.\n나는 나의 자유를 다른 사람을 격려하고 돕고 보호하는 데 사용하겠다.\n나는 습관과 비교와 공허한 욕망에 지배당하지 않겠다.\n자유와 책임으로 나는 오늘을 더 의미 있게 만들 수 있다.\n오늘 나는 지혜롭게 선택하고 진심으로 사랑하는 사람으로 살아가겠다.";
+function speak(text, lang){
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = lang;
+  u.rate = lang === 'en-US' ? 0.88 : 0.95;
+  u.pitch = 1;
+  speechSynthesis.speak(u);
+}
+function speakAll(lang){
+  speechSynthesis.cancel();
+  const text = lang === 'en-US' ? EN_TEXT : KO_TEXT;
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = lang;
+  u.rate = lang === 'en-US' ? 0.88 : 0.95;
+  u.pitch = 1;
+  speechSynthesis.speak(u);
+}
+</script>
+</div></div>
+</body>
+</html>
